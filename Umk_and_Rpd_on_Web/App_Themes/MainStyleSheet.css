@@ -1,0 +1,383 @@
+﻿.TextBoxStyle{
+    font-size: large;
+    text-align: justify;
+    height: 50px; 
+    width:99%;   
+}
+
+.login{
+    font-size:medium;
+    font-weight:normal;
+    width:200px;
+    height:20px;
+    margin-top:5px;
+}
+
+.login-label-style{
+    width:auto;
+}
+
+.bttn{
+    /*float:left;*/
+}
+
+.login-bttn{
+    float:right;
+}
+
+div{
+    display: block;
+    margin: 0px 0px;
+    text-align: left;
+    border-style: inherit;
+    padding: inherit;
+    left: 10px;
+}
+
+.form {    
+    grid-row-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-style: normal;    
+}
+
+.bttn, .login-bttn{ 
+
+margin-left:auto;
+margin-right:auto;
+
+padding: 10px; 
+text-decoration: none;
+
+font-size: 13px;
+font-weight: bold;
+color: rgb(0, 0, 0);
+/*float: left;*/  /* кнопка растягивается только на длину текста */
+position: relative;/* изменяя в дальнейшем top, добиться эффекта нажатия*/
+/* закругляем углы */ 
+border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+/* делаем градиент (эффект выпуклости)*/
+
+background:#D7E3EB;
+/* тень, которую отбрасывает кнопка)*/  
+-moz-box-shadow:1rgba(0, 0, 0, .30) 2px 2px 2px;
+-webkit-box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
+box-shadow:rgb(0, 0, 0); 2px 2px 2px;
+
+text-shadow: white 0px 1px 0;
+    top: 0px;
+    width: auto;
+}
+
+.bttn:visited
+{
+color: rgb(0, 0, 0);
+}
+
+.bttn:hover
+{
+/* тень, которую отбрасывает кнопка сделать больше*/  
+box-shadow:rgba(0, 0, 0, .30) 4px 4px 4px;
+-moz-box-shadow:1rgba(0, 0, 0, .30) 4px 4px 4px;
+-webkit-box-shadow:rgba(0, 0, 0, .30) 4px 4px 4px;
+/* поменять градиент (эффект большей выпуклости)*/ 
+background:#D7E3EB;
+top: -1px;/*поднять кнопку*/
+text-decoration: none;
+color: rgb(0, 0, 0); 
+}
+
+.bttn:active,.bttn:focus{
+/* тень, которую отбрасывает кнопка можно вообще убрать*/  
+box-shadow:rgba(0, 0, 0, .30) 1px 1px 1px;
+-moz-box-shadow:1rgba(0, 0, 0, .30) 1px 1px 1px;
+-webkit-box-shadow:rgba(0, 0, 0, .30) 1px 1px 1px;
+top: 1px;/*втопить кнопку*/
+/* поменять градиент для визуального 3Д*/ 
+
+background:#D7E3EB;
+}
+
+.GridViewCss{
+    background: #EBF3F2;
+    color:black;
+    border: 2px black ridge;
+    border-collapse:collapse;
+    border-spacing: 10px, 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    font-style: normal;
+    vertical-align:top;
+    padding-left:3px;
+    padding-right:7px;
+}
+
+.HeaderGridView{
+    border:2px black ridge;
+    border-spacing: 10px, 10px;
+    font-size:16px;
+    font-style:normal;
+    text-align:center;
+    margin:0; 
+    padding:5px;  
+}
+
+.PasswordStyle{
+    margin:auto auto auto auto;
+}
+
+h2{
+    font-size:large;
+    font-weight:600;
+    text-align:center;
+    margin:0 auto;
+    padding:5px 10px;
+}
+
+h3{
+    font-size:medium;
+    font-weight:600;
+    padding:5px 10px;
+}
+
+.LabelStyle{
+    display:    block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.CompetLabelStyle{
+    font: normal normal 600 100% serif;
+    padding:5px 5px 5px 5px;
+}
+
+.hrStyle{
+    border: 5px;
+    background: #000000;
+    color: black;
+}
+
+/*
+Стили отдельно для станицы TitleForm.aspx
+*/
+
+/**/
+.div_with_all_select_params{
+    display:table;
+}
+
+.div_with_select_params{
+    display:table-row;
+}
+
+/*для тегов <Label> титульной страницы*/
+.label_titleform{
+    display:table-cell;
+    width:260px;
+    font-size:18px;
+}
+/*стиль для всех раскрывающихся списков*/
+.selectliststyle{
+    display:table-cell;
+    width:200px;
+}
+
+/*для элемента LoginStatus*/
+.loginStstus{
+    float:right;
+}
+
+/*Стили отдельно для страницы "Содержание разделов дисциплины"*/
+/*Для первого столбца*/
+.VidColumn{
+    width:94px;
+}
+/*Для первого стоблца с надписью "раздел"*/
+.Razdel{
+    text-align:left;
+    font-weight:bold;
+}
+/*для первого столбца с надписью "Тема"*/
+.Theme{
+    text-align:center;
+    font-weight:bold;
+}
+/*для первого стобца с остальными занятиями (лекция/практика/сам. работа)*/
+.all{
+    text-align:right;
+    font-weight:normal;
+}
+.VolumeColumn, .semestrColumn, .buttonColumn{
+    width:90px !important;
+}
+
+.buttonColumn{
+    width:80px !important;
+}
+/*для четвертого столбца "форма текущего контрооя успваемости"*/
+.formCurControlColumn{
+    vertical-align:top;
+    width:296px;
+}
+
+.TextBoxOcenSredstv{
+    width:100%;
+    margin:0;
+    display:block;
+}
+
+.SelectStyle{
+    display:block;
+    margin:0 auto;
+    width:100%;
+}
+
+.bttn_AddOcenSredstv{
+    width:100%;
+    display:block;
+}
+
+/*для третьего столбца с описанием содержания занятий*/
+.SoderjLesson{
+    width:100%;
+    height:70px;
+}
+/*Для таблицы страницы CurrentControl.aspx*/
+.for_CurControlTable{
+    width:100%;
+}
+/*для столбца с формами текущего контроя успеаемости*/
+.CurrentControlColumn{
+    width:315px;
+    vertical-align:top;
+}
+/*Для столбца с количеством баллов*/
+.NumberBallColumn{
+    width:280px !important;
+    padding-right:10px;
+}
+/*Для столбца "Раздел и тема дисциплины"*/
+.NumberThemeBall{
+    width:200px;
+}
+/*Для столбца с кнопкой для удаления строки*/
+.for_del_str{
+    width:75px;
+}
+
+/*Для кнопок "Далее" и "Назад"*/
+.btn-pred-and-next{
+    float:right;
+    left: 0px;
+}
+
+/**/
+.ContainerForSoderjTable{
+    width:100%;
+    display:block;
+    overflow-y:scroll;
+    height:600px;
+    position:relative;
+    top:50px;
+}
+/*для всплывающего окна на странице "SoderjRazdDiscip.aspx"*/
+#wrap_for_pop-up-window{
+    height:100%;
+    display:none;
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    padding:20px;
+    background:rgba(1, 1, 1, 0.725);
+    z-index:800;
+    overflow:hidden;
+}
+
+#pop-up-window{
+    width:1000px;
+    height:auto;
+    margin:30px auto;
+    display:none;
+    background-color:#EBF3F2;
+    z-index:1000;    
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    padding:0 10px;   
+}
+
+.close-pop-up{
+    float:right;
+	cursor: pointer;
+}
+
+/*Для Label и TextBox во всплывающем псевдоокне страницы "SoderjRazdDiscip.aspx"*/
+.Key_Liter{
+    display:table-row;
+}
+
+.Label_Liter{
+    display:table-cell;
+    width:200px; 
+}
+
+.TextBox_Liter{
+    display:table-cell;
+    width:250px;
+}
+
+/*Для таблицы со списком литературы во всплывающем псевдоокне страницы "SoderjRazdDiscip.aspx"*/
+.nameBookColumn{
+    /*width:auto !important;*/
+    max-width:250px !important;
+    min-width:150px !important;
+    text-wrap:normal !important;
+}
+.AuthorColumn{
+    /*width:auto !important;*/
+    max-width:150px !important;
+    min-width:100px !important;
+    text-wrap:normal !important;
+}
+
+.NameIzdColumn{
+    max-width:100px !important;
+    min-width:50px !important;
+    text-wrap:normal;
+}
+
+/*для таблицы с списком литературы*/
+/*для первого столбца с выбором типа литературы*/
+.TypeLiterColumn{
+    width:150px !important;
+}
+
+/*для третьего столбца с кнопкой "Найти"*/
+.FindLiterBtnColumn{
+    width: 60px !important;
+}
+
+/*для поля ввода в втором столбце таблицы*/
+.textBox_AboutLiter{
+    width:100%;
+    /*font-size: medium;*/
+    text-align: justify;
+}
+
+@media(max-width:1280px){
+    #wrap_for_pop-up-window{
+        width:auto;
+        min-width:500px;
+    }
+    #pop-up-window{
+        width:auto;
+    }
+}

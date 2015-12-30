@@ -1,0 +1,167 @@
+﻿form{
+    /*background-color: #E6EFF5;*/ 
+    background-attachment:fixed;
+    padding: 0;
+    width: 1280px;
+    margin:0 auto;
+}
+
+body {
+    background-image:url("../background1.jpg");  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-style: normal;  
+    padding:0;
+    margin:0;  
+}
+
+.header{
+    width:100%;
+    height:auto;   
+}
+
+.color-content{
+    background-color:#E6EFF5;
+}
+
+.header .name_university{
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+    color:#169EEC;
+}
+
+/*css класс для правильного расположения ссылок на другие страницы*/
+nav{
+    background-color: #E6EFF5;
+    display:inline;
+    margin:0 auto;
+}
+
+nav ul{
+    display:block;  
+    text-align:center;
+    padding:0;
+    list-style:none;
+    height:auto;
+    text-wrap:none;    
+}
+
+/*li{
+    margin:10px auto;
+    display:inline-block;
+    padding-bottom:10px;
+    padding-left:15px;
+    padding-right:15px;    
+    background: #EBF3F2;
+    height:auto;
+    border-bottom:2px solid #F0DE94;
+    text-align:center;
+    vertical-align:central;
+}
+
+li a{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight:bold;
+    color: black;
+    position: relative;
+    background: #EBF3F2;
+    flex-wrap:nowrap;
+    text-wrap:none;
+}
+
+li a:visited{
+    color:black;
+}
+
+li a:hover{
+    top:-1px;
+    text-decoration:none;
+    color:black;
+}
+
+li a:active, li a:focus{
+    top:1px;   
+}
+*/
+li{
+    margin:10px auto;
+    display:inline-block;
+    padding-bottom:0;
+    padding-left:0;
+    padding-right:0;    
+    background: #EBF3F2;
+    height:auto;
+    border-bottom:2px solid #F0DE94;
+    text-align:center;
+    vertical-align:central;
+}
+
+li .btn{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight:bold;
+    color: black;
+    position: relative;
+    background: #EBF3F2;
+    flex-wrap:nowrap;
+    text-wrap:normal;
+}
+
+li .btn:visited{
+    color:black;
+}
+
+li .btn:hover{
+    top:-1px;
+    text-decoration:none;
+    color:black;
+}
+
+li .btn:active, li .btn:focus{
+    top:1px;   
+}
+
+.layout{
+    /*float:left;
+    width:940px;*/
+    width:100%;
+    padding:0 20px;
+    max-height:800px;
+    overflow-y:scroll;
+    margin:0 auto;
+}
+
+.content{
+    width:auto;
+    margin:0 auto;       
+}
+
+.leftcolumn{
+    float:left;
+    width:150px;
+    height:20px;
+    /*background-color:black;*/
+}
+
+aside{
+    float:right;
+    width:150px;
+    height:20px;
+    /*background-color:black;*/
+}
+
+#for_ContentPage{
+    width:100%;
+    margin:0 auto;    
+}
+
+@media (max-width:1280px){    
+    form{
+        width:auto;
+    }
+    .layout{
+        width:auto;
+    }
+}

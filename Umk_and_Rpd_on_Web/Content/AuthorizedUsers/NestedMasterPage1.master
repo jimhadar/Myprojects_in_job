@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Content/AuthorizedUsers/Main.Master" AutoEventWireup="true" CodeBehind="NestedMasterPage1.master.cs" Inherits="Umk_and_Rpd_on_Web.Content.AuthorizedUsers.NestedMasterPage1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <!--<section class="leftcolumn"></section>-->
+    <section>
+        
+        <!--Навигация по основным страницам-->
+        <nav>
+            <ul>
+                <li>
+                    <!--<a href="Title.aspx">Титул</a>-->
+                    <asp:Button runat="server" ID="TitleForm_btn" OnClick="TitleForm_btn_Click" CssClass="bttn" Text="Титул" />
+                </li>
+                <li>
+                    <!--<a href="Competetion.aspx">Компетенции</a>-->
+                    <asp:Button runat="server" ID="CompetetionForm_btn" OnClick="CompetetionForm_btn_Click" CssClass="bttn" Text="Компетенции" />
+                </li>
+                <li>
+                    <!--<a href="SoderjRazdDiscip.aspx"><span>Cодержание разделов &#010; дисциплины</span></a>-->
+                    <asp:Button runat="server" ID="SoderjRazdDiscip_btn" OnClick="SoderjRazdDiscip_btn_Click" CssClass="bttn" Text="Содержание разделов дисциплины" />
+                </li>
+                <li>
+                    <asp:Button runat="server" ID="CurrentControl_btn" OnClick="CurrentControl_btn_Click" CssClass="bttn" Text="Текущий контроль" />
+                </li>
+                <!--Ссылка на страницу RPD.aspx-->
+                <li runat="server" id="li_for_href_in_RPDForm">
+                    <!--<a href="RPD.aspx">Прочее</a>-->
+                    <asp:Button runat="server" ID="RPD_btn" OnClick="RPD_or_UMK_btn_Click" CssClass="bttn" Text="Для РПД" />
+                </li>
+                <!--Ссылка на страницу RPD.aspx-->
+                <li runat="server" id="li_for_href_UMKForm">
+                    <!--<a href="RPD.aspx">Прочее</a>-->
+                    <asp:Button runat="server" ID="UMK_btn" OnClick="UMK_btn_Click" CssClass="bttn" Text="Для УМК" />
+                </li>
+                <li runat="server" id="li_for_href_findForm">
+                    <asp:Button runat="server" ID="Find_btn" OnClick="Find_btn_Click" CssClass="bttn" Text="Просмотр списка созданных РПД/УМК" />
+                </li>
+            </ul>
+        </nav>
+        <section class="layout">
+            <section runat="server" id="Section_for_MainContent" class="content">
+                <section id="for_ContentPage">
+                    <asp:ContentPlaceHolder ID="Content" runat="server">
+                    </asp:ContentPlaceHolder>
+                </section>
+            </section>
+        </section>
+        <!--Для кнопки "Завершить редактирование"-->
+        <section>
+            <asp:Button runat="server" ID="Button_for_EndEditUMK_RPD" Text="Завершить редактирование, перейти к сохранению РПД/УМК на ПК" CssClass="bttn btn-pred-and-next" OnClick="Button_for_EndEditUMK_RPD_Click"/>
+        </section>
+    </section>       
+        <!--Сайдбар-->
+    <!--<aside>
+        </aside>    
+        -->
+</asp:Content>

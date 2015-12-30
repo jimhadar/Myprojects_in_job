@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.all_select_params{
+    display:table;
+    width:100%;
+}
+
+.group_dropdownlist_as_tablerow{
+    display:table-row;
+}
+
+.dropdownlist_as_tablecell_column1{
+    display:table-cell;
+    width:170px;
+}
+.dropdownlist_as_tablecell_column2{
+    display:table-cell;
+    width:260px;
+    margin-left:7px;
+}
+.dropdownlist_as_tablecell_column3{
+    display:table-cell;
+    width:150px;
+}
+.dropdownlist_as_tablecell_column4{
+    display:table-cell;
+    width:260px;
+    margin-left:7px;
+}

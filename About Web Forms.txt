@@ -1,0 +1,9 @@
+http://professorweb.ru/my/ASP_NET/base/level1/base_aspnet_index.php
+
+http://professorweb.ru/my/ASP_NET/base/level2/2_1.php состояния представления (ViewState)
+
+http://professorweb.ru/my/ASP_NET/base/level2/2_2.php обработка веб-форм
+
+http://forums.asp.net/t/1520257.aspx?Adding+textbox+inside+Gridview
+
+http://www.internet-technologies.ru/articles/article_762.html

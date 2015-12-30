@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-//using DocumentFormat.OpenXml.Packaging;
-//using DocumentFormat.OpenXml.Wordprocessing;     
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;     
 
 namespace Umk_and_Rpd_on_Web {
     /// <summary>
@@ -1434,7 +1434,7 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                /*using (WordprocessingDocument output =
+                using (WordprocessingDocument output =
                   WordprocessingDocument.Open(outputDocument, true)) {
                     //использование элемента тело в новой 
                     //содержимому xmldocument создать новый открытый объект xml тела.
@@ -1444,7 +1444,7 @@ namespace Umk_and_Rpd_on_Web {
                     output.MainDocumentPart.Document.Body = updatedbodycontent;
                     //сохраните обновленный выходной документ.
                     output.MainDocumentPart.Document.Save();
-                } */
+                } 
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -2130,11 +2130,17 @@ namespace Umk_and_Rpd_on_Web {
                 //пока есть символа переноса строки, то добавляем новые абзацы в список
                 while ((numberEnter = str.IndexOf(Enter)) >= 0) {
                     if (str != string.Empty && numberEnter > 0) {
-                        format_result.Add(str.Substring(0, numberEnter));
+                        string tmp = str.Substring(0, numberEnter);
+                        if (tmp[tmp.Length - 1] == '\n' || tmp[tmp.Length - 1] == '\r') {
+                            format_result.Add(tmp.Substring(0, tmp.Length - 1));
+                        }
+                        else {
+                            format_result.Add(tmp);
+                        }
                         str = str.Remove(0, numberEnter + 1);
                     }
                     else if(numberEnter == 0){                                      
-                        if(str[0] == '\n'){
+                        if(str[0] == '\n' || str[0] == '\r'){
                             format_result.Add(string.Empty);
                             str = str.Remove(0, 1);
                         }

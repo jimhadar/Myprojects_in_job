@@ -33,9 +33,9 @@
                     <!--<a href="RPD.aspx">Прочее</a>-->
                     <asp:Button runat="server" ID="UMK_btn" OnClick="UMK_btn_Click" CssClass="bttn" Text="Для УМК" />
                 </li>
-                <li runat="server" id="li_for_href_findForm">
+                <!--<li runat="server" id="li_for_href_findForm">
                     <asp:Button runat="server" ID="Find_btn" OnClick="Find_btn_Click" CssClass="bttn" Text="Просмотр списка созданных РПД/УМК" />
-                </li>
+                </li>-->
             </ul>
         </nav>
         <section class="layout">

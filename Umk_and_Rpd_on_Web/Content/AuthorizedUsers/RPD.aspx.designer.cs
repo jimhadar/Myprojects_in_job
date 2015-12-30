@@ -22,15 +22,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.RPD {
         protected global::System.Web.UI.WebControls.TextBox TypeAndFormCertificationTextBox;
         
         /// <summary>
-        /// TextBox_Part_InteractiveMethods элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Part_InteractiveMethods;
-        
-        /// <summary>
         /// UsedEcucateTechnologyTextBox элемент управления.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.RPD {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox UsedEcucateTechnologyTextBox;
+        
+        /// <summary>
+        /// TextBox_Part_InteractiveMethods элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_Part_InteractiveMethods;
         
         /// <summary>
         /// ExampleTestCurControlTextBox элемент управления.

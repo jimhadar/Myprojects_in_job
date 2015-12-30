@@ -1,0 +1,68 @@
+﻿body {
+}
+
+.kafs_table{
+    border:solid 1px black;
+    border-collapse:collapse;
+    border-spacing: 10px;
+    font-size:14px;
+}
+/*общие стили для всех ячеек*/
+.kafstable_cell{
+    border:solid 1px black;
+    border-collapse:collapse;
+    border-spacing: 10px;
+    vertical-align:top;
+}
+/*для ячеек первого столбца*/
+.kafstable_cell_number{
+    width: 40px;
+    text-align:center;
+}
+.kafstable_cell_FIO{
+    width:110px;
+}
+/*для ячеек с должностью*/
+.kafstable_cell_PostNam{
+    width: 80px;
+}
+/*для ячеек сс списком преподаваемых дисциплин для преподавателя*/
+.kafstable_cell_TeachDiscip{
+    width:150px;
+    text-wrap:avoid;
+}
+/*для ячеек с ученой степенью*/
+.kafstable_cell_degreee{
+    width:70px;
+}
+/*для ячеек с ученым званием*/
+.kafstable_cell_ClassNam{
+    width: 70px;
+}
+/*для направления подготовки / специальности работника*/
+.kafstable_cell_EmployeeQualific{
+    width:100px;
+}
+/*для ячеек "Повышение квалаификации и (или) профессиональная переподготовка"*/
+.kafstable_cell_ProfDevelop{
+    width:50px;
+}
+/*для ячеек с общий стажем работы*/
+.kafstable_cell_GenExperience{
+    width:80px;
+}
+/*для ячеек с стажем работы по специальности*/
+.kafstable_cell_SpecExperience{
+    width:50px;
+}
+/*Для резюме*/
+.kafstable_cell_resume{
+    width:55px;
+    text-align:center;
+}
+/*общие стили для заголовков таблицы*/
+.kafs_table_headerCell{
+    background-color: rgb(238, 238, 238);
+    text-align:center;
+    font-weight:bold;
+}

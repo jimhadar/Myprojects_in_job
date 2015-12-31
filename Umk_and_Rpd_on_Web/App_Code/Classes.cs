@@ -274,7 +274,11 @@ namespace Umk_and_Rpd_on_Web {
         /// <summary>
         /// Строка, содержащая семестр, в котором предполагается экзамен
         /// </summary>
-        string Semestr_Ekzamen;
+        string Semestr_Ekzamen;     
+        /// <summary>
+        /// Код специальности для файла *.docx, он отличается от четырехзначного CodSpeciality
+        /// </summary>
+        string CodSpecialty_for_XML;
         #endregion
 
         #region переменные для хранения информации о том, какими навыками должен обладать студент
@@ -805,7 +809,7 @@ namespace Umk_and_Rpd_on_Web {
 
                 this.Semestr_Ekzamen = this.Get_Sem_Ekzamen(academiaDataSet.StudyExams);
 
-                this.CodSpeciality = (SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan)) != null ? SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString() : String.Empty;
+                this.CodSpecialty_for_XML = (SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan)) != null ? SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString() : String.Empty;
             }
 
         }
@@ -1030,7 +1034,7 @@ namespace Umk_and_Rpd_on_Web {
             writer.WriteAttributeString("ZavKaf_forKaf_for_prep", full_inf_about_prepod((int)CodZavKaf, I_O_Fam_for_ZavKaf_and_Dekan(ZavKaf)));
             writer.WriteAttributeString("Name_discip", Name_discipline);
             writer.WriteAttributeString("Shift_discip", shifr_discipline);
-            writer.WriteAttributeString("Cod_Speciality", CodSpeciality);
+            writer.WriteAttributeString("Cod_Speciality", this.CodSpecialty_for_XML);
             writer.WriteAttributeString("Name_speciality", Name_speciality);
             writer.WriteAttributeString("Specialization", specialization);
             //если РПД

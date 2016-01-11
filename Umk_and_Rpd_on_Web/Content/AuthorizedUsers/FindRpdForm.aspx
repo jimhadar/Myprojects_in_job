@@ -1,11 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="FindRpdForm.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Content.AuthorizedUsers.FindRpdForm" %>
 <asp:Content ID="MainContent" ContentPlaceHolderID="Content" runat="server">
-<asp:ScriptManager runat="server">
+    <asp:ScriptManager runat="server">
 
 </asp:ScriptManager>
     <link href="../../App_Themes/StyleSheet_for_FindForm.css" rel="stylesheet" />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            <label>
+                <input type="checkbox" runat="server" id="CheckBox_FacDiscip" value="" clientidmode="static" />Факультет дисциплины</label>
+            <label>
+                <input type="checkbox" runat="server" clientidmode="static" id="CheckBoc_KafDiscip" />Кафедра дисциплины</label>
+            <label>
+                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_Prepod" />
+                Преподаватель</label>
+            <label>
+                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_StudyYear" />
+                Учебный год</label>
+            <label>
+                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_Speciality" />Направление подготовки</label>
+            <label>
+                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_StudyPlan" />Учебный план</label>
             <div class="all_select_params">
                 <div class="group_dropdownlist_as_tablerow">
                     <span class="dropdownlist_as_tablecell_column1"> Факультет (дисциплины)</span>
@@ -26,7 +40,7 @@
                     <span class="dropdownlist_as_tablecell_column3">Тип обучения</span>
                     <asp:DropDownList ID="DropDownList_TypeEdu" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_TypeEdu" DataTextField="TypeEdu" DataValueField="CodTypeEdu" AutoPostBack="True"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource_TypeEdu" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.TypeEduTableAdapter"></asp:ObjectDataSource>
-                </div>
+                </div>                
                 <div class="group_dropdownlist_as_tablerow">
                     <span class="dropdownlist_as_tablecell_column1">Учебный год</span>
                     <asp:DropDownList ID="DropDownList_StudyYear" runat="server" CssClass="dropdownlist_as_tablecell_column2" AutoPostBack="True"></asp:DropDownList>
@@ -52,21 +66,48 @@
                     </asp:ObjectDataSource>
                 </div>
             </div>
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="SqlDataSource_umk_and_rpd_with_opisanie" AutoGenerateColumns="False" CssClass="GridViewCss" DataKeyNames="Id_RPD_or_UMK">
+            <br />
+            <asp:Button ID="Button_poisk" runat="server" Text="Поиск" CssClass="bttn" Width="300px" />
+            <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource_umk_rpd_with_opisanie" AutoGenerateColumns="False" CssClass="GridViewCss" DataKeyNames="Id_RPD_or_UMK">
                 <Columns>
-                    <asp:BoundField DataField="UMKRPD" HeaderText="Умк/РПД" ReadOnly="True" SortExpression="UMKRPD" />
-                    <asp:BoundField DataField="Year" HeaderText="Год" SortExpression="Year" />
-                    <asp:BoundField DataField="NameKaf" HeaderText="Кафедра" SortExpression="NameKaf" />
-                    <asp:BoundField DataField="NameSub" HeaderText="Дисциплина" SortExpression="NameSub" />
-                    <asp:BoundField DataField="FIO" HeaderText="Преподаватель по нагрузке" SortExpression="FIO" />
-                    <asp:BoundField DataField="PrepodWhoEdit" HeaderText="Кем выполнено" SortExpression="PrepodWhoEdit" />
-                    <asp:BoundField DataField="TypeEdu" HeaderText="Тип обучения" SortExpression="TypeEdu" />
-                    <asp:BoundField DataField="Speciality" HeaderText="Направление подготовки" SortExpression="Speciality" />
-                    <asp:BoundField DataField="NamePlan1" HeaderText="Название плана" ReadOnly="True" SortExpression="NamePlan1" />
+                    <asp:CheckBoxField DataField="UMK_or_RPD" HeaderText="UMK_or_RPD" SortExpression="UMK_or_RPD" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                    <asp:BoundField DataField="CodFac" HeaderText="CodFac" SortExpression="CodFac" />
+                    <asp:BoundField DataField="CodKaf" HeaderText="CodKaf" SortExpression="CodKaf" />
+                    <asp:BoundField DataField="CodPrep" HeaderText="CodPrep" SortExpression="CodPrep" />
+                    <asp:BoundField DataField="CodSub" HeaderText="CodSub" SortExpression="CodSub" />
+                    <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
+                    <asp:BoundField DataField="CodSpec" HeaderText="CodSpec" SortExpression="CodSpec" />
+                    <asp:BoundField DataField="CodTypeEdu" HeaderText="CodTypeEdu" SortExpression="CodTypeEdu" />
                     <asp:BoundField DataField="DateSave" HeaderText="DateSave" SortExpression="DateSave" />
+                    <asp:BoundField DataField="CodPrepWhoDo" HeaderText="CodPrepWhoDo" SortExpression="CodPrepWhoDo" />
+                    <asp:BoundField DataField="CodFormStudy" HeaderText="CodFormStudy" SortExpression="CodFormStudy" />
+                    <asp:BoundField DataField="CodPlan" HeaderText="CodPlan" SortExpression="CodPlan" />
+                    <asp:BoundField DataField="Id_RPD_or_UMK" HeaderText="Id_RPD_or_UMK" InsertVisible="False" ReadOnly="True" SortExpression="Id_RPD_or_UMK" />
+                    <asp:BoundField DataField="NameFaculty" HeaderText="NameFaculty" SortExpression="NameFaculty" />
+                    <asp:BoundField DataField="NameKaf" HeaderText="NameKaf" SortExpression="NameKaf" />
+                    <asp:BoundField DataField="NameSub" HeaderText="NameSub" SortExpression="NameSub" />
+                    <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
+                    <asp:BoundField DataField="PrepodWhoEdit" HeaderText="PrepodWhoEdit" SortExpression="PrepodWhoEdit" />
+                    <asp:BoundField DataField="Speciality" HeaderText="Speciality" SortExpression="Speciality" />
+                    <asp:BoundField DataField="TypeEdu" HeaderText="TypeEdu" SortExpression="TypeEdu" />
+                    <asp:BoundField DataField="UMKRPD" HeaderText="UMKRPD" ReadOnly="True" SortExpression="UMKRPD" />
+                    <asp:BoundField DataField="NamePlan1" HeaderText="NamePlan1" ReadOnly="True" SortExpression="NamePlan1" />
                 </Columns>
                 <HeaderStyle CssClass="HeaderGridView" />
             </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource_umk_rpd_with_opisanie" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.UMK_and_RPD_with_opisanieTableAdapter">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="DropDownList_facPrep" Name="CodFac" PropertyName="SelectedValue" Type="Byte" />
+                    <asp:ControlParameter ControlID="DropDownList_kafs" Name="CodKaf" PropertyName="SelectedValue" Type="Byte" />
+                    <asp:SessionParameter Name="CodPrep" SessionField="CodPrepForOpisanie" Type="Int32" />
+                    <asp:ControlParameter ControlID="DropDownList_StudyYear" Name="Year" PropertyName="SelectedValue" Type="Int16" />
+                    <asp:ControlParameter ControlID="DropDownList_StudyPlan" Name="CodPlan" PropertyName="SelectedValue" Type="Int32" />
+                    <asp:ControlParameter ControlID="DropDownList_Speciality" Name="CodSpeciality" PropertyName="SelectedValue" Type="String" />
+                    <asp:ControlParameter ControlID="DropDownList_TypeEdu" Name="CodTypeEdu" PropertyName="SelectedValue" Type="Byte" />
+                    <asp:ControlParameter ControlID="DropDownList_FormaOb" Name="CodFormStudy" PropertyName="SelectedValue" Type="Byte" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
         </ContentTemplate>
     </asp:UpdatePanel>
     

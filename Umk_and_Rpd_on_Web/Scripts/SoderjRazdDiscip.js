@@ -574,14 +574,14 @@
     function ClearAllElement_in_findLiterWindow() {
         //очистка таблицы со списком источников
         //и остальных поелй ввода
-        var tempTable = document.getElementById('Table_for_liter');
+        /*var tempTable = document.getElementById('Table_for_liter');
         while (tempTable.rows.length != 1) {
             tempTable.deleteRow(tempTable.rows.length - 1);
         }
         document.getElementById('TextBox_KeyWord').value = '';
         document.getElementById('TextBox_Author').value = '';
         document.getElementById('TextBox_NameBook').value = '';
-        document.getElementById('TextBox_Year').value = '';
+        document.getElementById('TextBox_Year').value = '';*/
     }
 
     function BackgroundColor_SelectStr_inFindLiter(event) {

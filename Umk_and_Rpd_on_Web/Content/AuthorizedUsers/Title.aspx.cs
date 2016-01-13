@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 namespace Umk_and_Rpd_on_Web {
@@ -65,6 +66,7 @@ namespace Umk_and_Rpd_on_Web {
                 peolpelen.Fill(PeopleLenTable);
                 Label_for_hello_user.Text += peolpelen.GetFIO(Convert.ToInt32(Session["CodPrepWhoEdit"]));
             }
+            Page.Title = "Титул";
         }
 
         protected void Page_PreRender(object sender, EventArgs e) {
@@ -209,21 +211,84 @@ namespace Umk_and_Rpd_on_Web {
 
                 Session["CodPrep_Plan"] = Convert.ToInt32(this.NagruzkaOnPrepGridView.SelectedRow.Cells[4].Text);
 
+                short CodSub = Convert.ToInt16(Session["CodSub"]);
+                short CodPlan = Convert.ToInt16(Session["CodPlan"]);
+                short StudyYear = Convert.ToInt16(Session["UchYear"]);
+                byte CodKafDiscip = (byte)Session["CodKafPrep"];
+                int? CodPrepPlan = (int?)Session["CodPrep_Plan"];
+
                 backcolor_Items_for_GridView();
                 CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины\"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
                 int? id_rpd, id_umk;
-                GetId_umk_and_rpd_in_DB(Convert.ToInt16(Session["CodSub"]),
-                                        Convert.ToInt16(Session["CodPlan"]),
-                                        Convert.ToInt16(Session["UchYear"]),
-                                        (byte)Session["CodKafPrep"],
-                                        (int?)Session["CodPrep_Plan"],
+                GetId_umk_and_rpd_in_DB(CodSub,
+                                        CodPlan,
+                                        StudyYear,
+                                        CodKafDiscip,
+                                        CodPrepPlan,
                                         out id_umk,
                                         out id_rpd);
                 Data_for_program data = (Data_for_program)Session["data"];
+                //если такие РПД/УМК уже есть в базе данных
                 if(id_umk != data.Id_umk || id_rpd != data.Id_rpd){
                     data.Id_rpd = id_rpd;
                     data.Id_umk = id_umk;
                     data.LoadDataToProgramFromDataBase();
+                }
+                //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
+                if(id_rpd == null || id_umk == null){
+                    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                        UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
+                        if (id_rpd == null) {
+                            UMK_rpd_adapter.Insert(false,
+                                                    String.Empty,
+                                                    Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
+                                                    CodKafDiscip,
+                                                    CodPrepPlan,
+                                                    CodSub,
+                                                    StudyYear,
+                                                    "<RPD></RPD>",
+                                                    DateTime.Now,
+                                                    (int?)Session["CodPrepWhoEdit"],
+                                                    CodPlan,
+                                                    Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
+                                                    Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
+                                                    this.DropDownList_Speciality.SelectedValue);
+                            data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
+                        }
+                        if (id_umk == null) {
+                            UMK_rpd_adapter.Insert(true,
+                                                    String.Empty,
+                                                    Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
+                                                    CodKafDiscip,
+                                                    CodPrepPlan,
+                                                    CodSub,
+                                                    StudyYear,
+                                                    "<umk></umk>",
+                                                    DateTime.Now,
+                                                    (int?)Session["CodPrepWhoEdit"],
+                                                    CodPlan,
+                                                    Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
+                                                    Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
+                                                    this.DropDownList_Speciality.SelectedValue);
+                            data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
+                        }
+                    }
+                }
+                else {                     
+                    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                        UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
+                        //содержимое поля tmpContents
+                        //если оно не пустое, то загружаем данные класса в него
+                        //а не из поля, содержащего *.xml данные
+                        byte[] tmp = UMK_rpd_adapter.Get_TmpContents((int)data.Id_rpd);
+                        if ( tmp != null && tmp.Length > 0 ){
+                            BinaryFormatter BinFormat = new BinaryFormatter();
+                            using (MemoryStream MemStream = new MemoryStream(tmp)) {
+                                MemStream.Seek(0, SeekOrigin.Begin);
+                                Session["data"] = (Data_for_program)BinFormat.Deserialize(MemStream);                                  
+                            }
+                        }
+                    }
                 }
             }
         }

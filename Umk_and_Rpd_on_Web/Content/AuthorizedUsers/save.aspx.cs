@@ -23,6 +23,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             else {
 
             }
+            Page.Title = "Формирование файла *.docx";
         }
 
         protected void SaveRPD_Click(object sender, EventArgs e) {

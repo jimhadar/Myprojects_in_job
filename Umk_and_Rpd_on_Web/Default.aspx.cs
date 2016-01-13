@@ -34,17 +34,23 @@ namespace Umk_and_Rpd_on_Web {
                 //Session["CodPrepWhoEdit"] = 1293;
             }
             Session["CodPrep"] = null;
-            //Переменная в состоянии сеанса для определения, что заполняется: умк или РПД
-            Session["UMK_or_RPD"] = false;
-            Session["CodFacPrep"] = 80;
+            if (Session["CodFacPrep"] == null) {
+                Session["CodFacPrep"] = 80;
+            }                        
             //Session["CodKafPrep"] = 24;
-            Session["UchYear"] = DateTime.Now.Year;
-            Session["CodFormStudy"] = 0;
-            Session["CodTypeEdu"] = 10;
-            Data_for_program data = new Data_for_program(1, false, 83, 70, DateTime.Now.Year - 1);
-            Session["data"] = data;
-            Session["Id_umk"] = null;
-            Session["Id_rpd"] = null;
+            if (Session["UchYear"] == null) {
+                Session["UchYear"] = DateTime.Now.Year;
+            }
+            if (Session["CodFormStudy"] == null) {
+                Session["CodFormStudy"] = 0;
+            }
+            if (Session["CodTypeEdu"] == null) {
+                Session["CodTypeEdu"] = 10;
+            }
+            if(Session["data"] == null){
+                Data_for_program data = new Data_for_program(1, false, 83, 70, (DateTime.Now.Month < 9) ? DateTime.Now.Year - 1 : DateTime.Now.Year);
+                Session["data"] = data;
+            }              
             //Session["CodPlan"] = 0;
             Response.Redirect("~/Title");
         }

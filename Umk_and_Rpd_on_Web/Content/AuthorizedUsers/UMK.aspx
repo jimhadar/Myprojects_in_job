@@ -8,14 +8,16 @@
         <section class="ContainerForSoderjTable" style="margin-bottom: 70px;">
             <!--Форма и правила проведения промежуточной аттестации-->
             <h2>Форма и правила проведения промежуточной аттестации (зачета/экзамена)</h2>
-            <asp:TextBox ID="FormPromejAttestatTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="150px"></asp:TextBox>
+            <asp:TextBox ID="FormPromejAttestatTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="150px" ClientIDMode="Static"></asp:TextBox>
 
             <!--Перечень вопросов к зачету/экзамену-->
             <h2>Перечень вопросов к зачету/экзамену</h2>
-            <asp:TextBox ID="QuestionForExamTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="250px"></asp:TextBox>    
+            
+    <asp:TextBox ID="QuestionForExamTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="250px" ClientIDMode="Static"></asp:TextBox>    
             <!--Образцы экзаменационных тестов, заданий-->
             <h2>Образцы экзаменационных тестов, заданий</h2>
-            <asp:TextBox ID="ExampleExTestTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="250px"></asp:TextBox>
+            
+    <asp:TextBox ID="ExampleExTestTextBox" runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="250px" ClientIDMode="Static"></asp:TextBox>
             <br />
         </section>
      </section>

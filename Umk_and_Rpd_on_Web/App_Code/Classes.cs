@@ -1716,6 +1716,9 @@ namespace Umk_and_Rpd_on_Web {
                                                                                                 XmlReader.GetAttribute("priznak_osv"));
                                 }
                             }
+                            if (XmlReader.Name == "Student_must_znat") {
+                                break;
+                            }
                         }
                         if (XmlReader.Name == "Student_must_znat") { continue; }
                         break;

@@ -17,10 +17,10 @@
     <section style="overflow-y: hidden">
         <section class="ContainerForSoderjTable" style="margin-bottom: 70px;">
     <h2>Цели освоения дисциплины</h2>
-    <asp:TextBox ID="TextBox_for_GoalsDiscip" runat="server" TextMode="MultiLine"  CssClass="TextBoxStyle"></asp:TextBox>
+    <asp:TextBox ID="TextBox_for_GoalsDiscip" runat="server" TextMode="MultiLine"  CssClass="TextBoxStyle" ClientIDMode="Static"></asp:TextBox>
 
     <h2>Место дисциплины в структуре ООП бакалавриата</h2>
-    <asp:TextBox ID="TextBox_for_PlaceOOP" runat="server" CssClass="TextBoxStyle" TextMode="MultiLine" ></asp:TextBox>
+    <asp:TextBox ID="TextBox_for_PlaceOOP" runat="server" CssClass="TextBoxStyle" TextMode="MultiLine" ClientIDMode="Static"></asp:TextBox>
     <br/>
     <br/>
     <hr class="hrStyle"/>
@@ -28,7 +28,7 @@
     <h2>Компетенции обучающегося</h2>
     <%--Описание компетенций--%>
     <div>
-        <asp:GridView ID="CompetetionGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="IdCompet" DataSourceID="ObjectDataSource_Competetion" HorizontalAlign="Left" ViewStateMode="Disabled" EnableViewState="false" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView"> 
+        <asp:GridView ID="CompetetionGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="IdCompet" DataSourceID="ObjectDataSource_Competetion" HorizontalAlign="Left" ViewStateMode="Disabled" EnableViewState="false" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView" ClientIDMode="Static"> 
             <Columns>
                 <asp:BoundField DataField="AbbrComp" HeaderText="Компетенция" SortExpression="AbbrComp" />
                 <asp:BoundField DataField="AboutComp" HeaderText="Описание компетенции" SortExpression="AboutComp" />
@@ -62,13 +62,13 @@
     <h2>Требования к уровню усвоения дисциплины</h2>
 
     <h3>Студент должен знать:</h3>
-    <asp:TextBox ID="TextBox_for_Student_doljen_znat" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle"></asp:TextBox>
+    <asp:TextBox ID="TextBox_for_Student_doljen_znat" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle" ClientIDMode="Static"></asp:TextBox>
 
     <h3>Студент должен уметь:</h3>
-    <asp:TextBox ID="TextBox_for_Student_doljen_umet" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle"></asp:TextBox>
+    <asp:TextBox ID="TextBox_for_Student_doljen_umet" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle" ClientIDMode="Static"></asp:TextBox>
 
     <h3>Студент должен владеть:</h3>
-    <asp:TextBox ID="TextBox_for_Student_doljen_vladet" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle"></asp:TextBox>
+    <asp:TextBox ID="TextBox_for_Student_doljen_vladet" runat="server" SkinID="TextBoxSkin" TextMode="MultiLine" CssClass="TextBoxStyle" ClientIDMode="Static"></asp:TextBox>
     </section>
     </section>
     <div>        

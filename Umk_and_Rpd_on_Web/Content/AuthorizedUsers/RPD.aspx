@@ -7,47 +7,47 @@
         <section class="ContainerForSoderjTable" style="margin-bottom: 70px;">
             <!--Вид и форма проведения промежуточной аттестации-->
             <h2>Вид и форма проведения промежуточной аттестации</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="110px" ID="TypeAndFormCertificationTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="110px" ID="TypeAndFormCertificationTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Используемые образовательные технологии-->
             <h2>Используемые образовательные технологии</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="UsedEcucateTechnologyTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="UsedEcucateTechnologyTextBox" ClientIDMode="Static"></asp:TextBox>
             <p>Доля занятий с использованием активных и интерактивных методов составляет:
-                <asp:TextBox ID="TextBox_Part_InteractiveMethods" runat="server" Width="88px"></asp:TextBox>
+                <asp:TextBox ID="TextBox_Part_InteractiveMethods" runat="server" Width="88px" ClientIDMode="Static"></asp:TextBox>
             </p>
             
 
             <!--Образцы тестов и контрольных занятий текущего контроля-->
             <h2>Образцы тестов и контрольных занятий текущего контроля</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ExampleTestCurControlTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ExampleTestCurControlTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--примерная тематика эссе, рефератов, докладов-->
             <h2>Примерная тематика эссе, рефератов, докладов</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ThemesOfEsseReferatsTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ThemesOfEsseReferatsTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Примерные темы курсовых работ, критерии оценивания-->
             <h2>Примерные темы курсовых работ, критерии оценивания</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ThemesOfCourseJobTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="ThemesOfCourseJobTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Методические указания по организации самостоятельной работы-->
             <h2>Методические указания по организации самостоятельной работы</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="110px" ID="OrganizationOfIndependentWorkTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="110px" ID="OrganizationOfIndependentWorkTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Промежуточный контроль-->
             <h2>Промежуточный контроль</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="InterMediateControlTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="InterMediateControlTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Образцы тестов, заданий-->
             <h2>Образцы тестов, заданий</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="240px" ID="ExampleTestTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="240px" ID="ExampleTestTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Перечень вопросов к экзамену (зачету)-->
             <h2>Перечень вопросов к экзамену (зачету)</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="QuestionForExamTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" Height="200px" ID="QuestionForExamTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <!--Материально-техническое обеспечение дисциплины-->
             <h2>Материально-техническое обеспечение дисциплины</h2>
-            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="LogisticsDisciplineTextBox"></asp:TextBox>
+            <asp:TextBox runat="server" TextMode="MultiLine" CssClass="TextBoxStyle" ID="LogisticsDisciplineTextBox" ClientIDMode="Static"></asp:TextBox>
 
             <br/>
         </section>

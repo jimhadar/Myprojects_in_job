@@ -28,7 +28,8 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.UMK {
                     this.ExampleExTestTextBox.Text = othersFields.ExampleExamTests;
                     this.QuestionForExamTextBox.Text = othersFields.QuestionForExam;
                 }
-            }            
+            }
+            Page.Title = "УМК";
         }
 
         protected void Button_for_pred_page_Click(object sender, EventArgs e) {

@@ -14,7 +14,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             if(Page.IsPostBack && !Page.IsCallback){
                 Data_for_program data = (Data_for_program)Session["data"];
                 if(data != null){
-                    this.UpdateCurrentControlTable(data.CurControlTable); 
+                    UpdateCurrentControlTable(data.CurControlTable, Convert.ToInt32(this.CurrentControlTableRowCount.Value.ToString()), Request); 
                 }
             }
             if(!Page.IsCallback){
@@ -22,10 +22,16 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     UpdateDataInHTMLTable(((Data_for_program)Session["data"]).CurControlTable);
                 }
             }
+            Page.Title = "Текущий контроль";
         }
-
-        private void UpdateCurrentControlTable(CurrentControlTable CurControl) {
-            int RowCount = Convert.ToInt32(this.CurrentControlTableRowCount.Value.ToString());
+        /// <summary>
+        /// Обновление данных в таблице с текущим контролем успеваемости из состояния сеанса
+        /// </summary>
+        /// <param name="CurControl">ТАблица текущего контроля успеваемости</param>
+        /// <param name="RowCount">Количество строк таблицы</param>
+        /// <param name="Request">Содержит данные, пришедшие в результате запроса от клиента</param>
+        internal static void UpdateCurrentControlTable(CurrentControlTable CurControl, int RowCount, HttpRequest Request) {
+            //int RowCount = Convert.ToInt32(this.CurrentControlTableRowCount.Value.ToString());
             CurControl.Clear();
             for (int i = 0; i < RowCount; i++ ) {
                 string[] Value_for_all_cells = new string[3];

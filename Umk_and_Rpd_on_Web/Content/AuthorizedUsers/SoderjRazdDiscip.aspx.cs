@@ -18,7 +18,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 if (data != null) {
                     if (this.RowCountSoderjDiscip.Value == String.Empty) { this.RowCountSoderjDiscip.Value = data.SoderjRazd_DataTable.RowCount.ToString(); }
                     if (this.RowCountLiterTable.Value == String.Empty) { this.RowCountLiterTable.Value = data.LiteratureTable.RowCount.ToString(); }
-                    UpdateSoderjRazdelDiscip_table(data.SoderjRazd_DataTable);
+                    UpdateSoderjRazdelDiscip_table(data.SoderjRazd_DataTable, this.Request, Convert.ToInt32(this.RowCountSoderjDiscip.Value.ToString()));
                     UpdateLiteratureTable(data.LiteratureTable);
                 }
             }
@@ -42,6 +42,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     }
                 }                
             }
+            Page.Title = "Содержание разделов дисциплины";
         }
 
         protected void Initialize_Table_for_SoderjRazdDiscip() {
@@ -127,8 +128,11 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         /// <summary>
         /// обновление таблицы с содержанием занятий, хранящейся в состоянии сеанса, данными пришедшими с клиентра в результате обратной отправки 
         /// </summary>
-        private void UpdateSoderjRazdelDiscip_table(SoderjRazdDiscip_DataTable SoderjDiscipTable) {
-            int RowCount = Convert.ToInt32(this.RowCountSoderjDiscip.Value.ToString());
+        /// <param name="SoderjDiscipTable">Таблица с содержанием разделов дисциплины из состояния сеанса</param>
+        /// <param name="Request">данные, отправленные клиентом</param>
+        /// <param name="RowCount">количество строк в таблице SoderjDiscipTable</param>
+        internal static void UpdateSoderjRazdelDiscip_table(SoderjRazdDiscip_DataTable SoderjDiscipTable, HttpRequest Request, int RowCount) {
+            //int RowCount = Convert.ToInt32(this.RowCountSoderjDiscip.Value.ToString());
             SoderjDiscipTable.Clear();
             for (int i = 0; i < RowCount; i++) {
                 var Value_for_all_cells = new object[5];

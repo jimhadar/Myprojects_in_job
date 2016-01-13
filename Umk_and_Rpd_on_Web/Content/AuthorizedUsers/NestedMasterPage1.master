@@ -55,4 +55,7 @@
     <!--<aside>
         </aside>    
         -->
+    <script src="../../Scripts/Sending_tmp_inform_to_Server.js">
+
+    </script>
 </asp:Content>

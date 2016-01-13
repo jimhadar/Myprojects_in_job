@@ -17,11 +17,11 @@ namespace Umk_and_Rpd_on_Web {
             ((Data_for_program)Session["data"]).DeleteDocFiles();
             Session["data"] = null;
             Session["CodPrep"] = null;
-            Session["CodKafPrep"] = 24;
+            Session["CodKafPrep"] = null;
             Session["CodFacPrep"] = 80;
             //Переменная в состоянии сеанса для определения, что заполняется: умк или РПД
             Session["UMK_or_RPD"] = false;
-            //Session["CodKafPrep"] = 24;
+            Session["CodKafPrep"] = 24;
             Session["UchYear"] = DateTime.Now.Year;
             Session["CodFormStudy"] = 0;
             Session["CodTypeEdu"] = 10;

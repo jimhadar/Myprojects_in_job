@@ -11,6 +11,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             if(!Page.IsPostBack){
                 Load_DropDownList_for_uch_year();
             }
+            Page.Title = "Поиск РПД и УМК";
         }
         /// <summary>
         /// Заполнение DropDownList_for_uch_year данными

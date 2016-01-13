@@ -131,6 +131,7 @@
     <Content Include="Scripts\CurrentControl.js" />
     <Content Include="Scripts\ForMainMaster.js" />
     <Content Include="Scripts\modernizr.custom.66570.js" />
+    <Content Include="Scripts\Sending_tmp_inform_to_Server.js" />
     <Content Include="Scripts\SoderjRazdDiscip.js" />
     <Content Include="Scripts\UMK.js" />
     <Content Include="Web.config">

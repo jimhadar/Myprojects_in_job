@@ -41,6 +41,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.RPD {
                     TextBox_Part_InteractiveMethods.Text = RPDFields.PartInteractiveMethods;
                 }
             }
+            Page.Title = "РПД";
         }
 
         protected void Button_for_pred_page_Click(object sender, EventArgs e) {

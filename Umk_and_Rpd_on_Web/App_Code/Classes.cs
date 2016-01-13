@@ -415,7 +415,7 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 //}
                 using(AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()){
-                    UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
+                    //UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                     //Сохраняем РПД и УМК в базу данных
                     switch(this.Id_rpd){
                         //в базе данных еще нет такой РПД
@@ -434,7 +434,8 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodPlan,
                                                     this.CodFormStudy,
                                                     this.CodTypeEdu,
-                                                    this.CodSpeciality);
+                                                    this.CodSpeciality, 
+                                                    null);
                             this.Id_rpd = UMK_rpd_adapter.GetMaxID();
                             break;
                         //в базе данных уже есть такая РПД с Id = Id_rpd
@@ -453,7 +454,8 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodPlan,
                                                     this.CodSpeciality,
                                                     this.CodFormStudy,
-                                                    this.CodTypeEdu,
+                                                    this.CodTypeEdu, 
+                                                    null,
                                                     (int)this.Id_rpd);
                             break;
                     }
@@ -474,7 +476,8 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodPlan,
                                                     this.CodFormStudy,
                                                     this.CodTypeEdu,
-                                                    this.CodSpeciality);
+                                                    this.CodSpeciality,
+                                                    null);
                             this.Id_umk = UMK_rpd_adapter.GetMaxID();
                             break;
                         //в базе данных уже есть такая УМК с Id = Id_umk
@@ -494,6 +497,7 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodSpeciality,
                                                     this.CodFormStudy,
                                                     this.CodTypeEdu,
+                                                    null,
                                                     (int)this.Id_umk);
                             break;
                     }

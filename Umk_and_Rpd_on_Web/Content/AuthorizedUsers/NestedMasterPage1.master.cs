@@ -112,11 +112,17 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                                                                         Request["ExampleExamTests"] != null ? Request["ExampleExamTests"] : String.Empty);
                                 break;
                             
+                        }                           
+                        if (data.Id_rpd != null) {
+                            BinFormat.Serialize(MemStream, data);
+                            MemStream.Seek(0, SeekOrigin.Begin);
+                            adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_rpd);
                         }
-                        BinFormat.Serialize(MemStream, data);
-                        MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_rpd);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_umk);
+                        if (data.Id_umk != null) {
+                            BinFormat.Serialize(MemStream, data);
+                            MemStream.Seek(0, SeekOrigin.Begin);
+                            adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_umk);
+                        }
                     }
                 }
             }

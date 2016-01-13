@@ -43,23 +43,6 @@ namespace Umk_and_Rpd_on_Web {
                 }
             }
             Page.Title = "Компетенции";
-            //обновляем данные во временном поле Tmp_Contents таблицы UMK_and_RPD 
-            if (Request["GoalsDiscip"] != null) {
-                data.GoalsDiscip = Request["GoalsDiscip"] != null ? Request["GoalsDiscip"].ToString() : string.Empty;
-                data.PlaceOOP = Request["PlaceOOP"] != null ? Request["PlaceOOP"].ToString() : String.Empty;
-                data.Student_Doljen_Znat = Request["Student_doljen_znat"] != null ? Request["Student_doljen_znat"].ToString() : String.Empty;
-                data.Student_Doljen_Umet = Request["Student_doljen_umet"] != null ? Request["Student_doljen_umet"].ToString() : String.Empty;
-                data.Student_doljen_Vladet = Request["Student_doljen_vladet"] != null ? Request["Student_doljen_vladet"].ToString() : String.Empty;
-                using(AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()){                    
-                    BinaryFormatter BinFormat = new BinaryFormatter();
-                    using (MemoryStream MemStream = new MemoryStream()) {
-                        BinFormat.Serialize(MemStream, data);
-                        MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_rpd);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_umk);
-                    }
-                }
-            }
         }
 
         private void UpdateValues_in_Data() {

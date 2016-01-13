@@ -22,6 +22,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// Checkbox_StudyYear элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Checkbox_StudyYear;
+        
+        /// <summary>
         /// CheckBox_FacDiscip элемент управления.
         /// </summary>
         /// <remarks>
@@ -47,15 +56,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Checkbox_Prepod;
-        
-        /// <summary>
-        /// Checkbox_StudyYear элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox Checkbox_StudyYear;
         
         /// <summary>
         /// Checkbox_Speciality элемент управления.
@@ -202,33 +202,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_StudyPlans;
         
         /// <summary>
-        /// Button_poisk элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_poisk;
-        
-        /// <summary>
-        /// GridView1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// ObjectDataSource_umk_rpd_with_opisanie элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_umk_rpd_with_opisanie;
-        
-        /// <summary>
         /// UpdatePanel2 элемент управления.
         /// </summary>
         /// <remarks>
@@ -238,12 +211,21 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// SqlDataSource_umk_and_rpd_with_opisanie элемент управления.
+        /// Button_poisk элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_umk_and_rpd_with_opisanie;
+        protected global::System.Web.UI.WebControls.Button Button_poisk;
+        
+        /// <summary>
+        /// Table_find_rpd элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table_find_rpd;
     }
 }

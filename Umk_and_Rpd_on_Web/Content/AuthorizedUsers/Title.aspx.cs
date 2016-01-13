@@ -237,7 +237,6 @@ namespace Umk_and_Rpd_on_Web {
                 //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
                 if(id_rpd == null || id_umk == null){
                     using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                        UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                         if (id_rpd == null) {
                             UMK_rpd_adapter.Insert(false,
                                                     String.Empty,
@@ -252,7 +251,8 @@ namespace Umk_and_Rpd_on_Web {
                                                     CodPlan,
                                                     Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
                                                     Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue);
+                                                    this.DropDownList_Speciality.SelectedValue,
+                                                    null);
                             data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
                         }
                         if (id_umk == null) {
@@ -269,14 +269,14 @@ namespace Umk_and_Rpd_on_Web {
                                                     CodPlan,
                                                     Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
                                                     Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue);
+                                                    this.DropDownList_Speciality.SelectedValue, 
+                                                    null);
                             data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
                         }
                     }
                 }
                 else {                     
                     using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                        UMK_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                         //содержимое поля tmpContents
                         //если оно не пустое, то загружаем данные класса в него
                         //а не из поля, содержащего *.xml данные

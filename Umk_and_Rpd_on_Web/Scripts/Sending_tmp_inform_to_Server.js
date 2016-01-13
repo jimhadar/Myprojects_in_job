@@ -81,7 +81,7 @@
                 formData.append(Row.cells[4].childNodes[0].name, Row.cells[4].childNodes[0].value);
             }
         }
-        var LiteratureTable = document.getElementById('');
+        var LiteratureTable = document.getElementById('Table_for_Literature');
         formData.append("RowCountLiteratureTable", LiteratureTable.rows.length - 1);
         for (var i = 1; i < LiteratureTable.rows.length; i++) {
             var Row = LiteratureTable.rows[i];

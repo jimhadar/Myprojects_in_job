@@ -8,6 +8,8 @@
 
 .group_dropdownlist_as_tablerow{
     display:table-row;
+    font-size:0.75em;
+    font-weight:600;
 }
 
 .dropdownlist_as_tablecell_column1{
@@ -27,4 +29,27 @@
     display:table-cell;
     width:260px;
     margin-left:7px;
+}
+
+/*Для таблицы страницы FindRpdForm*/
+.GridViewCss_FindForm{
+    background: #EBF3F2;
+    color:black;
+    border: 2px black ridge;
+    border-collapse:collapse;
+    border-spacing: 10px, 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 0.75em;
+    font-style: normal;
+    vertical-align:top;
+    padding-left:3px;
+    padding-right:7px;
+}
+
+.label_FindForm{
+    font-size:0.75em;
+    font-weight:600;
 }

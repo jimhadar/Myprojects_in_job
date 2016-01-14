@@ -11206,8 +11206,6 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnNamePlan1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId_RPD_or_UMK}, true));
-                this.columnUMK_or_RPD.AllowDBNull = false;
-                this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 300;
                 this.columnCodSpec.MaxLength = 50;
                 this.columnId_RPD_or_UMK.AutoIncrement = true;
@@ -11216,19 +11214,12 @@ namespace Umk_and_Rpd_on_Web {
                 this.columnId_RPD_or_UMK.AllowDBNull = false;
                 this.columnId_RPD_or_UMK.ReadOnly = true;
                 this.columnId_RPD_or_UMK.Unique = true;
-                this.columnNameFaculty.AllowDBNull = false;
                 this.columnNameFaculty.MaxLength = 50;
-                this.columnNameKaf.AllowDBNull = false;
                 this.columnNameKaf.MaxLength = 100;
-                this.columnNameSub.AllowDBNull = false;
                 this.columnNameSub.MaxLength = 100;
-                this.columnFIO.AllowDBNull = false;
                 this.columnFIO.MaxLength = 50;
-                this.columnPrepodWhoEdit.AllowDBNull = false;
                 this.columnPrepodWhoEdit.MaxLength = 50;
-                this.columnSpeciality.AllowDBNull = false;
                 this.columnSpeciality.MaxLength = 90;
-                this.columnTypeEdu.AllowDBNull = false;
                 this.columnTypeEdu.MaxLength = 30;
                 this.columnUMKRPD.ReadOnly = true;
                 this.columnUMKRPD.MaxLength = 3;
@@ -16888,7 +16879,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool UMK_or_RPD {
                 get {
-                    return ((bool)(this[this.tableUMK_and_RPD_with_opisanie.UMK_or_RPDColumn]));
+                    try {
+                        return ((bool)(this[this.tableUMK_and_RPD_with_opisanie.UMK_or_RPDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UMK_or_RPD\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBN" +
+                                "ull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.UMK_or_RPDColumn] = value;
@@ -16899,7 +16896,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.NameColumn] = value;
@@ -17107,7 +17109,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameFaculty {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameFacultyColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameFacultyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameFaculty\' в таблице \'UMK_and_RPD_with_opisanie\' равно DB" +
+                                "Null.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.NameFacultyColumn] = value;
@@ -17118,7 +17126,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameKaf {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameKafColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameKafColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameKaf\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBNull" +
+                                ".", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.NameKafColumn] = value;
@@ -17129,7 +17143,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameSub {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameSubColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.NameSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameSub\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBNull" +
+                                ".", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.NameSubColumn] = value;
@@ -17140,7 +17160,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string FIO {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.FIOColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.FIOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FIO\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.FIOColumn] = value;
@@ -17151,7 +17176,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string PrepodWhoEdit {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.PrepodWhoEditColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.PrepodWhoEditColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PrepodWhoEdit\' в таблице \'UMK_and_RPD_with_opisanie\' равно " +
+                                "DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.PrepodWhoEditColumn] = value;
@@ -17162,7 +17193,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Speciality {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.SpecialityColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.SpecialityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Speciality\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBN" +
+                                "ull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.SpecialityColumn] = value;
@@ -17173,7 +17210,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TypeEdu {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD_with_opisanie.TypeEduColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD_with_opisanie.TypeEduColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'TypeEdu\' в таблице \'UMK_and_RPD_with_opisanie\' равно DBNull" +
+                                ".", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.TypeEduColumn] = value;
@@ -17212,6 +17255,30 @@ namespace Umk_and_Rpd_on_Web {
                 set {
                     this[this.tableUMK_and_RPD_with_opisanie.NamePlan1Column] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUMK_or_RPDNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.UMK_or_RPDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUMK_or_RPDNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.UMK_or_RPDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17344,6 +17411,90 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodPlanNull() {
                 this[this.tableUMK_and_RPD_with_opisanie.CodPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameFacultyNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.NameFacultyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameFacultyNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.NameFacultyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameKafNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.NameKafColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameKafNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.NameKafColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameSubNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.NameSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameSubNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.NameSubColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFIONull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.FIOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFIONull() {
+                this[this.tableUMK_and_RPD_with_opisanie.FIOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPrepodWhoEditNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.PrepodWhoEditColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPrepodWhoEditNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.PrepodWhoEditColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSpecialityNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.SpecialityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSpecialityNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.SpecialityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTypeEduNull() {
+                return this.IsNull(this.tableUMK_and_RPD_with_opisanie.TypeEduColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTypeEduNull() {
+                this[this.tableUMK_and_RPD_with_opisanie.TypeEduColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27854,7 +28005,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((PrepodWhoEdit == null)) {
-                throw new global::System.ArgumentNullException("PrepodWhoEdit");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(PrepodWhoEdit));
@@ -27915,7 +28066,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                 this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((PrepodWhoEdit == null)) {
-                throw new global::System.ArgumentNullException("PrepodWhoEdit");
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(PrepodWhoEdit));

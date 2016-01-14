@@ -36,6 +36,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
 
         protected void Button_poisk_Click(object sender, EventArgs e) {
             using(AcademiaDataSetTableAdapters.UMK_and_RPD_with_opisanieTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPD_with_opisanieTableAdapter()){
+                while(Table_find_rpd.Rows.Count != 1){
+                    Table_find_rpd.Rows.RemoveAt(Table_find_rpd.Rows.Count - 1);
+                }
                 byte?   CodFac = null,
                         CodKaf = null,
                         CodTypeEdu = null,
@@ -59,16 +62,16 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 if(this.Checkbox_Speciality.Checked){
                     CodSpeciality = this.DropDownList_Speciality.SelectedValue;
                 }
-                if(this.Checkbox_StudyYear.Checked){
-                    CodPlan = Convert.ToInt32(this.DropDownList_StudyYear.SelectedValue);
+                if(this.Checkbox_StudyPlan.Checked){
+                    CodPlan = Convert.ToInt32(this.DropDownList_StudyPlan.SelectedValue);
                 }
                 AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable tmpTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
-                adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit);
-                this.Table_find_rpd.Rows.Clear();
+                adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit);                    
                 foreach(AcademiaDataSet.UMK_and_RPD_with_opisanieRow Row in tmpTable.Rows){
                     TableRow HtmlTableRow = new TableRow();
                     for (int i = 0; i < 9; i++ ) {
                         HtmlTableRow.Cells.Add(new TableCell());
+                        HtmlTableRow.Cells[i].CssClass = "GridViewCss_FindForm";
                     }
                     HtmlTableRow.Cells[0].Text = Row["UMKRPD"] != null ? Row["UMKRPD"].ToString() : String.Empty;
                     HtmlTableRow.Cells[1].Text = Row["Year"] != null ? Row["Year"].ToString() : String.Empty;

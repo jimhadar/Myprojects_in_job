@@ -13,6 +13,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected void Page_Load(object sender, EventArgs e) {
             Button_for_EndEditUMK_RPD.Text = "Завершить редактирование, \nперейти к сохранению";
             this.Save_Data_to_TmpContentsField();
+            if (Request.Path == "/Find") {
+                this.Button_for_EndEditUMK_RPD.Style.Add("display", "none");
+            }
+            if (Page.User.Identity.Name != "(ok)") {
+                this.Find_btn.Visible = false;
+            }
         }
 
         protected void Button_for_EndEditUMK_RPD_Click(object sender, EventArgs e) {
@@ -68,7 +74,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         /// </summary>
         private void Save_Data_to_TmpContentsField() {
             //обновляем данные во временном поле Tmp_Contents таблицы UMK_and_RPD 
-            if (Request["UpdateTmpContents"] != null) {
+            if (Request["UpdateTmpContents"] != null && Session["CodSub"] != null) {
                 using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                     BinaryFormatter BinFormat = new BinaryFormatter();
                     Data_for_program data = (Data_for_program)Session["data"];

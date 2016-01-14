@@ -38,7 +38,7 @@
         //интервал 1 секунда
         var interval = 1000;
         /*будем запускать функцию с интервалом в 30 секунд*/
-        setTimeout(Timer_for_Sending_Data_to_Server, 20 * interval);
+        setTimeout(Timer_for_Sending_Data_to_Server, 300 * interval);
     }
     /*
         отправка информации от клиента со страницы Competetion

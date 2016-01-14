@@ -178,7 +178,7 @@ namespace Umk_and_Rpd_on_Web {
 
         protected void Load_All_selectLists_SelectedValue() {
             this.DropDownList_FacDiscip.SelectedValue = Session["CodFacPrep"].ToString();
-            if (Session["CodKafPrep"] != null) {
+            if (Session["CodKafPrep"] != null && this.DropDownList_KafDiscip.Items.FindByValue(Session["CodKafPrep"].ToString()) != null) {
                 this.DropDownList_KafDiscip.SelectedValue = Session["CodKafPrep"].ToString();
             }
             this.DropDownList_TypeEdu.SelectedValue = Session["CodTypeEdu"].ToString();

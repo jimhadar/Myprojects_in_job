@@ -816,7 +816,6 @@ namespace Umk_and_Rpd_on_Web {
 
                 this.CodSpecialty_for_XML = (SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan)) != null ? SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString() : String.Empty;
             }
-
         }
         #endregion
 

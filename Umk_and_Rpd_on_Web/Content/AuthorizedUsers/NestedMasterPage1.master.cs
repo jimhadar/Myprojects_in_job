@@ -16,7 +16,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             if (Request.Path == "/Find") {
                 this.Button_for_EndEditUMK_RPD.Style.Add("display", "none");
             }
-            if (Page.User.Identity.Name != "(ok)") {
+            if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
                 this.Find_btn.Visible = false;
             }
         }

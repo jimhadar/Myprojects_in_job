@@ -422,7 +422,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда вставляем новую РПД в базу данных
                         case null:
                             UMK_rpd_adapter.Insert(false,
-                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim(),
+                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
                                                     (byte)this.CodFacPrep,
                                                     (byte)this.CodKafPrep,
                                                     (byte)this.CodPrep,
@@ -442,7 +442,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда обновляем данные в базе данных
                         default:
                             UMK_rpd_adapter.Update(false,
-                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim(),
+                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
                                                     this.CodFacPrep,
                                                     this.CodKafPrep,
                                                     this.CodPrep,
@@ -464,7 +464,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда вставляем новую РПД в базу данных
                         case null:
                             UMK_rpd_adapter.Insert(true,
-                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim(),
+                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
                                                     (byte)this.CodFacPrep,
                                                     (byte)this.CodKafPrep,
                                                     (byte)this.CodPrep,
@@ -484,7 +484,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда обновляем данные в базе данных
                         default:
                             UMK_rpd_adapter.Update(true,
-                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim(),
+                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
                                                     this.CodFacPrep,
                                                     this.CodKafPrep,
                                                     this.CodPrep,
@@ -716,22 +716,22 @@ namespace Umk_and_Rpd_on_Web {
                 StudyPlansAdapter.Fill_on_CodPlan(academiaDataSet.StudyPlans, (int)this.CodPlan);
 
                 AcademiaDataSetTableAdapters.PEOPLENTableAdapter PeoplenLenAdapter = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter();
-                PeoplenLenAdapter.Fill(academiaDataSet.PEOPLEN);
+                //PeoplenLenAdapter.Fill(academiaDataSet.PEOPLEN);
 
                 AcademiaDataSetTableAdapters.SpecialityTableAdapter SpecialityAdapter = new AcademiaDataSetTableAdapters.SpecialityTableAdapter();
-                SpecialityAdapter.Fill(academiaDataSet.Speciality, (byte)this.CodTypeEdu);
+                //SpecialityAdapter.Fill(academiaDataSet.Speciality, (byte)this.CodTypeEdu);
 
                 AcademiaDataSetTableAdapters.FacultyTableAdapter FacultyAdapter = new AcademiaDataSetTableAdapters.FacultyTableAdapter();
-                FacultyAdapter.Fill(academiaDataSet.Faculty);
+                //FacultyAdapter.Fill(academiaDataSet.Faculty);
 
                 AcademiaDataSetTableAdapters.KafsTableAdapter KafsAdapter = new AcademiaDataSetTableAdapters.KafsTableAdapter();
-                KafsAdapter.Fill_without_param(academiaDataSet.Kafs);
+                //KafsAdapter.Fill_without_param(academiaDataSet.Kafs);
 
                 AcademiaDataSetTableAdapters.StudyTermTableAdapter StudyTermAdapter = new AcademiaDataSetTableAdapters.StudyTermTableAdapter();
                 StudyTermAdapter.Fill(academiaDataSet.StudyTerm, (int)this.CodPlan, (short)this.CodSub);
 
                 AcademiaDataSetTableAdapters.SubsTableAdapter SubsAdapter = new AcademiaDataSetTableAdapters.SubsTableAdapter();
-                SubsAdapter.Fill(academiaDataSet.Subs);
+                //SubsAdapter.Fill(academiaDataSet.Subs);
 
                 AcademiaDataSetTableAdapters.SubjectGrsTableAdapter SubjectAdapter = new AcademiaDataSetTableAdapters.SubjectGrsTableAdapter();
                 try {
@@ -742,28 +742,29 @@ namespace Umk_and_Rpd_on_Web {
                 }
 
                 AcademiaDataSetTableAdapters.StudyContentsTableAdapter StudyContentsAdapter = new AcademiaDataSetTableAdapters.StudyContentsTableAdapter();
-                StudyContentsAdapter.Fill(academiaDataSet.StudyContents);
+                //StudyContentsAdapter.Fill(academiaDataSet.StudyContents);
 
                 AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter Studycomponents_plus_studycontentsAdapter = new AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter();
-                Studycomponents_plus_studycontentsAdapter.Fill(academiaDataSet.Studycomponents_plus_studycontents);
+                //Studycomponents_plus_studycontentsAdapter.Fill(academiaDataSet.Studycomponents_plus_studycontents);
 
                 AcademiaDataSetTableAdapters.PrepodTableAdapter prepodAdapter = new AcademiaDataSetTableAdapters.PrepodTableAdapter();
-                prepodAdapter.Fill(academiaDataSet.Prepod);
+                //prepodAdapter.Fill(academiaDataSet.Prepod);
 
                 AcademiaDataSetTableAdapters.FormStudyTableAdapter FormStudyAdapter = new AcademiaDataSetTableAdapters.FormStudyTableAdapter();
-                FormStudyAdapter.Fill(academiaDataSet.FormStudy);
+                //FormStudyAdapter.Fill(academiaDataSet.FormStudy);
 
                 AcademiaDataSetTableAdapters.CompetetionTableAdapter CompetetionAdapter = new AcademiaDataSetTableAdapters.CompetetionTableAdapter();
-                CompetetionAdapter.Fill(academiaDataSet.Competetion, this.CodSpeciality, (short)CodSub, (int)CodPlan);
+                //CompetetionAdapter.Fill(academiaDataSet.Competetion, this.CodSpeciality, (short)CodSub, (int)CodPlan);
                 this.CompetetionTable = CompetetionAdapter.GetData(this.CodSpeciality, (short)CodSub, (int)CodPlan);
 
                 AcademiaDataSetTableAdapters.StudyExamsTableAdapter StudyExamsAdapter = new AcademiaDataSetTableAdapters.StudyExamsTableAdapter();
                 StudyExamsAdapter.Fill(academiaDataSet.StudyExams, (int)this.CodPlan, (short)this.CodSub);
 
                 AcademiaDataSetTableAdapters.OcenSredstvTableAdapter OcenSredstvAdapter = new AcademiaDataSetTableAdapters.OcenSredstvTableAdapter();
-                this.OcenSredstvTable = new AcademiaDataSet.OcenSredstvDataTable();
-                OcenSredstvAdapter.Fill(this.OcenSredstvTable);
+                this.OcenSredstvTable = OcenSredstvAdapter.GetData();// new AcademiaDataSet.OcenSredstvDataTable();
+                //OcenSredstvAdapter.Fill(this.OcenSredstvTable);
 
+                AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter zavPodrazdn = new AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter();
                 //this.CodFormStudy = Convert.ToByte(grupAdapter.GetCodFormStudy((short)this.CodGroup));
 
                 ZamDir_po_uchJob = PeoplenLenAdapter.SelectZamDir_po_uch_job();
@@ -785,13 +786,13 @@ namespace Umk_and_Rpd_on_Web {
                 ZavKaf = KafsAdapter.GetZavKaf((byte)this.CodKafPrep).ToString();
                 //Зав. кафедрой для плана
                 ZavKaf_For_Plan = KafsAdapter.GetZavKaf((byte)this.CodKaf);
-                this.CodZavKaf_for_Plan = Convert.ToInt32(prepodAdapter.GetCodPrepPoFam(ZavKaf_For_Plan.Substring(0, ZavKaf_For_Plan.Length - 5)).ToString());
+                this.CodZavKaf_for_Plan = Convert.ToInt32(zavPodrazdn.GetCodPE(NameKafPlan));
 
                 Dekan = FacultyAdapter.GetDean((byte)CodFac).ToString();
                 NameFormStudy = FormStudyAdapter.GetNameFormStudy((byte)this.CodFormStudy);
                 CodZamDir = Convert.ToInt32(prepodAdapter.GetCodPrepPoFam(ZamDir_po_uchJob.Substring(0, ZamDir_po_uchJob.IndexOf(' '))));
-                CodZavKaf = Convert.ToInt32(prepodAdapter.GetCodPrepPoFam(ZavKaf.Substring(0, ZavKaf.Length - 5)));
-                CodDekan = Convert.ToInt32(prepodAdapter.GetCodPrepPoFam(Dekan.Substring(0, Dekan.Length - 5)));
+                CodZavKaf = Convert.ToInt32(zavPodrazdn.GetCodPE(NameKafPrep));
+                CodDekan = Convert.ToInt32(zavPodrazdn.GetCodPE(FacultyAdapter.GetNameFaculty((byte)CodFac)));
                 HourLab = 0; HourLec = 0; HourSam = 0;
                 foreach (DataRow Row in academiaDataSet.StudyTerm) {                                  
                     HourLec += Convert.ToInt32(Row["Lec"]);

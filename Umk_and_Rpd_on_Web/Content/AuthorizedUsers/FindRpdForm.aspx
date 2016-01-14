@@ -25,10 +25,10 @@
             <div>
                 <div class="group_dropdownlist_as_tablerow">
                     <span class="dropdownlist_as_tablecell_column1"> Факультет (дисциплины)</span>
-                    <asp:DropDownList ID="DropDownList_facPrep" CssClass="dropdownlist_as_tablecell_column2" runat="server" DataSourceID="ObjectDataSource_faculty" DataTextField="NameFaculty" DataValueField="CodFaculty"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList_facPrep" CssClass="dropdownlist_as_tablecell_column2" runat="server" DataSourceID="ObjectDataSource_faculty" DataTextField="NameFaculty" DataValueField="CodFaculty" AutoPostBack="True"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource_faculty" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.FacultyTableAdapter"></asp:ObjectDataSource>
                     <span class="dropdownlist_as_tablecell_column3">Форма обучения</span>
-                    <asp:DropDownList ID="DropDownList_FormaOb" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_FormaStudy" DataTextField="FormStudy" DataValueField="CodFormStudy"></asp:DropDownList>
+                    <asp:DropDownList ID="DropDownList_FormaOb" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_FormaStudy" DataTextField="FormStudy" DataValueField="CodFormStudy" AutoPostBack="True"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource_FormaStudy" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.FormStudyTableAdapter"></asp:ObjectDataSource>
                 </div>
                 <div class="group_dropdownlist_as_tablerow">

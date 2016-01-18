@@ -117,6 +117,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                                                                         Request["QuestionForExam"] != null ? Request["QuestionForExam"] : String.Empty,
                                                                         Request["ExampleExamTests"] != null ? Request["ExampleExamTests"] : String.Empty);
                                 break;
+                            case "/FOS":
+
+                                break;
                             
                         }                           
                         if (data.Id_rpd != null) {
@@ -132,6 +135,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     }
                 }
             }
+        }
+
+        protected void FOS_btn_Click(object sender, EventArgs e) {
+            Response.Redirect("~/FOS");
         }
     }
 }

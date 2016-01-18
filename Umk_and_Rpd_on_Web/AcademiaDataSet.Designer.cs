@@ -3686,8 +3686,6 @@ namespace Umk_and_Rpd_on_Web {
             
             private global::System.Data.DataColumn columnNameSub;
             
-            private global::System.Data.DataColumn columnCodPlan;
-            
             private global::System.Data.DataColumn columnCodSpecialization;
             
             private global::System.Data.DataColumn columnCodSpeciality;
@@ -3705,6 +3703,8 @@ namespace Umk_and_Rpd_on_Web {
             private global::System.Data.DataColumn columnCodFacultyPlan;
             
             private global::System.Data.DataColumn columnCodFormStudy;
+            
+            private global::System.Data.DataColumn columnCodPlan;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3760,14 +3760,6 @@ namespace Umk_and_Rpd_on_Web {
             public global::System.Data.DataColumn NameSubColumn {
                 get {
                     return this.columnNameSub;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CodPlanColumn {
-                get {
-                    return this.columnCodPlan;
                 }
             }
             
@@ -3845,6 +3837,14 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodPlanColumn {
+                get {
+                    return this.columnCodPlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3880,13 +3880,12 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NagruzkaOnPrepRow AddNagruzkaOnPrepRow(SubsRow parentSubsRowByFK_UnitSubs_Subs, short Year, string NameSub, int CodPlan, string CodSpecialization, string CodSpeciality, byte CodKafDiscip, int CodPrep_On_Plan, string Prep_on_plan, byte CodTypeEdu, byte CodKafPlan, byte CodFacultyPlan, byte CodFormStudy) {
+            public NagruzkaOnPrepRow AddNagruzkaOnPrepRow(SubsRow parentSubsRowByFK_UnitSubs_Subs, short Year, string NameSub, string CodSpecialization, string CodSpeciality, byte CodKafDiscip, int CodPrep_On_Plan, string Prep_on_plan, byte CodTypeEdu, byte CodKafPlan, byte CodFacultyPlan, byte CodFormStudy, int CodPlan) {
                 NagruzkaOnPrepRow rowNagruzkaOnPrepRow = ((NagruzkaOnPrepRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Year,
                         NameSub,
-                        CodPlan,
                         CodSpecialization,
                         CodSpeciality,
                         CodKafDiscip,
@@ -3895,7 +3894,8 @@ namespace Umk_and_Rpd_on_Web {
                         CodTypeEdu,
                         CodKafPlan,
                         CodFacultyPlan,
-                        CodFormStudy};
+                        CodFormStudy,
+                        CodPlan};
                 if ((parentSubsRowByFK_UnitSubs_Subs != null)) {
                     columnValuesArray[0] = parentSubsRowByFK_UnitSubs_Subs[0];
                 }
@@ -3924,7 +3924,6 @@ namespace Umk_and_Rpd_on_Web {
                 this.columnCodSub = base.Columns["CodSub"];
                 this.columnYear = base.Columns["Year"];
                 this.columnNameSub = base.Columns["NameSub"];
-                this.columnCodPlan = base.Columns["CodPlan"];
                 this.columnCodSpecialization = base.Columns["CodSpecialization"];
                 this.columnCodSpeciality = base.Columns["CodSpeciality"];
                 this.columnCodKafDiscip = base.Columns["CodKafDiscip"];
@@ -3934,6 +3933,7 @@ namespace Umk_and_Rpd_on_Web {
                 this.columnCodKafPlan = base.Columns["CodKafPlan"];
                 this.columnCodFacultyPlan = base.Columns["CodFacultyPlan"];
                 this.columnCodFormStudy = base.Columns["CodFormStudy"];
+                this.columnCodPlan = base.Columns["CodPlan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3945,8 +3945,6 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnYear);
                 this.columnNameSub = new global::System.Data.DataColumn("NameSub", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNameSub);
-                this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodPlan);
                 this.columnCodSpecialization = new global::System.Data.DataColumn("CodSpecialization", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodSpecialization);
                 this.columnCodSpeciality = new global::System.Data.DataColumn("CodSpeciality", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3965,10 +3963,24 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnCodFacultyPlan);
                 this.columnCodFormStudy = new global::System.Data.DataColumn("CodFormStudy", typeof(byte), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodFormStudy);
+                this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodPlan);
+                this.columnYear.AllowDBNull = false;
+                this.columnNameSub.AllowDBNull = false;
                 this.columnNameSub.MaxLength = 100;
+                this.columnCodSpecialization.AllowDBNull = false;
                 this.columnCodSpecialization.MaxLength = 2;
+                this.columnCodSpeciality.AllowDBNull = false;
                 this.columnCodSpeciality.MaxLength = 4;
+                this.columnCodKafDiscip.AllowDBNull = false;
+                this.columnCodPrep_On_Plan.AllowDBNull = false;
+                this.columnPrep_on_plan.AllowDBNull = false;
                 this.columnPrep_on_plan.MaxLength = 50;
+                this.columnCodTypeEdu.AllowDBNull = false;
+                this.columnCodKafPlan.AllowDBNull = false;
+                this.columnCodFacultyPlan.AllowDBNull = false;
+                this.columnCodFormStudy.AllowDBNull = false;
+                this.columnCodPlan.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14311,12 +14323,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public short Year {
                 get {
-                    try {
-                        return ((short)(this[this.tableNagruzkaOnPrep.YearColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Year\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((short)(this[this.tableNagruzkaOnPrep.YearColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.YearColumn] = value;
@@ -14327,12 +14334,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameSub {
                 get {
-                    try {
-                        return ((string)(this[this.tableNagruzkaOnPrep.NameSubColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameSub\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableNagruzkaOnPrep.NameSubColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.NameSubColumn] = value;
@@ -14341,31 +14343,9 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int CodPlan {
-                get {
-                    try {
-                        return ((int)(this[this.tableNagruzkaOnPrep.CodPlanColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableNagruzkaOnPrep.CodPlanColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpecialization {
                 get {
-                    try {
-                        return ((string)(this[this.tableNagruzkaOnPrep.CodSpecializationColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpecialization\' в таблице \'NagruzkaOnPrep\' равно DBNull." +
-                                "", e);
-                    }
+                    return ((string)(this[this.tableNagruzkaOnPrep.CodSpecializationColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodSpecializationColumn] = value;
@@ -14376,12 +14356,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpeciality {
                 get {
-                    try {
-                        return ((string)(this[this.tableNagruzkaOnPrep.CodSpecialityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpeciality\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableNagruzkaOnPrep.CodSpecialityColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodSpecialityColumn] = value;
@@ -14392,12 +14367,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodKafDiscip {
                 get {
-                    try {
-                        return ((byte)(this[this.tableNagruzkaOnPrep.CodKafDiscipColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKafDiscip\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((byte)(this[this.tableNagruzkaOnPrep.CodKafDiscipColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodKafDiscipColumn] = value;
@@ -14408,12 +14378,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CodPrep_On_Plan {
                 get {
-                    try {
-                        return ((int)(this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPrep_On_Plan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((int)(this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn] = value;
@@ -14424,12 +14389,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Prep_on_plan {
                 get {
-                    try {
-                        return ((string)(this[this.tableNagruzkaOnPrep.Prep_on_planColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Prep_on_plan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableNagruzkaOnPrep.Prep_on_planColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.Prep_on_planColumn] = value;
@@ -14440,12 +14400,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodTypeEdu {
                 get {
-                    try {
-                        return ((byte)(this[this.tableNagruzkaOnPrep.CodTypeEduColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodTypeEdu\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((byte)(this[this.tableNagruzkaOnPrep.CodTypeEduColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodTypeEduColumn] = value;
@@ -14456,12 +14411,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodKafPlan {
                 get {
-                    try {
-                        return ((byte)(this[this.tableNagruzkaOnPrep.CodKafPlanColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKafPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((byte)(this[this.tableNagruzkaOnPrep.CodKafPlanColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodKafPlanColumn] = value;
@@ -14472,12 +14422,7 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFacultyPlan {
                 get {
-                    try {
-                        return ((byte)(this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFacultyPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((byte)(this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn] = value;
@@ -14488,15 +14433,21 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFormStudy {
                 get {
-                    try {
-                        return ((byte)(this[this.tableNagruzkaOnPrep.CodFormStudyColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFormStudy\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
-                    }
+                    return ((byte)(this[this.tableNagruzkaOnPrep.CodFormStudyColumn]));
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodFormStudyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CodPlan {
+                get {
+                    return ((int)(this[this.tableNagruzkaOnPrep.CodPlanColumn]));
+                }
+                set {
+                    this[this.tableNagruzkaOnPrep.CodPlanColumn] = value;
                 }
             }
             
@@ -14521,150 +14472,6 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodSubNull() {
                 this[this.tableNagruzkaOnPrep.CodSubColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsYearNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.YearColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetYearNull() {
-                this[this.tableNagruzkaOnPrep.YearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNameSubNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.NameSubColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNameSubNull() {
-                this[this.tableNagruzkaOnPrep.NameSubColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodPlanNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodPlanColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodPlanNull() {
-                this[this.tableNagruzkaOnPrep.CodPlanColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodSpecializationNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodSpecializationColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodSpecializationNull() {
-                this[this.tableNagruzkaOnPrep.CodSpecializationColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodSpecialityNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodSpecialityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodSpecialityNull() {
-                this[this.tableNagruzkaOnPrep.CodSpecialityColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodKafDiscipNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodKafDiscipColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodKafDiscipNull() {
-                this[this.tableNagruzkaOnPrep.CodKafDiscipColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodPrep_On_PlanNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodPrep_On_PlanNull() {
-                this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPrep_on_planNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.Prep_on_planColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPrep_on_planNull() {
-                this[this.tableNagruzkaOnPrep.Prep_on_planColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodTypeEduNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodTypeEduColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodTypeEduNull() {
-                this[this.tableNagruzkaOnPrep.CodTypeEduColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodKafPlanNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodKafPlanColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodKafPlanNull() {
-                this[this.tableNagruzkaOnPrep.CodKafPlanColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodFacultyPlanNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodFacultyPlanColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodFacultyPlanNull() {
-                this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodFormStudyNull() {
-                return this.IsNull(this.tableNagruzkaOnPrep.CodFormStudyColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodFormStudyNull() {
-                this[this.tableNagruzkaOnPrep.CodFormStudyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -21981,7 +21788,6 @@ WHERE        (CodFaculty = @OriginalCodFaculty) and (CodKaf <> 33) and (CodKaf <
             tableMapping.ColumnMappings.Add("CodSub", "CodSub");
             tableMapping.ColumnMappings.Add("Year", "Year");
             tableMapping.ColumnMappings.Add("NameSub", "NameSub");
-            tableMapping.ColumnMappings.Add("CodPlan", "CodPlan");
             tableMapping.ColumnMappings.Add("CodSpecialization", "CodSpecialization");
             tableMapping.ColumnMappings.Add("CodSpeciality", "CodSpeciality");
             tableMapping.ColumnMappings.Add("CodKafDiscip", "CodKafDiscip");
@@ -21991,6 +21797,7 @@ WHERE        (CodFaculty = @OriginalCodFaculty) and (CodKaf <> 33) and (CodKaf <
             tableMapping.ColumnMappings.Add("CodKafPlan", "CodKafPlan");
             tableMapping.ColumnMappings.Add("CodFacultyPlan", "CodFacultyPlan");
             tableMapping.ColumnMappings.Add("CodFormStudy", "CodFormStudy");
+            tableMapping.ColumnMappings.Add("CodPlan", "CodPlan");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -22007,21 +21814,26 @@ WHERE        (CodFaculty = @OriginalCodFaculty) and (CodKaf <> 33) and (CodKaf <
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT DISTINCT 
-                         PlanWork.CodSub, KafSubs.CodKaf AS CodKafDiscip, PlanWork.Year, PlanWorkDet.CodPrep AS CodPrep_On_Plan, personal.dbo.PEOPLEN.FIO AS Prep_on_plan, Subs.NameSub, StudyPlans.CodSpecialization, 
-                         StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf AS CodKafPlan, StudyPlans.CodFaculty AS CodFacultyPlan, StudyPlans.CodFormStudy, StudyPlans.CodPlan
-FROM            PlanWork INNER JOIN
-                         PlanWorkDet ON PlanWork.Id = PlanWorkDet.Id INNER JOIN
-                         Grup ON PlanWork.CodGrup = Grup.CodGrup INNER JOIN
-                         Subs ON PlanWork.CodSub = Subs.CodSub AND CHARINDEX('корр.', Subs.NameSub) <= 0 INNER JOIN
-                         KafSubs ON KafSubs.CodSub = Subs.CodSub AND KafSubs.CodKaf = PlanWork.CodKaf INNER JOIN
-                         StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN
-                         personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNER JOIN
-                         WorkTypes ON PlanWorkDet.CodWorkType = WorkTypes.CodWorkType AND PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 3
-WHERE        (StudyPlans.CodPlan = @CodPlan OR
-                         @CodPlan IS NULL) AND (KafSubs.CodKaf = @CodKafDiscip OR
-                         @CodKafDiscip IS NULL) AND (PlanWork.CodSubType IS NOT NULL) AND (PlanWork.Year = @Year OR
-                         @Year IS NULL) ";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         PlanWork.CodSub, KafSubs.CodKaf AS Cod" +
+                "KafDiscip, PlanWork.Year, PlanWorkDet.CodPrep AS CodPrep_On_Plan, personal.dbo.P" +
+                "EOPLEN.FIO AS Prep_on_plan, Subs.NameSub, StudyPlans.CodSpecialization, \r\n      " +
+                "                   StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.C" +
+                "odKaf AS CodKafPlan, StudyPlans.CodFaculty AS CodFacultyPlan, StudyPlans.CodForm" +
+                "Study, StudyPlans.CodPlan\r\nFROM            PlanWork INNER JOIN\r\n                " +
+                "         PlanWorkDet ON PlanWork.Id = PlanWorkDet.Id INNER JOIN\r\n               " +
+                "          Grup ON PlanWork.CodGrup = Grup.CodGrup INNER JOIN\r\n                  " +
+                "       Subs ON PlanWork.CodSub = Subs.CodSub AND CHARINDEX(\'корр.\', Subs.NameSub" +
+                ") <= 0 INNER JOIN\r\n                         KafSubs ON KafSubs.CodSub = Subs.Cod" +
+                "Sub AND KafSubs.CodKaf = PlanWork.CodKaf INNER JOIN\r\n                         St" +
+                "udyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                      " +
+                "   personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNE" +
+                "R JOIN\r\n                         WorkTypes ON PlanWorkDet.CodWorkType = WorkType" +
+                "s.CodWorkType and (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 3" +
+                " or PlanWorkDet.CodWorkType = 5 or PlanWorkDet.CodWorkType >= 73)\r\nWHERE        " +
+                "(StudyPlans.CodPlan = @CodPlan OR\r\n                         @CodPlan IS NULL) AN" +
+                "D (KafSubs.CodKaf = @CodKafDiscip OR\r\n                         @CodKafDiscip IS " +
+                "NULL) AND (PlanWork.CodSubType IS NOT NULL) AND (PlanWork.Year = @Year OR\r\n     " +
+                "                    @Year IS NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKafDiscip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -22032,26 +21844,11 @@ WHERE        (StudyPlans.CodPlan = @CodPlan OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.NagruzkaOnPrepDataTable dataTable, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<short> Year) {
+        public virtual int Fill(AcademiaDataSet.NagruzkaOnPrepDataTable dataTable, int CodPlan, byte CodKafDiscip, short Year) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((CodPlan.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((CodKafDiscip.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Year.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -22063,26 +21860,11 @@ WHERE        (StudyPlans.CodPlan = @CodPlan OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.NagruzkaOnPrepDataTable GetData(global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<short> Year) {
+        public virtual AcademiaDataSet.NagruzkaOnPrepDataTable GetData(int CodPlan, byte CodKafDiscip, short Year) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((CodPlan.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((CodKafDiscip.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Year.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year));
             AcademiaDataSet.NagruzkaOnPrepDataTable dataTable = new AcademiaDataSet.NagruzkaOnPrepDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

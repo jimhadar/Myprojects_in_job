@@ -405,5 +405,9 @@ namespace Umk_and_Rpd_on_Web {
                 this.DropDownList_Speciality.SelectedValue = Session["CodSpeciality"].ToString();
             }
         }
+
+        protected void ScriptManager1_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e) {
+            ScriptManager1.AsyncPostBackErrorMessage = e.Exception.Message;
+        }
     }   
 }

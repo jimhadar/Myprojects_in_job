@@ -291,7 +291,7 @@
             td.appendChild(textarea);
 
             var td = Row.cells[3];
-            td.innerHTML = "<input type=\"number\" name=\"Volume" + CurrentRow_InRazdelLesson.toString() + "\"" + " oninput=\"SoderjRazdDiscip.Update_value_of_hours_in_razdel_and_row();\" step=\"0.5\" min=\"0\" max=\"10\" value='2'/>";
+            td.innerHTML = "<input type=\"number\" name=\"Volume" + CurrentRow_InRazdelLesson.toString() + "\"" + " oninput=\"SoderjRazdDiscip.Update_value_of_hours_in_razdel_and_row();\" step=\"0.5\" min=\"0\" max=\"100\" value='2'/>";
 
             var td = Row.cells[5];
             td.innerHTML = "<input type=\"button\" class=\"bttn\" onclick=\"SoderjRazdDiscip.ClickOnCell_InRazdelLesson(event);SoderjRazdDiscip.del_str(event);\" value=\"Удалить\"/>";

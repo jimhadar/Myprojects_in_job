@@ -267,7 +267,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                             HtmlRow.Cells[4].Attributes.Add("class", "GridViewCss formCurControlColumn");
                         }
                         else {
-                            HtmlRow.Cells[3].InnerHtml = "<input type=\"number\" step=\"0.5\" min=\"0\" max=\"10\" " + "value=\"" + SoderjRazdelRow["VolumeColumn"].ToString().Trim().Replace(',', '.') + "\"" + " onchange=\"SoderjRazdDiscip.Update_value_of_hours_in_razdel_and_row();" + "\"/>";
+                            HtmlRow.Cells[3].InnerHtml = "<input type=\"number\" step=\"0.5\" min=\"0\" max=\"100\" " + "value=\"" + SoderjRazdelRow["VolumeColumn"].ToString().Trim().Replace(',', '.') + "\"" + " onchange=\"SoderjRazdDiscip.Update_value_of_hours_in_razdel_and_row();" + "\"/>";
                             //HtmlRow.Cells[4].InnerHtml = String.Empty;
                         }
                         HtmlRow.Cells[5].InnerHtml = "<input type=\"button\" class=\"bttn\" onclick=\"SoderjRazdDiscip.ClickOnCell_InRazdelLesson(event);SoderjRazdDiscip.del_str(event);\" value=\"Удалить\"/>";

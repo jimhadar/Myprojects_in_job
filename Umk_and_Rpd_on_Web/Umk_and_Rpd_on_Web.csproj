@@ -81,6 +81,7 @@
     <Content Include="App_Themes\StyleSheet_for_FindForm.css" />
     <Content Include="App_Themes\Style_for_MainMasterPage.css" />
     <Content Include="Content\AuthorizedUsers\FindRpdForm.aspx" />
+    <Content Include="Content\AuthorizedUsers\FOS.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="background.jpg" />
     <Content Include="background1.jpg" />
@@ -130,6 +131,7 @@
     <Content Include="Content\AuthorizedUsers\rpd_shablon\UMK.xslt" />
     <Content Include="Scripts\CurrentControl.js" />
     <Content Include="Scripts\ForMainMaster.js" />
+    <Content Include="Scripts\FOS.js" />
     <Content Include="Scripts\modernizr.custom.66570.js" />
     <Content Include="Scripts\Sending_tmp_inform_to_Server.js" />
     <Content Include="Scripts\SoderjRazdDiscip.js" />
@@ -154,6 +156,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\FindRpdForm.aspx.designer.cs">
       <DependentUpon>FindRpdForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\FOS.aspx.cs">
+      <DependentUpon>FOS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\FOS.aspx.designer.cs">
+      <DependentUpon>FOS.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

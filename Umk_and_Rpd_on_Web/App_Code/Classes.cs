@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;     
+//using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Wordprocessing;     
 
 namespace Umk_and_Rpd_on_Web {
     /// <summary>
@@ -353,6 +353,8 @@ namespace Umk_and_Rpd_on_Web {
         /// содержит прочие поля для заполнения РПД
         /// </summary>
         internal OthersFieldsForRPD othersFieldsForRPD = null;
+
+        //internal FosTable fosTable = null;
         /// <summary>
         /// 
         /// </summary>
@@ -379,6 +381,7 @@ namespace Umk_and_Rpd_on_Web {
             this.Student_Doljen_Umet = string.Empty;
             this.Student_doljen_Vladet = string.Empty;
             this.Student_Doljen_Znat = string.Empty;
+            //fosTable = new FosTable();
         }
         /// <summary>
         /// Сохранение РПД / УМК в базу данных, в зависимости от параметра Save_RPD_or_UMK
@@ -1442,7 +1445,7 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                using (WordprocessingDocument output =
+                /*using (WordprocessingDocument output =
                   WordprocessingDocument.Open(outputDocument, true)) {
                     //использование элемента тело в новой 
                     //содержимому xmldocument создать новый открытый объект xml тела.
@@ -1452,7 +1455,7 @@ namespace Umk_and_Rpd_on_Web {
                     output.MainDocumentPart.Document.Body = updatedbodycontent;
                     //сохраните обновленный выходной документ.
                     output.MainDocumentPart.Document.Save();
-                } 
+                } */
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -2077,6 +2080,9 @@ namespace Umk_and_Rpd_on_Web {
             }
         }
         
+        public DataRow[] Select(string filterExpression){
+            return this.data.Select(filterExpression);
+        }
     }
     [Serializable()]
     public class LiteratureDataTable :SummaryTable {
@@ -2121,6 +2127,108 @@ namespace Umk_and_Rpd_on_Web {
             }
         }
     }
+    /*[Serializable()]
+    public class FosTable : SummaryTable {
+        public FosTable()
+            :base(){
+            //Название темы из РПД                      
+            DataColumn NameThemeColumn = new DataColumn("NameTheme");
+            NameThemeColumn.DataType = System.Type.GetType("System.String");
+            //Закрываемая компетенция
+            DataColumn CompetetionColumn = new DataColumn("Competetion");
+            CompetetionColumn.DataType = System.Type.GetType("System.String");
+            //Формируемые ЗУНы(3.1, У1 и т.п.)
+            DataColumn ZUNSColumn = new DataColumn("ZUNS");
+            ZUNSColumn.DataType = System.Type.GetType("System.String");
+            //Вид и номер задания в ФОС
+            DataColumn TypeandNumberInFOS = new DataColumn("TypeandNumberInFos");
+            TypeandNumberInFOS.DataType = System.Type.GetType("System.Strnig");
+            //Критерий оценивания (по 100 балльной шкале)
+            DataColumn Criteria = new DataColumn("Criteria");
+            Criteria.DataType = System.Type.GetType("System.String");
+
+            this.data.Columns.AddRange(new DataColumn[] { NameThemeColumn, CompetetionColumn, ZUNSColumn, TypeandNumberInFOS, Criteria });
+        }
+        /// <summary>
+        /// Добавление строки в конец таблицы
+        /// </summary>
+        /// <param name="NameTheme">Тема</param>
+        /// <param name="Competetion">Закрываемая компетенция</param>
+        /// <param name="Zuns">ЗУНЫ</param>
+        /// <param name="TypeandNumberInFos">Вид и номер задания ФОС</param>
+        /// <param name="Criteria">Критерии оценивания</param>
+        public void AddRow(string NameTheme, string Competetion, string Zuns, string TypeandNumberInFos, string Criteria) {
+            DataRow Row = this.data.NewRow();
+            Row["NameTheme"] = NameTheme;
+            Row["Competetion"] = Competetion;
+            Row["ZUNS"] = Zuns;
+            Row["TypeandNumberInFos"] = TypeandNumberInFos;
+            Row["Criteria"] = Criteria;
+            this.data.Rows.Add(Row);
+        }
+        /// <summary>
+        /// удаление строки
+        /// </summary>
+        /// <param name="CurrentRow">номер удаляемой строки</param>
+        public void RemoveRow(int CurrentRow) {
+            if (CurrentRow >= 0 && CurrentRow < this.RowCount) {
+                this.data.Rows.RemoveAt(CurrentRow);
+            }             
+        }
+        /// <summary>
+        /// редактирование содержимого строки
+        /// </summary>
+        /// <param name="CurrentRow">номер редактируемой строкиы</param>
+        /// <param name="NameTheme">название темы</param>
+        /// <param name="Competetion">закрываемая компетенция</param>
+        /// <param name="Zuns">Формируемые ЗУНы</param>
+        /// <param name="TypeandNumberInFos">вид и номер в ФОС</param>
+        /// <param name="Criteria">Критерии оценивания</param>
+        public void EditRow(int CurrentRow, string NameTheme, string Competetion, string Zuns, string TypeandNumberInFos, string Criteria) {
+            if (CurrentRow >= 0 && CurrentRow < this.RowCount) {
+                DataRow Row = this.data.Rows[CurrentRow];
+                Row["NameTheme"] = NameTheme;
+                Row["Competetion"] = Competetion;
+                Row["ZUNS"] = Zuns;
+                Row["TypeandNumberInFos"] = TypeandNumberInFos;
+                Row["Criteria"] = Criteria;
+            }
+        }
+        /// <summary>
+        /// вставка новой строки в заданную позицию
+        /// </summary>
+        /// /// <param name="CurrentRow">номер вставляемой новой строки</param>
+        /// <param name="NameTheme">название темы</param>
+        /// <param name="Competetion">закрываемая компетенция</param>
+        /// <param name="Zuns">Формируемые ЗУНы</param>
+        /// <param name="TypeandNumberInFos">вид и номер в ФОС</param>
+        /// <param name="Criteria">Критерии оценивания</param>
+        public void InsertRow(int CurrentRow, string NameTheme, string Competetion, string Zuns, string TypeandNumberInFos, string Criteria) {
+            if (CurrentRow >= 0 && CurrentRow < this.RowCount) {
+                DataRow Row = this.data.NewRow();
+                Row["NameTheme"] = NameTheme;
+                Row["Competetion"] = Competetion;
+                Row["ZUNS"] = Zuns;
+                Row["TypeandNumberInFos"] = TypeandNumberInFos;
+                Row["Criteria"] = Criteria;
+                this.data.Rows.InsertAt(Row, CurrentRow);
+            }
+        }
+        /// <summary>
+        /// находит первое вхождение строки с заданынм названием темы в таблицу
+        /// </summary>
+        /// <param name="NameTheme">Название темы</param>
+        /// <returns></returns>
+        public int FindRowByNameTheme(string NameTheme) {
+            DataRow[] rows = this.data.Select("NameTheme == " + NameTheme);
+            if(rows != null && rows.Length > 0){
+                return this.data.Rows.IndexOf(rows[0]);
+            }
+            else {
+                return -1;
+            }
+        }
+    }    */
     [Serializable()]
     public class SummaryOthersFields {
         public SummaryOthersFields() {

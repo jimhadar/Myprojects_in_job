@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Title.aspx.cs" Inherits="Umk_and_Rpd_on_Web.TitlePage" %>
 <asp:Content ID="MainContent" ContentPlaceHolderID="Content" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" OnAsyncPostBackError="ScriptManager1_AsyncPostBackError">
     </asp:ScriptManager>
     <asp:ObjectDataSource ID="FacultyObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.FacultyTableAdapter"></asp:ObjectDataSource>
     <asp:ObjectDataSource ID="KafsObjectDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.KafsTableAdapter">
@@ -78,7 +78,10 @@
                     </p>
                     <asp:GridView ID="NagruzkaOnPrepGridView" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource_for_NagruzkaOnPrep" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView" CellPadding="10" OnDataBound="NagruzkaOnPrepGridView_DataBound" EnableViewState="False" ViewStateMode="Disabled" OnSelectedIndexChanged="NagruzkaOnPrepGridView_SelectedIndexChanged" ClientIDMode="Static">
                         <Columns>
-                            <asp:CommandField ShowSelectButton="true" ButtonType="Image" SelectText="Выбрать дисциплину" SelectImageUrl="~/App_Themes/selectSubBtn.jpg" HeaderText="Выбрать дисциплину" HeaderStyle-Width="133px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle"/>
+                            <asp:CommandField ShowSelectButton="true" ButtonType="Image" SelectText="Выбрать дисциплину" SelectImageUrl="~/App_Themes/selectSubBtn.jpg" HeaderText="Выбрать дисциплину" HeaderStyle-Width="133px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
+                            <HeaderStyle Width="133px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:CommandField>
                             <asp:BoundField DataField="Year" HeaderText="Год" SortExpression="Year" />
                             <asp:BoundField DataField="CodSub" HeaderText="CodSub" SortExpression="CodSub" />
                             <asp:BoundField DataField="NameSub" HeaderText="Дисциплина" SortExpression="NameSub" />

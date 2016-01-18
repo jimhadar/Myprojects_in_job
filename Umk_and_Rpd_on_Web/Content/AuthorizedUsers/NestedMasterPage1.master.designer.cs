@@ -85,6 +85,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.WebControls.Button UMK_btn;
         
         /// <summary>
+        /// FOS_btn элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button FOS_btn;
+        
+        /// <summary>
         /// li_for_href_findForm элемент управления.
         /// </summary>
         /// <remarks>

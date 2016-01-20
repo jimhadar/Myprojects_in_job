@@ -165,7 +165,7 @@ namespace Umk_and_Rpd_on_Web {
         protected int GetSelectRowInNazguzkaOnPrepGridView() {
             if (NagruzkaOnPrepGridView.Rows.Count > 0 && Session["CodSub"] != null) {
                 foreach (GridViewRow Row in this.NagruzkaOnPrepGridView.Rows) {
-                    if (Row.Cells[2].Text == Session["CodSub"].ToString()) {
+                    if (Row.Cells[2].Text == Session["CodSub"].ToString() && Row.Cells[4].Text == Session["CodPrep_Plan"].ToString()) {
                         return Row.RowIndex;
                     }
                 }

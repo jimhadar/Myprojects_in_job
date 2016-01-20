@@ -354,7 +354,7 @@ namespace Umk_and_Rpd_on_Web {
         /// </summary>
         internal OthersFieldsForRPD othersFieldsForRPD = null;
 
-        //internal FosTable fosTable = null;
+        internal FosTable fosTable = null;
         /// <summary>
         /// 
         /// </summary>
@@ -381,7 +381,7 @@ namespace Umk_and_Rpd_on_Web {
             this.Student_Doljen_Umet = string.Empty;
             this.Student_doljen_Vladet = string.Empty;
             this.Student_Doljen_Znat = string.Empty;
-            //fosTable = new FosTable();
+            this.fosTable = new FosTable();
         }
         /// <summary>
         /// Сохранение РПД / УМК в базу данных, в зависимости от параметра Save_RPD_or_UMK
@@ -960,6 +960,7 @@ namespace Umk_and_Rpd_on_Web {
             writer.WriteStartElement("Technical_Obespech");
             this.Zap_XMl_with_abzac_from_List(this.othersFieldsForRPD.Logistics_Discipline, ref writer);
             writer.WriteEndElement();
+            this.Zap_XML_Fos(ref writer);
             writer.WriteEndElement();
             writer.WriteEndDocument();
             if (!(writer.BaseStream is MemoryStream)) {
@@ -1360,6 +1361,26 @@ namespace Umk_and_Rpd_on_Web {
             //Образцы экзаменационных тестов, заданий
             writer.WriteStartElement("Example_ekz_Unit");
             this.Zap_XMl_with_abzac_from_List(this.othersFieldsForUMK.Example_Exam_Tests, ref writer);
+            writer.WriteEndElement();
+        }
+        /// <summary>
+        /// заполнение в файле *.xml данных для ФОС
+        /// </summary>
+        /// <param name="writer"></param>
+        private void Zap_XML_Fos(ref XmlTextWriter writer) {            
+            writer.WriteStartElement("Fos");
+                if(this.fosTable != null){    
+                    for(int i = 0; i < fosTable.RowCount; i++){
+                        writer.WriteStartElement("Row");
+                            writer.WriteAttributeString("NumberStr", (i + 1).ToString());
+                            writer.WriteAttributeString("NameTheme", fosTable[i, "NameTheme"].ToString());
+                            writer.WriteAttributeString("Competetion", fosTable[i, "Competetion"].ToString());
+                            writer.WriteAttributeString("ZUNS", fosTable[i, "ZUNS"].ToString());
+                            writer.WriteAttributeString("TypeandNumberInFos", fosTable[i, "TypeandNumberInFos"].ToString());
+                            writer.WriteAttributeString("Criteria", fosTable[i, "Criteria"].ToString());
+                        writer.WriteEndElement();
+                    }                   
+                }
             writer.WriteEndElement();
         }
         #endregion
@@ -1878,6 +1899,52 @@ namespace Umk_and_Rpd_on_Web {
                 }
             }
         }
+        /// <summary>
+        /// Переформирование таблицы fosTable для ФОС в соответствии со списком тем
+        /// в таблице содержания разделов дисциплины
+        /// </summary>
+        internal void SformFosTable() {
+            FosTable fosTable1 = new FosTable();
+            DataRow[] themeRows = SoderjRazd_DataTable.Select("VidColumn = 'Тема'");
+            foreach (DataRow Row in themeRows) {
+                fosTable1.AddRow(Row["AboutColumn"].ToString(), string.Empty, string.Empty, Row["FormCurControlColumn"].ToString(), string.Empty);
+            }
+            if(this.fosTable != null && this.fosTable.RowCount > 0){
+                fosTable1.AddRow("Итого по текущей аттестации",
+                             string.Empty,
+                             fosTable[fosTable.RowCount - 2, "ZUNS"].ToString(),
+                             fosTable[fosTable.RowCount - 2, "TypeandNumberInFos"].ToString(),
+                             fosTable[fosTable.RowCount - 2, "Criteria"].ToString());
+                fosTable1.AddRow("Промежуточная аттестация",
+                                fosTable[fosTable.RowCount - 2, "Competetion"].ToString(),
+                                fosTable[fosTable.RowCount - 2, "ZUNS"].ToString(),
+                                fosTable[fosTable.RowCount - 2, "TypeandNumberInFos"].ToString(),
+                                fosTable[fosTable.RowCount - 2, "Criteria"].ToString());
+                for (int i = 0; i < fosTable1.RowCount; i++) {
+                    int numRow = fosTable.FindRowByNameTheme(fosTable1[i, "NameTheme"].ToString());
+                    if (numRow >= 0) {
+                        fosTable1.EditRow(i, fosTable[numRow, "NameTheme"].ToString(),
+                                            fosTable[numRow, "Competetion"].ToString(),
+                                            fosTable[numRow, "ZUNS"].ToString(),
+                                            fosTable[numRow, "TypeandNumberInFos"].ToString(),
+                                            fosTable[numRow, "Criteria"].ToString());
+                    }
+                }
+            }
+            else {
+                fosTable1.AddRow("Итого по текущей аттестации",
+                              string.Empty,
+                              string.Empty,
+                              string.Empty,
+                              string.Empty);
+                fosTable1.AddRow("Промежуточная аттестация",
+                                string.Empty,
+                                string.Empty,
+                                string.Empty,
+                                string.Empty);
+            }
+            this.fosTable = fosTable1;
+        }
         #endregion
         
     }
@@ -1903,6 +1970,17 @@ namespace Umk_and_Rpd_on_Web {
             }
             set {
                 this.data.Rows[RowIndex][ColumnName] = value;
+            }
+        }
+
+        public DataRow this[int RowIndex] {
+            get {
+                if (RowIndex >= 0 && RowIndex < this.RowCount) {
+                    return this.data.Rows[RowIndex];
+                }
+                else {
+                    return null;
+                }
             }
         }
 
@@ -2127,7 +2205,7 @@ namespace Umk_and_Rpd_on_Web {
             }
         }
     }
-    /*[Serializable()]
+    [Serializable()]
     public class FosTable : SummaryTable {
         public FosTable()
             :base(){
@@ -2142,7 +2220,7 @@ namespace Umk_and_Rpd_on_Web {
             ZUNSColumn.DataType = System.Type.GetType("System.String");
             //Вид и номер задания в ФОС
             DataColumn TypeandNumberInFOS = new DataColumn("TypeandNumberInFos");
-            TypeandNumberInFOS.DataType = System.Type.GetType("System.Strnig");
+            TypeandNumberInFOS.DataType = System.Type.GetType("System.String");
             //Критерий оценивания (по 100 балльной шкале)
             DataColumn Criteria = new DataColumn("Criteria");
             Criteria.DataType = System.Type.GetType("System.String");
@@ -2220,7 +2298,7 @@ namespace Umk_and_Rpd_on_Web {
         /// <param name="NameTheme">Название темы</param>
         /// <returns></returns>
         public int FindRowByNameTheme(string NameTheme) {
-            DataRow[] rows = this.data.Select("NameTheme == " + NameTheme);
+            DataRow[] rows = this.data.Select("NameTheme = " + "'" + NameTheme.ToString() + "'");
             if(rows != null && rows.Length > 0){
                 return this.data.Rows.IndexOf(rows[0]);
             }
@@ -2228,7 +2306,7 @@ namespace Umk_and_Rpd_on_Web {
                 return -1;
             }
         }
-    }    */
+    }    
     [Serializable()]
     public class SummaryOthersFields {
         public SummaryOthersFields() {

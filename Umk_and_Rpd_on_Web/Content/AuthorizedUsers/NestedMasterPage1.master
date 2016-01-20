@@ -33,7 +33,7 @@
                     <!--<a href="RPD.aspx">Прочее</a>-->
                     <asp:Button runat="server" ID="UMK_btn" OnClick="UMK_btn_Click" CssClass="bttn" Text="Для УМК" />
                 </li>
-                <li runat="server" style="display:none;">
+                <li runat="server">
                     <asp:Button runat="server" ID="FOS_btn" OnClick="FOS_btn_Click" CssClass="bttn" Text="ФОС" />
                 </li>
                 <li runat="server" id="li_for_href_findForm">

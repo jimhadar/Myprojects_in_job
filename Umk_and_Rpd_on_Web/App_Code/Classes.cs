@@ -30,7 +30,8 @@ namespace Umk_and_Rpd_on_Web {
         SaveUmk = 1,
         SaveRPD = 2,
         SaveAnnotationToRPD = 3,
-        SaveToDataBase = 4
+        SaveToDataBase = 4,
+        SaveFOS = 5
     }
     internal class Classes {
         #region метод для аутентификации преподавателя
@@ -312,6 +313,11 @@ namespace Umk_and_Rpd_on_Web {
         /// если = String.Empty, то файл не создан
         /// </summary>
         string FilePathToAnnotationRPD;
+        /// <summary>
+        /// где хранится файл с ФОС,
+        /// если == String.Empty, то файл не создан
+        /// </summary>
+        string FilePathToFos;
         #endregion
 
         #region для хранения в памяти шаблона *.xml РПД/УМК
@@ -425,7 +431,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда вставляем новую РПД в базу данных
                         case null:
                             UMK_rpd_adapter.Insert(false,
-                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
+                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + this.shifr_discipline + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString() + "-" + this.specialization,
                                                     (byte)this.CodFacPrep,
                                                     (byte)this.CodKafPrep,
                                                     (byte)this.CodPrep,
@@ -445,7 +451,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда обновляем данные в базе данных
                         default:
                             UMK_rpd_adapter.Update(false,
-                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
+                                                    "РПД-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + this.shifr_discipline + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString() + "-" + this.specialization,
                                                     this.CodFacPrep,
                                                     this.CodKafPrep,
                                                     this.CodPrep,
@@ -467,7 +473,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда вставляем новую РПД в базу данных
                         case null:
                             UMK_rpd_adapter.Insert(true,
-                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
+                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + this.shifr_discipline + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString() + "-" + this.specialization,
                                                     (byte)this.CodFacPrep,
                                                     (byte)this.CodKafPrep,
                                                     (byte)this.CodPrep,
@@ -487,7 +493,7 @@ namespace Umk_and_Rpd_on_Web {
                         //тогда обновляем данные в базе данных
                         default:
                             UMK_rpd_adapter.Update(true,
-                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString(),
+                                                    "УМК-" + this.FIO_prepod.Trim() + "-" + this.Name_discipline.Trim() + "-" + this.shifr_discipline + "-" + CodSpeciality.ToString() + "-" + Name_speciality.ToString() + "-" + this.specialization,
                                                     this.CodFacPrep,
                                                     this.CodKafPrep,
                                                     this.CodPrep,
@@ -508,7 +514,7 @@ namespace Umk_and_Rpd_on_Web {
                 return string.Empty;
             }
             else {
-                using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD ? this.Data_with_RPD : this.Data_with_UMK))) {
+                using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
                     return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
                 }
             }
@@ -1426,20 +1432,49 @@ namespace Umk_and_Rpd_on_Web {
             //путь к файлу XSLT, содержащему стили преобразования
             string Data_xslt = string.Empty;
             switch (howDocSave) {
-                case HowDoc_Save.SaveRPD:
+                case HowDoc_Save.SaveRPD: 
                     Data_xslt = PhisycalPathToApp + "rpd_shablon\\RPD.xslt";
                     templateDocument = PhisycalPathToApp + "rpd_shablon\\RPD_template.docx";
-                    this.FilePathToRPD = save_path;
+                    save_path = PhisycalPathToApp +
+                                "saving_docx_files\\" +
+                                 "РПД" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_discipline + ".docx";
+                    this.FilePathToRPD = save_path;                     
                     break;
                 case HowDoc_Save.SaveUmk:
                     Data_xslt = PhisycalPathToApp + "rpd_shablon\\UMK.xslt";
                     templateDocument = PhisycalPathToApp + "rpd_shablon\\UMK_template.docx";
+                    save_path = PhisycalPathToApp +
+                                "saving_docx_files\\" +
+                                "УМК" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_discipline + ".docx";
                     this.FilePathToUMK = save_path;
                     break;
                 case HowDoc_Save.SaveAnnotationToRPD:
                     Data_xslt = PhisycalPathToApp + "rpd_shablon\\AnnotationToRPD.xslt";
                     templateDocument = PhisycalPathToApp + "rpd_shablon\\AnnotationToRPD_template.docx";
+                    save_path = PhisycalPathToApp +
+                                "saving_docx_files\\" +
+                                "Аннотация к РПД" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_discipline + ".docx";
                     this.FilePathToAnnotationRPD = save_path;
+                    break;
+                case HowDoc_Save.SaveFOS:
+                    Data_xslt = PhisycalPathToApp + "rpd_shablon\\Fos_shablon.xslt";
+                    templateDocument = PhisycalPathToApp + "rpd_shablon\\Fos_shablon.docx";
+                    save_path = PhisycalPathToApp +
+                                "saving_docx_files\\" +
+                                "ФОС" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_discipline + ".docx";
+                    this.FilePathToFos = save_path;
                     break;
             }
             XmlTextReader xsltReader = new XmlTextReader(Data_xslt);
@@ -1447,6 +1482,11 @@ namespace Umk_and_Rpd_on_Web {
             //Создать писатель для выходного XSL преобразования.
             StringWriter stringWriter = new StringWriter();
             XmlWriter xmlWriter = XmlWriter.Create(stringWriter);
+            if (howDocSave == HowDoc_Save.SaveFOS) {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.ConformanceLevel = ConformanceLevel.Auto;
+                xmlWriter = XmlWriter.Create(stringWriter, settings);
+            }
             //Создание объекта преобразования XSL.
             XslCompiledTransform transform = new XslCompiledTransform();
             //загружаем таблиц#у стилей  
@@ -1476,7 +1516,7 @@ namespace Umk_and_Rpd_on_Web {
                     output.MainDocumentPart.Document.Body = updatedbodycontent;
                     //сохраните обновленный выходной документ.
                     output.MainDocumentPart.Document.Save();
-                } */
+                }*/ 
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -1509,6 +1549,10 @@ namespace Umk_and_Rpd_on_Web {
             if (File.Exists(this.FilePathToAnnotationRPD)) {
                 File.Delete(this.FilePathToAnnotationRPD);
                 this.FilePathToAnnotationRPD = string.Empty;
+            }
+            if (File.Exists(this.FilePathToFos)) {
+                File.Delete(this.FilePathToFos);
+                this.FilePathToFos = string.Empty;
             }
         }
         #endregion
@@ -1543,7 +1587,7 @@ namespace Umk_and_Rpd_on_Web {
         }
 
         private void Load_UMK_To_Program_from_XML(ref XmlTextReader XmlReader) {
-            ClearAllFields();
+            ClearAllGeneralFields();
             this.othersFieldsForUMK.UpdateFileds("", "", "");
             XmlReader.Read();
             while (!XmlReader.EOF) {
@@ -1591,7 +1635,7 @@ namespace Umk_and_Rpd_on_Web {
         }
 
         private void Load_RPD_To_Program_from_XML(ref XmlTextReader XmlReader) {
-            ClearAllFields();
+            ClearAllGeneralFields();
             othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
             XmlReader.Read();
             while (!XmlReader.EOF) {
@@ -1678,6 +1722,16 @@ namespace Umk_and_Rpd_on_Web {
                         case "Technical_Obespech":
                             this.othersFieldsForRPD.LogisticsDiscipline = zap_strFields_from_Xml(ref XmlReader);
                             break;
+                        case "Fos":
+                            fosTable = new FosTable();
+                            while(XmlReader.Read() && XmlReader.IsStartElement() && XmlReader.HasAttributes){
+                                fosTable.AddRow(XmlReader.GetAttribute("NameTheme"),
+                                                XmlReader.GetAttribute("Competetion"),
+                                                XmlReader.GetAttribute("ZUNS"),
+                                                XmlReader.GetAttribute("TypeandNumberInFos"),
+                                                XmlReader.GetAttribute("Criteria"));
+                            }
+                            break;
                     }
                 }
                 XmlReader.Read();
@@ -1687,9 +1741,9 @@ namespace Umk_and_Rpd_on_Web {
 
         #region Дополнительные методы
         /// <summary>
-        /// очистка значений всех полей текущего экземпляра класса
+        /// очистка значений всех полей текущего экземпляра класса, кроме информации отдельно для РПД и УМК
         /// </summary>
-        private void ClearAllFields() {
+        private void ClearAllGeneralFields() {
             this.Student_Doljen_Umet = string.Empty;
             this.Student_doljen_Vladet = string.Empty;
             this.Student_Doljen_Znat = string.Empty;
@@ -1702,6 +1756,16 @@ namespace Umk_and_Rpd_on_Web {
             SoderjRazd_DataTable.Clear();
             LiteratureTable.Clear();
             this.table_for_key_compet.Clear();
+            this.CurControlTable.Clear();
+            this.fosTable.Clear();
+        }
+        /// <summary>
+        /// очистка всех значений полей текущего экземпляра класса
+        /// </summary>
+        internal void ClearAllFields() {
+            this.ClearAllGeneralFields();
+            this.othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
+            this.othersFieldsForUMK.UpdateFileds("", "", "");
         }
 
         private void ZapFieldsForTitle(ref XmlTextReader XmlReader) {

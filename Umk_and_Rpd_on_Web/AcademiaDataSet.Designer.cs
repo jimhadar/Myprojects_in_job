@@ -4425,11 +4425,8 @@ namespace Umk_and_Rpd_on_Web {
                 this.columnId_RPD_or_UMK.AllowDBNull = false;
                 this.columnId_RPD_or_UMK.ReadOnly = true;
                 this.columnId_RPD_or_UMK.Unique = true;
-                this.columnUMK_or_RPD.AllowDBNull = false;
-                this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 300;
                 this.columnCodSpec.MaxLength = 50;
-                this.columnContents.AllowDBNull = false;
                 this.columnContents.MaxLength = 2147483647;
             }
             
@@ -14504,7 +14501,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool UMK_or_RPD {
                 get {
-                    return ((bool)(this[this.tableUMK_and_RPD.UMK_or_RPDColumn]));
+                    try {
+                        return ((bool)(this[this.tableUMK_and_RPD.UMK_or_RPDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UMK_or_RPD\' в таблице \'UMK_and_RPD\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD.UMK_or_RPDColumn] = value;
@@ -14515,7 +14517,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD.NameColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Name\' в таблице \'UMK_and_RPD\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD.NameColumn] = value;
@@ -14670,7 +14677,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Contents {
                 get {
-                    return ((string)(this[this.tableUMK_and_RPD.ContentsColumn]));
+                    try {
+                        return ((string)(this[this.tableUMK_and_RPD.ContentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Contents\' в таблице \'UMK_and_RPD\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableUMK_and_RPD.ContentsColumn] = value;
@@ -14691,6 +14703,30 @@ namespace Umk_and_Rpd_on_Web {
                 set {
                     this[this.tableUMK_and_RPD.Tmp_contentsColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUMK_or_RPDNull() {
+                return this.IsNull(this.tableUMK_and_RPD.UMK_or_RPDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUMK_or_RPDNull() {
+                this[this.tableUMK_and_RPD.UMK_or_RPDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tableUMK_and_RPD.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameNull() {
+                this[this.tableUMK_and_RPD.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14799,6 +14835,18 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDateSaveNull() {
                 this[this.tableUMK_and_RPD.DateSaveColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContentsNull() {
+                return this.IsNull(this.tableUMK_and_RPD.ContentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContentsNull() {
+                this[this.tableUMK_and_RPD.ContentsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22123,9 +22171,10 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPrepOnPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "UPDATE       UMK_and_RPD\r\nSET                Tmp_contents = @Tmp_Contents\r\nWHERE " +
-                "       (Id_RPD_or_UMK = @id_RPD_or_UMK)";
+            this._commandCollection[7].CommandText = "UPDATE       UMK_and_RPD\r\nSET                DateSave = @DateSave, Tmp_contents =" +
+                " @Tmp_Contents\r\nWHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateSave", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateSave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tmp_Contents", global::System.Data.SqlDbType.VarBinary, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Tmp_contents", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_RPD_or_UMK", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -22187,8 +22236,13 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id_RPD_or_UMK) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id_RPD_or_UMK));
+        public virtual int Delete(global::System.Nullable<int> Original_Id_RPD_or_UMK) {
+            if ((Original_Id_RPD_or_UMK.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id_RPD_or_UMK.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22209,10 +22263,15 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(bool UMK_or_RPD, string Name, global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<int> CodPrep, global::System.Nullable<short> CodSub, global::System.Nullable<short> Year, object Contents, global::System.Nullable<global::System.DateTime> DateSave, global::System.Nullable<int> CodPrepWhoEdit, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodFormStudy, global::System.Nullable<byte> CodTypeEdu, string CodSpeciality, byte[] Tmp_contents) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((bool)(UMK_or_RPD));
+        public virtual int Insert(global::System.Nullable<bool> UMK_or_RPD, string Name, global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<int> CodPrep, global::System.Nullable<short> CodSub, global::System.Nullable<short> Year, object Contents, global::System.Nullable<global::System.DateTime> DateSave, global::System.Nullable<int> CodPrepWhoEdit, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodFormStudy, global::System.Nullable<byte> CodTypeEdu, string CodSpeciality, byte[] Tmp_contents) {
+            if ((UMK_or_RPD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((bool)(UMK_or_RPD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Name == null)) {
-                throw new global::System.ArgumentNullException("Name");
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
@@ -22248,7 +22307,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Contents == null)) {
-                throw new global::System.ArgumentNullException("Contents");
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = ((object)(Contents));
@@ -22316,7 +22375,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    bool UMK_or_RPD, 
+                    global::System.Nullable<bool> UMK_or_RPD, 
                     string Name, 
                     global::System.Nullable<byte> CodFac, 
                     global::System.Nullable<byte> CodKaf, 
@@ -22331,10 +22390,15 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
                     global::System.Nullable<byte> CodFormStudy, 
                     global::System.Nullable<byte> CodTypeEdu, 
                     byte[] Tmp_contents, 
-                    int id_RPD_or_UMK) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((bool)(UMK_or_RPD));
+                    global::System.Nullable<int> id_RPD_or_UMK) {
+            if ((UMK_or_RPD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((bool)(UMK_or_RPD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Name == null)) {
-                throw new global::System.ArgumentNullException("Name");
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
@@ -22370,7 +22434,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Contents == null)) {
-                throw new global::System.ArgumentNullException("Contents");
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(Contents));
@@ -22417,7 +22481,12 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((byte[])(Tmp_contents));
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(id_RPD_or_UMK));
+            if ((id_RPD_or_UMK.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(id_RPD_or_UMK.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22437,9 +22506,14 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual byte[] Get_TmpContents(int id_umk_rpd) {
+        public virtual byte[] Get_TmpContents(global::System.Nullable<int> id_umk_rpd) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
-            command.Parameters[0].Value = ((int)(id_umk_rpd));
+            if ((id_umk_rpd.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(id_umk_rpd.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22466,9 +22540,14 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetCodPEWhoEdit(int Id) {
+        public virtual global::System.Nullable<int> GetCodPEWhoEdit(global::System.Nullable<int> Id) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((int)(Id));
+            if ((Id.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(Id.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22495,9 +22574,14 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual string GetContents(int Id_RPD_or_UMK) {
+        public virtual string GetContents(global::System.Nullable<int> Id_RPD_or_UMK) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            command.Parameters[0].Value = ((int)(Id_RPD_or_UMK));
+            if ((Id_RPD_or_UMK.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(Id_RPD_or_UMK.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -22524,7 +22608,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object GetId(global::System.Nullable<short> CodSub, bool UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKaf, global::System.Nullable<int> CodPrepPlan) {
+        public virtual object GetId(global::System.Nullable<short> CodSub, global::System.Nullable<bool> UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKaf, global::System.Nullable<int> CodPrepPlan) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((CodSub.HasValue == true)) {
                 command.Parameters[0].Value = ((short)(CodSub.Value));
@@ -22532,7 +22616,12 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
             else {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            command.Parameters[1].Value = ((bool)(UMK_or_RPD));
+            if ((UMK_or_RPD.HasValue == true)) {
+                command.Parameters[1].Value = ((bool)(UMK_or_RPD.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((Year.HasValue == true)) {
                 command.Parameters[2].Value = ((short)(Year.Value));
             }
@@ -22611,7 +22700,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual object GetRow(global::System.Nullable<short> CodSub, global::System.Nullable<int> CodPlan, bool UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<int> CodPrepOnPlan) {
+        public virtual object GetRow(global::System.Nullable<short> CodSub, global::System.Nullable<int> CodPlan, global::System.Nullable<bool> UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<int> CodPrepOnPlan) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((CodSub.HasValue == true)) {
                 command.Parameters[0].Value = ((short)(CodSub.Value));
@@ -22625,7 +22714,12 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
             else {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
-            command.Parameters[2].Value = ((bool)(UMK_or_RPD));
+            if ((UMK_or_RPD.HasValue == true)) {
+                command.Parameters[2].Value = ((bool)(UMK_or_RPD.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((Year.HasValue == true)) {
                 command.Parameters[3].Value = ((short)(Year.Value));
             }
@@ -22671,15 +22765,26 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateTmpContents(byte[] Tmp_Contents, int id_RPD_or_UMK) {
+        public virtual int UpdateTmpContents(global::System.Nullable<global::System.DateTime> DateSave, byte[] Tmp_Contents, global::System.Nullable<int> id_RPD_or_UMK) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
-            if ((Tmp_Contents == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
+            if ((DateSave.HasValue == true)) {
+                command.Parameters[0].Value = ((System.DateTime)(DateSave.Value));
             }
             else {
-                command.Parameters[0].Value = ((byte[])(Tmp_Contents));
+                command.Parameters[0].Value = global::System.DBNull.Value;
             }
-            command.Parameters[1].Value = ((int)(id_RPD_or_UMK));
+            if ((Tmp_Contents == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((byte[])(Tmp_Contents));
+            }
+            if ((id_RPD_or_UMK.HasValue == true)) {
+                command.Parameters[2].Value = ((int)(id_RPD_or_UMK.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

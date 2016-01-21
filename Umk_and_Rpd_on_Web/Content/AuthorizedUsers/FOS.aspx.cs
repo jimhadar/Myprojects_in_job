@@ -49,12 +49,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     if (data.Id_rpd != null) {
                         BinFormat.Serialize(MemStream, data);
                         MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_rpd);
+                        adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_rpd);
                     }
                     if (data.Id_umk != null) {
                         BinFormat.Serialize(MemStream, data);
                         MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_umk);
+                        adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_umk);
                     }
                 }
             }
@@ -112,6 +112,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 ((HtmlTextArea)htmlRow.Cells[4].Controls[0]).Value = fosTable[i, "TypeandNumberInFos"].ToString();
                 ((HtmlTextArea)htmlRow.Cells[5].Controls[0]).Value = fosTable[i, "Criteria"].ToString();
             }
+        }
+
+        protected void Button_for_pred_page_Click(object sender, EventArgs e) {
+            Response.Redirect("~/UMK");
         }
     }
 }

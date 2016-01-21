@@ -43,4 +43,16 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <asp:UpdatePanel ID="UpdatePanel_SaveFos" runat="server">
+        <ContentTemplate>
+            <asp:UpdateProgress ID="UpdateProgress_SaveFos" runat="server" AssociatedUpdatePanelID="UpdatePanel_SaveFos">
+                <ProgressTemplate>
+                    Подождите, идет формирование документа Фонда оценочных средств...               
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+            <div runat="server" id="Link_ToFos">
+                <asp:Button ID="SaveFos_btn" runat="server" Text="Сформировать ФОС" CssClass="bttn" OnClick="SaveFos_btn_Click" />
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

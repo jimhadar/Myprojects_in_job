@@ -24,6 +24,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
 
             }
             Page.Title = "Формирование файла *.docx";
+            /*if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
+                this.SaveFos_btn.Visible = false;
+            } */
         }
 
         protected void SaveRPD_Click(object sender, EventArgs e) {
@@ -83,6 +86,24 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected void Button_toEditRPD_Click(object sender, EventArgs e) {
             ((Data_for_program)Session["data"]).DeleteDocFiles();
             Response.Redirect("~/Title");
+        }
+
+        protected void SaveFos_btn_Click(object sender, EventArgs e) {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            //сохраняем УМК из состояния сеанса в базу данных
+            Data_for_program data = (Data_for_program)Session["data"];
+            string path = String.Empty;
+            if (data != null) {
+                path = data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveFOS, Request.PhysicalApplicationPath, Request.ApplicationPath);
+            }
+            sw.Stop();
+            HtmlGenericControl a = new HtmlGenericControl("a");
+            a.Attributes.Add("href", path);
+            a.InnerText = "Скачать ФОС";
+            a.Attributes.Add("class", "btn");
+            a.Attributes.Add("type", "application/file");
+            this.Link_ToFos.Controls.Add(a);
         }
     }
 }

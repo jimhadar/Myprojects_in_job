@@ -82,6 +82,7 @@
     <Content Include="App_Themes\Style_for_MainMasterPage.css" />
     <Content Include="Content\AuthorizedUsers\FindRpdForm.aspx" />
     <Content Include="Content\AuthorizedUsers\FOS.aspx" />
+    <Content Include="Content\AuthorizedUsers\Question.aspx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.xslt" />
     <Content Include="Default.aspx" />
     <Content Include="background.jpg" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\FOS.aspx.designer.cs">
       <DependentUpon>FOS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Question.aspx.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Question.aspx.designer.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

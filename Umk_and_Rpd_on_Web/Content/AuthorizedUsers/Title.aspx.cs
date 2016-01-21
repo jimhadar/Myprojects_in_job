@@ -269,11 +269,13 @@ namespace Umk_and_Rpd_on_Web {
                                                     CodPlan,
                                                     Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
                                                     Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue, 
+                                                    this.DropDownList_Speciality.SelectedValue,
                                                     null);
                             data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
                         }
                     }
+                    Response.Redirect("~/Question");
+                    return;                    
                 }
                 else {                     
                     using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
@@ -302,18 +304,6 @@ namespace Umk_and_Rpd_on_Web {
         protected void KafsDropDownList_SelectedIndexChanged(object sender, EventArgs e) {
             Session["CodKafPrep"] = Convert.ToByte(this.DropDownList_KafDiscip.SelectedValue);
             ((Data_for_program)Session["data"]).CodKafPrep = (byte?)Session["CodKafPrep"];
-        }
-
-        protected void Button_for_GoalsDiscip_Click(object sender, EventArgs e) {
-            Response.Redirect("Competetion.aspx");
-        }
-
-        protected void Button_for_MethodUkaz_Click(object sender, EventArgs e) {
-            Response.Redirect("SoderjRazdDiscip.aspx");
-        }
-
-        protected void Button_for_InfUMK_or_RPD_Click(object sender, EventArgs e) {
-            Response.Redirect("UMK/UMK.aspx");
         }
 
         protected void Button_next_page_Click(object sender, EventArgs e) {

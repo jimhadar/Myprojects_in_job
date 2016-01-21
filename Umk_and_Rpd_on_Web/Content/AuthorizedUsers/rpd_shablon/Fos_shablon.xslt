@@ -39,7 +39,7 @@
               <w:sz w:val="28"/>
               <w:szCs w:val="28"/>
             </w:rPr>
-            <w:t>Читинский институ (филиал)</w:t>
+            <w:t>Читинский институт (филиал)</w:t>
           </w:r>
         </w:p>
         <w:p w:rsidR="00ED131A" w:rsidRPr="00ED131A" w:rsidRDefault="00ED131A" w:rsidP="00ED131A">
@@ -58,7 +58,7 @@
               <w:sz w:val="28"/>
               <w:szCs w:val="28"/>
             </w:rPr>
-            <w:t>ФГБОУ ВПО «БАЙКАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</w:t>
+            <w:t>ФГБОУ ВО «БАЙКАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</w:t>
           </w:r>
         </w:p>
         <w:p w:rsidR="009608D3" w:rsidRPr="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
@@ -475,82 +475,6 @@
             </w:rPr>
           </w:pPr>
         </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRPr="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRPr="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:ind w:left="4476"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
-        <w:p w:rsidR="009608D3" w:rsidRPr="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
-          <w:pPr>
-            <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
-            <w:rPr>
-              <w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>
-              <w:sz w:val="28"/>
-              <w:szCs w:val="28"/>
-            </w:rPr>
-          </w:pPr>
-        </w:p>
         <w:p w:rsidR="009608D3" w:rsidRPr="009608D3" w:rsidRDefault="009608D3" w:rsidP="009608D3">
           <w:pPr>
             <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
@@ -839,7 +763,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="NumberStr"/>
+                      <xsl:value-of select="@NumberStr"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -863,7 +787,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="NameTheme"/>
+                      <xsl:value-of select="@NameTheme"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -888,7 +812,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="Competetion"/>
+                      <xsl:value-of select="@Competetion"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -912,7 +836,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="ZUNS"/>
+                      <xsl:value-of select="@ZUNS"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -938,7 +862,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="TypeandNumberInFos"/>
+                      <xsl:value-of select="@TypeandNumberInFos"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -964,7 +888,7 @@
                       <w:szCs w:val="24"/>
                     </w:rPr>
                     <w:t>
-                      <xsl:value-of select="Criteria"/>
+                      <xsl:value-of select="@Criteria"/>
                     </w:t>
                   </w:r>
                 </w:p>
@@ -1063,7 +987,7 @@
               <w:sz w:val="28"/>
               <w:szCs w:val="28"/>
             </w:rPr>
-            <w:t>ФГБОУ ВПО «БАЙКАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</w:t>
+            <w:t>ФГБОУ ВО «БАЙКАЛЬСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ»</w:t>
           </w:r>
         </w:p>
         <w:p w:rsidR="00CC2E25" w:rsidRPr="00CC2E25" w:rsidRDefault="00CC2E25" w:rsidP="00CC2E25">

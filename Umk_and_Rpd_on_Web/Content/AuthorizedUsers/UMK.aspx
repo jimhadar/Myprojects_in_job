@@ -22,6 +22,7 @@
         </section>
      </section>
     <div>
+        <asp:Button ID="Button_next_page" CssClass="bttn btn-pred-and-next" runat="server" Text="Следующая страница >>" OnClick="Button_next_page_Click"/>
         <asp:Button ID="Button_for_pred_page" CssClass="bttn btn-pred-and-next" runat="server" Text="<< Предыдущая страница" OnClick="Button_for_pred_page_Click" />
     </div>
     <script src="../../../Scripts/UMK.js"></script>

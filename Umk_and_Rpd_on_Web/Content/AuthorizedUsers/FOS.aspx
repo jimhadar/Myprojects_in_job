@@ -21,4 +21,7 @@
             </asp:Table>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <section>
+        <asp:Button ID="Button_for_pred_page" CssClass="bttn btn-pred-and-next" runat="server" Text="<< Предыдущая страница" OnClick="Button_for_pred_page_Click"/>
+    </section>
 </asp:Content>

@@ -125,12 +125,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                         if (data.Id_rpd != null) {
                             BinFormat.Serialize(MemStream, data);
                             MemStream.Seek(0, SeekOrigin.Begin);
-                            adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_rpd);
+                            adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_rpd);
                         }
                         if (data.Id_umk != null) {
                             BinFormat.Serialize(MemStream, data);
                             MemStream.Seek(0, SeekOrigin.Begin);
-                            adapter.UpdateTmpContents(MemStream.ToArray(), (int)data.Id_umk);
+                            adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_umk);
                         }
                     }
                 }

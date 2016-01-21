@@ -35,5 +35,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.UMK {
         protected void Button_for_pred_page_Click(object sender, EventArgs e) {
             Response.Redirect("~/RPD");
         }
+
+        protected void Button_next_page_Click(object sender, EventArgs e) {
+            Response.Redirect("~/FOS");
+        }
     }
 }

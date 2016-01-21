@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-//using DocumentFormat.OpenXml.Packaging;
-//using DocumentFormat.OpenXml.Wordprocessing;     
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;     
 
 namespace Umk_and_Rpd_on_Web {
     /// <summary>
@@ -810,7 +810,7 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 ZET = 0;
                 foreach (DataRow Row in academiaDataSet.StudyTerm.Rows) {
-                    ZET = Convert.ToInt32(Row["ECTScredits"].ToString());
+                    ZET += Convert.ToInt32(Row["ECTScredits"].ToString());
                 }
 
                 this.Course_Obuch = this.Get_Course_obuch(academiaDataSet.StudyTerm);
@@ -1451,6 +1451,8 @@ namespace Umk_and_Rpd_on_Web {
                                 "УМК" + "_" +
                                 this.shifr_discipline + "_" +
                                 this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
                                 this.Name_discipline + ".docx";
                     this.FilePathToUMK = save_path;
                     break;
@@ -1462,6 +1464,8 @@ namespace Umk_and_Rpd_on_Web {
                                 "Аннотация к РПД" + "_" +
                                 this.shifr_discipline + "_" +
                                 this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
                                 this.Name_discipline + ".docx";
                     this.FilePathToAnnotationRPD = save_path;
                     break;
@@ -1473,6 +1477,8 @@ namespace Umk_and_Rpd_on_Web {
                                 "ФОС" + "_" +
                                 this.shifr_discipline + "_" +
                                 this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" + 
+                                this.specialization + "_" + 
                                 this.Name_discipline + ".docx";
                     this.FilePathToFos = save_path;
                     break;
@@ -1506,7 +1512,7 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                /*using (WordprocessingDocument output =
+                using (WordprocessingDocument output =
                   WordprocessingDocument.Open(outputDocument, true)) {
                     //использование элемента тело в новой 
                     //содержимому xmldocument создать новый открытый объект xml тела.
@@ -1516,7 +1522,7 @@ namespace Umk_and_Rpd_on_Web {
                     output.MainDocumentPart.Document.Body = updatedbodycontent;
                     //сохраните обновленный выходной документ.
                     output.MainDocumentPart.Document.Save();
-                }*/ 
+                } 
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }

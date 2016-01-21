@@ -3604,10 +3604,6 @@
               <w:pStyle w:val="a3"/>
               <w:ind w:left="0" w:firstLine="709"/>
               <w:jc w:val="both"/>
-              <w:numPr>
-                <w:ilvl w:val="0"/>
-                <w:numId w:val="4"/>
-              </w:numPr>
               <w:rPr>
                 <w:sz w:val="24"/>
                 <w:szCs w:val="24"/>

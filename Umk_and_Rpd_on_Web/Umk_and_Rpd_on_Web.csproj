@@ -81,6 +81,7 @@
     <Content Include="App_Themes\StyleSheet_for_FindForm.css" />
     <Content Include="App_Themes\Style_for_MainMasterPage.css" />
     <Content Include="Content\AuthorizedUsers\FindRpdForm.aspx" />
+    <Content Include="Content\AuthorizedUsers\for_admin\AdminForm.aspx" />
     <Content Include="Content\AuthorizedUsers\FOS.aspx" />
     <Content Include="Content\AuthorizedUsers\Question.aspx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.xslt" />
@@ -113,6 +114,7 @@
     <Content Include="Content\AuthorizedUsers\NestedMasterPage1.master" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Краткое руководство пользователя Веб-версии для составления РПДУМК.docx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.docx" />
+    <Content Include="Content\AuthorizedUsers\for_admin\Web.config" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\AnnotationToRPD_template.docx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\RPD_template.docx" />
@@ -159,6 +161,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\FindRpdForm.aspx.designer.cs">
       <DependentUpon>FindRpdForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\for_admin\AdminForm.aspx.cs">
+      <DependentUpon>AdminForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\for_admin\AdminForm.aspx.designer.cs">
+      <DependentUpon>AdminForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\AuthorizedUsers\FOS.aspx.cs">
       <DependentUpon>FOS.aspx</DependentUpon>

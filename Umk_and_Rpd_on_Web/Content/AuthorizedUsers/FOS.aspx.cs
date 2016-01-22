@@ -32,11 +32,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected void Page_Load(object sender, EventArgs e) {
             FosTable fosTable = ((Data_for_program)Session["data"]).fosTable;       
             if (Page.IsPostBack) {                
-                for (int i = 0; i < fosTable.RowCount; i++ ) {
-                    HtmlSelect seleclCompet = ((HtmlSelect)Table1.Rows[i + 1].Cells[2].Controls[0]);
+                for (int i = 0; i < fosTable.RowCount; i++ ) {                                
                     fosTable.EditRow(i, 
                                     fosTable[i, "NameTheme"].ToString(), 
-                                    seleclCompet.Items[seleclCompet.SelectedIndex].Text,
+                                    ((TextBox)Table1.Rows[i + 1].Cells[2].Controls[0]).Text.Trim(),
                                     ((HtmlTextArea)Table1.Rows[i + 1].Cells[3].Controls[0]).Value,
                                     ((HtmlTextArea)Table1.Rows[i + 1].Cells[4].Controls[0]).Value,
                                     ((HtmlTextArea)Table1.Rows[i + 1].Cells[5].Controls[0]).Value);
@@ -75,6 +74,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 item.Text = compRow["AbbrComp"].ToString();
                 compSelect.Items.Add(item);
             }
+            compSelect.Attributes.Add("oninput", "FOS.AddTextToTextBoxCompet(event)");
+            TextBox textBox = new TextBox();
+            textBox.Style.Add(HtmlTextWriterStyle.Width, "100%");
+            htmlRow.Cells[2].Controls.Add(textBox);
             htmlRow.Cells[2].Controls.Add(compSelect);
             HtmlTextArea textArea = new HtmlTextArea();
             textArea.Attributes.Add("class", "TextBoxStyle");
@@ -95,19 +98,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         private void UpdateHtmlTable(FosTable fosTable) {
             TableRow htmlRow;
             for (int i = 0; i < fosTable.RowCount; i++) {
-                htmlRow = this.Table1.Rows[i + 1];
-                HtmlSelect selectCompet = (HtmlSelect)htmlRow.Cells[2].Controls[0];
-                if (fosTable[i, "NameTheme"].ToString() != "Итого по текущей аттестации") {
-                    foreach (ListItem item in selectCompet.Items) {
-                        if (item.Text == fosTable[i, "Competetion"].ToString()) {
-                            item.Selected = true;
-                            break;
-                        }
-                    }
+                htmlRow = this.Table1.Rows[i + 1];                                                     
+                if (fosTable[i, "NameTheme"].ToString() == "Итого по текущей аттестации") {
+                    HtmlSelect selectCompet = (HtmlSelect)htmlRow.Cells[2].Controls[1];
+                    selectCompet.Visible = false;                    
                 }
-                else {
-                    selectCompet.Visible = false;
-                }
+                ((TextBox)htmlRow.Cells[2].Controls[0]).Text = fosTable[i, "Competetion"].ToString().Trim();
                 ((HtmlTextArea)htmlRow.Cells[3].Controls[0]).Value = fosTable[i, "ZUNS"].ToString();
                 ((HtmlTextArea)htmlRow.Cells[4].Controls[0]).Value = fosTable[i, "TypeandNumberInFos"].ToString();
                 ((HtmlTextArea)htmlRow.Cells[5].Controls[0]).Value = fosTable[i, "Criteria"].ToString();

@@ -1522,7 +1522,7 @@ namespace Umk_and_Rpd_on_Web {
                     output.MainDocumentPart.Document.Body = updatedbodycontent;
                     //сохраните обновленный выходной документ.
                     output.MainDocumentPart.Document.Save();
-                } 
+                }   
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -1993,10 +1993,10 @@ namespace Umk_and_Rpd_on_Web {
                 for (int i = 0; i < fosTable1.RowCount; i++) {
                     int numRow = fosTable.FindRowByNameTheme(fosTable1[i, "NameTheme"].ToString());
                     if (numRow >= 0) {
-                        fosTable1.EditRow(i, fosTable[numRow, "NameTheme"].ToString(),
+                        fosTable1.EditRow(i, fosTable1[i, "NameTheme"].ToString(),
                                             fosTable[numRow, "Competetion"].ToString(),
                                             fosTable[numRow, "ZUNS"].ToString(),
-                                            fosTable[numRow, "TypeandNumberInFos"].ToString(),
+                                            fosTable1[i, "TypeandNumberInFos"].ToString(),
                                             fosTable[numRow, "Criteria"].ToString());
                     }
                 }

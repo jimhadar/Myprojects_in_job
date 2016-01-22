@@ -23,12 +23,12 @@
     <asp:TextBox ID="TextBox_for_PlaceOOP" runat="server" CssClass="TextBoxStyle" TextMode="MultiLine" ClientIDMode="Static"></asp:TextBox>
     <br/>
     <br/>
-    <hr class="hrStyle"/>
+    <hr/>
     <%--Пояснительная записка, Место дисциплины в структуре ООП бакалавриата--%>
     <h2>Компетенции обучающегося</h2>
-    <%--Описание компетенций--%>
+    <%--Описание компетенций--%>    
     <div>
-        <asp:GridView ID="CompetetionGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="IdCompet" DataSourceID="ObjectDataSource_Competetion" HorizontalAlign="Left" ViewStateMode="Disabled" EnableViewState="false" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView" ClientIDMode="Static"> 
+        <asp:GridView ID="CompetetionGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="IdCompet" DataSourceID="ObjectDataSource_Competetion" HorizontalAlign="Left" ViewStateMode="Disabled" EnableViewState="false" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView" ClientIDMode="Static" Width="100%"> 
             <Columns>
                 <asp:BoundField DataField="AbbrComp" HeaderText="Компетенция" SortExpression="AbbrComp" />
                 <asp:BoundField DataField="AboutComp" HeaderText="Описание компетенции" SortExpression="AboutComp" />

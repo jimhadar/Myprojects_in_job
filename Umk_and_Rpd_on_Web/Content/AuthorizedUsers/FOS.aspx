@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="FOS.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Content.AuthorizedUsers.FOS" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <asp:ScriptManager runat="server" />
+    <script src="../../Scripts/FOS.js">
+
+    </script>
     <div>
         <asp:Timer runat="server" Interval="600000" ID="Timer1"></asp:Timer>
     </div>

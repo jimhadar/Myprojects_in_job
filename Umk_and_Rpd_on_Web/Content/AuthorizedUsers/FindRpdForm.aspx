@@ -7,6 +7,10 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>            
             <span style="font-size:0.75em;font-weight:600;display:block;">Выберите параметры на основе которых будет осуществляться поиск:</span>
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                <asp:ListItem Selected="True" Value="0">РПД</asp:ListItem>
+                <asp:ListItem Value="1">УМК</asp:ListItem>
+            </asp:RadioButtonList>
             <label class="label_FindForm">
                 <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_StudyYear" checked="checked" />
                 Учебный год</label>
@@ -78,7 +82,7 @@
             <br />
             <asp:Table runat="server" ID="Table_find_rpd" ClientIDMode="Static" CssClass="GridViewCss_FindForm" Font-Size="0.9em">
                 <asp:TableHeaderRow HorizontalAlign="Center">
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="УМК/РПД"></asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="№ п/п"></asp:TableHeaderCell>
                     <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Год"></asp:TableHeaderCell>
                     <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Тип обучения"></asp:TableHeaderCell>
                     <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Направление подготовки"></asp:TableHeaderCell>
@@ -88,7 +92,7 @@
                     <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Преподаватель по нагрузке"></asp:TableHeaderCell>
                     <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Кем выполнено"></asp:TableHeaderCell>
                 </asp:TableHeaderRow>
-            </asp:Table>
+            </asp:Table>            
         </ContentTemplate>    
     </asp:UpdatePanel>
     </asp:Content>

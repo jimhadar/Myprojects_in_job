@@ -65,7 +65,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                     CodPlan = Convert.ToInt32(this.DropDownList_StudyPlan.SelectedValue);
                 }
                 AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable tmpTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
-                adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit);
+                //adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit);
                 foreach (AcademiaDataSet.UMK_and_RPD_with_opisanieRow Row in tmpTable.Rows) {
                     TableRow HtmlTableRow = new TableRow();
                     for (int i = 0; i < 9; i++) {

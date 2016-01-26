@@ -44,16 +44,18 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                     BinaryFormatter BinFormat = new BinaryFormatter();
                     Data_for_program data = (Data_for_program)Session["data"];
-                    MemoryStream MemStream = new MemoryStream();
-                    if (data.Id_rpd != null) {
-                        BinFormat.Serialize(MemStream, data);
-                        MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_rpd);
-                    }
-                    if (data.Id_umk != null) {
-                        BinFormat.Serialize(MemStream, data);
-                        MemStream.Seek(0, SeekOrigin.Begin);
-                        adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_umk);
+                    if ((bool?)Session["AllowEditRpd"] == true) {
+                        MemoryStream MemStream = new MemoryStream();
+                        if (data.Id_rpd != null) {
+                            BinFormat.Serialize(MemStream, data);
+                            MemStream.Seek(0, SeekOrigin.Begin);
+                            adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_rpd);
+                        }
+                        if (data.Id_umk != null) {
+                            BinFormat.Serialize(MemStream, data);
+                            MemStream.Seek(0, SeekOrigin.Begin);
+                            adapter.UpdateTmpContents(DateTime.Now, MemStream.ToArray(), (int)data.Id_umk);
+                        }
                     }
                 }
             }

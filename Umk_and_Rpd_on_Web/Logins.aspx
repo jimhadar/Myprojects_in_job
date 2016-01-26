@@ -16,6 +16,5 @@
         <SelectParameters>
             <asp:SessionParameter DefaultValue="2015" Name="StudyYear" SessionField="Year" />
         </SelectParameters>
-    </asp:SqlDataSource>
-    
+    </asp:SqlDataSource>    
 </asp:Content>

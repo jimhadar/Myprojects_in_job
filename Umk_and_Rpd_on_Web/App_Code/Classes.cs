@@ -445,7 +445,7 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodTypeEdu,
                                                     this.CodSpeciality, 
                                                     null);
-                            this.Id_rpd = UMK_rpd_adapter.GetMaxID();
+                            this.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, (short?)this.UchYear, CodPlan, this.CodKafPrep, this.CodPrep);
                             break;
                         //в базе данных уже есть такая РПД с Id = Id_rpd
                         //тогда обновляем данные в базе данных
@@ -487,7 +487,7 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.CodTypeEdu,
                                                     this.CodSpeciality,
                                                     null);
-                            this.Id_umk = UMK_rpd_adapter.GetMaxID();
+                            this.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, (short?)this.UchYear, CodPlan, this.CodKafPrep, this.CodPrep);
                             break;
                         //в базе данных уже есть такая УМК с Id = Id_umk
                         //тогда обновляем данные в базе данных

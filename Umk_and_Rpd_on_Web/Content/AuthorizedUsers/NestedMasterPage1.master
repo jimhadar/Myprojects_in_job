@@ -51,7 +51,7 @@
         </section>
         <!--Для кнопки "Завершить редактирование"-->
         <section>
-            <asp:Button runat="server" ID="Button_for_EndEditUMK_RPD" Text="Завершить редактирование, перейти к сохранению РПД/УМК на ПК" CssClass="bttn btn-pred-and-next" OnClick="Button_for_EndEditUMK_RPD_Click"/>
+            <asp:Button runat="server" ID="Button_for_EndEditUMK_RPD" Text="Завершить редактирование, перейти к сохранению РПД/УМК на ПК" CssClass="bttn btn-pred-and-next" OnClick="Button_for_EndEditUMK_RPD_Click" Visible="False" />
         </section>
     </section>       
         <!--Сайдбар-->

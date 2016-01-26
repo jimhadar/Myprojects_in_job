@@ -40,6 +40,7 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodPlan"] = 0;
             }
         }              
+
         protected void Page_Load(object sender, EventArgs e) {
             if (Session["data"] == null) {
                 Session["data"] = new Data_for_program( (int)Session["CodPrepWhoEdit"],
@@ -207,6 +208,8 @@ namespace Umk_and_Rpd_on_Web {
 
         protected void NagruzkaOnPrepGridView_SelectedIndexChanged(object sender, EventArgs e) {
             if(NagruzkaOnPrepGridView.SelectedRow != null){
+                //сохранение временно кода предмета, для которого ранее заполнялась РПД
+                int oldCodSub = Convert.ToInt16(Session["CodSub"]);
                 Session["CodSub"] = Convert.ToInt16(this.NagruzkaOnPrepGridView.SelectedRow.Cells[2].Text);
 
                 Session["CodPrep_Plan"] = Convert.ToInt32(this.NagruzkaOnPrepGridView.SelectedRow.Cells[4].Text);
@@ -216,7 +219,7 @@ namespace Umk_and_Rpd_on_Web {
                 short StudyYear = Convert.ToInt16(Session["UchYear"]);
                 byte CodKafDiscip = (byte)Session["CodKafPrep"];
                 int? CodPrepPlan = (int?)Session["CodPrep_Plan"];
-
+                
                 backcolor_Items_for_GridView();
                 CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины\"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
                 int? id_rpd, id_umk;
@@ -235,8 +238,8 @@ namespace Umk_and_Rpd_on_Web {
                     data.LoadDataToProgramFromDataBase();
                 }
                 //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
-                if(id_rpd == null || id_umk == null){
-                    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                    if(id_rpd == null || id_umk == null){
                         if (id_rpd == null) {
                             UMK_rpd_adapter.Insert(false,
                                                     String.Empty,
@@ -254,6 +257,14 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.DropDownList_Speciality.SelectedValue,
                                                     null);
                             data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
+                            //если новая РПД, выбранная для заполнения дисциплины с кодом CodSub == oldCodSub, то перенаправляем на страницу Question для того,
+                            //чтобы узнать, необходимо ли оставить старые данные и использовать их для заполнения новой РПД
+                            if(oldCodSub == CodSub){
+                                Response.Redirect("~/Question");
+                            }
+                            else {
+                                data.ClearAllFields();
+                            }
                         }
                         if (id_umk == null) {
                             UMK_rpd_adapter.Insert(true,
@@ -272,13 +283,9 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.DropDownList_Speciality.SelectedValue,
                                                     null);
                             data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                        }
+                        }                     
                     }
-                    Response.Redirect("~/Question");
-                    return;                    
-                }
-                else {                     
-                    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                    else {                     
                         //содержимое поля tmpContents
                         //если оно не пустое, то загружаем данные класса в него
                         //а не из поля, содержащего *.xml данные
@@ -290,6 +297,15 @@ namespace Umk_and_Rpd_on_Web {
                                 Session["data"] = (Data_for_program)BinFormat.Deserialize(MemStream);                                  
                             }
                         }
+                    }
+                    //Получаем код преподавателя, который создал РПД и имеет право ее редактировать и если
+                    //он совпадает с кодом вошедшего преподавателя, то разрешаем редактирование
+                    if (UMK_rpd_adapter.GetCodPEWhoEdit(data.Id_rpd) == (int?)Session["CodPrepWhoEdit"]) {
+                        Session["AllowEditRpd"] = true;
+                    }
+                    else {
+                        Session["AllowEditRpd"] = false;
+                        this.CurrentSelectSub.InnerText = "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
                     }
                 }
             }

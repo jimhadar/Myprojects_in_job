@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Umk_and_Rpd_on_Web;
+using System.Data;
 
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
     public partial class FindRpdForm : System.Web.UI.Page {
@@ -66,14 +67,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     CodPlan = Convert.ToInt32(this.DropDownList_StudyPlan.SelectedValue);
                 }
                 AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable tmpTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
-                adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit);                    
-                foreach(AcademiaDataSet.UMK_and_RPD_with_opisanieRow Row in tmpTable.Rows){
+                adapter.Fill(tmpTable, CodFac, CodKaf, Year, CodPlan, CodSpeciality, CodTypeEdu, CodFormStudy, PrepodWhoEdit, this.RadioButtonList1.SelectedIndex == 0 ? false : true);                    
+                for(int i = 0; i < tmpTable.Rows.Count; i++){
+                    DataRow Row = tmpTable.Rows[i];
                     TableRow HtmlTableRow = new TableRow();
-                    for (int i = 0; i < 9; i++ ) {
+                    for (int j = 0; j < 9; j++ ) {
                         HtmlTableRow.Cells.Add(new TableCell());
-                        HtmlTableRow.Cells[i].CssClass = "GridViewCss_FindForm";
+                        HtmlTableRow.Cells[j].CssClass = "GridViewCss_FindForm";
                     }
-                    HtmlTableRow.Cells[0].Text = Row["UMKRPD"] != null ? Row["UMKRPD"].ToString() : String.Empty;
+                    HtmlTableRow.Cells[0].Text = (i + 1).ToString();
                     HtmlTableRow.Cells[1].Text = Row["Year"] != null ? Row["Year"].ToString() : String.Empty;
                     HtmlTableRow.Cells[2].Text = Row["TypeEdu"] != null ? Row["TypeEdu"].ToString() : String.Empty;
                     HtmlTableRow.Cells[3].Text = Row["Speciality"] != null ? Row["Speciality"].ToString() : String.Empty;

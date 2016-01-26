@@ -10,11 +10,21 @@ using System.Web.UI.HtmlControls;
 
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
     public partial class save : System.Web.UI.Page {
-        protected void Page_Load(object sender, EventArgs e) {               
+        protected void Page_Load(object sender, EventArgs e) {
+            Page.Title = "Формирование файла *.docx";
             if (!Page.IsPostBack) {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 Data_for_program data = (Data_for_program)Session["data"];
+                using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                    if ((bool?)Session["AllowEditRpd"] == false) {
+                        this.SaveAnnotation_btn.Visible = false;
+                        this.SaveFos_btn.Visible = false;
+                        this.SaveRPD_btn.Visible = false;
+                        this.SaveUMK_btn.Visible = false;
+                        return;
+                    }
+                }
                 data.GetValues();
                 Session["data"] = data;
                 data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveToDataBase, "", "");
@@ -22,8 +32,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             }
             else {
 
-            }
-            Page.Title = "Формирование файла *.docx";
+            } 
             /*if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
                 this.SaveFos_btn.Visible = false;
             } */

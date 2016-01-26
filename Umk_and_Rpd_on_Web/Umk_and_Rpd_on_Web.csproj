@@ -155,6 +155,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
     </Compile>
+    <Content Include="App_Code\ClassTimer.cs" />
     <Compile Include="Content\AuthorizedUsers\FindRpdForm.aspx.cs">
       <DependentUpon>FindRpdForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

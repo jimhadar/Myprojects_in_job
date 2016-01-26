@@ -22116,7 +22116,7 @@ WHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        Id_RPD_or_UMK, UMK_or_RPD, Name, CodFac, CodKaf, CodGroup, CodPrep," +
@@ -22125,58 +22125,70 @@ WHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        Tmp_contents\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_" +
-                "UMK = @id_umk_rpd)";
+            this._commandCollection[1].CommandText = "DELETE FROM UMK_and_RPD\r\nWHERE        (Name = \'\') AND (Tmp_contents IS NULL)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_umk_rpd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        CodPrepWhoDo\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_" +
-                "UMK = @Id)";
+            this._commandCollection[2].CommandText = "SELECT        Id_RPD_or_UMK, UMK_or_RPD, Name, CodFac, CodKaf, CodGroup, CodPrep," +
+                " CodSub, Year, CodSpec, CodTypeEdu, Contents, DateSave, Tmp_contents\r\nFROM      " +
+                "      UMK_and_RPD\r\nWHERE        (Name = N\'\') AND (Tmp_contents IS NOT NULL)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        Contents\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_UMK " +
-                "= @Id_RPD_or_UMK)";
+            this._commandCollection[3].CommandText = "SELECT        Id_RPD_or_UMK, UMK_or_RPD, Name, CodFac, CodKaf, CodGroup, CodPrep," +
+                " CodSub, Year, CodSpec, CodTypeEdu, Contents, DateSave, Tmp_contents\r\nFROM      " +
+                "      UMK_and_RPD\r\nWHERE        (Name <> N\'\') AND (Tmp_contents IS NOT NULL)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_RPD_or_UMK", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        Id_RPD_or_UMK\r\nFROM            UMK_and_RPD\r\nWHERE        (CodSub = " +
-                "@CodSub) AND (UMK_or_RPD = @UMK_or_RPD) AND (Year = @Year) AND (CodPlan = @CodPl" +
-                "an) AND (CodKaf = @CodKaf) AND (CodPrep = @CodPrepPlan OR CodPrep = 0)";
+            this._commandCollection[4].CommandText = "SELECT        Tmp_contents\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_" +
+                "UMK = @id_umk_rpd)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UMK_or_RPD", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPrepPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_umk_rpd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT        MAX(Id_RPD_or_UMK) AS Id_RPD_or_UMK\r\nFROM            UMK_and_RPD";
+            this._commandCollection[5].CommandText = "SELECT        CodPrepWhoDo\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_" +
+                "UMK = @Id)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = @"SELECT        UMK_or_RPD, Name, CodFac, CodKaf, CodPrep, CodSub, Year, CodSpec, CodTypeEdu, Contents, DateSave, CodGroup, Id_RPD_or_UMK, CodPlan, CodFormStudy, CodPrepWhoDo
-FROM            UMK_and_RPD
-WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_or_RPD) AND (Year = @Year) AND (CodKaf = @CodKafDiscip) and (CodPrep = @CodPrepOnPlan or @CodPrepOnPlan is null)";
+            this._commandCollection[6].CommandText = "SELECT        Contents\r\nFROM            UMK_and_RPD\r\nWHERE        (Id_RPD_or_UMK " +
+                "= @Id_RPD_or_UMK)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UMK_or_RPD", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPrepOnPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_RPD_or_UMK", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "UPDATE       UMK_and_RPD\r\nSET                DateSave = @DateSave, Tmp_contents =" +
-                " @Tmp_Contents\r\nWHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)";
+            this._commandCollection[7].CommandText = "SELECT        Id_RPD_or_UMK\r\nFROM            UMK_and_RPD\r\nWHERE        (CodSub = " +
+                "@CodSub) AND (UMK_or_RPD = @UMK_or_RPD) AND (Year = @Year) AND (CodPlan = @CodPl" +
+                "an) AND (CodKaf = @CodKaf) AND (CodPrep = @CodPrepPlan OR CodPrep = 0)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateSave", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateSave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tmp_Contents", global::System.Data.SqlDbType.VarBinary, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Tmp_contents", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_RPD_or_UMK", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UMK_or_RPD", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPrepPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = @"SELECT        UMK_or_RPD, Name, CodFac, CodKaf, CodPrep, CodSub, Year, CodSpec, CodTypeEdu, Contents, DateSave, CodGroup, Id_RPD_or_UMK, CodPlan, CodFormStudy, CodPrepWhoDo
+FROM            UMK_and_RPD
+WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_or_RPD) AND (Year = @Year) AND (CodKaf = @CodKafDiscip) and (CodPrep = @CodPrepOnPlan or @CodPrepOnPlan is null)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UMK_or_RPD", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPrepOnPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPrep", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = "UPDATE       UMK_and_RPD\r\nSET                DateSave = @DateSave, Tmp_contents =" +
+                " @Tmp_Contents\r\nWHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)";
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateSave", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateSave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tmp_Contents", global::System.Data.SqlDbType.VarBinary, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Tmp_contents", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_RPD_or_UMK", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_RPD_or_UMK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22198,6 +22210,54 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual AcademiaDataSet.UMK_and_RPDDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            AcademiaDataSet.UMK_and_RPDDataTable dataTable = new AcademiaDataSet.UMK_and_RPDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillDataWithNameEmpty(AcademiaDataSet.UMK_and_RPDDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.UMK_and_RPDDataTable GetDataWithNameEmpty() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            AcademiaDataSet.UMK_and_RPDDataTable dataTable = new AcademiaDataSet.UMK_and_RPDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillNotEmptyTmpContents(AcademiaDataSet.UMK_and_RPDDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.UMK_and_RPDDataTable GetDataNotEmptyTmpContents() {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             AcademiaDataSet.UMK_and_RPDDataTable dataTable = new AcademiaDataSet.UMK_and_RPDDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -22506,8 +22566,31 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual byte[] Get_TmpContents(global::System.Nullable<int> id_umk_rpd) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteEmptyStr() {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual byte[] Get_TmpContents(global::System.Nullable<int> id_umk_rpd) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((id_umk_rpd.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(id_umk_rpd.Value));
             }
@@ -22541,7 +22624,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<int> GetCodPEWhoEdit(global::System.Nullable<int> Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Id.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(Id.Value));
             }
@@ -22575,7 +22658,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual string GetContents(global::System.Nullable<int> Id_RPD_or_UMK) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((Id_RPD_or_UMK.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(Id_RPD_or_UMK.Value));
             }
@@ -22609,7 +22692,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object GetId(global::System.Nullable<short> CodSub, global::System.Nullable<bool> UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKaf, global::System.Nullable<int> CodPrepPlan) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
             if ((CodSub.HasValue == true)) {
                 command.Parameters[0].Value = ((short)(CodSub.Value));
             }
@@ -22672,36 +22755,8 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetMaxID() {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
-            }
-            else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual object GetRow(global::System.Nullable<short> CodSub, global::System.Nullable<int> CodPlan, global::System.Nullable<bool> UMK_or_RPD, global::System.Nullable<short> Year, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<int> CodPrepOnPlan) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
             if ((CodSub.HasValue == true)) {
                 command.Parameters[0].Value = ((short)(CodSub.Value));
             }
@@ -22766,7 +22821,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateTmpContents(global::System.Nullable<global::System.DateTime> DateSave, byte[] Tmp_Contents, global::System.Nullable<int> id_RPD_or_UMK) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
             if ((DateSave.HasValue == true)) {
                 command.Parameters[0].Value = ((System.DateTime)(DateSave.Value));
             }
@@ -28269,9 +28324,10 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                 "   @CodPlan IS NULL) AND (UMK_and_RPD.CodSpec = @CodSpeciality OR\r\n             " +
                 "            @CodSpeciality IS NULL) AND (UMK_and_RPD.CodTypeEdu = @CodTypeEdu OR" +
                 "\r\n                         @CodTypeEdu IS NULL) AND (UMK_and_RPD.CodFormStudy = " +
-                "@CodFormStudy OR\r\n                         @CodFormStudy IS NULL) and (PEOPLEN_1" +
-                ".FIO like \'%\' + @PrepodWhoEdit + \'%\' or @PrepodWhoEdit is null) and (Name <> \'\')" +
-                "";
+                "@CodFormStudy OR\r\n                         @CodFormStudy IS NULL) AND (PEOPLEN_1" +
+                ".FIO LIKE \'%\' + @PrepodWhoEdit + \'%\' OR\r\n                         @PrepodWhoEdit" +
+                " IS NULL) AND (UMK_and_RPD.Name <> \'\') AND (UMK_and_RPD.UMK_or_RPD = @Umk_or_Rpd" +
+                " or @Umk_or_Rpd is null)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFac", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -28281,13 +28337,14 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTypeEdu", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodTypeEdu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFormStudy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrepodWhoEdit", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PrepodWhoEdit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Umk_or_Rpd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable, global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<byte> CodTypeEdu, global::System.Nullable<byte> CodFormStudy, string PrepodWhoEdit) {
+        public virtual int Fill(AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable, global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<byte> CodTypeEdu, global::System.Nullable<byte> CodFormStudy, string PrepodWhoEdit, global::System.Nullable<bool> Umk_or_Rpd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((CodFac.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFac.Value));
@@ -28336,6 +28393,12 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(PrepodWhoEdit));
+            }
+            if ((Umk_or_Rpd.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((bool)(Umk_or_Rpd.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -28348,7 +28411,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable GetData(global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<byte> CodTypeEdu, global::System.Nullable<byte> CodFormStudy, string PrepodWhoEdit) {
+        public virtual AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable GetData(global::System.Nullable<byte> CodFac, global::System.Nullable<byte> CodKaf, global::System.Nullable<short> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<byte> CodTypeEdu, global::System.Nullable<byte> CodFormStudy, string PrepodWhoEdit, global::System.Nullable<bool> Umk_or_Rpd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((CodFac.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFac.Value));
@@ -28397,6 +28460,12 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[7].Value = ((string)(PrepodWhoEdit));
+            }
+            if ((Umk_or_Rpd.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((bool)(Umk_or_Rpd.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
             this.Adapter.Fill(dataTable);

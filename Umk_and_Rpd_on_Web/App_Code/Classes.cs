@@ -510,7 +510,7 @@ namespace Umk_and_Rpd_on_Web {
                                                     (int)this.Id_umk);
                             break;
                     }
-                }
+                }                                
                 return string.Empty;
             }
             else {
@@ -743,12 +743,12 @@ namespace Umk_and_Rpd_on_Web {
                 //SubsAdapter.Fill(academiaDataSet.Subs);
 
                 AcademiaDataSetTableAdapters.SubjectGrsTableAdapter SubjectAdapter = new AcademiaDataSetTableAdapters.SubjectGrsTableAdapter();
-                try {
+                /*try {
                     SubjectAdapter.Fill(academiaDataSet.SubjectGrs);
                 }
                 catch {
                     SubjectAdapter.Fill(academiaDataSet.SubjectGrs);
-                }
+                } */
 
                 AcademiaDataSetTableAdapters.StudyContentsTableAdapter StudyContentsAdapter = new AcademiaDataSetTableAdapters.StudyContentsTableAdapter();
                 //StudyContentsAdapter.Fill(academiaDataSet.StudyContents);
@@ -824,6 +824,8 @@ namespace Umk_and_Rpd_on_Web {
                 this.Semestr_Ekzamen = this.Get_Sem_Ekzamen(academiaDataSet.StudyExams);
 
                 this.CodSpecialty_for_XML = (SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan)) != null ? SpecialityAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString() : String.Empty;
+
+                AddOcenSredstvToTableOcenSredstvVPlane(OcenSredstvTable);
             }
         }
         #endregion
@@ -2014,6 +2016,42 @@ namespace Umk_and_Rpd_on_Web {
                                 string.Empty);
             }
             this.fosTable = fosTable1;
+        }
+        /// <summary>
+        /// добавляем формы текущего контроля успеваемости в таблицу ArmKaf_OcenSredstvVPlane
+        /// </summary>
+        private void AddOcenSredstvToTableOcenSredstvVPlane(AcademiaDataSet.OcenSredstvDataTable OcenSredstvTable) {
+            //для формирования запроса к таблице с формами текущего контроля успеваемости ип олучения массива строк
+            string selectQuery = string.Empty;
+            List<string> ocenSredstvListFromCurControl = new List<string>();
+            //формируем список форм текущего контроля успеваемости (аббревиатуры) с повторением
+            foreach(DataRow row in this.CurControlTable){
+                string tmp = row["FormCurControlColumn"].ToString().Trim();
+                //tmp.Replace(' ', Convert.ToChar(string.Empty));    
+                tmp = System.Text.RegularExpressions.Regex.Replace(tmp, " +", string.Empty);
+                if (tmp.Trim() != string.Empty) {
+                    if (tmp.IndexOf(',') > 0) {
+                        ocenSredstvListFromCurControl.AddRange(tmp.Split(','));
+                    }
+                    else {
+                        ocenSredstvListFromCurControl.Add(tmp.Trim());
+                    }
+                }                
+            }
+            //удаляем повторения
+            ocenSredstvListFromCurControl.Distinct<string>();
+            //составляем запрос к таблице OcenSredstvTable
+            foreach(string str in ocenSredstvListFromCurControl){
+                selectQuery += "AbbrSredstv = '" + str.Trim() + "' or ";
+            }
+            selectQuery = selectQuery.Substring(0, selectQuery.Length - 4);
+            DataRow[] tmpRows = OcenSredstvTable.Select(selectQuery);
+            using (AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter ocenSredstvVPlaneAdapter = new AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter()) {
+                ocenSredstvVPlaneAdapter.DeleteFromTable((int)this.CodPlan, (short)this.CodSub);
+                foreach (DataRow row in tmpRows) {
+                    ocenSredstvVPlaneAdapter.Insert1((int)this.CodPlan, (short)this.CodSub, Convert.ToInt16(row["IdSredstv"]));
+                }
+            }
         }
         #endregion
         

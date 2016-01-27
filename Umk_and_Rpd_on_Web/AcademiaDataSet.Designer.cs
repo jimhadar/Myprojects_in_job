@@ -76,6 +76,8 @@ namespace Umk_and_Rpd_on_Web {
         
         private ZavPodrazdnDataTable tableZavPodrazdn;
         
+        private ArmKaf_OcenSredstvVPlaneDataTable tableArmKaf_OcenSredstvVPlane;
+        
         private SoderjRazdDiscipDataTable tableSoderjRazdDiscip;
         
         private global::System.Data.DataRelation relationFK_Grup_Faculty;
@@ -93,6 +95,14 @@ namespace Umk_and_Rpd_on_Web {
         private global::System.Data.DataRelation relationFK_UnitSubs_Subs;
         
         private global::System.Data.DataRelation relationFK_PeoplenPass_PEOPLEN;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_Subs;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -199,6 +209,9 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["ZavPodrazdn"] != null)) {
                     base.Tables.Add(new ZavPodrazdnDataTable(ds.Tables["ZavPodrazdn"]));
+                }
+                if ((ds.Tables["ArmKaf_OcenSredstvVPlane"] != null)) {
+                    base.Tables.Add(new ArmKaf_OcenSredstvVPlaneDataTable(ds.Tables["ArmKaf_OcenSredstvVPlane"]));
                 }
                 if ((ds.Tables["SoderjRazdDiscip"] != null)) {
                     base.Tables.Add(new SoderjRazdDiscipDataTable(ds.Tables["SoderjRazdDiscip"]));
@@ -485,6 +498,16 @@ namespace Umk_and_Rpd_on_Web {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ArmKaf_OcenSredstvVPlaneDataTable ArmKaf_OcenSredstvVPlane {
+            get {
+                return this.tableArmKaf_OcenSredstvVPlane;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public SoderjRazdDiscipDataTable SoderjRazdDiscip {
             get {
                 return this.tableSoderjRazdDiscip;
@@ -635,6 +658,9 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["ZavPodrazdn"] != null)) {
                     base.Tables.Add(new ZavPodrazdnDataTable(ds.Tables["ZavPodrazdn"]));
+                }
+                if ((ds.Tables["ArmKaf_OcenSredstvVPlane"] != null)) {
+                    base.Tables.Add(new ArmKaf_OcenSredstvVPlaneDataTable(ds.Tables["ArmKaf_OcenSredstvVPlane"]));
                 }
                 if ((ds.Tables["SoderjRazdDiscip"] != null)) {
                     base.Tables.Add(new SoderjRazdDiscipDataTable(ds.Tables["SoderjRazdDiscip"]));
@@ -828,6 +854,12 @@ namespace Umk_and_Rpd_on_Web {
                     this.tableZavPodrazdn.InitVars();
                 }
             }
+            this.tableArmKaf_OcenSredstvVPlane = ((ArmKaf_OcenSredstvVPlaneDataTable)(base.Tables["ArmKaf_OcenSredstvVPlane"]));
+            if ((initTable == true)) {
+                if ((this.tableArmKaf_OcenSredstvVPlane != null)) {
+                    this.tableArmKaf_OcenSredstvVPlane.InitVars();
+                }
+            }
             this.tableSoderjRazdDiscip = ((SoderjRazdDiscipDataTable)(base.Tables["SoderjRazdDiscip"]));
             if ((initTable == true)) {
                 if ((this.tableSoderjRazdDiscip != null)) {
@@ -842,6 +874,10 @@ namespace Umk_and_Rpd_on_Web {
             this.relationFK_StudyPlans_TypeEdu = this.Relations["FK_StudyPlans_TypeEdu"];
             this.relationFK_UnitSubs_Subs = this.Relations["FK_UnitSubs_Subs"];
             this.relationFK_PeoplenPass_PEOPLEN = this.Relations["FK_PeoplenPass_PEOPLEN"];
+            this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv = this.Relations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"];
+            this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1 = this.Relations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"];
+            this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans = this.Relations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"];
+            this.relationFK_ArmKaf_OcenSredstvVPlane_Subs = this.Relations["FK_ArmKaf_OcenSredstvVPlane_Subs"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -904,6 +940,8 @@ namespace Umk_and_Rpd_on_Web {
             base.Tables.Add(this.tableUMK_and_RPD_with_opisanie);
             this.tableZavPodrazdn = new ZavPodrazdnDataTable();
             base.Tables.Add(this.tableZavPodrazdn);
+            this.tableArmKaf_OcenSredstvVPlane = new ArmKaf_OcenSredstvVPlaneDataTable();
+            base.Tables.Add(this.tableArmKaf_OcenSredstvVPlane);
             this.tableSoderjRazdDiscip = new SoderjRazdDiscipDataTable();
             base.Tables.Add(this.tableSoderjRazdDiscip);
             this.relationFK_Grup_Faculty = new global::System.Data.DataRelation("FK_Grup_Faculty", new global::System.Data.DataColumn[] {
@@ -940,6 +978,22 @@ namespace Umk_and_Rpd_on_Web {
                         this.tableZavPodrazdn.CODPEColumn}, new global::System.Data.DataColumn[] {
                         this.tablePeoplenPass.CodPEColumn}, false);
             this.Relations.Add(this.relationFK_PeoplenPass_PEOPLEN);
+            this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_OcenSredstv", new global::System.Data.DataColumn[] {
+                        this.tableOcenSredstv.IdSredstvColumn}, new global::System.Data.DataColumn[] {
+                        this.tableArmKaf_OcenSredstvVPlane.CodOcenSredstvColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv);
+            this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1 = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1", new global::System.Data.DataColumn[] {
+                        this.tableOcenSredstv1.IdSredstvColumn}, new global::System.Data.DataColumn[] {
+                        this.tableArmKaf_OcenSredstvVPlane.CodOcenSredstvColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1);
+            this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_StudyPlans", new global::System.Data.DataColumn[] {
+                        this.tableStudyPlans.CodPlanColumn}, new global::System.Data.DataColumn[] {
+                        this.tableArmKaf_OcenSredstvVPlane.CodPlanColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans);
+            this.relationFK_ArmKaf_OcenSredstvVPlane_Subs = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_Subs", new global::System.Data.DataColumn[] {
+                        this.tableSubs.CodSubColumn}, new global::System.Data.DataColumn[] {
+                        this.tableArmKaf_OcenSredstvVPlane.CodSubColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_Subs);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1100,6 +1154,12 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeArmKaf_OcenSredstvVPlane() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeSoderjRazdDiscip() {
             return false;
         }
@@ -1236,6 +1296,9 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ZavPodrazdnRowChangeEventHandler(object sender, ZavPodrazdnRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ArmKaf_OcenSredstvVPlaneRowChangeEventHandler(object sender, ArmKaf_OcenSredstvVPlaneRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void SoderjRazdDiscipRowChangeEventHandler(object sender, SoderjRazdDiscipRowChangeEvent e);
@@ -11700,6 +11763,306 @@ namespace Umk_and_Rpd_on_Web {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ArmKaf_OcenSredstvVPlaneDataTable : global::System.Data.TypedTableBase<ArmKaf_OcenSredstvVPlaneRow> {
+            
+            private global::System.Data.DataColumn columnCodOcenSredstv;
+            
+            private global::System.Data.DataColumn columnCodSub;
+            
+            private global::System.Data.DataColumn columnCodPlan;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneDataTable() {
+                this.TableName = "ArmKaf_OcenSredstvVPlane";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ArmKaf_OcenSredstvVPlaneDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ArmKaf_OcenSredstvVPlaneDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodOcenSredstvColumn {
+                get {
+                    return this.columnCodOcenSredstv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodSubColumn {
+                get {
+                    return this.columnCodSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodPlanColumn {
+                get {
+                    return this.columnCodPlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow this[int index] {
+                get {
+                    return ((ArmKaf_OcenSredstvVPlaneRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ArmKaf_OcenSredstvVPlaneRowChangeEventHandler ArmKaf_OcenSredstvVPlaneRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ArmKaf_OcenSredstvVPlaneRowChangeEventHandler ArmKaf_OcenSredstvVPlaneRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ArmKaf_OcenSredstvVPlaneRowChangeEventHandler ArmKaf_OcenSredstvVPlaneRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ArmKaf_OcenSredstvVPlaneRowChangeEventHandler ArmKaf_OcenSredstvVPlaneRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddArmKaf_OcenSredstvVPlaneRow(ArmKaf_OcenSredstvVPlaneRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow AddArmKaf_OcenSredstvVPlaneRow(OcenSredstvRow parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv, SubsRow parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs, StudyPlansRow parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans) {
+                ArmKaf_OcenSredstvVPlaneRow rowArmKaf_OcenSredstvVPlaneRow = ((ArmKaf_OcenSredstvVPlaneRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null};
+                if ((parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv != null)) {
+                    columnValuesArray[0] = parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv[0];
+                }
+                if ((parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs != null)) {
+                    columnValuesArray[1] = parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs[0];
+                }
+                if ((parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans != null)) {
+                    columnValuesArray[2] = parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans[0];
+                }
+                rowArmKaf_OcenSredstvVPlaneRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowArmKaf_OcenSredstvVPlaneRow);
+                return rowArmKaf_OcenSredstvVPlaneRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow FindByCodOcenSredstvCodSubCodPlan(short CodOcenSredstv, short CodSub, int CodPlan) {
+                return ((ArmKaf_OcenSredstvVPlaneRow)(this.Rows.Find(new object[] {
+                            CodOcenSredstv,
+                            CodSub,
+                            CodPlan})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ArmKaf_OcenSredstvVPlaneDataTable cln = ((ArmKaf_OcenSredstvVPlaneDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ArmKaf_OcenSredstvVPlaneDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnCodOcenSredstv = base.Columns["CodOcenSredstv"];
+                this.columnCodSub = base.Columns["CodSub"];
+                this.columnCodPlan = base.Columns["CodPlan"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnCodOcenSredstv = new global::System.Data.DataColumn("CodOcenSredstv", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodOcenSredstv);
+                this.columnCodSub = new global::System.Data.DataColumn("CodSub", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodSub);
+                this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodPlan);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCodOcenSredstv,
+                                this.columnCodSub,
+                                this.columnCodPlan}, true));
+                this.columnCodOcenSredstv.AllowDBNull = false;
+                this.columnCodSub.AllowDBNull = false;
+                this.columnCodPlan.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow NewArmKaf_OcenSredstvVPlaneRow() {
+                return ((ArmKaf_OcenSredstvVPlaneRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ArmKaf_OcenSredstvVPlaneRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ArmKaf_OcenSredstvVPlaneRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ArmKaf_OcenSredstvVPlaneRowChanged != null)) {
+                    this.ArmKaf_OcenSredstvVPlaneRowChanged(this, new ArmKaf_OcenSredstvVPlaneRowChangeEvent(((ArmKaf_OcenSredstvVPlaneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ArmKaf_OcenSredstvVPlaneRowChanging != null)) {
+                    this.ArmKaf_OcenSredstvVPlaneRowChanging(this, new ArmKaf_OcenSredstvVPlaneRowChangeEvent(((ArmKaf_OcenSredstvVPlaneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ArmKaf_OcenSredstvVPlaneRowDeleted != null)) {
+                    this.ArmKaf_OcenSredstvVPlaneRowDeleted(this, new ArmKaf_OcenSredstvVPlaneRowChangeEvent(((ArmKaf_OcenSredstvVPlaneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ArmKaf_OcenSredstvVPlaneRowDeleting != null)) {
+                    this.ArmKaf_OcenSredstvVPlaneRowDeleting(this, new ArmKaf_OcenSredstvVPlaneRowChangeEvent(((ArmKaf_OcenSredstvVPlaneRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveArmKaf_OcenSredstvVPlaneRow(ArmKaf_OcenSredstvVPlaneRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                AcademiaDataSet ds = new AcademiaDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ArmKaf_OcenSredstvVPlaneDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class SoderjRazdDiscipDataTable : global::System.Data.TypedTableBase<SoderjRazdDiscipRow> {
             
             private global::System.Data.DataColumn column1;
@@ -14964,6 +15327,17 @@ namespace Umk_and_Rpd_on_Web {
                     return ((NagruzkaOnPrepRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UnitSubs_Subs"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow[] GetArmKaf_OcenSredstvVPlaneRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"] == null)) {
+                    return new ArmKaf_OcenSredstvVPlaneRow[0];
+                }
+                else {
+                    return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"])));
+                }
+            }
         }
         
         /// <summary>
@@ -15547,6 +15921,17 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNameSredstv_with_abbrNull() {
                 this[this.tableOcenSredstv.NameSredstv_with_abbrColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow[] GetArmKaf_OcenSredstvVPlaneRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"] == null)) {
+                    return new ArmKaf_OcenSredstvVPlaneRow[0];
+                }
+                else {
+                    return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"])));
+                }
             }
         }
         
@@ -16978,6 +17363,17 @@ namespace Umk_and_Rpd_on_Web {
             public void SetNamePlan1Null() {
                 this[this.tableStudyPlans.NamePlan1Column] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow[] GetArmKaf_OcenSredstvVPlaneRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"] == null)) {
+                    return new ArmKaf_OcenSredstvVPlaneRow[0];
+                }
+                else {
+                    return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"])));
+                }
+            }
         }
         
         /// <summary>
@@ -17059,6 +17455,17 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetAbbrSredstvNull() {
                 this[this.tableOcenSredstv1.AbbrSredstvColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow[] GetArmKaf_OcenSredstvVPlaneRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"] == null)) {
+                    return new ArmKaf_OcenSredstvVPlaneRow[0];
+                }
+                else {
+                    return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"])));
+                }
             }
         }
         
@@ -17778,6 +18185,98 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 else {
                     return ((PeoplenPassRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PeoplenPass_PEOPLEN"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ArmKaf_OcenSredstvVPlaneRow : global::System.Data.DataRow {
+            
+            private ArmKaf_OcenSredstvVPlaneDataTable tableArmKaf_OcenSredstvVPlane;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ArmKaf_OcenSredstvVPlaneRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableArmKaf_OcenSredstvVPlane = ((ArmKaf_OcenSredstvVPlaneDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CodOcenSredstv {
+                get {
+                    return ((short)(this[this.tableArmKaf_OcenSredstvVPlane.CodOcenSredstvColumn]));
+                }
+                set {
+                    this[this.tableArmKaf_OcenSredstvVPlane.CodOcenSredstvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CodSub {
+                get {
+                    return ((short)(this[this.tableArmKaf_OcenSredstvVPlane.CodSubColumn]));
+                }
+                set {
+                    this[this.tableArmKaf_OcenSredstvVPlane.CodSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CodPlan {
+                get {
+                    return ((int)(this[this.tableArmKaf_OcenSredstvVPlane.CodPlanColumn]));
+                }
+                set {
+                    this[this.tableArmKaf_OcenSredstvVPlane.CodPlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OcenSredstvRow OcenSredstvRow {
+                get {
+                    return ((OcenSredstvRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public OcenSredstv1Row OcenSredstv1Row {
+                get {
+                    return ((OcenSredstv1Row)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public StudyPlansRow StudyPlansRow {
+                get {
+                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SubsRow SubsRow {
+                get {
+                    return ((SubsRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"]);
                 }
             }
         }
@@ -18836,6 +19335,40 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ZavPodrazdnRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ArmKaf_OcenSredstvVPlaneRowChangeEvent : global::System.EventArgs {
+            
+            private ArmKaf_OcenSredstvVPlaneRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRowChangeEvent(ArmKaf_OcenSredstvVPlaneRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ArmKaf_OcenSredstvVPlaneRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -28699,6 +29232,243 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ArmKaf_OcenSredstvVPlaneTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ArmKaf_OcenSredstvVPlaneTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ArmKaf_OcenSredstvVPlane";
+            tableMapping.ColumnMappings.Add("CodOcenSredstv", "CodOcenSredstv");
+            tableMapping.ColumnMappings.Add("CodSub", "CodSub");
+            tableMapping.ColumnMappings.Add("CodPlan", "CodPlan");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AcademiaConnectingString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        ArmKaf_OcenSredstvVPlane.CodOcenSredstv, ArmKaf_OcenSredstvVPlane.CodSub, ArmKaf_OcenSredstvVPlane.CodPlan
+FROM            ArmKaf_OcenSredstvVPlane INNER JOIN
+                         OcenSredstv ON ArmKaf_OcenSredstvVPlane.CodOcenSredstv = OcenSredstv.IdSredstv";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM ArmKaf_OcenSredstvVPlane\r\nWHERE        (CodPlan = @CodPlan) AND (CodS" +
+                "ub = @CodSub)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO ArmKaf_OcenSredstvVPlane\r\n                         (CodPlan, CodSub, " +
+                "CodOcenSredstv)\r\nVALUES        (@CodPlan,@CodSub,@CodOcenSredstv)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSub", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodSub", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodOcenSredstv", global::System.Data.SqlDbType.SmallInt, 2, global::System.Data.ParameterDirection.Input, 0, 0, "CodOcenSredstv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(AcademiaDataSet.ArmKaf_OcenSredstvVPlaneDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual AcademiaDataSet.ArmKaf_OcenSredstvVPlaneDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            AcademiaDataSet.ArmKaf_OcenSredstvVPlaneDataTable dataTable = new AcademiaDataSet.ArmKaf_OcenSredstvVPlaneDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteFromTable(int CodPlan, short CodSub) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(CodPlan));
+            command.Parameters[1].Value = ((short)(CodSub));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int Insert1(int CodPlan, short CodSub, short CodOcenSredstv) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(CodPlan));
+            command.Parameters[1].Value = ((short)(CodSub));
+            command.Parameters[2].Value = ((short)(CodOcenSredstv));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -29136,30 +29906,21 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._dEGREETableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dEGREETableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pEOPLENTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pEOPLENTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._typeEduTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._typeEduTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._dEGREETableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._dEGREETableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29172,12 +29933,12 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._subsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pEOPLENTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._subsTableAdapter.Update(updatedRows));
+                    result = (result + this._pEOPLENTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29199,12 +29960,21 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._subsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
+                    result = (result + this._subsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29217,21 +29987,12 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._uMK_and_RPDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._subjectGrsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._uMK_and_RPDTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(updatedRows));
+                    result = (result + this._subjectGrsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29253,15 +30014,6 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._grupTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Grup.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -29271,12 +30023,30 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._subjectGrsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._uMK_and_RPDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._subjectGrsTableAdapter.Update(updatedRows));
+                    result = (result + this._uMK_and_RPDTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._kafsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29290,27 +30060,19 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._dEGREETableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dEGREETableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pEOPLENTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pEOPLENTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._typeEduTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._typeEduTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._dEGREETableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._dEGREETableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29322,11 +30084,11 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._subsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pEOPLENTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._subsTableAdapter.Update(addedRows));
+                    result = (result + this._pEOPLENTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29346,11 +30108,19 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._subsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
+                    result = (result + this._subsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29362,19 +30132,11 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._uMK_and_RPDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._subjectGrsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._uMK_and_RPDTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(addedRows));
+                    result = (result + this._subjectGrsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29394,14 +30156,6 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._grupTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Grup.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -29410,11 +30164,27 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._subjectGrsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._uMK_and_RPDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._subjectGrsTableAdapter.Update(addedRows));
+                    result = (result + this._uMK_and_RPDTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._kafsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29428,43 +30198,11 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._subjectGrsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._subjectGrsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._grupTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Grup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._grupTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._studyTermTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._studyContentsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StudyContents.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._studyContentsTableAdapter.Update(deletedRows));
+                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -29484,6 +30222,38 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._grupTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Grup.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._grupTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._studyTermTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._studyContentsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StudyContents.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._studyContentsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._subjectGrsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.SubjectGrs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._subjectGrsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._lib_BookTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -29492,11 +30262,19 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
+                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._subsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._subsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -29516,11 +30294,11 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._subsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pEOPLENTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._subsTableAdapter.Update(deletedRows));
+                    result = (result + this._pEOPLENTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -29532,27 +30310,19 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._typeEduTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._typeEduTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._pEOPLENTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pEOPLENTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._dEGREETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._typeEduTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._typeEduTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

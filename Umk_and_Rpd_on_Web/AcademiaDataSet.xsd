@@ -727,7 +727,7 @@ WHERE        (Id_RPD_or_UMK = @id_RPD_or_UMK)</CommandText>
               <Mapping SourceColumn="Tmp_contents" DataSetColumn="Tmp_contents" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteEmptyStr" Modifier="Public" Name="DeleteEmptyStr" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="DeleteEmptyStr">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteEmptyStr" Modifier="Public" Name="DeleteEmptyStr" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteEmptyStr">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM UMK_and_RPD
@@ -756,7 +756,7 @@ WHERE        (Name &lt;&gt; N'') AND (Tmp_contents IS NOT NULL)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="Get_TmpContents" Modifier="Public" Name="Get_TmpContents" QueryType="Scalar" ScalarCallRetval="System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Get_TmpContents">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="Get_TmpContents" Modifier="Public" Name="Get_TmpContents" QueryType="Scalar" ScalarCallRetval="System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Get_TmpContents">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Tmp_contents
@@ -768,7 +768,7 @@ WHERE        (Id_RPD_or_UMK = @id_umk_rpd)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetCodPEWhoEdit" Modifier="Public" Name="GetCodPEWhoEdit" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="GetCodPEWhoEdit">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetCodPEWhoEdit" Modifier="Public" Name="GetCodPEWhoEdit" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetCodPEWhoEdit">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CodPrepWhoDo
@@ -780,7 +780,7 @@ WHERE        (Id_RPD_or_UMK = @Id)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetContents" Modifier="Public" Name="GetContents" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetContents">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetContents" Modifier="Public" Name="GetContents" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="GetContents">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Contents
@@ -792,7 +792,7 @@ WHERE        (Id_RPD_or_UMK = @Id_RPD_or_UMK)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetId" Modifier="Public" Name="GetId" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="GetId">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetId" Modifier="Public" Name="GetId" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="GetId">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        Id_RPD_or_UMK
@@ -809,7 +809,7 @@ WHERE        (CodSub = @CodSub) AND (UMK_or_RPD = @UMK_or_RPD) AND (Year = @Year
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetRow" Modifier="Public" Name="GetRow" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="GetRow">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.UMK_and_RPD" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetRow" Modifier="Public" Name="GetRow" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="GetRow">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        UMK_or_RPD, Name, CodFac, CodKaf, CodPrep, CodSub, Year, CodSpec, CodTypeEdu, Contents, DateSave, CodGroup, Id_RPD_or_UMK, CodPlan, CodFormStudy, CodPrepWhoDo
@@ -826,7 +826,7 @@ WHERE        (CodSub = @CodSub) AND (CodPlan = @CodPlan) AND (UMK_or_RPD = @UMK_
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateTmpContents" Modifier="Public" Name="UpdateTmpContents" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy5" UserSourceName="UpdateTmpContents">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateTmpContents" Modifier="Public" Name="UpdateTmpContents" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy6" UserSourceName="UpdateTmpContents">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       UMK_and_RPD
@@ -2096,6 +2096,53 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ArmKaf_OcenSredstvVPlaneTableAdapter" GeneratorDataComponentClassName="ArmKaf_OcenSredstvVPlaneTableAdapter" Name="ArmKaf_OcenSredstvVPlane" UserDataComponentName="ArmKaf_OcenSredstvVPlaneTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.ArmKaf_OcenSredstvVPlane" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ArmKaf_OcenSredstvVPlane.CodOcenSredstv, ArmKaf_OcenSredstvVPlane.CodSub, ArmKaf_OcenSredstvVPlane.CodPlan
+FROM            ArmKaf_OcenSredstvVPlane INNER JOIN
+                         OcenSredstv ON ArmKaf_OcenSredstvVPlane.CodOcenSredstv = OcenSredstv.IdSredstv</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodOcenSredstv" DataSetColumn="CodOcenSredstv" />
+              <Mapping SourceColumn="CodSub" DataSetColumn="CodSub" />
+              <Mapping SourceColumn="CodPlan" DataSetColumn="CodPlan" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteFromTable" Modifier="Public" Name="DeleteFromTable" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteFromTable">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM ArmKaf_OcenSredstvVPlane
+WHERE        (CodPlan = @CodPlan) AND (CodSub = @CodSub)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.ArmKaf_OcenSredstvVPlane" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodSub" ColumnName="CodSub" DataSourceName="academia.dbo.ArmKaf_OcenSredstvVPlane" DataTypeServer="smallint" DbType="Int16" Direction="Input" ParameterName="@CodSub" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="CodSub" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="Insert1" Modifier="Public" Name="Insert1" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Insert1">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO ArmKaf_OcenSredstvVPlane
+                         (CodPlan, CodSub, CodOcenSredstv)
+VALUES        (@CodPlan,@CodSub,@CodOcenSredstv)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.ArmKaf_OcenSredstvVPlane" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodSub" ColumnName="CodSub" DataSourceName="academia.dbo.ArmKaf_OcenSredstvVPlane" DataTypeServer="smallint" DbType="Int16" Direction="Input" ParameterName="@CodSub" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="CodSub" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodOcenSredstv" ColumnName="CodOcenSredstv" DataSourceName="academia.dbo.ArmKaf_OcenSredstvVPlane" DataTypeServer="smallint" DbType="Int16" Direction="Input" ParameterName="@CodOcenSredstv" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="CodOcenSredstv" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -2104,7 +2151,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
   <xs:element name="AcademiaDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AcademiaDataSet" msprop:Generator_UserDSName="AcademiaDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="PEOPLEN" msprop:Generator_TableClassName="PEOPLENDataTable" msprop:Generator_TableVarName="tablePEOPLEN" msprop:Generator_RowChangedName="PEOPLENRowChanged" msprop:Generator_TablePropName="PEOPLEN" msprop:Generator_RowDeletingName="PEOPLENRowDeleting" msprop:Generator_RowChangingName="PEOPLENRowChanging" msprop:Generator_RowEvHandlerName="PEOPLENRowChangeEventHandler" msprop:Generator_RowDeletedName="PEOPLENRowDeleted" msprop:Generator_RowClassName="PEOPLENRow" msprop:Generator_UserTableName="PEOPLEN" msprop:Generator_RowEvArgName="PEOPLENRowChangeEvent">
+        <xs:element name="PEOPLEN" msprop:Generator_TableClassName="PEOPLENDataTable" msprop:Generator_TableVarName="tablePEOPLEN" msprop:Generator_TablePropName="PEOPLEN" msprop:Generator_RowDeletingName="PEOPLENRowDeleting" msprop:Generator_RowChangingName="PEOPLENRowChanging" msprop:Generator_RowEvHandlerName="PEOPLENRowChangeEventHandler" msprop:Generator_RowDeletedName="PEOPLENRowDeleted" msprop:Generator_UserTableName="PEOPLEN" msprop:Generator_RowChangedName="PEOPLENRowChanged" msprop:Generator_RowEvArgName="PEOPLENRowChangeEvent" msprop:Generator_RowClassName="PEOPLENRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CODPE" msprop:Generator_ColumnVarNameInTable="columnCODPE" msprop:Generator_ColumnPropNameInRow="CODPE" msprop:Generator_ColumnPropNameInTable="CODPEColumn" msprop:Generator_UserColumnName="CODPE" type="xs:int" />
@@ -2424,7 +2471,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PeoplenPass" msprop:Generator_TableClassName="PeoplenPassDataTable" msprop:Generator_TableVarName="tablePeoplenPass" msprop:Generator_RowChangedName="PeoplenPassRowChanged" msprop:Generator_TablePropName="PeoplenPass" msprop:Generator_RowDeletingName="PeoplenPassRowDeleting" msprop:Generator_RowChangingName="PeoplenPassRowChanging" msprop:Generator_RowEvHandlerName="PeoplenPassRowChangeEventHandler" msprop:Generator_RowDeletedName="PeoplenPassRowDeleted" msprop:Generator_RowClassName="PeoplenPassRow" msprop:Generator_UserTableName="PeoplenPass" msprop:Generator_RowEvArgName="PeoplenPassRowChangeEvent">
+        <xs:element name="PeoplenPass" msprop:Generator_TableClassName="PeoplenPassDataTable" msprop:Generator_TableVarName="tablePeoplenPass" msprop:Generator_TablePropName="PeoplenPass" msprop:Generator_RowDeletingName="PeoplenPassRowDeleting" msprop:Generator_RowChangingName="PeoplenPassRowChanging" msprop:Generator_RowEvHandlerName="PeoplenPassRowChangeEventHandler" msprop:Generator_RowDeletedName="PeoplenPassRowDeleted" msprop:Generator_UserTableName="PeoplenPass" msprop:Generator_RowChangedName="PeoplenPassRowChanged" msprop:Generator_RowEvArgName="PeoplenPassRowChangeEvent" msprop:Generator_RowClassName="PeoplenPassRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodPE" msprop:Generator_ColumnVarNameInTable="columnCodPE" msprop:Generator_ColumnPropNameInRow="CodPE" msprop:Generator_ColumnPropNameInTable="CodPEColumn" msprop:Generator_UserColumnName="CodPE" type="xs:int" />
@@ -2459,7 +2506,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Faculty" msprop:Generator_TableClassName="FacultyDataTable" msprop:Generator_TableVarName="tableFaculty" msprop:Generator_RowChangedName="FacultyRowChanged" msprop:Generator_TablePropName="Faculty" msprop:Generator_RowDeletingName="FacultyRowDeleting" msprop:Generator_RowChangingName="FacultyRowChanging" msprop:Generator_RowEvHandlerName="FacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="FacultyRowDeleted" msprop:Generator_RowClassName="FacultyRow" msprop:Generator_UserTableName="Faculty" msprop:Generator_RowEvArgName="FacultyRowChangeEvent">
+        <xs:element name="Faculty" msprop:Generator_TableClassName="FacultyDataTable" msprop:Generator_TableVarName="tableFaculty" msprop:Generator_TablePropName="Faculty" msprop:Generator_RowDeletingName="FacultyRowDeleting" msprop:Generator_RowChangingName="FacultyRowChanging" msprop:Generator_RowEvHandlerName="FacultyRowChangeEventHandler" msprop:Generator_RowDeletedName="FacultyRowDeleted" msprop:Generator_UserTableName="Faculty" msprop:Generator_RowChangedName="FacultyRowChanged" msprop:Generator_RowEvArgName="FacultyRowChangeEvent" msprop:Generator_RowClassName="FacultyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodFaculty" msprop:Generator_ColumnVarNameInTable="columnCodFaculty" msprop:Generator_ColumnPropNameInRow="CodFaculty" msprop:Generator_ColumnPropNameInTable="CodFacultyColumn" msprop:Generator_UserColumnName="CodFaculty" type="xs:unsignedByte" />
@@ -2488,7 +2535,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Kafs" msprop:Generator_TableClassName="KafsDataTable" msprop:Generator_TableVarName="tableKafs" msprop:Generator_RowChangedName="KafsRowChanged" msprop:Generator_TablePropName="Kafs" msprop:Generator_RowDeletingName="KafsRowDeleting" msprop:Generator_RowChangingName="KafsRowChanging" msprop:Generator_RowEvHandlerName="KafsRowChangeEventHandler" msprop:Generator_RowDeletedName="KafsRowDeleted" msprop:Generator_RowClassName="KafsRow" msprop:Generator_UserTableName="Kafs" msprop:Generator_RowEvArgName="KafsRowChangeEvent">
+        <xs:element name="Kafs" msprop:Generator_TableClassName="KafsDataTable" msprop:Generator_TableVarName="tableKafs" msprop:Generator_TablePropName="Kafs" msprop:Generator_RowDeletingName="KafsRowDeleting" msprop:Generator_RowChangingName="KafsRowChanging" msprop:Generator_RowEvHandlerName="KafsRowChangeEventHandler" msprop:Generator_RowDeletedName="KafsRowDeleted" msprop:Generator_UserTableName="Kafs" msprop:Generator_RowChangedName="KafsRowChanged" msprop:Generator_RowEvArgName="KafsRowChangeEvent" msprop:Generator_RowClassName="KafsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" />
@@ -2527,7 +2574,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NagruzkaOnPrep" msprop:Generator_TableClassName="NagruzkaOnPrepDataTable" msprop:Generator_TableVarName="tableNagruzkaOnPrep" msprop:Generator_RowChangedName="NagruzkaOnPrepRowChanged" msprop:Generator_TablePropName="NagruzkaOnPrep" msprop:Generator_RowDeletingName="NagruzkaOnPrepRowDeleting" msprop:Generator_RowChangingName="NagruzkaOnPrepRowChanging" msprop:Generator_RowEvHandlerName="NagruzkaOnPrepRowChangeEventHandler" msprop:Generator_RowDeletedName="NagruzkaOnPrepRowDeleted" msprop:Generator_RowClassName="NagruzkaOnPrepRow" msprop:Generator_UserTableName="NagruzkaOnPrep" msprop:Generator_RowEvArgName="NagruzkaOnPrepRowChangeEvent">
+        <xs:element name="NagruzkaOnPrep" msprop:Generator_TableClassName="NagruzkaOnPrepDataTable" msprop:Generator_TableVarName="tableNagruzkaOnPrep" msprop:Generator_TablePropName="NagruzkaOnPrep" msprop:Generator_RowDeletingName="NagruzkaOnPrepRowDeleting" msprop:Generator_RowChangingName="NagruzkaOnPrepRowChanging" msprop:Generator_RowEvHandlerName="NagruzkaOnPrepRowChangeEventHandler" msprop:Generator_RowDeletedName="NagruzkaOnPrepRowDeleted" msprop:Generator_UserTableName="NagruzkaOnPrep" msprop:Generator_RowChangedName="NagruzkaOnPrepRowChanged" msprop:Generator_RowEvArgName="NagruzkaOnPrepRowChangeEvent" msprop:Generator_RowClassName="NagruzkaOnPrepRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodSub" msprop:Generator_ColumnVarNameInTable="columnCodSub" msprop:Generator_ColumnPropNameInRow="CodSub" msprop:Generator_ColumnPropNameInTable="CodSubColumn" msprop:Generator_UserColumnName="CodSub" type="xs:short" minOccurs="0" />
@@ -2570,7 +2617,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UMK_and_RPD" msprop:Generator_TableClassName="UMK_and_RPDDataTable" msprop:Generator_TableVarName="tableUMK_and_RPD" msprop:Generator_TablePropName="UMK_and_RPD" msprop:Generator_RowDeletingName="UMK_and_RPDRowDeleting" msprop:Generator_RowChangingName="UMK_and_RPDRowChanging" msprop:Generator_RowEvHandlerName="UMK_and_RPDRowChangeEventHandler" msprop:Generator_RowDeletedName="UMK_and_RPDRowDeleted" msprop:Generator_UserTableName="UMK_and_RPD" msprop:Generator_RowChangedName="UMK_and_RPDRowChanged" msprop:Generator_RowEvArgName="UMK_and_RPDRowChangeEvent" msprop:Generator_RowClassName="UMK_and_RPDRow">
+        <xs:element name="UMK_and_RPD" msprop:Generator_TableClassName="UMK_and_RPDDataTable" msprop:Generator_TableVarName="tableUMK_and_RPD" msprop:Generator_RowChangedName="UMK_and_RPDRowChanged" msprop:Generator_TablePropName="UMK_and_RPD" msprop:Generator_RowDeletingName="UMK_and_RPDRowDeleting" msprop:Generator_RowChangingName="UMK_and_RPDRowChanging" msprop:Generator_RowEvHandlerName="UMK_and_RPDRowChangeEventHandler" msprop:Generator_RowDeletedName="UMK_and_RPDRowDeleted" msprop:Generator_RowClassName="UMK_and_RPDRow" msprop:Generator_UserTableName="UMK_and_RPD" msprop:Generator_RowEvArgName="UMK_and_RPDRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id_RPD_or_UMK" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_RPD_or_UMK" msprop:Generator_ColumnPropNameInRow="Id_RPD_or_UMK" msprop:Generator_ColumnPropNameInTable="Id_RPD_or_UMKColumn" msprop:Generator_UserColumnName="Id_RPD_or_UMK" type="xs:int" />
@@ -2608,7 +2655,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Subs" msprop:Generator_TableClassName="SubsDataTable" msprop:Generator_TableVarName="tableSubs" msprop:Generator_TablePropName="Subs" msprop:Generator_RowDeletingName="SubsRowDeleting" msprop:Generator_RowChangingName="SubsRowChanging" msprop:Generator_RowEvHandlerName="SubsRowChangeEventHandler" msprop:Generator_RowDeletedName="SubsRowDeleted" msprop:Generator_UserTableName="Subs" msprop:Generator_RowChangedName="SubsRowChanged" msprop:Generator_RowEvArgName="SubsRowChangeEvent" msprop:Generator_RowClassName="SubsRow">
+        <xs:element name="Subs" msprop:Generator_TableClassName="SubsDataTable" msprop:Generator_TableVarName="tableSubs" msprop:Generator_RowChangedName="SubsRowChanged" msprop:Generator_TablePropName="Subs" msprop:Generator_RowDeletingName="SubsRowDeleting" msprop:Generator_RowChangingName="SubsRowChanging" msprop:Generator_RowEvHandlerName="SubsRowChangeEventHandler" msprop:Generator_RowDeletedName="SubsRowDeleted" msprop:Generator_RowClassName="SubsRow" msprop:Generator_UserTableName="Subs" msprop:Generator_RowEvArgName="SubsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodSub" msprop:Generator_ColumnVarNameInTable="columnCodSub" msprop:Generator_ColumnPropNameInRow="CodSub" msprop:Generator_ColumnPropNameInTable="CodSubColumn" msprop:Generator_UserColumnName="CodSub" type="xs:short" />
@@ -2636,7 +2683,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Grup" msprop:Generator_TableClassName="GrupDataTable" msprop:Generator_TableVarName="tableGrup" msprop:Generator_TablePropName="Grup" msprop:Generator_RowDeletingName="GrupRowDeleting" msprop:Generator_RowChangingName="GrupRowChanging" msprop:Generator_RowEvHandlerName="GrupRowChangeEventHandler" msprop:Generator_RowDeletedName="GrupRowDeleted" msprop:Generator_UserTableName="Grup" msprop:Generator_RowChangedName="GrupRowChanged" msprop:Generator_RowEvArgName="GrupRowChangeEvent" msprop:Generator_RowClassName="GrupRow">
+        <xs:element name="Grup" msprop:Generator_TableClassName="GrupDataTable" msprop:Generator_TableVarName="tableGrup" msprop:Generator_RowChangedName="GrupRowChanged" msprop:Generator_TablePropName="Grup" msprop:Generator_RowDeletingName="GrupRowDeleting" msprop:Generator_RowChangingName="GrupRowChanging" msprop:Generator_RowEvHandlerName="GrupRowChangeEventHandler" msprop:Generator_RowDeletedName="GrupRowDeleted" msprop:Generator_RowClassName="GrupRow" msprop:Generator_UserTableName="Grup" msprop:Generator_RowEvArgName="GrupRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodGrup" msprop:Generator_ColumnVarNameInTable="columnCodGrup" msprop:Generator_ColumnPropNameInRow="CodGrup" msprop:Generator_ColumnPropNameInTable="CodGrupColumn" msprop:Generator_UserColumnName="CodGrup" type="xs:short" />
@@ -2673,7 +2720,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Competetion" msprop:Generator_TableClassName="CompetetionDataTable" msprop:Generator_TableVarName="tableCompetetion" msprop:Generator_RowChangedName="CompetetionRowChanged" msprop:Generator_TablePropName="Competetion" msprop:Generator_RowDeletingName="CompetetionRowDeleting" msprop:Generator_RowChangingName="CompetetionRowChanging" msprop:Generator_RowEvHandlerName="CompetetionRowChangeEventHandler" msprop:Generator_RowDeletedName="CompetetionRowDeleted" msprop:Generator_RowClassName="CompetetionRow" msprop:Generator_UserTableName="Competetion" msprop:Generator_RowEvArgName="CompetetionRowChangeEvent">
+        <xs:element name="Competetion" msprop:Generator_TableClassName="CompetetionDataTable" msprop:Generator_TableVarName="tableCompetetion" msprop:Generator_TablePropName="Competetion" msprop:Generator_RowDeletingName="CompetetionRowDeleting" msprop:Generator_RowChangingName="CompetetionRowChanging" msprop:Generator_RowEvHandlerName="CompetetionRowChangeEventHandler" msprop:Generator_RowDeletedName="CompetetionRowDeleted" msprop:Generator_UserTableName="Competetion" msprop:Generator_RowChangedName="CompetetionRowChanged" msprop:Generator_RowEvArgName="CompetetionRowChangeEvent" msprop:Generator_RowClassName="CompetetionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdCompet" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdCompet" msprop:Generator_ColumnPropNameInRow="IdCompet" msprop:Generator_ColumnPropNameInTable="IdCompetColumn" msprop:Generator_UserColumnName="IdCompet" type="xs:int" />
@@ -2704,7 +2751,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Speciality" msprop:Generator_TableClassName="SpecialityDataTable" msprop:Generator_TableVarName="tableSpeciality" msprop:Generator_RowChangedName="SpecialityRowChanged" msprop:Generator_TablePropName="Speciality" msprop:Generator_RowDeletingName="SpecialityRowDeleting" msprop:Generator_RowChangingName="SpecialityRowChanging" msprop:Generator_RowEvHandlerName="SpecialityRowChangeEventHandler" msprop:Generator_RowDeletedName="SpecialityRowDeleted" msprop:Generator_RowClassName="SpecialityRow" msprop:Generator_UserTableName="Speciality" msprop:Generator_RowEvArgName="SpecialityRowChangeEvent">
+        <xs:element name="Speciality" msprop:Generator_TableClassName="SpecialityDataTable" msprop:Generator_TableVarName="tableSpeciality" msprop:Generator_TablePropName="Speciality" msprop:Generator_RowDeletingName="SpecialityRowDeleting" msprop:Generator_RowChangingName="SpecialityRowChanging" msprop:Generator_RowEvHandlerName="SpecialityRowChangeEventHandler" msprop:Generator_RowDeletedName="SpecialityRowDeleted" msprop:Generator_UserTableName="Speciality" msprop:Generator_RowChangedName="SpecialityRowChanged" msprop:Generator_RowEvArgName="SpecialityRowChangeEvent" msprop:Generator_RowClassName="SpecialityRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodSpecialityOKSO" msprop:Generator_ColumnVarNameInTable="columnCodSpecialityOKSO" msprop:Generator_ColumnPropNameInRow="CodSpecialityOKSO" msprop:Generator_ColumnPropNameInTable="CodSpecialityOKSOColumn" msprop:Generator_UserColumnName="CodSpecialityOKSO" minOccurs="0">
@@ -2746,7 +2793,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="OcenSredstv" msprop:Generator_TableClassName="OcenSredstvDataTable" msprop:Generator_TableVarName="tableOcenSredstv" msprop:Generator_RowChangedName="OcenSredstvRowChanged" msprop:Generator_TablePropName="OcenSredstv" msprop:Generator_RowDeletingName="OcenSredstvRowDeleting" msprop:Generator_RowChangingName="OcenSredstvRowChanging" msprop:Generator_RowEvHandlerName="OcenSredstvRowChangeEventHandler" msprop:Generator_RowDeletedName="OcenSredstvRowDeleted" msprop:Generator_RowClassName="OcenSredstvRow" msprop:Generator_UserTableName="OcenSredstv" msprop:Generator_RowEvArgName="OcenSredstvRowChangeEvent">
+        <xs:element name="OcenSredstv" msprop:Generator_TableClassName="OcenSredstvDataTable" msprop:Generator_TableVarName="tableOcenSredstv" msprop:Generator_TablePropName="OcenSredstv" msprop:Generator_RowDeletingName="OcenSredstvRowDeleting" msprop:Generator_RowChangingName="OcenSredstvRowChanging" msprop:Generator_RowEvHandlerName="OcenSredstvRowChangeEventHandler" msprop:Generator_RowDeletedName="OcenSredstvRowDeleted" msprop:Generator_UserTableName="OcenSredstv" msprop:Generator_RowChangedName="OcenSredstvRowChanged" msprop:Generator_RowEvArgName="OcenSredstvRowChangeEvent" msprop:Generator_RowClassName="OcenSredstvRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdSredstv" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdSredstv" msprop:Generator_ColumnPropNameInRow="IdSredstv" msprop:Generator_ColumnPropNameInTable="IdSredstvColumn" msprop:Generator_UserColumnName="IdSredstv" type="xs:short" />
@@ -2774,7 +2821,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudyTerm" msprop:Generator_TableClassName="StudyTermDataTable" msprop:Generator_TableVarName="tableStudyTerm" msprop:Generator_RowChangedName="StudyTermRowChanged" msprop:Generator_TablePropName="StudyTerm" msprop:Generator_RowDeletingName="StudyTermRowDeleting" msprop:Generator_RowChangingName="StudyTermRowChanging" msprop:Generator_RowEvHandlerName="StudyTermRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyTermRowDeleted" msprop:Generator_RowClassName="StudyTermRow" msprop:Generator_UserTableName="StudyTerm" msprop:Generator_RowEvArgName="StudyTermRowChangeEvent">
+        <xs:element name="StudyTerm" msprop:Generator_TableClassName="StudyTermDataTable" msprop:Generator_TableVarName="tableStudyTerm" msprop:Generator_TablePropName="StudyTerm" msprop:Generator_RowDeletingName="StudyTermRowDeleting" msprop:Generator_RowChangingName="StudyTermRowChanging" msprop:Generator_RowEvHandlerName="StudyTermRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyTermRowDeleted" msprop:Generator_UserTableName="StudyTerm" msprop:Generator_RowChangedName="StudyTermRowChanged" msprop:Generator_RowEvArgName="StudyTermRowChangeEvent" msprop:Generator_RowClassName="StudyTermRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
@@ -2791,7 +2838,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudyContents" msprop:Generator_TableClassName="StudyContentsDataTable" msprop:Generator_TableVarName="tableStudyContents" msprop:Generator_RowChangedName="StudyContentsRowChanged" msprop:Generator_TablePropName="StudyContents" msprop:Generator_RowDeletingName="StudyContentsRowDeleting" msprop:Generator_RowChangingName="StudyContentsRowChanging" msprop:Generator_RowEvHandlerName="StudyContentsRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyContentsRowDeleted" msprop:Generator_RowClassName="StudyContentsRow" msprop:Generator_UserTableName="StudyContents" msprop:Generator_RowEvArgName="StudyContentsRowChangeEvent">
+        <xs:element name="StudyContents" msprop:Generator_TableClassName="StudyContentsDataTable" msprop:Generator_TableVarName="tableStudyContents" msprop:Generator_TablePropName="StudyContents" msprop:Generator_RowDeletingName="StudyContentsRowDeleting" msprop:Generator_RowChangingName="StudyContentsRowChanging" msprop:Generator_RowEvHandlerName="StudyContentsRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyContentsRowDeleted" msprop:Generator_UserTableName="StudyContents" msprop:Generator_RowChangedName="StudyContentsRowChanged" msprop:Generator_RowEvArgName="StudyContentsRowChangeEvent" msprop:Generator_RowClassName="StudyContentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
@@ -2814,7 +2861,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SubjectGrs" msprop:Generator_TableClassName="SubjectGrsDataTable" msprop:Generator_TableVarName="tableSubjectGrs" msprop:Generator_RowChangedName="SubjectGrsRowChanged" msprop:Generator_TablePropName="SubjectGrs" msprop:Generator_RowDeletingName="SubjectGrsRowDeleting" msprop:Generator_RowChangingName="SubjectGrsRowChanging" msprop:Generator_RowEvHandlerName="SubjectGrsRowChangeEventHandler" msprop:Generator_RowDeletedName="SubjectGrsRowDeleted" msprop:Generator_RowClassName="SubjectGrsRow" msprop:Generator_UserTableName="SubjectGrs" msprop:Generator_RowEvArgName="SubjectGrsRowChangeEvent">
+        <xs:element name="SubjectGrs" msprop:Generator_TableClassName="SubjectGrsDataTable" msprop:Generator_TableVarName="tableSubjectGrs" msprop:Generator_TablePropName="SubjectGrs" msprop:Generator_RowDeletingName="SubjectGrsRowDeleting" msprop:Generator_RowChangingName="SubjectGrsRowChanging" msprop:Generator_RowEvHandlerName="SubjectGrsRowChangeEventHandler" msprop:Generator_RowDeletedName="SubjectGrsRowDeleted" msprop:Generator_UserTableName="SubjectGrs" msprop:Generator_RowChangedName="SubjectGrsRowChanged" msprop:Generator_RowEvArgName="SubjectGrsRowChangeEvent" msprop:Generator_RowClassName="SubjectGrsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodGrSubject" msprop:Generator_ColumnVarNameInTable="columnCodGrSubject" msprop:Generator_ColumnPropNameInRow="CodGrSubject" msprop:Generator_ColumnPropNameInTable="CodGrSubjectColumn" msprop:Generator_UserColumnName="CodGrSubject" type="xs:unsignedByte" minOccurs="0" />
@@ -2837,7 +2884,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Studycomponents_plus_studycontents" msprop:Generator_TableClassName="Studycomponents_plus_studycontentsDataTable" msprop:Generator_TableVarName="tableStudycomponents_plus_studycontents" msprop:Generator_RowChangedName="Studycomponents_plus_studycontentsRowChanged" msprop:Generator_TablePropName="Studycomponents_plus_studycontents" msprop:Generator_RowDeletingName="Studycomponents_plus_studycontentsRowDeleting" msprop:Generator_RowChangingName="Studycomponents_plus_studycontentsRowChanging" msprop:Generator_RowEvHandlerName="Studycomponents_plus_studycontentsRowChangeEventHandler" msprop:Generator_RowDeletedName="Studycomponents_plus_studycontentsRowDeleted" msprop:Generator_RowClassName="Studycomponents_plus_studycontentsRow" msprop:Generator_UserTableName="Studycomponents_plus_studycontents" msprop:Generator_RowEvArgName="Studycomponents_plus_studycontentsRowChangeEvent">
+        <xs:element name="Studycomponents_plus_studycontents" msprop:Generator_TableClassName="Studycomponents_plus_studycontentsDataTable" msprop:Generator_TableVarName="tableStudycomponents_plus_studycontents" msprop:Generator_TablePropName="Studycomponents_plus_studycontents" msprop:Generator_RowDeletingName="Studycomponents_plus_studycontentsRowDeleting" msprop:Generator_RowChangingName="Studycomponents_plus_studycontentsRowChanging" msprop:Generator_RowEvHandlerName="Studycomponents_plus_studycontentsRowChangeEventHandler" msprop:Generator_RowDeletedName="Studycomponents_plus_studycontentsRowDeleted" msprop:Generator_UserTableName="Studycomponents_plus_studycontents" msprop:Generator_RowChangedName="Studycomponents_plus_studycontentsRowChanged" msprop:Generator_RowEvArgName="Studycomponents_plus_studycontentsRowChangeEvent" msprop:Generator_RowClassName="Studycomponents_plus_studycontentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodComp" msprop:Generator_ColumnVarNameInTable="columnCodComp" msprop:Generator_ColumnPropNameInRow="CodComp" msprop:Generator_ColumnPropNameInTable="CodCompColumn" msprop:Generator_UserColumnName="CodComp" type="xs:int" />
@@ -2884,7 +2931,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Prepod" msprop:Generator_TableClassName="PrepodDataTable" msprop:Generator_TableVarName="tablePrepod" msprop:Generator_RowChangedName="PrepodRowChanged" msprop:Generator_TablePropName="Prepod" msprop:Generator_RowDeletingName="PrepodRowDeleting" msprop:Generator_RowChangingName="PrepodRowChanging" msprop:Generator_RowEvHandlerName="PrepodRowChangeEventHandler" msprop:Generator_RowDeletedName="PrepodRowDeleted" msprop:Generator_RowClassName="PrepodRow" msprop:Generator_UserTableName="Prepod" msprop:Generator_RowEvArgName="PrepodRowChangeEvent">
+        <xs:element name="Prepod" msprop:Generator_TableClassName="PrepodDataTable" msprop:Generator_TableVarName="tablePrepod" msprop:Generator_TablePropName="Prepod" msprop:Generator_RowDeletingName="PrepodRowDeleting" msprop:Generator_RowChangingName="PrepodRowChanging" msprop:Generator_RowEvHandlerName="PrepodRowChangeEventHandler" msprop:Generator_RowDeletedName="PrepodRowDeleted" msprop:Generator_UserTableName="Prepod" msprop:Generator_RowChangedName="PrepodRowChanged" msprop:Generator_RowEvArgName="PrepodRowChangeEvent" msprop:Generator_RowClassName="PrepodRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CODPE" msprop:Generator_ColumnVarNameInTable="columnCODPE" msprop:Generator_ColumnPropNameInRow="CODPE" msprop:Generator_ColumnPropNameInTable="CODPEColumn" msprop:Generator_UserColumnName="CODPE" type="xs:int" />
@@ -2898,7 +2945,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FormStudy" msprop:Generator_TableClassName="FormStudyDataTable" msprop:Generator_TableVarName="tableFormStudy" msprop:Generator_RowChangedName="FormStudyRowChanged" msprop:Generator_TablePropName="FormStudy" msprop:Generator_RowDeletingName="FormStudyRowDeleting" msprop:Generator_RowChangingName="FormStudyRowChanging" msprop:Generator_RowEvHandlerName="FormStudyRowChangeEventHandler" msprop:Generator_RowDeletedName="FormStudyRowDeleted" msprop:Generator_RowClassName="FormStudyRow" msprop:Generator_UserTableName="FormStudy" msprop:Generator_RowEvArgName="FormStudyRowChangeEvent">
+        <xs:element name="FormStudy" msprop:Generator_TableClassName="FormStudyDataTable" msprop:Generator_TableVarName="tableFormStudy" msprop:Generator_TablePropName="FormStudy" msprop:Generator_RowDeletingName="FormStudyRowDeleting" msprop:Generator_RowChangingName="FormStudyRowChanging" msprop:Generator_RowEvHandlerName="FormStudyRowChangeEventHandler" msprop:Generator_RowDeletedName="FormStudyRowDeleted" msprop:Generator_UserTableName="FormStudy" msprop:Generator_RowChangedName="FormStudyRowChanged" msprop:Generator_RowEvArgName="FormStudyRowChangeEvent" msprop:Generator_RowClassName="FormStudyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodFormStudy" msprop:Generator_ColumnVarNameInTable="columnCodFormStudy" msprop:Generator_ColumnPropNameInRow="CodFormStudy" msprop:Generator_ColumnPropNameInTable="CodFormStudyColumn" msprop:Generator_UserColumnName="CodFormStudy" type="xs:unsignedByte" />
@@ -2920,7 +2967,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Doljnost_prepod" msprop:Generator_TableClassName="Doljnost_prepodDataTable" msprop:Generator_TableVarName="tableDoljnost_prepod" msprop:Generator_RowChangedName="Doljnost_prepodRowChanged" msprop:Generator_TablePropName="Doljnost_prepod" msprop:Generator_RowDeletingName="Doljnost_prepodRowDeleting" msprop:Generator_RowChangingName="Doljnost_prepodRowChanging" msprop:Generator_RowEvHandlerName="Doljnost_prepodRowChangeEventHandler" msprop:Generator_RowDeletedName="Doljnost_prepodRowDeleted" msprop:Generator_RowClassName="Doljnost_prepodRow" msprop:Generator_UserTableName="Doljnost_prepod" msprop:Generator_RowEvArgName="Doljnost_prepodRowChangeEvent">
+        <xs:element name="Doljnost_prepod" msprop:Generator_TableClassName="Doljnost_prepodDataTable" msprop:Generator_TableVarName="tableDoljnost_prepod" msprop:Generator_TablePropName="Doljnost_prepod" msprop:Generator_RowDeletingName="Doljnost_prepodRowDeleting" msprop:Generator_RowChangingName="Doljnost_prepodRowChanging" msprop:Generator_RowEvHandlerName="Doljnost_prepodRowChangeEventHandler" msprop:Generator_RowDeletedName="Doljnost_prepodRowDeleted" msprop:Generator_UserTableName="Doljnost_prepod" msprop:Generator_RowChangedName="Doljnost_prepodRowChanged" msprop:Generator_RowEvArgName="Doljnost_prepodRowChangeEvent" msprop:Generator_RowClassName="Doljnost_prepodRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CODPE" msprop:Generator_ColumnVarNameInTable="columnCODPE" msprop:Generator_ColumnPropNameInRow="CODPE" msprop:Generator_ColumnPropNameInTable="CODPEColumn" msprop:Generator_UserColumnName="CODPE" type="xs:int" />
@@ -2944,7 +2991,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DEGREE" msprop:Generator_TableClassName="DEGREEDataTable" msprop:Generator_TableVarName="tableDEGREE" msprop:Generator_RowChangedName="DEGREERowChanged" msprop:Generator_TablePropName="DEGREE" msprop:Generator_RowDeletingName="DEGREERowDeleting" msprop:Generator_RowChangingName="DEGREERowChanging" msprop:Generator_RowEvHandlerName="DEGREERowChangeEventHandler" msprop:Generator_RowDeletedName="DEGREERowDeleted" msprop:Generator_RowClassName="DEGREERow" msprop:Generator_UserTableName="DEGREE" msprop:Generator_RowEvArgName="DEGREERowChangeEvent">
+        <xs:element name="DEGREE" msprop:Generator_TableClassName="DEGREEDataTable" msprop:Generator_TableVarName="tableDEGREE" msprop:Generator_TablePropName="DEGREE" msprop:Generator_RowDeletingName="DEGREERowDeleting" msprop:Generator_RowChangingName="DEGREERowChanging" msprop:Generator_RowEvHandlerName="DEGREERowChangeEventHandler" msprop:Generator_RowDeletedName="DEGREERowDeleted" msprop:Generator_UserTableName="DEGREE" msprop:Generator_RowChangedName="DEGREERowChanged" msprop:Generator_RowEvArgName="DEGREERowChangeEvent" msprop:Generator_RowClassName="DEGREERow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CODDEGRE" msprop:Generator_ColumnVarNameInTable="columnCODDEGRE" msprop:Generator_ColumnPropNameInRow="CODDEGRE" msprop:Generator_ColumnPropNameInTable="CODDEGREColumn" msprop:Generator_UserColumnName="CODDEGRE" type="xs:int" />
@@ -2965,7 +3012,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SoderjRazdDiscip" msprop:Generator_TableClassName="SoderjRazdDiscipDataTable" msprop:Generator_TableVarName="tableSoderjRazdDiscip" msprop:Generator_TablePropName="SoderjRazdDiscip" msprop:Generator_RowDeletingName="SoderjRazdDiscipRowDeleting" msprop:Generator_RowChangingName="SoderjRazdDiscipRowChanging" msprop:Generator_RowEvHandlerName="SoderjRazdDiscipRowChangeEventHandler" msprop:Generator_RowDeletedName="SoderjRazdDiscipRowDeleted" msprop:Generator_UserTableName="SoderjRazdDiscip" msprop:Generator_RowChangedName="SoderjRazdDiscipRowChanged" msprop:Generator_RowEvArgName="SoderjRazdDiscipRowChangeEvent" msprop:Generator_RowClassName="SoderjRazdDiscipRow">
+        <xs:element name="SoderjRazdDiscip" msprop:Generator_TableClassName="SoderjRazdDiscipDataTable" msprop:Generator_TableVarName="tableSoderjRazdDiscip" msprop:Generator_RowChangedName="SoderjRazdDiscipRowChanged" msprop:Generator_TablePropName="SoderjRazdDiscip" msprop:Generator_RowDeletingName="SoderjRazdDiscipRowDeleting" msprop:Generator_RowChangingName="SoderjRazdDiscipRowChanging" msprop:Generator_RowEvHandlerName="SoderjRazdDiscipRowChangeEventHandler" msprop:Generator_RowDeletedName="SoderjRazdDiscipRowDeleted" msprop:Generator_RowClassName="SoderjRazdDiscipRow" msprop:Generator_UserTableName="SoderjRazdDiscip" msprop:Generator_RowEvArgName="SoderjRazdDiscipRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="_x0031_" msdata:Caption="" msprop:Generator_ColumnVarNameInTable="column1" msprop:Generator_ColumnPropNameInRow="_1" msprop:Generator_ColumnPropNameInTable="_1Column" msprop:Generator_UserColumnName="1" type="xs:string" minOccurs="0" />
@@ -2977,7 +3024,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudyExams" msprop:Generator_TableClassName="StudyExamsDataTable" msprop:Generator_TableVarName="tableStudyExams" msprop:Generator_RowChangedName="StudyExamsRowChanged" msprop:Generator_TablePropName="StudyExams" msprop:Generator_RowDeletingName="StudyExamsRowDeleting" msprop:Generator_RowChangingName="StudyExamsRowChanging" msprop:Generator_RowEvHandlerName="StudyExamsRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyExamsRowDeleted" msprop:Generator_RowClassName="StudyExamsRow" msprop:Generator_UserTableName="StudyExams" msprop:Generator_RowEvArgName="StudyExamsRowChangeEvent">
+        <xs:element name="StudyExams" msprop:Generator_TableClassName="StudyExamsDataTable" msprop:Generator_TableVarName="tableStudyExams" msprop:Generator_TablePropName="StudyExams" msprop:Generator_RowDeletingName="StudyExamsRowDeleting" msprop:Generator_RowChangingName="StudyExamsRowChanging" msprop:Generator_RowEvHandlerName="StudyExamsRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyExamsRowDeleted" msprop:Generator_UserTableName="StudyExams" msprop:Generator_RowChangedName="StudyExamsRowChanged" msprop:Generator_RowEvArgName="StudyExamsRowChangeEvent" msprop:Generator_RowClassName="StudyExamsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
@@ -2995,7 +3042,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lib_Book" msprop:Generator_TableClassName="Lib_BookDataTable" msprop:Generator_TableVarName="tableLib_Book" msprop:Generator_TablePropName="Lib_Book" msprop:Generator_RowDeletingName="Lib_BookRowDeleting" msprop:Generator_RowChangingName="Lib_BookRowChanging" msprop:Generator_RowEvHandlerName="Lib_BookRowChangeEventHandler" msprop:Generator_RowDeletedName="Lib_BookRowDeleted" msprop:Generator_UserTableName="Lib_Book" msprop:Generator_RowChangedName="Lib_BookRowChanged" msprop:Generator_RowEvArgName="Lib_BookRowChangeEvent" msprop:Generator_RowClassName="Lib_BookRow">
+        <xs:element name="Lib_Book" msprop:Generator_TableClassName="Lib_BookDataTable" msprop:Generator_TableVarName="tableLib_Book" msprop:Generator_RowChangedName="Lib_BookRowChanged" msprop:Generator_TablePropName="Lib_Book" msprop:Generator_RowDeletingName="Lib_BookRowDeleting" msprop:Generator_RowChangingName="Lib_BookRowChanging" msprop:Generator_RowEvHandlerName="Lib_BookRowChangeEventHandler" msprop:Generator_RowDeletedName="Lib_BookRowDeleted" msprop:Generator_RowClassName="Lib_BookRow" msprop:Generator_UserTableName="Lib_Book" msprop:Generator_RowEvArgName="Lib_BookRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DocID" msprop:Generator_ColumnVarNameInTable="columnDocID" msprop:Generator_ColumnPropNameInRow="DocID" msprop:Generator_ColumnPropNameInTable="DocIDColumn" msprop:Generator_UserColumnName="DocID" type="xs:long" />
@@ -3044,7 +3091,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TypeEdu" msprop:Generator_TableClassName="TypeEduDataTable" msprop:Generator_TableVarName="tableTypeEdu" msprop:Generator_TablePropName="TypeEdu" msprop:Generator_RowDeletingName="TypeEduRowDeleting" msprop:Generator_RowChangingName="TypeEduRowChanging" msprop:Generator_RowEvHandlerName="TypeEduRowChangeEventHandler" msprop:Generator_RowDeletedName="TypeEduRowDeleted" msprop:Generator_UserTableName="TypeEdu" msprop:Generator_RowChangedName="TypeEduRowChanged" msprop:Generator_RowEvArgName="TypeEduRowChangeEvent" msprop:Generator_RowClassName="TypeEduRow">
+        <xs:element name="TypeEdu" msprop:Generator_TableClassName="TypeEduDataTable" msprop:Generator_TableVarName="tableTypeEdu" msprop:Generator_RowChangedName="TypeEduRowChanged" msprop:Generator_TablePropName="TypeEdu" msprop:Generator_RowDeletingName="TypeEduRowDeleting" msprop:Generator_RowChangingName="TypeEduRowChanging" msprop:Generator_RowEvHandlerName="TypeEduRowChangeEventHandler" msprop:Generator_RowDeletedName="TypeEduRowDeleted" msprop:Generator_RowClassName="TypeEduRow" msprop:Generator_UserTableName="TypeEdu" msprop:Generator_RowEvArgName="TypeEduRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodTypeEdu" msprop:Generator_ColumnVarNameInTable="columnCodTypeEdu" msprop:Generator_ColumnPropNameInRow="CodTypeEdu" msprop:Generator_ColumnPropNameInTable="CodTypeEduColumn" msprop:Generator_UserColumnName="CodTypeEdu" type="xs:unsignedByte" />
@@ -3058,7 +3105,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudyPlans" msprop:Generator_TableClassName="StudyPlansDataTable" msprop:Generator_TableVarName="tableStudyPlans" msprop:Generator_RowChangedName="StudyPlansRowChanged" msprop:Generator_TablePropName="StudyPlans" msprop:Generator_RowDeletingName="StudyPlansRowDeleting" msprop:Generator_RowChangingName="StudyPlansRowChanging" msprop:Generator_RowEvHandlerName="StudyPlansRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyPlansRowDeleted" msprop:Generator_RowClassName="StudyPlansRow" msprop:Generator_UserTableName="StudyPlans" msprop:Generator_RowEvArgName="StudyPlansRowChangeEvent">
+        <xs:element name="StudyPlans" msprop:Generator_TableClassName="StudyPlansDataTable" msprop:Generator_TableVarName="tableStudyPlans" msprop:Generator_TablePropName="StudyPlans" msprop:Generator_RowDeletingName="StudyPlansRowDeleting" msprop:Generator_RowChangingName="StudyPlansRowChanging" msprop:Generator_RowEvHandlerName="StudyPlansRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyPlansRowDeleted" msprop:Generator_UserTableName="StudyPlans" msprop:Generator_RowChangedName="StudyPlansRowChanged" msprop:Generator_RowEvArgName="StudyPlansRowChangeEvent" msprop:Generator_RowClassName="StudyPlansRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
@@ -3097,7 +3144,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="OcenSredstv1" msprop:Generator_TableClassName="OcenSredstv1DataTable" msprop:Generator_TableVarName="tableOcenSredstv1" msprop:Generator_RowChangedName="OcenSredstv1RowChanged" msprop:Generator_TablePropName="OcenSredstv1" msprop:Generator_RowDeletingName="OcenSredstv1RowDeleting" msprop:Generator_RowChangingName="OcenSredstv1RowChanging" msprop:Generator_RowEvHandlerName="OcenSredstv1RowChangeEventHandler" msprop:Generator_RowDeletedName="OcenSredstv1RowDeleted" msprop:Generator_RowClassName="OcenSredstv1Row" msprop:Generator_UserTableName="OcenSredstv1" msprop:Generator_RowEvArgName="OcenSredstv1RowChangeEvent">
+        <xs:element name="OcenSredstv1" msprop:Generator_TableClassName="OcenSredstv1DataTable" msprop:Generator_TableVarName="tableOcenSredstv1" msprop:Generator_TablePropName="OcenSredstv1" msprop:Generator_RowDeletingName="OcenSredstv1RowDeleting" msprop:Generator_RowChangingName="OcenSredstv1RowChanging" msprop:Generator_RowEvHandlerName="OcenSredstv1RowChangeEventHandler" msprop:Generator_RowDeletedName="OcenSredstv1RowDeleted" msprop:Generator_UserTableName="OcenSredstv1" msprop:Generator_RowChangedName="OcenSredstv1RowChanged" msprop:Generator_RowEvArgName="OcenSredstv1RowChangeEvent" msprop:Generator_RowClassName="OcenSredstv1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdSredstv" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIdSredstv" msprop:Generator_ColumnPropNameInRow="IdSredstv" msprop:Generator_ColumnPropNameInTable="IdSredstvColumn" msprop:Generator_UserColumnName="IdSredstv" type="xs:short" />
@@ -3118,7 +3165,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="UMK_and_RPD_with_opisanie" msprop:Generator_TableClassName="UMK_and_RPD_with_opisanieDataTable" msprop:Generator_TableVarName="tableUMK_and_RPD_with_opisanie" msprop:Generator_TablePropName="UMK_and_RPD_with_opisanie" msprop:Generator_RowDeletingName="UMK_and_RPD_with_opisanieRowDeleting" msprop:Generator_RowChangingName="UMK_and_RPD_with_opisanieRowChanging" msprop:Generator_RowEvHandlerName="UMK_and_RPD_with_opisanieRowChangeEventHandler" msprop:Generator_RowDeletedName="UMK_and_RPD_with_opisanieRowDeleted" msprop:Generator_UserTableName="UMK_and_RPD_with_opisanie" msprop:Generator_RowChangedName="UMK_and_RPD_with_opisanieRowChanged" msprop:Generator_RowEvArgName="UMK_and_RPD_with_opisanieRowChangeEvent" msprop:Generator_RowClassName="UMK_and_RPD_with_opisanieRow">
+        <xs:element name="UMK_and_RPD_with_opisanie" msprop:Generator_TableClassName="UMK_and_RPD_with_opisanieDataTable" msprop:Generator_TableVarName="tableUMK_and_RPD_with_opisanie" msprop:Generator_RowChangedName="UMK_and_RPD_with_opisanieRowChanged" msprop:Generator_TablePropName="UMK_and_RPD_with_opisanie" msprop:Generator_RowDeletingName="UMK_and_RPD_with_opisanieRowDeleting" msprop:Generator_RowChangingName="UMK_and_RPD_with_opisanieRowChanging" msprop:Generator_RowEvHandlerName="UMK_and_RPD_with_opisanieRowChangeEventHandler" msprop:Generator_RowDeletedName="UMK_and_RPD_with_opisanieRowDeleted" msprop:Generator_RowClassName="UMK_and_RPD_with_opisanieRow" msprop:Generator_UserTableName="UMK_and_RPD_with_opisanie" msprop:Generator_RowEvArgName="UMK_and_RPD_with_opisanieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UMK_or_RPD" msprop:Generator_ColumnVarNameInTable="columnUMK_or_RPD" msprop:Generator_ColumnPropNameInRow="UMK_or_RPD" msprop:Generator_ColumnPropNameInTable="UMK_or_RPDColumn" msprop:Generator_UserColumnName="UMK_or_RPD" type="xs:boolean" minOccurs="0" />
@@ -3213,7 +3260,7 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ZavPodrazdn" msprop:Generator_TableClassName="ZavPodrazdnDataTable" msprop:Generator_TableVarName="tableZavPodrazdn" msprop:Generator_RowChangedName="ZavPodrazdnRowChanged" msprop:Generator_TablePropName="ZavPodrazdn" msprop:Generator_RowDeletingName="ZavPodrazdnRowDeleting" msprop:Generator_RowChangingName="ZavPodrazdnRowChanging" msprop:Generator_RowEvHandlerName="ZavPodrazdnRowChangeEventHandler" msprop:Generator_RowDeletedName="ZavPodrazdnRowDeleted" msprop:Generator_RowClassName="ZavPodrazdnRow" msprop:Generator_UserTableName="ZavPodrazdn" msprop:Generator_RowEvArgName="ZavPodrazdnRowChangeEvent">
+        <xs:element name="ZavPodrazdn" msprop:Generator_TableClassName="ZavPodrazdnDataTable" msprop:Generator_TableVarName="tableZavPodrazdn" msprop:Generator_TablePropName="ZavPodrazdn" msprop:Generator_RowDeletingName="ZavPodrazdnRowDeleting" msprop:Generator_RowChangingName="ZavPodrazdnRowChanging" msprop:Generator_RowEvHandlerName="ZavPodrazdnRowChangeEventHandler" msprop:Generator_RowDeletedName="ZavPodrazdnRowDeleted" msprop:Generator_UserTableName="ZavPodrazdn" msprop:Generator_RowChangedName="ZavPodrazdnRowChanged" msprop:Generator_RowEvArgName="ZavPodrazdnRowChangeEvent" msprop:Generator_RowClassName="ZavPodrazdnRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="UNITNAM" msprop:Generator_ColumnVarNameInTable="columnUNITNAM" msprop:Generator_ColumnPropNameInRow="UNITNAM" msprop:Generator_ColumnPropNameInTable="UNITNAMColumn" msprop:Generator_UserColumnName="UNITNAM">
@@ -3231,6 +3278,15 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ArmKaf_OcenSredstvVPlane" msprop:Generator_TableClassName="ArmKaf_OcenSredstvVPlaneDataTable" msprop:Generator_TableVarName="tableArmKaf_OcenSredstvVPlane" msprop:Generator_TablePropName="ArmKaf_OcenSredstvVPlane" msprop:Generator_RowDeletingName="ArmKaf_OcenSredstvVPlaneRowDeleting" msprop:Generator_RowChangingName="ArmKaf_OcenSredstvVPlaneRowChanging" msprop:Generator_RowEvHandlerName="ArmKaf_OcenSredstvVPlaneRowChangeEventHandler" msprop:Generator_RowDeletedName="ArmKaf_OcenSredstvVPlaneRowDeleted" msprop:Generator_UserTableName="ArmKaf_OcenSredstvVPlane" msprop:Generator_RowChangedName="ArmKaf_OcenSredstvVPlaneRowChanged" msprop:Generator_RowEvArgName="ArmKaf_OcenSredstvVPlaneRowChangeEvent" msprop:Generator_RowClassName="ArmKaf_OcenSredstvVPlaneRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodOcenSredstv" msprop:Generator_ColumnVarNameInTable="columnCodOcenSredstv" msprop:Generator_ColumnPropNameInRow="CodOcenSredstv" msprop:Generator_ColumnPropNameInTable="CodOcenSredstvColumn" msprop:Generator_UserColumnName="CodOcenSredstv" type="xs:short" />
+              <xs:element name="CodSub" msprop:Generator_ColumnVarNameInTable="columnCodSub" msprop:Generator_ColumnPropNameInRow="CodSub" msprop:Generator_ColumnPropNameInTable="CodSubColumn" msprop:Generator_UserColumnName="CodSub" type="xs:short" />
+              <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -3345,17 +3401,27 @@ WHERE        (PODRAZDN.UNITNAM LIKE '%' + @NamePodrazdn + '%')</CommandText>
       <xs:selector xpath=".//mstns:ZavPodrazdn" />
       <xs:field xpath="mstns:CODPE" />
     </xs:unique>
+    <xs:unique name="ArmKaf_OcenSredstvVPlane_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ArmKaf_OcenSredstvVPlane" />
+      <xs:field xpath="mstns:CodOcenSredstv" />
+      <xs:field xpath="mstns:CodSub" />
+      <xs:field xpath="mstns:CodPlan" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Grup_Faculty" msdata:parent="Faculty" msdata:child="Grup" msdata:parentkey="CodFaculty CodOrganization" msdata:childkey="CodFaculty CodOrganization" msprop:Generator_UserChildTable="Grup" msprop:Generator_ChildPropName="GetGrupRows" msprop:Generator_UserRelationName="FK_Grup_Faculty" msprop:Generator_ParentPropName="FacultyRowParent" msprop:Generator_RelationVarName="relationFK_Grup_Faculty" msprop:Generator_UserParentTable="Faculty" />
-      <msdata:Relationship name="FK_Grup_FormStudy" msdata:parent="FormStudy" msdata:child="Grup" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="Grup" msprop:Generator_ChildPropName="GetGrupRows" msprop:Generator_UserRelationName="FK_Grup_FormStudy" msprop:Generator_ParentPropName="FormStudyRow" msprop:Generator_RelationVarName="relationFK_Grup_FormStudy" msprop:Generator_UserParentTable="FormStudy" />
-      <msdata:Relationship name="FK_ASSIGN_CODPE_PEOPLEN" msdata:parent="PEOPLEN" msdata:child="Doljnost_prepod" msdata:parentkey="CODPE" msdata:childkey="CODPE" msprop:Generator_UserChildTable="Doljnost_prepod" msprop:Generator_ChildPropName="GetDoljnost_prepodRows" msprop:Generator_UserRelationName="FK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_RelationVarName="relationFK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_UserParentTable="PEOPLEN" msprop:Generator_ParentPropName="PEOPLENRow" />
-      <msdata:Relationship name="FK_PEOPLEN_CODDEGRE_DEGREE" msdata:parent="DEGREE" msdata:child="PEOPLEN" msdata:parentkey="CODDEGRE" msdata:childkey="CODDEGRE" msprop:Generator_UserChildTable="PEOPLEN" msprop:Generator_ChildPropName="GetPEOPLENRows" msprop:Generator_UserRelationName="FK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_ParentPropName="DEGREERow" msprop:Generator_RelationVarName="relationFK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_UserParentTable="DEGREE" />
-      <msdata:Relationship name="FK_StudyPlans_FormStudy" msdata:parent="FormStudy" msdata:child="StudyPlans" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_FormStudy" msprop:Generator_RelationVarName="relationFK_StudyPlans_FormStudy" msprop:Generator_UserParentTable="FormStudy" msprop:Generator_ParentPropName="FormStudyRow" />
-      <msdata:Relationship name="FK_StudyPlans_TypeEdu" msdata:parent="TypeEdu" msdata:child="StudyPlans" msdata:parentkey="CodTypeEdu" msdata:childkey="CodTypeEdu" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_TypeEdu" msprop:Generator_RelationVarName="relationFK_StudyPlans_TypeEdu" msprop:Generator_UserParentTable="TypeEdu" msprop:Generator_ParentPropName="TypeEduRow" />
-      <msdata:Relationship name="FK_UnitSubs_Subs" msdata:parent="Subs" msdata:child="NagruzkaOnPrep" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="NagruzkaOnPrep" msprop:Generator_ChildPropName="GetNagruzkaOnPrepRows" msprop:Generator_UserRelationName="FK_UnitSubs_Subs" msprop:Generator_RelationVarName="relationFK_UnitSubs_Subs" msprop:Generator_UserParentTable="Subs" msprop:Generator_ParentPropName="SubsRow" />
-      <msdata:Relationship name="FK_PeoplenPass_PEOPLEN" msdata:parent="ZavPodrazdn" msdata:child="PeoplenPass" msdata:parentkey="CODPE" msdata:childkey="CodPE" msprop:Generator_UserChildTable="PeoplenPass" msprop:Generator_ChildPropName="GetPeoplenPassRows" msprop:Generator_UserRelationName="FK_PeoplenPass_PEOPLEN" msprop:Generator_ParentPropName="ZavPodrazdnRow" msprop:Generator_RelationVarName="relationFK_PeoplenPass_PEOPLEN" msprop:Generator_UserParentTable="ZavPodrazdn" />
+      <msdata:Relationship name="FK_Grup_Faculty" msdata:parent="Faculty" msdata:child="Grup" msdata:parentkey="CodFaculty CodOrganization" msdata:childkey="CodFaculty CodOrganization" msprop:Generator_UserChildTable="Grup" msprop:Generator_ChildPropName="GetGrupRows" msprop:Generator_UserRelationName="FK_Grup_Faculty" msprop:Generator_RelationVarName="relationFK_Grup_Faculty" msprop:Generator_UserParentTable="Faculty" msprop:Generator_ParentPropName="FacultyRowParent" />
+      <msdata:Relationship name="FK_Grup_FormStudy" msdata:parent="FormStudy" msdata:child="Grup" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="Grup" msprop:Generator_ChildPropName="GetGrupRows" msprop:Generator_UserRelationName="FK_Grup_FormStudy" msprop:Generator_RelationVarName="relationFK_Grup_FormStudy" msprop:Generator_UserParentTable="FormStudy" msprop:Generator_ParentPropName="FormStudyRow" />
+      <msdata:Relationship name="FK_ASSIGN_CODPE_PEOPLEN" msdata:parent="PEOPLEN" msdata:child="Doljnost_prepod" msdata:parentkey="CODPE" msdata:childkey="CODPE" msprop:Generator_UserChildTable="Doljnost_prepod" msprop:Generator_ChildPropName="GetDoljnost_prepodRows" msprop:Generator_UserRelationName="FK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_ParentPropName="PEOPLENRow" msprop:Generator_RelationVarName="relationFK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_UserParentTable="PEOPLEN" />
+      <msdata:Relationship name="FK_PEOPLEN_CODDEGRE_DEGREE" msdata:parent="DEGREE" msdata:child="PEOPLEN" msdata:parentkey="CODDEGRE" msdata:childkey="CODDEGRE" msprop:Generator_UserChildTable="PEOPLEN" msprop:Generator_ChildPropName="GetPEOPLENRows" msprop:Generator_UserRelationName="FK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_RelationVarName="relationFK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_UserParentTable="DEGREE" msprop:Generator_ParentPropName="DEGREERow" />
+      <msdata:Relationship name="FK_StudyPlans_FormStudy" msdata:parent="FormStudy" msdata:child="StudyPlans" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_FormStudy" msprop:Generator_ParentPropName="FormStudyRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_FormStudy" msprop:Generator_UserParentTable="FormStudy" />
+      <msdata:Relationship name="FK_StudyPlans_TypeEdu" msdata:parent="TypeEdu" msdata:child="StudyPlans" msdata:parentkey="CodTypeEdu" msdata:childkey="CodTypeEdu" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_TypeEdu" msprop:Generator_ParentPropName="TypeEduRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_TypeEdu" msprop:Generator_UserParentTable="TypeEdu" />
+      <msdata:Relationship name="FK_UnitSubs_Subs" msdata:parent="Subs" msdata:child="NagruzkaOnPrep" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="NagruzkaOnPrep" msprop:Generator_ChildPropName="GetNagruzkaOnPrepRows" msprop:Generator_UserRelationName="FK_UnitSubs_Subs" msprop:Generator_ParentPropName="SubsRow" msprop:Generator_RelationVarName="relationFK_UnitSubs_Subs" msprop:Generator_UserParentTable="Subs" />
+      <msdata:Relationship name="FK_PeoplenPass_PEOPLEN" msdata:parent="ZavPodrazdn" msdata:child="PeoplenPass" msdata:parentkey="CODPE" msdata:childkey="CodPE" msprop:Generator_UserChildTable="PeoplenPass" msprop:Generator_ChildPropName="GetPeoplenPassRows" msprop:Generator_UserRelationName="FK_PeoplenPass_PEOPLEN" msprop:Generator_RelationVarName="relationFK_PeoplenPass_PEOPLEN" msprop:Generator_UserParentTable="ZavPodrazdn" msprop:Generator_ParentPropName="ZavPodrazdnRow" />
+      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msdata:parent="OcenSredstv" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="IdSredstv" msdata:childkey="CodOcenSredstv" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msprop:Generator_ParentPropName="OcenSredstvRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msprop:Generator_UserParentTable="OcenSredstv" />
+      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1" msdata:parent="OcenSredstv1" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="IdSredstv" msdata:childkey="CodOcenSredstv" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1" msprop:Generator_ParentPropName="OcenSredstv1Row" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1" msprop:Generator_UserParentTable="OcenSredstv1" />
+      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msdata:parent="StudyPlans" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodPlan" msdata:childkey="CodPlan" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_ParentPropName="StudyPlansRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_UserParentTable="StudyPlans" />
+      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_Subs" msdata:parent="Subs" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_Subs" msprop:Generator_ParentPropName="SubsRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_Subs" msprop:Generator_UserParentTable="Subs" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

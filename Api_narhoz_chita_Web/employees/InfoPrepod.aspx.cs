@@ -26,7 +26,7 @@ namespace Api_narhoz_chita_Web.employees {
                             string FIO = Request.QueryString["fio"];
                             string CodPrep = Request.QueryString["CodPrep"];
                             if (FIO != null && FIO != String.Empty) {
-                                prepodDiscipAdapter.Fill_ForDiscipPrepPage(PrepodDiscipTable, StudyYear, FIO, String.Empty, false);
+                                prepodDiscipAdapter.Fill_ForDiscipPrepPage(PrepodDiscipTable, StudyYear, FIO.Trim(), String.Empty, false);
                             }
                             else if (CodPrep != null && CodPrep != String.Empty) {
                                 prepodDiscipAdapter.Fill_ForDiscipPrepPage(PrepodDiscipTable, StudyYear, String.Empty, CodPrep, false);
@@ -40,85 +40,87 @@ namespace Api_narhoz_chita_Web.employees {
                                 //код преподавателя
                                 int CodPE = Convert.ToInt32(PrepodDiscipTable[0]["codprep"]);
                                 employeesAdapter.Fill_onCodPE(EmployeesTable, StudyYear, CodPE);
-                                PostAdapter.Fill(postTable);
                                 QualificAdapter.Fill_Qualific_on_CodPrep(QualificTable, CodPE);
 
                                 var p = new HtmlGenericControl("p");
                                 //Должность
-                                p = this.ZapAboutPrepWithAttr("Должность - ", postTable[0]["POSTNAM"].ToString().Trim(), "Post");
-                                p.Attributes.Add("class", "p_AboutZaslugiPrep");
+                                object post = PostAdapter.GetPostNam(CodPE);
+                                if (post != null && post.ToString() != string.Empty) {
+                                    p = this.ZapAboutPrepWithAttr("Должность - ", post.ToString(), "Post"); 
+                                    p.Attributes.Add("class", "p_AboutZaslugiPrep");
+                                }
                                 AboutPrepod.Controls.Add(p);
                                 //ученая степень
-                                p = this.ZapAboutPrepWithAttr("Ученая степень - ", EmployeesTable.Rows[0]["DEGRENAM"].ToString().Trim(), "Degree");
-                                p.Attributes.Add("class", "p_AboutZaslugiPrep");
-                                AboutPrepod.Controls.Add(p);
+                                if (EmployeesTable.Rows.Count > 0 && EmployeesTable.Rows[0]["DEGRENAM"] != null && EmployeesTable.Rows[0]["DEGRENAM"].ToString().Trim() != string.Empty && EmployeesTable.Rows[0]["DEGRENAM"].ToString().Trim() != "нет степени") {
+                                    p = this.ZapAboutPrepWithAttr("Ученая степень - ", EmployeesTable.Rows[0]["DEGRENAM"].ToString().Trim(), "Degree");
+                                    p.Attributes.Add("class", "p_AboutZaslugiPrep");
+                                    AboutPrepod.Controls.Add(p);
+                                }
                                 //ученое звание
-                                p = this.ZapAboutPrepWithAttr("Ученое звание - ", EmployeesTable.Rows[0]["CLASSNAM"].ToString().Trim(), "AcademStat");
-                                p.Attributes.Add("class", "p_AboutZaslugiPrep");
-                                AboutPrepod.Controls.Add(p);
-                                
-                                //Повышение квалификации преподавателя
-                                p = new HtmlGenericControl("h4");
-                                p.InnerText = "Повышение квалификации:";
-                                p.Attributes.Add("style", "font-weight:bold;");
-                                AboutPrepod.Controls.Add(p);
+                                if (EmployeesTable.Rows.Count > 0 &&  EmployeesTable.Rows[0]["CLASSNAM"] != null && EmployeesTable.Rows[0]["CLASSNAM"].ToString().Trim() != string.Empty && EmployeesTable.Rows[0]["CLASSNAM"].ToString().Trim() != "нет звания") {
+                                    p = this.ZapAboutPrepWithAttr("Ученое звание - ", EmployeesTable.Rows[0]["CLASSNAM"].ToString().Trim(), "AcademStat");
+                                    p.Attributes.Add("class", "p_AboutZaslugiPrep");
+                                    AboutPrepod.Controls.Add(p);
+                                }
+                                if (QualificTable.Rows.Count > 0) {
+                                    //Повышение квалификации преподавателя
+                                    p = new HtmlGenericControl("h4");
+                                    p.InnerText = "Повышение квалификации:";
+                                    p.Attributes.Add("style", "font-weight:bold;");
+                                    AboutPrepod.Controls.Add(p); 
+                                    Table QualificHtmlTable = new Table();
+                                    QualificHtmlTable.Attributes.Add("itemprop", "ProfDevelopment");
+                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderCollapse, "collapse");
+                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderColor, "black");
+                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderStyle, "solid");
+                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderWidth, "1px");
+                                    //QualificHtmlTable.Style.Add(HtmlTextWriterStyle.FontSize, "8px");
+                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.Width, "540px");
+                                    //стили для шапки таблицы
+                                    string style = "border:solid 1px black;" +
+                                                    "border-collapse:collapse;" +
+                                                    "border-spacing: 10px;" +
+                                                    "vertical-align:top;" +
+                                                    "background-color: rgb(238, 238, 238);" +
+                                                    "text-align:center;" +
+                                                    "font-weight:bold;" +
+                                                    "font-size:1em;";
+                                    //для шапки таблицы с повышением квалификации
+                                    TableRow HtmlRow = new TableRow();
+                                    TableCell[] Cells = new TableCell[4];
+                                    (Cells[0] = new TableCell()).Text = "Наименование программы";
+                                    Cells[0].Attributes.Add("style", style + "width:230px;vertical-align:middle;");
+                                    (Cells[1] = new TableCell()).Text = "Часы";
+                                    Cells[1].Attributes.Add("style", style + "vertical-align:middle;");
+                                    (Cells[2] = new TableCell()).Text = "Год";
+                                    Cells[2].Attributes.Add("style", style + "vertical-align:middle;");
+                                    (Cells[3] = new TableCell()).Text = "Наименование образовательного учреждения, в котором осуществлялось повышение квалификации, профессиональная переподготовка";
+                                    Cells[3].Attributes.Add("style", style + "width:210px;vertical-align:middle;");
 
-                                Table QualificHtmlTable = new Table();
-                                QualificHtmlTable.Attributes.Add("itemprop", "ProfDevelopment");
-                                QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderCollapse, "collapse");
-                                QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderColor, "black");
-                                QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderStyle, "solid");
-                                QualificHtmlTable.Style.Add(HtmlTextWriterStyle.BorderWidth, "1px");
-                                //QualificHtmlTable.Style.Add(HtmlTextWriterStyle.FontSize, "8px");
-                                QualificHtmlTable.Style.Add(HtmlTextWriterStyle.Width, "540px");
-                                //стили для шапки таблицы
-                                string style = "border:solid 1px black;" +
-                                                "border-collapse:collapse;" +
-                                                "border-spacing: 10px;" +
-                                                "vertical-align:top;" +
-                                                "background-color: rgb(238, 238, 238);" +
-                                                "text-align:center;" +
-                                                "font-weight:bold;" + 
-                                                "font-size:1em;";
-                                //для шапки таблицы с повышением квалификации
-                                TableRow HtmlRow = new TableRow();
-                                TableCell[] Cells = new TableCell[4];
-                                (Cells[0] = new TableCell()).Text = "Наименование программы";
-                                Cells[0].Attributes.Add("style", style + "width:230px;vertical-align:middle;");
-                                (Cells[1] = new TableCell()).Text = "Часы";
-                                Cells[1].Attributes.Add("style", style + "vertical-align:middle;");
-                                (Cells[2] = new TableCell()).Text = "Год";
-                                Cells[2].Attributes.Add("style", style + "vertical-align:middle;");
-                                (Cells[3] = new TableCell()).Text = "Наименование образовательного учреждения, в котором осуществлялось повышение квалификации, профессиональная переподготовка";
-                                Cells[3].Attributes.Add("style", style + "width:210px;vertical-align:middle;");
-
-                                HtmlRow.Cells.AddRange(Cells);
-                                QualificHtmlTable.Rows.Add(HtmlRow);
-                                //добавление программ повышения квалаификации в таблицу
-                                style = "border:solid 1px black;" +
-                                        "border-collapse:collapse;" +
-                                        "border-spacing: 10px;" +
-                                        "vertical-align:top;" +
-                                        "font-size:1em;";
-                                foreach(DataRow Row in QualificTable.Rows){
-                                    HtmlRow = new TableRow();
-                                    Cells = new TableCell[4];
-                                    (Cells[0] = new TableCell()).Text = Row["NameProg"].ToString().Trim();
-                                    Cells[0].Attributes.Add("style", style  + "width:230px;");
-                                    (Cells[1] = new TableCell()).Text = Row["Hours"].ToString().Trim();
-                                    Cells[1].Attributes.Add("style", style + "text-align:center;");
-                                    (Cells[2] = new TableCell()).Text = Row["Year"].ToString().Trim();
-                                    Cells[2].Attributes.Add("style", style + "text-align:center;");
-                                    (Cells[3] = new TableCell()).Text = Row["NameVuz"].ToString().Trim();
-                                    Cells[3].Attributes.Add("style", style + "width:210px;");
                                     HtmlRow.Cells.AddRange(Cells);
                                     QualificHtmlTable.Rows.Add(HtmlRow);
+                                    //добавление программ повышения квалаификации в таблицу
+                                    style = "border:solid 1px black;" +
+                                            "border-collapse:collapse;" +
+                                            "border-spacing: 10px;" +
+                                            "vertical-align:top;" +
+                                            "font-size:1em;";
+                                    foreach (DataRow Row in QualificTable.Rows) {
+                                        HtmlRow = new TableRow();
+                                        Cells = new TableCell[4];
+                                        (Cells[0] = new TableCell()).Text = Row["NameProg"].ToString().Trim();
+                                        Cells[0].Attributes.Add("style", style + "width:230px;");
+                                        (Cells[1] = new TableCell()).Text = Row["Hours"].ToString().Trim();
+                                        Cells[1].Attributes.Add("style", style + "text-align:center;");
+                                        (Cells[2] = new TableCell()).Text = Row["Year"].ToString().Trim();
+                                        Cells[2].Attributes.Add("style", style + "text-align:center;");
+                                        (Cells[3] = new TableCell()).Text = Row["NameVuz"].ToString().Trim();
+                                        Cells[3].Attributes.Add("style", style + "width:210px;");
+                                        HtmlRow.Cells.AddRange(Cells);
+                                        QualificHtmlTable.Rows.Add(HtmlRow);
+                                    }
+                                    AboutPrepod.Controls.Add(QualificHtmlTable);
                                 }
-                                if(QualificTable.Rows.Count == 0){
-                                    QualificHtmlTable.Style.Add(HtmlTextWriterStyle.Display, "none");
-                                }
-                                AboutPrepod.Controls.Add(QualificHtmlTable);
-
                                 //преподаваемые дисциплины                                       
                                 h3 = new HtmlGenericControl("h4");
                                 h3.InnerText = "В 2015-2016 учебном году преподает дисциплины:";

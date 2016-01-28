@@ -100,12 +100,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         private void UpdateHtmlTable(FosTable fosTable) {
             TableRow htmlRow;
             for (int i = 0; i < fosTable.RowCount; i++) {
-                htmlRow = this.Table1.Rows[i + 1];                                                     
+                htmlRow = this.Table1.Rows[i + 1];
+                HtmlSelect selectCompet = (HtmlSelect)htmlRow.Cells[2].Controls[1];                                  
                 if (fosTable[i, "NameTheme"].ToString() == "Итого по текущей аттестации") {
-                    HtmlSelect selectCompet = (HtmlSelect)htmlRow.Cells[2].Controls[1];
+                    TextBox textBox = (TextBox)htmlRow.Cells[2].Controls[0];
+                    textBox.Visible = false;
                     selectCompet.Visible = false;                    
                 }
-                ((TextBox)htmlRow.Cells[2].Controls[0]).Text = fosTable[i, "Competetion"].ToString().Trim();
+                ((TextBox)htmlRow.Cells[2].Controls[0]).Text = (fosTable[i, "Competetion"].ToString().Trim() != string.Empty) ? 
+                                                                fosTable[i, "Competetion"].ToString().Trim() : (selectCompet.Items.Count > 0 ? selectCompet.Items[0].Text.Trim() : string.Empty);
                 ((HtmlTextArea)htmlRow.Cells[3].Controls[0]).Value = fosTable[i, "ZUNS"].ToString();
                 ((HtmlTextArea)htmlRow.Cells[4].Controls[0]).Value = fosTable[i, "TypeandNumberInFos"].ToString();
                 ((HtmlTextArea)htmlRow.Cells[5].Controls[0]).Value = fosTable[i, "Criteria"].ToString();

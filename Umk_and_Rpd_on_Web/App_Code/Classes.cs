@@ -2044,12 +2044,14 @@ namespace Umk_and_Rpd_on_Web {
             foreach(string str in ocenSredstvListFromCurControl){
                 selectQuery += "AbbrSredstv = '" + str.Trim() + "' or ";
             }
-            selectQuery = selectQuery.Substring(0, selectQuery.Length - 4);
-            DataRow[] tmpRows = OcenSredstvTable.Select(selectQuery);
-            using (AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter ocenSredstvVPlaneAdapter = new AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter()) {
-                ocenSredstvVPlaneAdapter.DeleteFromTable((int)this.CodPlan, (short)this.CodSub);
-                foreach (DataRow row in tmpRows) {
-                    ocenSredstvVPlaneAdapter.Insert1((int)this.CodPlan, (short)this.CodSub, Convert.ToInt16(row["IdSredstv"]));
+            if(selectQuery.Length > 4){
+                selectQuery = selectQuery.Substring(0, selectQuery.Length - 4);
+                DataRow[] tmpRows = OcenSredstvTable.Select(selectQuery);
+                using (AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter ocenSredstvVPlaneAdapter = new AcademiaDataSetTableAdapters.ArmKaf_OcenSredstvVPlaneTableAdapter()) {
+                    ocenSredstvVPlaneAdapter.DeleteFromTable((int)this.CodPlan, (short)this.CodSub);
+                    foreach (DataRow row in tmpRows) {
+                        ocenSredstvVPlaneAdapter.Insert1((int)this.CodPlan, (short)this.CodSub, Convert.ToInt16(row["IdSredstv"]));
+                    }
                 }
             }
         }

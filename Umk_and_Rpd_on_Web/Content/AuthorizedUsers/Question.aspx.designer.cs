@@ -22,6 +22,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.WebControls.Label Label_question;
         
         /// <summary>
+        /// sect элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sect;
+        
+        /// <summary>
         /// Clear_btn элемент управления.
         /// </summary>
         /// <remarks>

@@ -43,30 +43,30 @@ div{
 
 .bttn, .login-bttn{ 
 
-margin-left:auto;
-margin-right:auto;
+    margin-left:auto;
+    margin-right:auto;
 
-padding: 10px; 
-text-decoration: none;
+    padding: 10px; 
+    text-decoration: none;
 
-font-size: 13px;
-font-weight: bold;
-color: rgb(0, 0, 0);
-/*float: left;*/  /* кнопка растягивается только на длину текста */
-position: relative;/* изменяя в дальнейшем top, добиться эффекта нажатия*/
-/* закругляем углы */ 
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-/* делаем градиент (эффект выпуклости)*/
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    /*float: left;*/  /* кнопка растягивается только на длину текста */
+    position: relative;/* изменяя в дальнейшем top, добиться эффекта нажатия*/
+    /* закругляем углы */ 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    /* делаем градиент (эффект выпуклости)*/
 
-background:#D7E3EB;
-/* тень, которую отбрасывает кнопка)*/  
--moz-box-shadow:1rgba(0, 0, 0, .30) 2px 2px 2px;
--webkit-box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
-box-shadow:rgb(0, 0, 0); 2px 2px 2px;
+    background:#D7E3EB;
+    /* тень, которую отбрасывает кнопка)*/  
+    -moz-box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
+    -webkit-box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
+    box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
 
-text-shadow: white 0px 1px 0;
+    text-shadow: white 0px 1px 0;
     top: 0px;
     width: auto;
 }

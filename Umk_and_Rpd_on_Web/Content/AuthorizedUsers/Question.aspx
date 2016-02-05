@@ -7,7 +7,7 @@
         <asp:Label ID="Label_question" CssClass="LabelStyle" runat="server" Text=""></asp:Label>
     </section>
     <br />
-    <section style="text-align:center;">
+    <section runat="server" clientidmode="static" id="sect" style="text-align: center;">
         <asp:Button ID="Clear_btn" runat="server" CssClass="bttn" Text="" OnClick="Clear_btn_Click"/>
         <asp:Button ID="No_btn" runat="server" CssClass="bttn" Text="" OnClick="No_btn_Click"/>
     </section>

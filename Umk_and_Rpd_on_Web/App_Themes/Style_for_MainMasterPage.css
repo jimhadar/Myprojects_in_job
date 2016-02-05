@@ -46,45 +46,6 @@ nav ul{
     height:auto;
     text-wrap:none;    
 }
-
-/*li{
-    margin:10px auto;
-    display:inline-block;
-    padding-bottom:10px;
-    padding-left:15px;
-    padding-right:15px;    
-    background: #EBF3F2;
-    height:auto;
-    border-bottom:2px solid #F0DE94;
-    text-align:center;
-    vertical-align:central;
-}
-
-li a{
-    text-decoration: none;
-    font-size: 13px;
-    font-weight:bold;
-    color: black;
-    position: relative;
-    background: #EBF3F2;
-    flex-wrap:nowrap;
-    text-wrap:none;
-}
-
-li a:visited{
-    color:black;
-}
-
-li a:hover{
-    top:-1px;
-    text-decoration:none;
-    color:black;
-}
-
-li a:active, li a:focus{
-    top:1px;   
-}
-*/
 li{
     margin:10px auto;
     display:inline-block;
@@ -122,6 +83,55 @@ li .btn:hover{
 li .btn:active, li .btn:focus{
     top:1px;   
 }
+
+ul li#li_for_href_findForm .ul_manager {
+    display:none;
+}
+
+.ul_manager{
+    position:relative;
+}
+
+ul #li_for_href_findForm{
+    vertical-align:top;
+}
+ul #li_for_href_findForm .bttn {  
+    top:1px;
+    left:1px;    
+    box-shadow:rgba(0, 0, 0, .30) 4px 4px 4px;
+    -moz-box-shadow:1rgba(0, 0, 0, .30) 4px 4px 4px;
+    -webkit-box-shadow:rgba(0, 0, 0, .30) 2px 2px 2px;
+}
+
+ul #li_for_href_findForm:hover .ul_manager {
+    display:block;
+    background:none;
+    border-bottom:none;
+    position:absolute;
+}
+
+ul #li_for_href_findForm:hover{
+    background:none;
+    border-bottom:none;
+}
+
+ul #li_for_href_findForm .ul_manager .li_manager{
+    margin-bottom:0;
+    margin-top:3px;
+}
+
+ul #li_for_href_findForm:hover .ul_manager .li_manager {
+    width:auto;
+    display:block;    
+    text-align:left;
+    left:80px;
+    border-bottom:none;
+    background:none;
+    border-bottom:none; 
+    margin-top:15px;   
+}
+
+
 
 .layout{
     /*float:left;

@@ -11,7 +11,7 @@ using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
 using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;     
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace Umk_and_Rpd_on_Web {
     /// <summary>
@@ -31,7 +31,8 @@ namespace Umk_and_Rpd_on_Web {
         SaveRPD = 2,
         SaveAnnotationToRPD = 3,
         SaveToDataBase = 4,
-        SaveFOS = 5
+        SaveFOS = 5,
+        SavePassportCompet = 6
     }
     internal class Classes {
         #region метод для аутентификации преподавателя
@@ -514,8 +515,25 @@ namespace Umk_and_Rpd_on_Web {
                 return string.Empty;
             }
             else {
-                using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
-                    return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
+                if (SaveDoc_or_DB != HowDoc_Save.SavePassportCompet) {
+                    using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
+                        return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
+                    }
+                }
+                else {
+                    MemoryStream memoryStream = new MemoryStream();
+                    XmlTextWriter writer = new XmlTextWriter(memoryStream, System.Text.Encoding.UTF8);
+                    writer.Formatting = Formatting.Indented;
+                    this.SavePassportCompetToXml(ref writer);
+                    writer.Flush();
+                    string Data;
+                    using (StreamReader reader = new StreamReader(memoryStream)) {
+                        memoryStream.Seek(0, SeekOrigin.Begin);
+                        Data = reader.ReadToEnd();
+                    }
+                    using (StringReader reader = new StringReader(Data)) {
+                        return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
+                    }
                 }
             }
         }
@@ -830,7 +848,7 @@ namespace Umk_and_Rpd_on_Web {
         }
         #endregion
 
-        #region Вспомогательные методы для сохранения данных в *.xml
+        #region Основные методы для сохранения данных в формат *.xml
         /// <summary>
         /// Сохранение УМК в формате XML
         /// </summary>
@@ -975,6 +993,83 @@ namespace Umk_and_Rpd_on_Web {
                 writer.Close();
             }
         }
+
+        public void SavePassportCompetToXml(ref XmlTextWriter writer) {             
+            //для компетенций учебного плана
+            DataTable tableListCompet;
+            //для предметов, компетенций, на которых ведется дисциплина
+            DataTable tableForPassportCompet;
+            if (this.CodPlan == null) { return; }
+            using (AcademiaDataSet academiaDataSet = new AcademiaDataSet()) {
+                AcademiaDataSetTableAdapters.SpecialityTableAdapter specialtyAdapter = new AcademiaDataSetTableAdapters.SpecialityTableAdapter();
+                this.CodSpeciality = specialtyAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString();
+                this.Name_speciality = specialtyAdapter.GetNameSpecialityOKSO((int)this.CodPlan).ToString();
+                this.specialization = specialtyAdapter.GetNameSpecialization((int)this.CodPlan).ToString();
+            }
+            using(AcademiaDataSetTableAdapters.ForPassportCompetTableAdapter adapter = new AcademiaDataSetTableAdapters.ForPassportCompetTableAdapter()){
+                tableListCompet = adapter.GetDataListCompetOnPlan(this.CodPlan);
+                tableForPassportCompet = adapter.GetData(this.CodPlan);
+            }
+            writer.WriteStartDocument();
+                writer.WriteStartElement("PassportCompet");
+                    writer.WriteAttributeString("CodSpeciality", this.CodSpeciality);
+                    writer.WriteAttributeString("NameSpeciality", this.Name_speciality);
+                    writer.WriteAttributeString("NameSpecialization", this.specialization);
+                    foreach (DataRow rowCompet in tableListCompet.Rows) {
+                        //компетенция
+                        writer.WriteStartElement("Competetion");
+                        //аббревиаутар компетенции
+                        writer.WriteAttributeString("AbbrComp", rowCompet["AbbrComp"] != null ? rowCompet["AbbrComp"].ToString() : string.Empty);
+                        //описание компетенции
+                        writer.WriteAttributeString("AboutComp", rowCompet["AboutComp"] != null ? rowCompet["AboutComp"].ToString() : string.Empty);
+                        //Предметы, на которых осваивается дисциплина
+                        DataRow[] tmp = tableForPassportCompet.Select("IdCompet = " + rowCompet["IdCompet"]);
+                        //TableForPassportCompet tmpTablePassportCompet = this.GetTableForPassortCompet(tableForPassportCompet.Select("IdCompet = " + rowCompet["IdCompet"]));
+                        foreach (DataRow tmpRow in tmp) {
+                            writer.WriteStartElement("Sub");
+                                //название дисциплины
+                                writer.WriteAttributeString("NameSub", tmpRow["NameSub"] != null ? tmpRow["NameSub"].ToString() : string.Empty);
+                                string[] skillsSrudent = GetRowForPassortCompet(tmpRow);
+                                //студент должен знать
+                                writer.WriteStartElement("StudentMustZnat");
+                                    //по абзацам
+                                    string[] znat = skillsSrudent[0].Split('\n');
+                                    foreach(string skill in znat){                                 
+                                        writer.WriteStartElement("Abzac");
+                                            writer.WriteAttributeString("Value", skill);
+                                        writer.WriteEndElement();
+                                    }                                    
+                                writer.WriteEndElement();
+                                //студент должен уметь
+                                writer.WriteStartElement("StudentMustUmet");
+                                    //по абзацам
+                                    string[] umet = skillsSrudent[1].Split('\n');
+                                    foreach(string skill in umet){
+                                        writer.WriteStartElement("Abzac");
+                                            writer.WriteAttributeString("Value", skill);
+                                        writer.WriteEndElement();
+                                    }
+                                writer.WriteEndElement();
+                                //студент должен владеть
+                                writer.WriteStartElement("StudentMustVladet");
+                                    //по абзацам
+                                    string[] vladet = skillsSrudent[2].Split('\n');
+                                    foreach (string skill in vladet) {
+                                        writer.WriteStartElement("Abzac");
+                                            writer.WriteAttributeString("Value", skill);
+                                        writer.WriteEndElement();
+                                    }
+                                writer.WriteEndElement();
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                    }
+                writer.WriteEndElement();
+            writer.WriteEndDocument();
+        }
+        #endregion
+
+        #region Вспомогательные методы для сохранения данных в *.xml
         /// <summary>
         /// Формирование списка, в котором текст из richTextBox разбивается на абзацы,
         /// в каждый элемент списка представляет собой отдельный абзац, затем  занесение этого списка в XML-документ (writer)
@@ -1391,46 +1486,50 @@ namespace Umk_and_Rpd_on_Web {
                 }
             writer.WriteEndElement();
         }
+        /// <summary>
+        /// получаем все знания/умения/навыки, которыми долджен обшладать преподаватель по определенной дисциплине
+        /// данныек извлекаем из поля "Contents" строки row, это поле соержит xml данные из РПД. 
+        /// оттуда считываем всю информацию из разделов "Студент должен знать", "Студент должен уметь", "Студент должен владеть"
+        /// </summary>
+        /// <param name="row">строка с данными</param>
+        /// <returns>список умений/знаний/навыков. Каждый строковый массив списка содержит 3 элемент: "Студент должен знать", "Студент должен уметь", "Студент должен владеть"</returns>
+        private string[] GetRowForPassortCompet(DataRow row) {
+            string znat;
+            string umet;
+            string vladet;
+            if (row["Contents"] == null || ( row["Contents"] != null && row["Contents"].ToString() == string.Empty)) {
+                znat = string.Empty;
+                umet = string.Empty;
+                vladet = string.Empty;
+            }
+            else {
+                using (MemoryStream memStream = new MemoryStream()) {
+                    StreamWriter writer = new StreamWriter(memStream, System.Text.Encoding.UTF8);
+                    writer.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + row["Contents"].ToString());
+                    writer.Flush();
+                    StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
+                    reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                    XmlTextReader XmlReader = new XmlTextReader(reader);
+                    //чтение данных из *.xml
+                    XmlReader.ReadToDescendant("Student_must_znat");
+                    znat = zap_strFields_from_Xml(ref XmlReader);
+                    XmlReader.Read();
+                    umet = zap_strFields_from_Xml(ref XmlReader);
+                    XmlReader.Read();
+                    vladet = zap_strFields_from_Xml(ref XmlReader);
+                }
+            }
+            return (new string[3] {znat, umet, vladet});
+        }
         #endregion
 
-        #region методы для сохранения в базу данных или в формате *.docx на сервере
+        #region методы для сохранения в формате *.docx на сервере / удаления с сервера файлов *.docx
         private string SaveToDocx(StringReader Data, HowDoc_Save howDocSave, string PhisycalPathToApp, string AppPath) {
             PhisycalPathToApp += "Content\\AuthorizedUsers\\";
-            //string PhisycalPath = System.Web.HttpRequest 
-            string save_path =  PhisycalPathToApp +
-                                "saving_docx_files\\" + 
-                                (howDocSave == HowDoc_Save.SaveAnnotationToRPD ? "Аннотация к РПД" : (howDocSave == HowDoc_Save.SaveRPD ? "РПД" : "УМК")) + "_" +
-                                this.shifr_discipline + "_" +
-                                this.CodSpeciality + "_" +
-                                this.Name_discipline + ".docx";
-            AppPath += "\\Content\\AuthorizedUsers\\saving_docx_files\\" +
-                                (howDocSave == HowDoc_Save.SaveAnnotationToRPD ? "Аннотация к РПД" : (howDocSave == HowDoc_Save.SaveRPD ? "РПД" : "УМК")) + "_" +
-                                this.shifr_discipline + "_" +
-                                this.CodSpeciality + "_" +
-                                this.Name_discipline + ".docx";
+            string save_path = string.Empty;
             XmlTextReader xmlDataFile = new XmlTextReader(Data);
             //содержит шаблон для создаваемого документа в формате .docx
             string templateDocument = string.Empty;
-            //новый выходной создаваемый файл
-            string outputDocument = save_path;
-            //вариант для отладки, когда шаблоны считываются не из ресурсов, а с диска
-            /*//путь к файлу XSLT, содержащему стили преобразования
-            string  xsltReader = string.Empty;
-            switch(howDocSave){
-                case HowDoc_Save.SaveRPD:
-                    xsltReader = UMK_RPD.Properties.Settings.Default.Path_to_Files + "RPD.xslt";
-                    templateDocument = UMK_RPD.Properties.Settings.Default.Path_to_Files + "RPD_template.docx";
-                    break;
-                case HowDoc_Save.SaveUmk:
-                    xsltReader = UMK_RPD.Properties.Settings.Default.Path_to_Files + "UMK.xslt";
-                    templateDocument = UMK_RPD.Properties.Settings.Default.Path_to_Files + "UMK_template.docx";
-                    break;
-                case HowDoc_Save.SaveAnnotationToRPD:
-                    xsltReader = UMK_RPD.Properties.Settings.Default.Path_to_Files + "AnnotationToRPD_template.xslt";
-                    templateDocument = UMK_RPD.Properties.Settings.Default.Path_to_Files + "AnnotationToRPD_template.docx";
-                    break;
-            } */
-
             //путь к файлу XSLT, содержащему стили преобразования
             string Data_xslt = string.Empty;
             switch (howDocSave) {
@@ -1442,6 +1541,8 @@ namespace Umk_and_Rpd_on_Web {
                                  "РПД" + "_" +
                                 this.shifr_discipline + "_" +
                                 this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
                                 this.Name_discipline + ".docx";
                     this.FilePathToRPD = save_path;                     
                     break;
@@ -1484,7 +1585,20 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_discipline + ".docx";
                     this.FilePathToFos = save_path;
                     break;
+                case HowDoc_Save.SavePassportCompet:
+                    Data_xslt = PhisycalPathToApp + "rpd_shablon\\PassportCompet.xslt";
+                    templateDocument = PhisycalPathToApp + "rpd_shablon\\PassportCompet.docx";
+                    save_path = PhisycalPathToApp +
+                                "saving_docx_files\\" +
+                                "Паспорт компетенций_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization +
+                                ".docx";
+                    break;
             }
+            //новый выходной создаваемый файл
+            string outputDocument = save_path;
             XmlTextReader xsltReader = new XmlTextReader(Data_xslt);
 
             //Создать писатель для выходного XSL преобразования.
@@ -1535,12 +1649,54 @@ namespace Umk_and_Rpd_on_Web {
                 //для готового варианта (не отладка)
                 //File.Delete(templateDocument);
             }
-            return "/Content/AuthorizedUsers/saving_docx_files/" +
-                                (howDocSave == HowDoc_Save.SaveAnnotationToRPD ? "Аннотация к РПД" : (howDocSave == HowDoc_Save.SaveRPD ? "РПД" : "УМК")) + "_" +
+            switch (howDocSave) {
+                case HowDoc_Save.SaveRPD:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                            "РПД" + "_" +
                                 this.shifr_discipline + "_" +
                                 this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
                                 this.Name_discipline + ".docx";
-            //return AppPath;
+                    break;
+                case HowDoc_Save.SaveUmk:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                                "УМК" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
+                                this.Name_discipline + ".docx";
+                    break;
+                case HowDoc_Save.SaveAnnotationToRPD:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                                "Аннотация к РПД" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
+                                this.Name_discipline + ".docx";
+                    break;
+                case HowDoc_Save.SaveFOS:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                                "ФОС" + "_" +
+                                this.shifr_discipline + "_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization + "_" +
+                                this.Name_discipline + ".docx";
+                    this.FilePathToFos = save_path;
+                    break;
+                case HowDoc_Save.SavePassportCompet:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                                "Паспорт компетенций_" + 
+                                this.CodSpeciality + "_" + 
+                                this.Name_speciality + "_" +
+                                this.specialization + 
+                                ".docx";
+                    break;
+            }
+            return string.Empty;
         }
         /// <summary>
         /// удаление файлов формата *.docx, созданных во время сеанса пользователя
@@ -1564,7 +1720,9 @@ namespace Umk_and_Rpd_on_Web {
             }
         }
         #endregion
-        internal void LoadDataToProgramFromDataBase(/*int? id_umk, int? id_rpd*/) {
+
+        #region Загрузка данных из базы данных / из файла *.xml
+        internal void LoadDataToProgramFromDataBase() {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter umk_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                 umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                 if (Id_umk != null) {
@@ -1747,7 +1905,9 @@ namespace Umk_and_Rpd_on_Web {
             XmlReader.Close();
         }
 
-        #region Дополнительные методы
+        #endregion
+
+        #region Дополнительные методы для загрузки данных из файла *.xml
         /// <summary>
         /// очистка значений всех полей текущего экземпляра класса, кроме информации отдельно для РПД и УМК
         /// </summary>
@@ -1934,6 +2094,9 @@ namespace Umk_and_Rpd_on_Web {
                 XmlReader.Read();
             }
         }
+        #endregion
+
+        #region Дополнительные методы
         /// <summary>
         /// Пересчет объема часов для тем и разделов в DataGridRazdelLesson
         /// </summary>
@@ -2866,6 +3029,62 @@ namespace Umk_and_Rpd_on_Web {
             get {
                 return this.data.TableName;
             }
+        }
+    }
+    /// <summary>
+    /// для хранения информации о предметах, на которых осваивается определенная компетенция
+    /// </summary>
+    [Serializable()]
+    public class TableForPassportCompet : SummaryTable {
+        
+        public TableForPassportCompet() {
+            this.data = new DataTable();
+            DataColumn nameSubColumn = new DataColumn("NameSub", Type.GetType("System.String")),
+                        znatColumn = new DataColumn("Znat", Type.GetType("System.String")),
+                        umetColumn = new DataColumn("Umet", Type.GetType("System.String")),
+                        vladetColumn = new DataColumn("Vladet", Type.GetType("System.String"));
+            this.data.Columns.AddRange(new DataColumn[] { nameSubColumn, znatColumn, umetColumn, vladetColumn });
+        }
+
+        public void AddRow(string nameSub, string znat, string umet, string vladet) {
+            this.data.Rows.Add( nameSub != null ? nameSub : string.Empty,
+                                znat != null ? znat : string.Empty,
+                                umet != null ? umet : string.Empty,
+                                vladet != null ? vladet : string.Empty);
+        }
+
+        public void EditRow(int RowIndex, string nameSub, string znat, string umet, string vladet) {
+            if (RowIndex > 0 && RowIndex < this.data.Rows.Count) {
+                this.data.Rows[RowIndex]["NameSub"] = nameSub;
+                this.data.Rows[RowIndex]["Znat"] = znat;
+                this.data.Rows[RowIndex]["Umet"] = umet;
+                this.data.Rows[RowIndex]["Vladet"] = vladet;
+            }
+            else {
+                throw new Exception("Задан неверный индекс строки для редактирования");
+            }
+        }
+    }
+
+    [Serializable()]
+    struct ForPassportCompet {
+        /// <summary>
+        /// аббревиатура компетенции
+        /// </summary>
+        public string abbrComp;
+        /// <summary>
+        /// описание компетенции
+        /// </summary>
+        public string aboutComp;
+        /// <summary>
+        /// таблица с дисциплинами, на которых осваивается дисциплина
+        /// </summary>
+        public DataTable subsCompet;
+
+        public ForPassportCompet(string _abbrComp, string _aboutComp, DataTable _subsCompet) {
+            abbrComp = _abbrComp;
+            aboutComp = _aboutComp;
+            this.subsCompet = _subsCompet;
         }
     }
 }

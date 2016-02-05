@@ -78,6 +78,8 @@ namespace Umk_and_Rpd_on_Web {
         
         private ArmKaf_OcenSredstvVPlaneDataTable tableArmKaf_OcenSredstvVPlane;
         
+        private ForPassportCompetDataTable tableForPassportCompet;
+        
         private SoderjRazdDiscipDataTable tableSoderjRazdDiscip;
         
         private global::System.Data.DataRelation relationFK_Grup_Faculty;
@@ -103,6 +105,10 @@ namespace Umk_and_Rpd_on_Web {
         private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans;
         
         private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_Subs;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_SubCompet_StudyPlans;
+        
+        private global::System.Data.DataRelation relationFK_ArmKaf_SubCompet_Subs;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -212,6 +218,9 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["ArmKaf_OcenSredstvVPlane"] != null)) {
                     base.Tables.Add(new ArmKaf_OcenSredstvVPlaneDataTable(ds.Tables["ArmKaf_OcenSredstvVPlane"]));
+                }
+                if ((ds.Tables["ForPassportCompet"] != null)) {
+                    base.Tables.Add(new ForPassportCompetDataTable(ds.Tables["ForPassportCompet"]));
                 }
                 if ((ds.Tables["SoderjRazdDiscip"] != null)) {
                     base.Tables.Add(new SoderjRazdDiscipDataTable(ds.Tables["SoderjRazdDiscip"]));
@@ -508,6 +517,16 @@ namespace Umk_and_Rpd_on_Web {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ForPassportCompetDataTable ForPassportCompet {
+            get {
+                return this.tableForPassportCompet;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public SoderjRazdDiscipDataTable SoderjRazdDiscip {
             get {
                 return this.tableSoderjRazdDiscip;
@@ -661,6 +680,9 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["ArmKaf_OcenSredstvVPlane"] != null)) {
                     base.Tables.Add(new ArmKaf_OcenSredstvVPlaneDataTable(ds.Tables["ArmKaf_OcenSredstvVPlane"]));
+                }
+                if ((ds.Tables["ForPassportCompet"] != null)) {
+                    base.Tables.Add(new ForPassportCompetDataTable(ds.Tables["ForPassportCompet"]));
                 }
                 if ((ds.Tables["SoderjRazdDiscip"] != null)) {
                     base.Tables.Add(new SoderjRazdDiscipDataTable(ds.Tables["SoderjRazdDiscip"]));
@@ -860,6 +882,12 @@ namespace Umk_and_Rpd_on_Web {
                     this.tableArmKaf_OcenSredstvVPlane.InitVars();
                 }
             }
+            this.tableForPassportCompet = ((ForPassportCompetDataTable)(base.Tables["ForPassportCompet"]));
+            if ((initTable == true)) {
+                if ((this.tableForPassportCompet != null)) {
+                    this.tableForPassportCompet.InitVars();
+                }
+            }
             this.tableSoderjRazdDiscip = ((SoderjRazdDiscipDataTable)(base.Tables["SoderjRazdDiscip"]));
             if ((initTable == true)) {
                 if ((this.tableSoderjRazdDiscip != null)) {
@@ -878,6 +906,8 @@ namespace Umk_and_Rpd_on_Web {
             this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv1 = this.Relations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv1"];
             this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans = this.Relations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"];
             this.relationFK_ArmKaf_OcenSredstvVPlane_Subs = this.Relations["FK_ArmKaf_OcenSredstvVPlane_Subs"];
+            this.relationFK_ArmKaf_SubCompet_StudyPlans = this.Relations["FK_ArmKaf_SubCompet_StudyPlans"];
+            this.relationFK_ArmKaf_SubCompet_Subs = this.Relations["FK_ArmKaf_SubCompet_Subs"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -942,6 +972,8 @@ namespace Umk_and_Rpd_on_Web {
             base.Tables.Add(this.tableZavPodrazdn);
             this.tableArmKaf_OcenSredstvVPlane = new ArmKaf_OcenSredstvVPlaneDataTable();
             base.Tables.Add(this.tableArmKaf_OcenSredstvVPlane);
+            this.tableForPassportCompet = new ForPassportCompetDataTable();
+            base.Tables.Add(this.tableForPassportCompet);
             this.tableSoderjRazdDiscip = new SoderjRazdDiscipDataTable();
             base.Tables.Add(this.tableSoderjRazdDiscip);
             this.relationFK_Grup_Faculty = new global::System.Data.DataRelation("FK_Grup_Faculty", new global::System.Data.DataColumn[] {
@@ -994,6 +1026,14 @@ namespace Umk_and_Rpd_on_Web {
                         this.tableSubs.CodSubColumn}, new global::System.Data.DataColumn[] {
                         this.tableArmKaf_OcenSredstvVPlane.CodSubColumn}, false);
             this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_Subs);
+            this.relationFK_ArmKaf_SubCompet_StudyPlans = new global::System.Data.DataRelation("FK_ArmKaf_SubCompet_StudyPlans", new global::System.Data.DataColumn[] {
+                        this.tableStudyPlans.CodPlanColumn}, new global::System.Data.DataColumn[] {
+                        this.tableForPassportCompet.CodPlanColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_SubCompet_StudyPlans);
+            this.relationFK_ArmKaf_SubCompet_Subs = new global::System.Data.DataRelation("FK_ArmKaf_SubCompet_Subs", new global::System.Data.DataColumn[] {
+                        this.tableSubs.CodSubColumn}, new global::System.Data.DataColumn[] {
+                        this.tableForPassportCompet.CodSubColumn}, false);
+            this.Relations.Add(this.relationFK_ArmKaf_SubCompet_Subs);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1160,6 +1200,12 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeForPassportCompet() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeSoderjRazdDiscip() {
             return false;
         }
@@ -1299,6 +1345,9 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ArmKaf_OcenSredstvVPlaneRowChangeEventHandler(object sender, ArmKaf_OcenSredstvVPlaneRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ForPassportCompetRowChangeEventHandler(object sender, ForPassportCompetRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void SoderjRazdDiscipRowChangeEventHandler(object sender, SoderjRazdDiscipRowChangeEvent e);
@@ -12063,6 +12112,369 @@ namespace Umk_and_Rpd_on_Web {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ForPassportCompetDataTable : global::System.Data.TypedTableBase<ForPassportCompetRow> {
+            
+            private global::System.Data.DataColumn columnIdCompet;
+            
+            private global::System.Data.DataColumn columnAbbrComp;
+            
+            private global::System.Data.DataColumn columnAboutComp;
+            
+            private global::System.Data.DataColumn columnCodPlan;
+            
+            private global::System.Data.DataColumn columnCodSub;
+            
+            private global::System.Data.DataColumn columnId_RPD_or_UMK;
+            
+            private global::System.Data.DataColumn columnContents;
+            
+            private global::System.Data.DataColumn columnNameSub;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetDataTable() {
+                this.TableName = "ForPassportCompet";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ForPassportCompetDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ForPassportCompetDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IdCompetColumn {
+                get {
+                    return this.columnIdCompet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AbbrCompColumn {
+                get {
+                    return this.columnAbbrComp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AboutCompColumn {
+                get {
+                    return this.columnAboutComp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodPlanColumn {
+                get {
+                    return this.columnCodPlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodSubColumn {
+                get {
+                    return this.columnCodSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Id_RPD_or_UMKColumn {
+                get {
+                    return this.columnId_RPD_or_UMK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ContentsColumn {
+                get {
+                    return this.columnContents;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameSubColumn {
+                get {
+                    return this.columnNameSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow this[int index] {
+                get {
+                    return ((ForPassportCompetRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ForPassportCompetRowChangeEventHandler ForPassportCompetRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ForPassportCompetRowChangeEventHandler ForPassportCompetRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ForPassportCompetRowChangeEventHandler ForPassportCompetRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ForPassportCompetRowChangeEventHandler ForPassportCompetRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddForPassportCompetRow(ForPassportCompetRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow AddForPassportCompetRow(string AbbrComp, string AboutComp, StudyPlansRow parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans, SubsRow parentSubsRowByFK_ArmKaf_SubCompet_Subs, string Contents, string NameSub) {
+                ForPassportCompetRow rowForPassportCompetRow = ((ForPassportCompetRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        AbbrComp,
+                        AboutComp,
+                        null,
+                        null,
+                        null,
+                        Contents,
+                        NameSub};
+                if ((parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans != null)) {
+                    columnValuesArray[3] = parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans[0];
+                }
+                if ((parentSubsRowByFK_ArmKaf_SubCompet_Subs != null)) {
+                    columnValuesArray[4] = parentSubsRowByFK_ArmKaf_SubCompet_Subs[0];
+                }
+                rowForPassportCompetRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowForPassportCompetRow);
+                return rowForPassportCompetRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ForPassportCompetDataTable cln = ((ForPassportCompetDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ForPassportCompetDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnIdCompet = base.Columns["IdCompet"];
+                this.columnAbbrComp = base.Columns["AbbrComp"];
+                this.columnAboutComp = base.Columns["AboutComp"];
+                this.columnCodPlan = base.Columns["CodPlan"];
+                this.columnCodSub = base.Columns["CodSub"];
+                this.columnId_RPD_or_UMK = base.Columns["Id_RPD_or_UMK"];
+                this.columnContents = base.Columns["Contents"];
+                this.columnNameSub = base.Columns["NameSub"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnIdCompet = new global::System.Data.DataColumn("IdCompet", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIdCompet);
+                this.columnAbbrComp = new global::System.Data.DataColumn("AbbrComp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAbbrComp);
+                this.columnAboutComp = new global::System.Data.DataColumn("AboutComp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAboutComp);
+                this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodPlan);
+                this.columnCodSub = new global::System.Data.DataColumn("CodSub", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodSub);
+                this.columnId_RPD_or_UMK = new global::System.Data.DataColumn("Id_RPD_or_UMK", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_RPD_or_UMK);
+                this.columnContents = new global::System.Data.DataColumn("Contents", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContents);
+                this.columnNameSub = new global::System.Data.DataColumn("NameSub", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameSub);
+                this.columnIdCompet.AutoIncrement = true;
+                this.columnIdCompet.AutoIncrementSeed = -1;
+                this.columnIdCompet.AutoIncrementStep = -1;
+                this.columnIdCompet.ReadOnly = true;
+                this.columnAbbrComp.MaxLength = 50;
+                this.columnAboutComp.MaxLength = 2147483647;
+                this.columnId_RPD_or_UMK.AutoIncrement = true;
+                this.columnId_RPD_or_UMK.AutoIncrementSeed = -1;
+                this.columnId_RPD_or_UMK.AutoIncrementStep = -1;
+                this.columnId_RPD_or_UMK.ReadOnly = true;
+                this.columnContents.MaxLength = 2147483647;
+                this.columnNameSub.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow NewForPassportCompetRow() {
+                return ((ForPassportCompetRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ForPassportCompetRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ForPassportCompetRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ForPassportCompetRowChanged != null)) {
+                    this.ForPassportCompetRowChanged(this, new ForPassportCompetRowChangeEvent(((ForPassportCompetRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ForPassportCompetRowChanging != null)) {
+                    this.ForPassportCompetRowChanging(this, new ForPassportCompetRowChangeEvent(((ForPassportCompetRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ForPassportCompetRowDeleted != null)) {
+                    this.ForPassportCompetRowDeleted(this, new ForPassportCompetRowChangeEvent(((ForPassportCompetRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ForPassportCompetRowDeleting != null)) {
+                    this.ForPassportCompetRowDeleting(this, new ForPassportCompetRowChangeEvent(((ForPassportCompetRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveForPassportCompetRow(ForPassportCompetRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                AcademiaDataSet ds = new AcademiaDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ForPassportCompetDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class SoderjRazdDiscipDataTable : global::System.Data.TypedTableBase<SoderjRazdDiscipRow> {
             
             private global::System.Data.DataColumn column1;
@@ -15338,6 +15750,17 @@ namespace Umk_and_Rpd_on_Web {
                     return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow[] GetForPassportCompetRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_SubCompet_Subs"] == null)) {
+                    return new ForPassportCompetRow[0];
+                }
+                else {
+                    return ((ForPassportCompetRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_SubCompet_Subs"])));
+                }
+            }
         }
         
         /// <summary>
@@ -17374,6 +17797,17 @@ namespace Umk_and_Rpd_on_Web {
                     return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow[] GetForPassportCompetRows() {
+                if ((this.Table.ChildRelations["FK_ArmKaf_SubCompet_StudyPlans"] == null)) {
+                    return new ForPassportCompetRow[0];
+                }
+                else {
+                    return ((ForPassportCompetRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_SubCompet_StudyPlans"])));
+                }
+            }
         }
         
         /// <summary>
@@ -18278,6 +18712,267 @@ namespace Umk_and_Rpd_on_Web {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"]);
                 }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ForPassportCompetRow : global::System.Data.DataRow {
+            
+            private ForPassportCompetDataTable tableForPassportCompet;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ForPassportCompetRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableForPassportCompet = ((ForPassportCompetDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int IdCompet {
+                get {
+                    try {
+                        return ((int)(this[this.tableForPassportCompet.IdCompetColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'IdCompet\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.IdCompetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AbbrComp {
+                get {
+                    try {
+                        return ((string)(this[this.tableForPassportCompet.AbbrCompColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AbbrComp\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.AbbrCompColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string AboutComp {
+                get {
+                    try {
+                        return ((string)(this[this.tableForPassportCompet.AboutCompColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'AboutComp\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.AboutCompColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CodPlan {
+                get {
+                    try {
+                        return ((int)(this[this.tableForPassportCompet.CodPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPlan\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.CodPlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short CodSub {
+                get {
+                    try {
+                        return ((short)(this[this.tableForPassportCompet.CodSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSub\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.CodSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id_RPD_or_UMK {
+                get {
+                    try {
+                        return ((int)(this[this.tableForPassportCompet.Id_RPD_or_UMKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Id_RPD_or_UMK\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.Id_RPD_or_UMKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Contents {
+                get {
+                    try {
+                        return ((string)(this[this.tableForPassportCompet.ContentsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Contents\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.ContentsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NameSub {
+                get {
+                    try {
+                        return ((string)(this[this.tableForPassportCompet.NameSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameSub\' в таблице \'ForPassportCompet\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableForPassportCompet.NameSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public StudyPlansRow StudyPlansRow {
+                get {
+                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_SubCompet_StudyPlans"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_SubCompet_StudyPlans"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SubsRow SubsRow {
+                get {
+                    return ((SubsRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_SubCompet_Subs"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_SubCompet_Subs"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIdCompetNull() {
+                return this.IsNull(this.tableForPassportCompet.IdCompetColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIdCompetNull() {
+                this[this.tableForPassportCompet.IdCompetColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAbbrCompNull() {
+                return this.IsNull(this.tableForPassportCompet.AbbrCompColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAbbrCompNull() {
+                this[this.tableForPassportCompet.AbbrCompColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAboutCompNull() {
+                return this.IsNull(this.tableForPassportCompet.AboutCompColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAboutCompNull() {
+                this[this.tableForPassportCompet.AboutCompColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodPlanNull() {
+                return this.IsNull(this.tableForPassportCompet.CodPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodPlanNull() {
+                this[this.tableForPassportCompet.CodPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSubNull() {
+                return this.IsNull(this.tableForPassportCompet.CodSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSubNull() {
+                this[this.tableForPassportCompet.CodSubColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsId_RPD_or_UMKNull() {
+                return this.IsNull(this.tableForPassportCompet.Id_RPD_or_UMKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetId_RPD_or_UMKNull() {
+                this[this.tableForPassportCompet.Id_RPD_or_UMKColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsContentsNull() {
+                return this.IsNull(this.tableForPassportCompet.ContentsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetContentsNull() {
+                this[this.tableForPassportCompet.ContentsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameSubNull() {
+                return this.IsNull(this.tableForPassportCompet.NameSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameSubNull() {
+                this[this.tableForPassportCompet.NameSubColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -19369,6 +20064,40 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ArmKaf_OcenSredstvVPlaneRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ForPassportCompetRowChangeEvent : global::System.EventArgs {
+            
+            private ForPassportCompetRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRowChangeEvent(ForPassportCompetRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ForPassportCompetRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -29465,6 +30194,248 @@ FROM            ArmKaf_OcenSredstvVPlane INNER JOIN
                 }
             }
             return returnValue;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ForPassportCompetTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ForPassportCompetTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ForPassportCompet";
+            tableMapping.ColumnMappings.Add("IdCompet", "IdCompet");
+            tableMapping.ColumnMappings.Add("AbbrComp", "AbbrComp");
+            tableMapping.ColumnMappings.Add("AboutComp", "AboutComp");
+            tableMapping.ColumnMappings.Add("CodPlan", "CodPlan");
+            tableMapping.ColumnMappings.Add("CodSub", "CodSub");
+            tableMapping.ColumnMappings.Add("Id_RPD_or_UMK", "Id_RPD_or_UMK");
+            tableMapping.ColumnMappings.Add("Contents", "Contents");
+            tableMapping.ColumnMappings.Add("NameSub", "NameSub");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AcademiaConnectingString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        compet.IdCompet, compet.AbbrComp, compet.AboutComp, ArmKaf_SubCompet.CodPlan, Subs.CodSub, Subs.NameSub, UMK_and_RPD.Id_RPD_or_UMK, UMK_and_RPD.Contents
+FROM            ArmKaf_SubCompet INNER JOIN
+                         ArmKaf_Competetion AS compet ON compet.IdCompet = ArmKaf_SubCompet.IdCompet INNER JOIN
+                         Subs ON Subs.CodSub = ArmKaf_SubCompet.CodSub LEFT OUTER JOIN
+                         UMK_and_RPD ON UMK_and_RPD.CodPlan = ArmKaf_SubCompet.CodPlan AND UMK_and_RPD.CodSub = ArmKaf_SubCompet.CodSub
+WHERE        (ArmKaf_SubCompet.CodPlan = @CodPlan) AND (UMK_and_RPD.UMK_or_RPD = 'false' OR
+                         UMK_and_RPD.UMK_or_RPD IS NULL)
+ORDER BY ArmKaf_SubCompet.IdCompet";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT DISTINCT ArmKaf_SubCompet.IdCompet, compet.AbbrComp, compet.AboutComp
+FROM            ArmKaf_SubCompet INNER JOIN
+                         ArmKaf_Competetion AS compet ON compet.IdCompet = ArmKaf_SubCompet.IdCompet INNER JOIN
+                         Subs ON Subs.CodSub = ArmKaf_SubCompet.CodSub LEFT OUTER JOIN
+                         UMK_and_RPD ON UMK_and_RPD.CodPlan = ArmKaf_SubCompet.CodPlan AND UMK_and_RPD.CodSub = ArmKaf_SubCompet.CodSub
+WHERE        (ArmKaf_SubCompet.CodPlan = @CodPlan) AND (UMK_and_RPD.UMK_or_RPD = 'false' OR
+                         UMK_and_RPD.UMK_or_RPD IS NULL)
+ORDER BY ArmKaf_SubCompet.IdCompet";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(AcademiaDataSet.ForPassportCompetDataTable dataTable, global::System.Nullable<int> CodPlan) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual AcademiaDataSet.ForPassportCompetDataTable GetData(global::System.Nullable<int> CodPlan) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.ForPassportCompetDataTable dataTable = new AcademiaDataSet.ForPassportCompetDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillListCompetOnPlan(AcademiaDataSet.ForPassportCompetDataTable dataTable, global::System.Nullable<int> CodPlan) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.ForPassportCompetDataTable GetDataListCompetOnPlan(global::System.Nullable<int> CodPlan) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.ForPassportCompetDataTable dataTable = new AcademiaDataSet.ForPassportCompetDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     

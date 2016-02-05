@@ -257,33 +257,33 @@ namespace Umk_and_Rpd_on_Web {
                                                     this.DropDownList_Speciality.SelectedValue,
                                                     null);
                             data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
+                            if (id_umk == null) {
+                                UMK_rpd_adapter.Insert(true,
+                                                        String.Empty,
+                                                        Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
+                                                        CodKafDiscip,
+                                                        CodPrepPlan,
+                                                        CodSub,
+                                                        StudyYear,
+                                                        "<umk></umk>",
+                                                        DateTime.Now,
+                                                        (int?)Session["CodPrepWhoEdit"],
+                                                        CodPlan,
+                                                        Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
+                                                        Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
+                                                        this.DropDownList_Speciality.SelectedValue,
+                                                        null);
+                                data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
+                            } 
                             //если новая РПД, выбранная для заполнения дисциплины с кодом CodSub == oldCodSub, то перенаправляем на страницу Question для того,
                             //чтобы узнать, необходимо ли оставить старые данные и использовать их для заполнения новой РПД
                             if(oldCodSub == CodSub){
-                                Response.Redirect("~/Question");
+                                Response.Redirect("~/Question?TypeQuestion=ClearDataPredDicsip");
                             }
                             else {
                                 data.ClearAllFields();
                             }
-                        }
-                        if (id_umk == null) {
-                            UMK_rpd_adapter.Insert(true,
-                                                    String.Empty,
-                                                    Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
-                                                    CodKafDiscip,
-                                                    CodPrepPlan,
-                                                    CodSub,
-                                                    StudyYear,
-                                                    "<umk></umk>",
-                                                    DateTime.Now,
-                                                    (int?)Session["CodPrepWhoEdit"],
-                                                    CodPlan,
-                                                    Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
-                                                    Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue,
-                                                    null);
-                            data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                        }                     
+                        }                                            
                     }
                     else {                     
                         //содержимое поля tmpContents

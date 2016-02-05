@@ -103,15 +103,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl li_for_href_findForm;
         
         /// <summary>
-        /// Find_btn элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Find_btn;
-        
-        /// <summary>
         /// Section_for_MainContent элемент управления.
         /// </summary>
         /// <remarks>

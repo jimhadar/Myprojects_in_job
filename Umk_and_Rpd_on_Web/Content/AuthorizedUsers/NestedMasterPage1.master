@@ -36,8 +36,16 @@
                 <li runat="server">
                     <asp:Button runat="server" ID="FOS_btn" OnClick="FOS_btn_Click" CssClass="bttn" Text="ФОС" />
                 </li>
-                <li runat="server" id="li_for_href_findForm">
-                    <asp:Button runat="server" ID="Find_btn" OnClick="Find_btn_Click" CssClass="bttn" Text="Просмотр списка созданных РПД/УМК" />
+                <li runat="server" id="li_for_href_findForm" clientidmode="static">
+                    <span class="bttn">Управление</span>
+                    <ul class="ul_manager">                    
+                        <li class="li_manager">
+                            <a href="Find" class="bttn">Просмотр списка созданных РПД/УМК</a>
+                        </li>
+                        <li class="li_manager">
+                            <a href="/Question?TypeQuestion=SfromPassportCompet" class="bttn">Формирование паспорта компетенций</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

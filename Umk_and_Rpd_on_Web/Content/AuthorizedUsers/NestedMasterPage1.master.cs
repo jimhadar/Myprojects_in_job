@@ -24,7 +24,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 this.Button_for_EndEditUMK_RPD.Style.Add("display", "none");
             }
             if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
-                this.Find_btn.Visible = false;
+                this.li_for_href_findForm.Visible = false;
             }
         }
 

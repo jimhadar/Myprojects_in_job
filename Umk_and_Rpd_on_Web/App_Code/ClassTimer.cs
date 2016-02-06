@@ -29,7 +29,7 @@ namespace Umk_and_Rpd_on_Web.App_Code {
         private void DeleteEmptyStrFromBase(object obj) {
             lock (synclock) {
                 DateTime dateNow = DateTime.Now;
-                if (dateNow.Hour >= 2 && dateNow.Hour <= 6) {
+                if (dateNow.Hour >= 3 && dateNow.Hour <= 7) {
                     using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                         //удаляем пустые записи из базы данных
                         adapter.DeleteEmptyStr();

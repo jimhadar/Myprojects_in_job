@@ -23138,12 +23138,12 @@ WHERE        (CodFaculty = @OriginalCodFaculty) and (CodKaf <> 33) and (CodKaf <
                 "udyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                      " +
                 "   personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNE" +
                 "R JOIN\r\n                         WorkTypes ON PlanWorkDet.CodWorkType = WorkType" +
-                "s.CodWorkType and (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 3" +
-                " or PlanWorkDet.CodWorkType = 5 or PlanWorkDet.CodWorkType >= 73)\r\nWHERE        " +
-                "(StudyPlans.CodPlan = @CodPlan OR\r\n                         @CodPlan IS NULL) AN" +
-                "D (KafSubs.CodKaf = @CodKafDiscip OR\r\n                         @CodKafDiscip IS " +
-                "NULL) AND (PlanWork.CodSubType IS NOT NULL) AND (PlanWork.Year = @Year OR\r\n     " +
-                "                    @Year IS NULL)";
+                "s.CodWorkType and (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 5" +
+                "  or PlanWorkDet.CodWorkType >= 73)\r\nWHERE        (StudyPlans.CodPlan = @CodPlan" +
+                " OR\r\n                         @CodPlan IS NULL) AND (KafSubs.CodKaf = @CodKafDis" +
+                "cip OR\r\n                         @CodKafDiscip IS NULL) AND (PlanWork.CodSubType" +
+                " IS NOT NULL) AND (PlanWork.Year = @Year OR\r\n                         @Year IS N" +
+                "ULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKafDiscip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

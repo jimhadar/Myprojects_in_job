@@ -43,7 +43,7 @@
                             <a href="Find" class="bttn">Просмотр списка созданных РПД/УМК</a>
                         </li>
                         <li class="li_manager">
-                            <a href="/Question?TypeQuestion=SfromPassportCompet" class="bttn">Формирование паспорта компетенций</a>
+                            <a href="/Question?TypeQuestion=SfromPassportCompet" class="bttn">Формирование паспорта компетенций</a>                          
                         </li>
                     </ul>
                 </li>

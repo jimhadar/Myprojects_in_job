@@ -29589,7 +29589,8 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
                 "@CodFormStudy OR\r\n                         @CodFormStudy IS NULL) AND (PEOPLEN_1" +
                 ".FIO LIKE \'%\' + @PrepodWhoEdit + \'%\' OR\r\n                         @PrepodWhoEdit" +
                 " IS NULL) AND (UMK_and_RPD.Name <> \'\') AND (UMK_and_RPD.UMK_or_RPD = @Umk_or_Rpd" +
-                " or @Umk_or_Rpd is null)";
+                " OR\r\n                         @Umk_or_Rpd IS NULL)\r\nORDER BY UMK_and_RPD.CodKaf," +
+                " UMK_and_RPD.Year";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFac", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

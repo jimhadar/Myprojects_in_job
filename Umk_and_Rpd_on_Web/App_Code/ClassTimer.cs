@@ -42,14 +42,6 @@ namespace Umk_and_Rpd_on_Web.App_Code {
                                 adapter.Delete((int?)Row["Id_RPD_or_UMK"]);
                             }
                         }
-                        //tmpTable = adapter.GetDataNotEmptyTmpContents();
-                        //foreach (DataRow Row in tmpTable.Rows) {
-                        //    //получаем дату последнего сохранения / изменения строки
-                        //    DateTime dateSave = Convert.ToDateTime(Row["DateSave"]);
-                        //    if (dateNow.Subtract(dateSave).Days >= 6) {
-                        //        adapter.UpdateTmpContents(dateSave, null, (int?)Row["Id_RPD_or_UMK"]);
-                        //    }
-                        //}
                     }
                 }
             }

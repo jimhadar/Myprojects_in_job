@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <header class="header">
             <section class="name_university">
-                Читинский институт Байкальского Государственного Университета экономики и права
+                Читинский институт Байкальского Государственного Университета
             </section>
         </header>       
         <section>

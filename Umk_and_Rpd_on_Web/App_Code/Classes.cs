@@ -12,6 +12,7 @@ using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Data.SqlClient;
 
 namespace Umk_and_Rpd_on_Web {
     /// <summary>
@@ -84,6 +85,18 @@ namespace Umk_and_Rpd_on_Web {
                 }
             }
         }            
+
+        internal static bool IsConnectedAcademia(string sqlConString){
+            using (SqlConnection sqlCon = new SqlConnection(sqlConString)) {
+                try {                 
+                    sqlCon.Open();
+                    return true;
+                }
+                catch {
+                    return false;
+                }
+            }
+        }
         #endregion
     }
 

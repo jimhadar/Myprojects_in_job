@@ -69,9 +69,23 @@
                         <asp:DropDownList ID="DropDownList_StudyYear" CssClass="selectliststyle" runat="server" OnSelectedIndexChanged="DropDownList_for_uch_year_SelectedIndexChanged" AutoPostBack="True" ViewStateMode="Enabled" ClientIDMode="Static"></asp:DropDownList>
                     </div>
                 </ContentTemplate>
-            </asp:UpdatePanel>   
+            </asp:UpdatePanel>  
+            <asp:UpdatePanel ID="UpdatePanelSformPassportCompet" runat="server">
+                <ContentTemplate>
+                    <asp:UpdateProgress ID="UpdateProgress_SavePassportCompet" runat="server" AssociatedUpdatePanelID="UpdatePanelSformPassportCompet">
+                        <ProgressTemplate>
+                            Подождите, идет формирование паспорта компетенций...
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                    <section runat="server" id="SformPassportCompetSect">
+                        <asp:Button ID="SformPassportCompet" CssClass="bttn" runat="server" Text="Сформировать паспорт компетенций" OnClick="SformPassportCompet_Click"/>
+                    </section>
+                </ContentTemplate>                
+            </asp:UpdatePanel>
+            <hr />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                    
                     <asp:Button ID="Button_UpdateListDiscip" CssClass="bttn" runat="server" Text="Обновить список дисциплин"  OnClick="Button1_Click"/>
                     <p runat="server" id="CurrentSelectSub" style="font-size:0.9em;">
                 

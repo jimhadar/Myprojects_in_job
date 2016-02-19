@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Web.UI.HtmlControls;
 
 namespace Umk_and_Rpd_on_Web {
     public partial class TitlePage : System.Web.UI.Page {
@@ -68,6 +69,9 @@ namespace Umk_and_Rpd_on_Web {
                 Label_for_hello_user.Text += peolpelen.GetFIO(Convert.ToInt32(Session["CodPrepWhoEdit"]));
             }
             Page.Title = "Титул";
+            if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
+                this.SformPassportCompet.Visible = false;
+            }
         }
 
         protected void Page_PreRender(object sender, EventArgs e) {
@@ -414,6 +418,19 @@ namespace Umk_and_Rpd_on_Web {
 
         protected void ScriptManager1_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e) {
             ScriptManager1.AsyncPostBackErrorMessage = e.Exception.Message;
+        }
+
+        protected void SformPassportCompet_Click(object sender, EventArgs e) {
+            Data_for_program data = (Data_for_program)Session["data"];
+            data.CodPlan = (int?)Session["CodPlan"];
+            string path = data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SavePassportCompet, Request.PhysicalApplicationPath, Request.ApplicationPath);
+            HtmlGenericControl a = new HtmlGenericControl("a");
+            a.Style.Add(HtmlTextWriterStyle.Display, "block");
+            a.Attributes.Add("href", path);
+            a.InnerText = "Скачать паспорт компетенций";
+            a.Attributes.Add("class", "btn");
+            a.Attributes.Add("type", "application/file");
+            this.SformPassportCompetSect.Controls.Add(a);
         }
     }   
 }

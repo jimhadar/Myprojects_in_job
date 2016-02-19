@@ -229,6 +229,42 @@ namespace Umk_and_Rpd_on_Web {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_StudyYear;
         
         /// <summary>
+        /// UpdatePanelSformPassportCompet элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelSformPassportCompet;
+        
+        /// <summary>
+        /// UpdateProgress_SavePassportCompet элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress_SavePassportCompet;
+        
+        /// <summary>
+        /// SformPassportCompetSect элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SformPassportCompetSect;
+        
+        /// <summary>
+        /// SformPassportCompet элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SformPassportCompet;
+        
+        /// <summary>
         /// UpdatePanel1 элемент управления.
         /// </summary>
         /// <remarks>

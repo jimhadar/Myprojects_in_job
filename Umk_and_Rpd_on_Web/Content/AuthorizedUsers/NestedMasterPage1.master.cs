@@ -85,7 +85,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 Data_for_program data = (Data_for_program)Session["data"];
                 using (MemoryStream MemStream = new MemoryStream()) {
                     switch (Request.Path) {
-                        case @"/Competetion":
+                        case "/Competetion":
                             data.GoalsDiscip = Request["GoalsDiscip"] != null ? Request["GoalsDiscip"].ToString() : string.Empty;
                             data.PlaceOOP = Request["PlaceOOP"] != null ? Request["PlaceOOP"].ToString() : String.Empty;
                             data.Student_Doljen_Znat = Request["Student_doljen_znat"] != null ? Request["Student_doljen_znat"].ToString() : String.Empty;
@@ -94,6 +94,14 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                             break;
                         case "/SoderjRazdDiscip":
                             SoderjRazdDiscip.UpdateSoderjRazdelDiscip_table(data.SoderjRazd_DataTable, Request, Convert.ToInt32(Request["RowCountSoderjDiscip"]));
+                            //LiteratureDataTable LiterTable = data.LiteratureTable;
+                            //int RowCount = Convert.ToInt32(Request["RowCountLiteratureTable"]);
+                            //LiterTable.Clear();
+                            //for (int i = 0; i < RowCount; i++) {
+                            //    LiterTable.AddRow(Request["TypeLiter" + (i + 1).ToString()], Request["AboutLiter" + (i + 1).ToString()]);
+                            //}
+                            break;
+                        case "/Literature":
                             LiteratureDataTable LiterTable = data.LiteratureTable;
                             int RowCount = Convert.ToInt32(Request["RowCountLiteratureTable"]);
                             LiterTable.Clear();
@@ -143,6 +151,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
 
         protected void FOS_btn_Click(object sender, EventArgs e) {
             Response.Redirect("~/FOS");
+        }
+
+        protected void Literature_btn_Click(object sender, EventArgs e) {
+            Response.Redirect("~/Literature");
         }
     }
 }

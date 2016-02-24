@@ -157,15 +157,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.WebControls.Label Label_for_hours1;
         
         /// <summary>
-        /// Table_for_Literature элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable Table_for_Literature;
-        
-        /// <summary>
         /// Button_next_page элемент управления.
         /// </summary>
         /// <remarks>

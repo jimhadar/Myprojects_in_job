@@ -83,6 +83,7 @@
     <Content Include="Content\AuthorizedUsers\FindRpdForm.aspx" />
     <Content Include="Content\AuthorizedUsers\for_admin\AdminForm.aspx" />
     <Content Include="Content\AuthorizedUsers\FOS.aspx" />
+    <Content Include="Content\AuthorizedUsers\Literature.aspx" />
     <Content Include="Content\AuthorizedUsers\Question.aspx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.xslt" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\PassportCompet.xslt" />
@@ -140,6 +141,7 @@
     <Content Include="Scripts\CurrentControl.js" />
     <Content Include="Scripts\ForMainMaster.js" />
     <Content Include="Scripts\FOS.js" />
+    <Content Include="Scripts\Literature.js" />
     <Content Include="Scripts\modernizr.custom.66570.js" />
     <Content Include="Scripts\Sending_tmp_inform_to_Server.js" />
     <Content Include="Scripts\SoderjRazdDiscip.js" />
@@ -179,6 +181,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\FOS.aspx.designer.cs">
       <DependentUpon>FOS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Literature.aspx.cs">
+      <DependentUpon>Literature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Literature.aspx.designer.cs">
+      <DependentUpon>Literature.aspx</DependentUpon>
     </Compile>
     <Compile Include="Content\AuthorizedUsers\Question.aspx.cs">
       <DependentUpon>Question.aspx</DependentUpon>

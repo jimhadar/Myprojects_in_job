@@ -13,20 +13,23 @@
         if (url_curStr.indexOf("Title", 0) > 0) {
             SendingDataToServerFromTitle(formData);
         }
-        if (url_curStr.indexOf("Competetion", 0) > 0) {
+        else if (url_curStr.indexOf("Competetion", 0) > 0) {
             SendingDataToServerFromCompetetion(formData);
         }
-        if (url_curStr.indexOf("SoderjRazdDiscip", 0) > 0) {
+        else if (url_curStr.indexOf("SoderjRazdDiscip", 0) > 0) {
             SendingDataToServerFromSoderjRazdDiscip(formData);
         }
-        if (url_curStr.indexOf("CurrentControl", 0) > 0) {
+        else if (url_curStr.indexOf("CurrentControl", 0) > 0) {
             SendingDataToServerFromCurrentControl(formData);
         }
-        if (url_curStr.indexOf("RPD", 0) > 0) {
+        else if (url_curStr.indexOf("RPD", 0) > 0) {
             SendingDataToServerFromRPD(formData);
         }
-        if (url_curStr.indexOf("UMK", 0) > 0) {
+        else if (url_curStr.indexOf("UMK", 0) > 0) {
             SendingDataToServerFromUMK(formData);
+        }
+        else if (url_curStr.indexOf("Literature", 0) > 0) {
+            SendingDataToServerFromLiterarure(formData);
         }
         /*отсылаем сформированные данные на сервер*/
         //создаем объект XMLHttpRequest
@@ -37,7 +40,7 @@
         XHR.send(formData);
         //интервал 1 секунда
         var interval = 1000;
-        /*будем запускать функцию с интервалом в 30 секунд*/
+        /*будем запускать функцию с интервалом в 5 минут*/
         setTimeout(Timer_for_Sending_Data_to_Server, 300 * interval);
     }
     /*
@@ -80,7 +83,12 @@
             else{
                 formData.append(Row.cells[4].childNodes[0].name, Row.cells[4].childNodes[0].value);
             }
-        }
+        }        
+    }
+    /*
+        отправка информации от клиента со страницы Literature
+    */
+    function SendingDataToServerFromLiterarure(formData) {
         var LiteratureTable = document.getElementById('Table_for_Literature');
         formData.append("RowCountLiteratureTable", LiteratureTable.rows.length - 1);
         for (var i = 1; i < LiteratureTable.rows.length; i++) {

@@ -13,17 +13,17 @@ using Umk_and_Rpd_on_Web;
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
     public partial class SoderjRazdDiscip : System.Web.UI.Page, ICallbackEventHandler {
         protected void Page_Load(object sender, EventArgs e) {
-            if (Page.IsPostBack && !Page.IsCallback) {
+            if (Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 Data_for_program data = ((Data_for_program)Session["data"]);
                 if (data != null) {
                     if (this.RowCountSoderjDiscip.Value == String.Empty) { this.RowCountSoderjDiscip.Value = data.SoderjRazd_DataTable.RowCount.ToString(); }
-                    if (this.RowCountLiterTable.Value == String.Empty) { this.RowCountLiterTable.Value = data.LiteratureTable.RowCount.ToString(); }
+                    //if (this.RowCountLiterTable.Value == String.Empty) { this.RowCountLiterTable.Value = data.LiteratureTable.RowCount.ToString(); }
                     UpdateSoderjRazdelDiscip_table(data.SoderjRazd_DataTable, this.Request, Convert.ToInt32(this.RowCountSoderjDiscip.Value.ToString()));
-                    UpdateLiteratureTable(data.LiteratureTable);
+                    //UpdateLiteratureTable(data.LiteratureTable);
                 }
             }
-            if (!Page.IsPostBack && !Page.IsCallback) { ViewSoderjRazdInClient(); }
-            if (!Page.IsPostBack || Page.IsCallback) {
+            if (!Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) { ViewSoderjRazdInClient(); }
+            if (!Page.IsPostBack || Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 string callbackref_razdel = Page.ClientScript.GetCallbackEventReference(this, "document.getElementById(\"AddRazdel_Btn\").id", "SoderjRazdDiscip.Get_Inf_for_Razdel_ClientCallBack", "null", true);
                 AddRazdel_Btn.Attributes["onclick"] = "SoderjRazdDiscip.AddRazdelRow();" + callbackref_razdel + ";";
                 string callbackref_theme = Page.ClientScript.GetCallbackEventReference(this, "document.getElementById(\"AddTheme_Btn\").id", "SoderjRazdDiscip.Get_Inf_for_Razdel_ClientCallBack", "null", true);
@@ -31,17 +31,17 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 //если произошел обратный запрос и произошла частичная отправка формы
                 //тогда обновляем данные в классе таблицы SoderjRazdDiscip              
             }
-            if(!Page.IsPostBack && !Page.IsCallback){
-                Data_for_program data = (Data_for_program)Session["data"];
-                if (data != null) {
-                    LiteratureDataTable LiteratureTable = data.LiteratureTable;
-                    ViewTable_for_Literature_InClient(LiteratureTable);
-                    if (LiteratureTable.RowCount == 0) {
-                        LiteratureTable.AddRow("Основная", "");
-                        AddStrToHtmlTableLiterature();
-                    }
-                }                
-            }
+            //if (!Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) {
+            //    Data_for_program data = (Data_for_program)Session["data"];
+            //    if (data != null) {
+            //        LiteratureDataTable LiteratureTable = data.LiteratureTable;
+            //        ViewTable_for_Literature_InClient(LiteratureTable);
+            //        if (LiteratureTable.RowCount == 0) {
+            //            LiteratureTable.AddRow("Основная", "");
+            //            AddStrToHtmlTableLiterature();
+            //        }
+            //    }                
+            //}
             Page.Title = "Содержание разделов дисциплины";
         }
 
@@ -330,25 +330,25 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             btn.Attributes.Add("onclick", "SoderjRazdDiscip.AddRowInEnd_for_literature();SoderjRazdDiscip.ShowPopUp_for_find_liter('block');");
             Row.Cells[2].Controls.Add(btn);
 
-            this.Table_for_Literature.Rows.Add(Row);
+            //this.Table_for_Literature.Rows.Add(Row);
         }
 
         /// <summary>
         /// отрисовка таблицы с списком литературы
         /// </summary>
         private void ViewTable_for_Literature_InClient(LiteratureDataTable Table) {
-            foreach (DataRow Row in Table) {
-                AddStrToHtmlTableLiterature();
-                HtmlTableRow HtmlRow = Table_for_Literature.Rows[Table_for_Literature.Rows.Count - 1];
-                HtmlSelect select = (HtmlSelect)HtmlRow.Cells[0].Controls[0];
-                foreach (ListItem Item in select.Items) {
-                    if (Item.Value.ToString() == Row["Type_liter"].ToString()) {
-                        Item.Selected = true;
-                        break;
-                    }
-                }
-                ((HtmlInputText)HtmlRow.Cells[1].Controls[0]).Value = Row["AboutLiter"].ToString();
-            }
+            //foreach (DataRow Row in Table) {
+            //    AddStrToHtmlTableLiterature();
+            //    HtmlTableRow HtmlRow = Table_for_Literature.Rows[Table_for_Literature.Rows.Count - 1];
+            //    HtmlSelect select = (HtmlSelect)HtmlRow.Cells[0].Controls[0];
+            //    foreach (ListItem Item in select.Items) {
+            //        if (Item.Value.ToString() == Row["Type_liter"].ToString()) {
+            //            Item.Selected = true;
+            //            break;
+            //        }
+            //    }
+            //    ((HtmlInputText)HtmlRow.Cells[1].Controls[0]).Value = Row["AboutLiter"].ToString();
+            //}
         }
 
         protected void Button_for_pred_page_Click(object sender, EventArgs e) {
@@ -356,7 +356,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         }
 
         protected void Button_next_page_Click(object sender, EventArgs e) {
-            Response.Redirect("~/CurrentControl");
+            Response.Redirect("~/Literature");
         }
 
         protected void Button_for_FindLiter_Click(object sender, EventArgs e) {

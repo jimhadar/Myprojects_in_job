@@ -29,6 +29,7 @@ namespace Umk_and_Rpd_on_Web
             routes.MapPageRoute("FOS", "FOS/", "~/Content/AuthorizedUsers/FOS.aspx");
             routes.MapPageRoute("Question", "Question", "~/Content/AuthorizedUsers/Question.aspx");
             routes.MapPageRoute("Error", "Error/", "~/Error.aspx");
+            routes.MapPageRoute("Literature", "Literature/", "~/Content/AuthorizedUsers/Literature.aspx");
         }
     }
 }

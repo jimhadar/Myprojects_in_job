@@ -18,8 +18,11 @@
                 </li>
                 <li>
                     <%--<a href="SoderjRazdDiscip.aspx"><span>Cодержание разделов &#010; дисциплины</span></a>--%>
-                    <asp:Button runat="server" ID="SoderjRazdDiscip_btn" OnClick="SoderjRazdDiscip_btn_Click" CssClass="bttn" Text="Содержание разделов дисциплины" />
+                    <asp:Button runat="server" ID="SoderjRazdDiscip_btn" OnClick="SoderjRazdDiscip_btn_Click" CssClass="bttn" Text="Содержание разделов" />
                 </li>
+                <li>
+                    <asp:Button runat="server" ID="Literature_btn" OnClick="Literature_btn_Click" CssClass="bttn" Text="Литература"/>
+                </li>                
                 <li>
                     <asp:Button runat="server" ID="CurrentControl_btn" OnClick="CurrentControl_btn_Click" CssClass="bttn" Text="Текущий контроль" />
                 </li>

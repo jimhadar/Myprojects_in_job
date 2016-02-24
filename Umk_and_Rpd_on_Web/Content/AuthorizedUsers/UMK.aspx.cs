@@ -13,7 +13,7 @@ using System.Data;
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.UMK {
     public partial class UMK : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-            if (Page.IsPostBack) {
+            if (Page.IsPostBack && Request["UpdateTmpContents"] == null) {
                 if (Session["data"] != null) {
                     //OthersFieldsForUMK othersFields = ((Data_for_program)Session["data"]).othersFieldsForUMK;
                     ((Data_for_program)Session["data"]).othersFieldsForUMK.UpdateFileds(this.FormPromejAttestatTextBox.Text.Trim(),
@@ -21,7 +21,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.UMK {
                                                                                         this.ExampleExTestTextBox.Text.Trim());
                 }
             }
-            if(!Page.IsPostBack){
+            if (!Page.IsPostBack && Request["UpdateTmpContents"] == null) {
                 if (Session["data"] != null) {
                     OthersFieldsForUMK othersFields = ((Data_for_program)Session["data"]).othersFieldsForUMK;
                     this.FormPromejAttestatTextBox.Text = othersFields.FormAndRulesCertification;

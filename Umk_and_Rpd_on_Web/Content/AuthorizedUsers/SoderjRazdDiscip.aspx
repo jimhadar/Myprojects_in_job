@@ -80,17 +80,7 @@
             <div style="width: 100%;">
                 <asp:Label ID="Label_for_hours1" ClientIDMode="Static" runat="server"></asp:Label>
             </div>
-            <div>
-                <h3 style="text-align: center;">Рекомендуемая литература</h3>
-            </div>
-            <table runat="server" style="width: 100%;" class="GridViewCss" id="Table_for_Literature" clientidmode="Static" onclick="SoderjRazdDiscip.ClickOnCell_intbl_liter(event);" onkeyup="SoderjRazdDiscip.ClickOnCell_intbl_liter(event);">
-                <tr class="HeaderGridView">
-                    <th class="HeaderGridView TypeLiterColumn">Литература</th>
-                    <th class="HeaderGridView">Описание источника</th>
-                    <th class=" HeaderGridView FindLiterBtnColumn"></th>
-                </tr>
-            </table>
-            <a name="end"></a>            
+                       
         </section>
     </section>
     <section>

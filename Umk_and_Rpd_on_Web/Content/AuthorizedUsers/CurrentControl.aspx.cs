@@ -11,13 +11,13 @@ using Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters;
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
     public partial class CurrentControl : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-            if(Page.IsPostBack && !Page.IsCallback){
+            if (Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 Data_for_program data = (Data_for_program)Session["data"];
                 if(data != null){
                     UpdateCurrentControlTable(data.CurControlTable, Convert.ToInt32(this.CurrentControlTableRowCount.Value.ToString()), Request); 
                 }
             }
-            if(!Page.IsCallback){
+            if (!Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 if(Session["data"] != null){
                     UpdateDataInHTMLTable(((Data_for_program)Session["data"]).CurControlTable);
                 }
@@ -158,7 +158,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         }
 
         protected void Button_for_pred_page_Click(object sender, EventArgs e) {
-            Response.Redirect("~/SoderjRazdDiscip");
+            Response.Redirect("~/Literature");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Umk_and_Rpd_on_Web.App_Code {
         /// для обновления/удаления записей из базы данных раз вчетверо суток
         /// </summary>
         static Timer timerUpdateStrInBase;
-        long hour = 60;//3600000;
+        long hour = 3600000;//3600000;
         static object synclock = new object();
         public void Init(HttpApplication app) {
             timerUpdateStrInBase = new Timer(new TimerCallback(DeleteEmptyStrFromBase), null, 0, hour * 2);

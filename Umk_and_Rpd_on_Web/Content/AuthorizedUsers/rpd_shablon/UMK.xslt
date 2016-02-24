@@ -5526,7 +5526,7 @@
             <w:bookmarkEnd w:id="37"/>
           </w:p>
         <!--Вывод перечня вопросов к зачтеу/экзамену-->
-        <xsl:for-each select="umk/CurrentControl/Voprosy_k_ekz/Vopros">
+        <xsl:for-each select="umk/CurrentControl/Voprosy_k_ekz/Abzac">
           <w:p w:rsidR="002F48BD" w:rsidRPr="001B11BA" w:rsidRDefault="002F48BD" w:rsidP="003D7FB2">
             <w:pPr>
               <w:pStyle w:val="a3"/>

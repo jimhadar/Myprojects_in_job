@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.RPD {
     public partial class RPD : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
-            if (Page.IsPostBack && !Page.IsCallback) {
+            if (Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 if (Session["data"] != null) {
                     Data_for_program data = (Data_for_program)Session["data"];
                     data.othersFieldsForRPD.UpdateFields(this.TypeAndFormCertificationTextBox.Text.Trim(),
@@ -25,7 +25,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.RPD {
                     Session["data"] = data;
                 }
             }
-            if (!Page.IsCallback) {
+            if (!Page.IsCallback && Request["UpdateTmpContents"] == null) {
                 if(Session["data"] != null){
                     OthersFieldsForRPD RPDFields = ((Data_for_program)Session["data"]).othersFieldsForRPD;
                     this.TypeAndFormCertificationTextBox.Text = RPDFields.TypeAndFormCertification;

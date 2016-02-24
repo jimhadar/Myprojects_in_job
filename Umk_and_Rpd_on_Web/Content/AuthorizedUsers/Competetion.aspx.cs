@@ -19,12 +19,12 @@ namespace Umk_and_Rpd_on_Web {
 
         protected void Page_Load(object sender, EventArgs e) {
             Data_for_program data = ((Data_for_program)Session["data"]);
-            if(Page.IsPostBack && !Page.IsCallback){    
+            if (Page.IsPostBack && !Page.IsCallback && Request["UpdateTmpContents"] == null) {    
                 if(data != null){
                     UpdateValues_in_Data();
                 }               
             }
-            if (!Page.IsPostBack) {
+            if (!Page.IsPostBack && Request["UpdateTmpContents"] == null) {
                 if (data != null) {                     
                     this.TextBox_for_GoalsDiscip.Text = (((Data_for_program)Session["data"]).GoalsDiscip != null) ? ((Data_for_program)Session["data"]).GoalsDiscip : String.Empty;
                     this.TextBox_for_PlaceOOP.Text = (((Data_for_program)Session["data"]).PlaceOOP != null) ? ((Data_for_program)Session["data"]).PlaceOOP : String.Empty;

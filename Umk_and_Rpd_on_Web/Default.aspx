@@ -14,7 +14,7 @@
     <form id="AuthorizationForm" runat="server">
         <header class="header">
             <section class="name_university">
-                Читинский институт Байкальского Государственного Университета экономики и права
+                Читинский институт Байкальского Государственного Университета
             </section>
             <br/>
             <section class="name-resource">

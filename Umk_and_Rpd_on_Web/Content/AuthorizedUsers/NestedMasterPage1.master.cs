@@ -94,12 +94,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                             break;
                         case "/SoderjRazdDiscip":
                             SoderjRazdDiscip.UpdateSoderjRazdelDiscip_table(data.SoderjRazd_DataTable, Request, Convert.ToInt32(Request["RowCountSoderjDiscip"]));
-                            //LiteratureDataTable LiterTable = data.LiteratureTable;
-                            //int RowCount = Convert.ToInt32(Request["RowCountLiteratureTable"]);
-                            //LiterTable.Clear();
-                            //for (int i = 0; i < RowCount; i++) {
-                            //    LiterTable.AddRow(Request["TypeLiter" + (i + 1).ToString()], Request["AboutLiter" + (i + 1).ToString()]);
-                            //}
                             break;
                         case "/Literature":
                             LiteratureDataTable LiterTable = data.LiteratureTable;

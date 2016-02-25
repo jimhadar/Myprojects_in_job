@@ -132,7 +132,7 @@
 
         for (var i = 0; i < 6; i++) {
             var td = document.createElement("td");
-            td.className = "GridViewCss";
+            td.className = "GridViewCss LabelStyle";
             Row.appendChild(td);
         }
 
@@ -147,7 +147,16 @@
         td.appendChild(textbox);
 
         var td = Row.cells[1];
-        NewTDSemestr = td;
+        var select = document.getElementById('NumberSemestr');
+        var Semestrs = document.createElement("SELECT");
+        for (var i = 0; i < select.length; i++){
+            var option = document.createElement("OPTION");
+            option.value = select.options[i].value;
+            option.text = select.options[i].text;
+            Semestrs.appendChild(option);
+        }
+        td.appendChild(Semestrs);
+        /*NewTDSemestr = td;*/
 
         var td = Row.cells[2];
         td.className = "GridViewCss";
@@ -162,7 +171,8 @@
         td.innerText = "0";
 
         var td = Row.cells[4];
-        NewTDOcenSredstv = td;
+        GetList_of_OcenSredtsv(td);
+        /*NewTDOcenSredstv = td;*/
         
         var td = Row.cells[5];
         var button = document.createElement("INPUT");
@@ -170,6 +180,7 @@
                
 
         allocationCurrentRow(Table_for_soderjDiscip, CurrentRow_InRazdelLesson);
+        Update_NameAttr_in_InputElem_in_SoderjDiscipTable();
     }
     //добавление темы
     function AddThemeRow() {
@@ -191,7 +202,7 @@
 
             for (var i = 0; i < 6; i++) {
                 var td = document.createElement("td");
-                td.className = "GridViewCss";
+                td.className = "GridViewCss LabelStyle";
                 Row.appendChild(td);
             }
 
@@ -225,12 +236,14 @@
             td.innerText = "0";
 
             var td = Row.cells[4];
-            NewTDOcenSredstv = td;
+            GetList_of_OcenSredtsv(td);
+            //NewTDOcenSredstv = td;
 
             var td = Row.cells[5];
             td.innerHTML = "<input type=\"button\" class=\"bttn\" onclick=\"SoderjRazdDiscip.ClickOnCell_InRazdelLesson(event);SoderjRazdDiscip.del_str(event);\" value=\"Удалить\"/>";
             document.getElementById('RowCountSoderjDiscip').value = Table_for_soderjDiscip.rows.length - 1;
             allocationCurrentRow(Table_for_soderjDiscip, CurrentRow_InRazdelLesson);
+            Update_NameAttr_in_InputElem_in_SoderjDiscipTable();
         }
         else {
             alert("Перед добавлением тем занятий необходимо выбрать или создать раздел! Для этого добавьте новый раздел.");
@@ -260,7 +273,7 @@
             var Row = Table_for_soderjDiscip.insertRow(++CurrentRow_InRazdelLesson);
             for (var i = 0; i < 6; i++) {
                 var td = document.createElement("td");
-                td.className = "GridViewCss";
+                td.className = "GridViewCss LabelStyle";
                 Row.appendChild(td);
             }
 
@@ -304,32 +317,6 @@
         }
     }
     
-    //клиентская функция, обрабатывающая информацию с сервера после обратного вызова. Функция срабатывает при добавлении раздела или темы
-    function Get_Inf_for_Razdel_ClientCallBack(result, context) {
-        "use strict"
-        if (result.indexOf("}{") != -1) {
-            var items = result.split("}{");
-            var semestres = items[0].split("|");
-            //заполнение списка оценочных средств
-            GetList_of_OcenSredtsv(items[1].split("||"));
-            var combobox = document.createElement("select");
-            combobox.innerHTML = "";
-            for (let i = 0; i < semestres.length - 1; i++) {
-                var option = document.createElement("option");
-                option.innerHTML = semestres[i].toString().trim();
-                combobox.appendChild(option);
-            }
-            combobox.name = "Semestr" + CurrentRow_InRazdelLesson.toString();
-            NewTDSemestr.innerHTML = "";
-            combobox.onchange = function () { SoderjRazdDiscip.Update_Semestr_in_thme_or_lec(); }
-            NewTDSemestr.appendChild(combobox);
-            //если переданные с сервера данные содержат также количество часов лекций, практических и самостоятельных занятий
-        }
-        else {
-            GetList_of_OcenSredtsv(result.split("||"));
-        }
-        Update_NameAttr_in_InputElem_in_SoderjDiscipTable();
-    }
     //добавление в поле для ввода оценочных средств элемента, выбарнного текущим в списке "Оценочные средства"
     function Add_OcenSredstv_to_TextBox() {
         //ячейка с списком оценочных средств, включающая 3 других эемента: textbox, select, button
@@ -348,20 +335,20 @@
     }
 
     //заполнение списка оценочных средств
-    function GetList_of_OcenSredtsv(OcenSredstv) {
+    function GetList_of_OcenSredtsv(td) {
+        var OcenSredstv = document.getElementById('OcenSredstv');
         var inputText = document.createElement('INPUT');
         inputText.type = "text";
         inputText.name = "FormCurControl" + CurrentRow_InRazdelLesson.toString();
         inputText.className = "TextBoxOcenSredstv";
         
-        NewTDOcenSredstv.innerHTML = "";
+        td.innerHTML = "";
         var ListOcenSredstv = document.createElement("select");
         ListOcenSredstv.innerHTML = "";
-        for (var i = 0; i < OcenSredstv.length - 1; i++){
-            var str = OcenSredstv[i].split("|");
+        for (var i = 0; i < OcenSredstv.length; i++){
             var option = document.createElement("option");
-            option.value = str[0];
-            option.innerText = str[1];
+            option.value = OcenSredstv.options[i].value;
+            option.innerText = OcenSredstv.options[i].text;
             ListOcenSredstv.appendChild(option);
         }
         ListOcenSredstv.className = "SelectStyle";
@@ -370,10 +357,10 @@
         inputButton.value = "Добавить";
         inputButton.className = "bttn_AddOcenSredstv";
         inputButton.onclick = SoderjRazdDiscip.Add_OcenSredstv_to_TextBox;
-        NewTDOcenSredstv.className = "GridViewCss formCurControlColumn";
-        NewTDOcenSredstv.appendChild(inputText);
-        NewTDOcenSredstv.appendChild(ListOcenSredstv);
-        NewTDOcenSredstv.appendChild(inputButton);
+        td.className = "GridViewCss formCurControlColumn";
+        td.appendChild(inputText);
+        td.appendChild(ListOcenSredstv);
+        td.appendChild(inputButton);
     }
 
     function Update_Semestr_in_thme_or_lec() {
@@ -472,7 +459,6 @@
     SoderjRazdDiscip.AddRazdelRow = AddRazdelRow;
     SoderjRazdDiscip.AddThemeRow = AddThemeRow;
     SoderjRazdDiscip.Add_Lec_or_Prakt_or_SamJob = Add_Lec_or_Prakt_or_SamJob;
-    SoderjRazdDiscip.Get_Inf_for_Razdel_ClientCallBack = Get_Inf_for_Razdel_ClientCallBack;
     SoderjRazdDiscip.Update_Semestr_in_thme_or_lec = Update_Semestr_in_thme_or_lec;
     SoderjRazdDiscip.Update_value_of_hours_in_razdel_and_row = Update_value_of_hours_in_razdel_and_row;
     SoderjRazdDiscip.Update_NameAttr_in_InputElem_in_SoderjDiscipTable = Update_NameAttr_in_InputElem_in_SoderjDiscipTable;

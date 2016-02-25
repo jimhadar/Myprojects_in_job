@@ -22,69 +22,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// UpdatePanel1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
-        /// TextBox_KeyWord элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_KeyWord;
-        
-        /// <summary>
-        /// TextBox_Author элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Author;
-        
-        /// <summary>
-        /// TextBox_NameBook элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_NameBook;
-        
-        /// <summary>
-        /// TextBox_Year элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox_Year;
-        
-        /// <summary>
-        /// Button_for_FindLiter элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_for_FindLiter;
-        
-        /// <summary>
-        /// Table_for_liter элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable Table_for_liter;
-        
-        /// <summary>
         /// AddRazdel_Btn элемент управления.
         /// </summary>
         /// <remarks>
@@ -193,30 +130,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden RowCountLiterTable;
         
         /// <summary>
-        /// ForHourLec элемент управления.
+        /// ForSelectParams элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ForHourLec;
-        
-        /// <summary>
-        /// ForHourLab элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ForHourLab;
-        
-        /// <summary>
-        /// ForHourSam элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden ForHourSam;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ForSelectParams;
     }
 }

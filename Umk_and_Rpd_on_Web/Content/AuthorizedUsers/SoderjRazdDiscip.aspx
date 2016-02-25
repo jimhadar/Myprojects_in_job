@@ -6,53 +6,6 @@
             <asp:ScriptReference Path="~/Scripts/SoderjRazdDiscip.js" />
         </Scripts>
     </asp:ScriptManager>
-    <section id="wrap_for_pop-up-window">
-        <div id="pop-up-window">
-            <div class="close-pop-up">
-                <img onclick="SoderjRazdDiscip.ShowPopUp_for_find_liter('none'); SoderjRazdDiscip.ClearAllElement_in_findLiterWindow();" src="http://sergey-oganesyan.ru/wp-content/uploads/2014/01/close.png" />
-            </div>
-            <br />
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <div style="margin: 0 auto; width: 400px;">
-                        <div class="Key_Liter">
-                            <asp:Label runat="server" CssClass="Label_Liter">Ключевые слова:</asp:Label>
-                            <asp:TextBox ClientIDMode="Static" ID="TextBox_KeyWord" runat="server" CssClass="TextBox_Liter"></asp:TextBox>
-                        </div>
-                        <div class="Key_Liter">
-                            <asp:Label runat="server" CssClass="Label_Liter">Автор:</asp:Label>
-                            <asp:TextBox ClientIDMode="Static" runat="server" ID="TextBox_Author" CssClass="TextBox_Liter"></asp:TextBox>
-                        </div>
-                        <div class="Key_Liter">
-                            <asp:Label runat="server" CssClass="Label_Liter">Название:</asp:Label>
-                            <asp:TextBox runat="server" ClientIDMode="Static" ID="TextBox_NameBook" CssClass="TextBox_Liter"></asp:TextBox>
-                        </div>
-                        <div class="Key_Liter">
-                            <asp:Label runat="server" CssClass="Label_Liter">Год издания:</asp:Label>
-                            <asp:TextBox runat="server" ClientIDMode="Static" ID="TextBox_Year" CssClass="TextBox_Liter" TextMode="Number"></asp:TextBox>
-                        </div>
-                        <br />
-                        <div>
-                            <asp:Button runat="server" ID="Button_for_FindLiter" OnClick="Button_for_FindLiter_Click" Style="text-align: center; width: 190px;" class="bttn" Text="Начать поиск" />
-                        </div>
-                        <br />
-                    </div>
-                    <div style="max-height: 400px; max-width: 1280px; overflow: scroll; margin: 0 auto;">
-                        <table runat="server" clientidmode="Static" id="Table_for_liter" class="GridViewCss" style="width: auto" ondblclick="SoderjRazdDiscip.AddLiterToTextBox(event);">
-                            <tr class="HeaderGridView">
-                                <th class="GridViewCss">Название</th>
-                                <th class="GridViewCss">Автор</th>
-                                <th class="GridViewCss">Место издания</th>
-                                <th class="GridViewCss">Издательство</th>
-                                <th class="GridViewCss">Год</th>
-                                <th class="GridViewCss"></th>
-                            </tr>
-                        </table>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-        </div>
-    </section>
     <section style="width: 100%; position: fixed; z-index: 50;">
         <input id="AddRazdel_Btn" runat="server" type="button" value="Раздел" class="bttn" onclick="SoderjRazdDiscip.AddRazdelRow();" clientidmode="Static" />
         <input id="AddTheme_Btn" runat="server" type="button" value="Тема" class="bttn" onclick="SoderjRazdDiscip.AddThemeRow();" clientidmode="Static" />
@@ -79,8 +32,7 @@
             </table>
             <div style="width: 100%;">
                 <asp:Label ID="Label_for_hours1" ClientIDMode="Static" runat="server"></asp:Label>
-            </div>
-                       
+            </div>                       
         </section>
     </section>
     <section>
@@ -91,12 +43,12 @@
     <section>
         <div id="test" style="background-color: black; display: none;"></div>
     </section>
-    <div>
+    <div style="display:none;">
         <input type="hidden" runat="server" id="RowCountSoderjDiscip" clientidmode="Static" value="0" />
         <input type="hidden" runat="server" id="RowCountLiterTable" clientidmode="static" value="0" />
-        <input type="hidden" runat="server" id="ForHourLec" clientidmode="static" value="0" />
-        <input type="hidden" runat="server" id="ForHourLab" clientidmode="static" value="0" />
-        <input type="hidden" runat="server" id="ForHourSam" clientidmode="static" value="0" /> 
+        <div runat="server" id="ForSelectParams" clientidmode="static" style="display: none;">
+            
+        </div>      
     </div>
     <script src="../../Scripts/SoderjRazdDiscip.js"></script>
     <script>

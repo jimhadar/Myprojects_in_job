@@ -57,7 +57,9 @@ namespace Umk_and_Rpd_on_Web {
                 int SelectRow;
                 if ((SelectRow = GetSelectRowInNazguzkaOnPrepGridView()) != -1) {
                     NagruzkaOnPrepGridView.SelectRow(SelectRow);
-                    CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины\"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
+                    CurrentSelectSub.InnerText = (Session["AllowEditRpd"] == null || (Session["AllowEditRpd"] != null && (bool)Session["AllowEditRpd"] == true)) ? 
+                                                "РПД / УМК будет составляться для дисциплины\"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"" : 
+                                                "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
                 }
                 else if (NagruzkaOnPrepGridView.Rows.Count > 0) {
                     NagruzkaOnPrepGridView.SelectRow(-1);

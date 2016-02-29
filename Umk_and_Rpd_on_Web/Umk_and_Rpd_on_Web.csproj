@@ -107,7 +107,7 @@
     <None Include="AcademiaDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AcademiaDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>AcademiaDataSet1.Designer.cs</LastGenOutput>
     </None>
     <Content Include="AcademiaDataSet.xss">
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>

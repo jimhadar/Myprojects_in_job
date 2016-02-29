@@ -82,6 +82,18 @@
                     </section>
                 </ContentTemplate>                
             </asp:UpdatePanel>
+            <asp:UpdatePanel ID="UpdatePanelSformOOP" runat="server">
+                <ContentTemplate>
+                    <asp:UpdateProgress ID="UpdateProgress_SformOOP" runat="server" AssociatedUpdatePanelID="UpdatePanelSformOOP">
+                        <ProgressTemplate>
+                            Подождите, идет формирование ООП...
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                    <section runat="server" id="SformOOPSect">
+                        <asp:Button ID="SformOOP_btn" CssClass="bttn" runat="server" Text="Сформировать ООП" OnClick="SformOOP_btn_Click" />
+                    </section>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <hr />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>

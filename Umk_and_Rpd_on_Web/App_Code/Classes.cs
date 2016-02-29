@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
+//using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.SqlClient;
 
 namespace Umk_and_Rpd_on_Web {
@@ -33,7 +33,8 @@ namespace Umk_and_Rpd_on_Web {
         SaveAnnotationToRPD = 3,
         SaveToDataBase = 4,
         SaveFOS = 5,
-        SavePassportCompet = 6
+        SavePassportCompet = 6,
+        SaveOOP = 7
     }
     internal class Classes {
         #region метод для аутентификации преподавателя
@@ -528,25 +529,33 @@ namespace Umk_and_Rpd_on_Web {
                 return string.Empty;
             }
             else {
-                if (SaveDoc_or_DB != HowDoc_Save.SavePassportCompet) {
-                    using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
-                        return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
-                    }
-                }
-                else {
-                    MemoryStream memoryStream = new MemoryStream();
-                    XmlTextWriter writer = new XmlTextWriter(memoryStream, System.Text.Encoding.UTF8);
-                    writer.Formatting = Formatting.Indented;
-                    this.SavePassportCompetToXml(ref writer);
-                    writer.Flush();
-                    string Data;
-                    using (StreamReader reader = new StreamReader(memoryStream)) {
-                        memoryStream.Seek(0, SeekOrigin.Begin);
-                        Data = reader.ReadToEnd();
-                    }
-                    using (StringReader reader = new StringReader(Data)) {
-                        return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
-                    }
+                switch (SaveDoc_or_DB) {
+                    case HowDoc_Save.SavePassportCompet:
+                    case HowDoc_Save.SaveOOP:
+                        MemoryStream memoryStream = new MemoryStream();
+                        XmlTextWriter writer = new XmlTextWriter(memoryStream, System.Text.Encoding.UTF8);
+                        writer.Formatting = Formatting.Indented;
+                        if (SaveDoc_or_DB == HowDoc_Save.SavePassportCompet) {
+                            this.SavePassportCompetToXml(ref writer);
+                        }
+                        else {
+                            this.SaveOOPToXml(ref writer);
+                        }
+                        writer.Flush();
+                        string Data;
+                        using (StreamReader reader = new StreamReader(memoryStream)) {
+                            memoryStream.Seek(0, SeekOrigin.Begin);
+                            Data = reader.ReadToEnd();
+                        }
+                        using (StringReader reader = new StringReader(Data)) {
+                            return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
+                        }
+                        break;
+                    default:
+                        using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
+                            return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
+                        }
+                        break;
                 }
             }
         }
@@ -756,56 +765,34 @@ namespace Umk_and_Rpd_on_Web {
                 StudyPlansAdapter.Fill_on_CodPlan(academiaDataSet.StudyPlans, (int)this.CodPlan);
 
                 AcademiaDataSetTableAdapters.PEOPLENTableAdapter PeoplenLenAdapter = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter();
-                //PeoplenLenAdapter.Fill(academiaDataSet.PEOPLEN);
 
                 AcademiaDataSetTableAdapters.SpecialityTableAdapter SpecialityAdapter = new AcademiaDataSetTableAdapters.SpecialityTableAdapter();
-                //SpecialityAdapter.Fill(academiaDataSet.Speciality, (byte)this.CodTypeEdu);
 
                 AcademiaDataSetTableAdapters.FacultyTableAdapter FacultyAdapter = new AcademiaDataSetTableAdapters.FacultyTableAdapter();
-                //FacultyAdapter.Fill(academiaDataSet.Faculty);
 
                 AcademiaDataSetTableAdapters.KafsTableAdapter KafsAdapter = new AcademiaDataSetTableAdapters.KafsTableAdapter();
-                //KafsAdapter.Fill_without_param(academiaDataSet.Kafs);
 
                 AcademiaDataSetTableAdapters.StudyTermTableAdapter StudyTermAdapter = new AcademiaDataSetTableAdapters.StudyTermTableAdapter();
                 StudyTermAdapter.Fill(academiaDataSet.StudyTerm, (int)this.CodPlan, (short)this.CodSub);
 
                 AcademiaDataSetTableAdapters.SubsTableAdapter SubsAdapter = new AcademiaDataSetTableAdapters.SubsTableAdapter();
-                //SubsAdapter.Fill(academiaDataSet.Subs);
-
-                AcademiaDataSetTableAdapters.SubjectGrsTableAdapter SubjectAdapter = new AcademiaDataSetTableAdapters.SubjectGrsTableAdapter();
-                /*try {
-                    SubjectAdapter.Fill(academiaDataSet.SubjectGrs);
-                }
-                catch {
-                    SubjectAdapter.Fill(academiaDataSet.SubjectGrs);
-                } */
-
-                AcademiaDataSetTableAdapters.StudyContentsTableAdapter StudyContentsAdapter = new AcademiaDataSetTableAdapters.StudyContentsTableAdapter();
-                //StudyContentsAdapter.Fill(academiaDataSet.StudyContents);
 
                 AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter Studycomponents_plus_studycontentsAdapter = new AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter();
-                //Studycomponents_plus_studycontentsAdapter.Fill(academiaDataSet.Studycomponents_plus_studycontents);
 
                 AcademiaDataSetTableAdapters.PrepodTableAdapter prepodAdapter = new AcademiaDataSetTableAdapters.PrepodTableAdapter();
-                //prepodAdapter.Fill(academiaDataSet.Prepod);
 
                 AcademiaDataSetTableAdapters.FormStudyTableAdapter FormStudyAdapter = new AcademiaDataSetTableAdapters.FormStudyTableAdapter();
-                //FormStudyAdapter.Fill(academiaDataSet.FormStudy);
 
                 AcademiaDataSetTableAdapters.CompetetionTableAdapter CompetetionAdapter = new AcademiaDataSetTableAdapters.CompetetionTableAdapter();
-                //CompetetionAdapter.Fill(academiaDataSet.Competetion, this.CodSpeciality, (short)CodSub, (int)CodPlan);
                 this.CompetetionTable = CompetetionAdapter.GetData(this.CodSpeciality, (short)CodSub, (int)CodPlan);
 
                 AcademiaDataSetTableAdapters.StudyExamsTableAdapter StudyExamsAdapter = new AcademiaDataSetTableAdapters.StudyExamsTableAdapter();
                 StudyExamsAdapter.Fill(academiaDataSet.StudyExams, (int)this.CodPlan, (short)this.CodSub);
 
                 AcademiaDataSetTableAdapters.OcenSredstvTableAdapter OcenSredstvAdapter = new AcademiaDataSetTableAdapters.OcenSredstvTableAdapter();
-                this.OcenSredstvTable = OcenSredstvAdapter.GetData();// new AcademiaDataSet.OcenSredstvDataTable();
-                //OcenSredstvAdapter.Fill(this.OcenSredstvTable);
+                this.OcenSredstvTable = OcenSredstvAdapter.GetData();
 
                 AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter zavPodrazdn = new AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter();
-                //this.CodFormStudy = Convert.ToByte(grupAdapter.GetCodFormStudy((short)this.CodGroup));
 
                 ZamDir_po_uchJob = PeoplenLenAdapter.SelectZamDir_po_uch_job();
                 NameKafPrep = KafsAdapter.GetNameKaf((byte)this.CodKafPrep);
@@ -814,7 +801,8 @@ namespace Umk_and_Rpd_on_Web {
                 NameKafPlan = KafsAdapter.GetNameKaf((byte)this.CodKaf);
                 Name_discipline = SubsAdapter.GetNameSub((short)this.CodSub).ToString();
                 //Шифр дисциплины
-                shifr_discipline = this.GetShifrDiscip(SubjectAdapter, StudyContentsAdapter, Studycomponents_plus_studycontentsAdapter);
+                shifr_discipline = Studycomponents_plus_studycontentsAdapter.GetShifrDiscip((int)this.CodPlan, (short)this.CodSub);
+                NameGrSubject = Studycomponents_plus_studycontentsAdapter.GetNameGrSubject((int)this.CodPlan, (short)this.CodSub);
 
                 //CodSpeciality = SpecialityAdapter.GetCodSpecGroupOKSO((short)CodGroup).ToString();
                 Name_speciality = SpecialityAdapter.GetNameSpecialityOKSO((int)this.CodPlan).ToString();
@@ -1076,6 +1064,145 @@ namespace Umk_and_Rpd_on_Web {
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
+                    }
+                writer.WriteEndElement();
+            writer.WriteEndDocument();
+        }
+
+        private void SaveOOPToXml(ref XmlTextWriter writer) {
+            DataTable tableForOOP;
+            if (this.CodPlan == null) {
+                return;
+            }
+            using(AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter adapter = new AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter()){
+                tableForOOP = adapter.GetDataToOOP((int)this.CodPlan);
+            }
+            if(tableForOOP != null && tableForOOP.Rows.Count == 0){
+                return;
+            }
+            byte CodGrSubject = (byte)tableForOOP.Rows[0]["CodGrSubject"];
+            writer.WriteStartDocument();
+                writer.WriteStartElement("OOP");
+                    //внесем первичные данные
+                    writer.WriteStartElement("GrSubject");
+                        writer.WriteAttributeString("GrSubject", (tableForOOP.Rows[0]["GrSubject"] != null) ? tableForOOP.Rows[0]["GrSubject"].ToString().Trim() : String.Empty);
+                        writer.WriteAttributeString("NameGrSubject", (tableForOOP.Rows[0]["NAMEGRSUB"] != null) ? tableForOOP.Rows[0]["NAMEGRSUB"].ToString().Trim() : String.Empty);            
+                    foreach(DataRow Row in tableForOOP.Rows){
+                        if ((byte)Row["CodGrSubject"] != CodGrSubject) {
+                            writer.WriteStartElement("GrSubject");
+                                writer.WriteAttributeString("GrSubject", (Row["GrSubject"] != null) ? Row["GrSubject"].ToString().Trim() : String.Empty);
+                                writer.WriteAttributeString("NameGrSubject", (Row["NAMEGRSUB"] != null) ? Row["NAMEGRSUB"].ToString().Trim() : String.Empty);
+                        }
+                        using (MemoryStream memStream = new MemoryStream()) {
+                            string tmp;
+                            //считали Xml данные для создания аннотации
+                            StreamWriter streamWriter = new StreamWriter(memStream, System.Text.Encoding.UTF8);
+                            streamWriter.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Row["Contents"].ToString());
+                            streamWriter.Flush();
+                            StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
+                            reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                            XmlTextReader xmlReader = new XmlTextReader(reader);
+                            
+                            //формировании аннотации
+                            writer.WriteStartElement("Annotation");
+                                writer.WriteAttributeString("Shifr_discip", (Row["Shifr"] != null) ? Row["Shifr"].ToString().Trim() : string.Empty);
+                                writer.WriteAttributeString("NameDiscip", (Row["NameSub"] != null) ? Row["NameSub"].ToString().Trim() : string.Empty);
+                                if (Row["Contents"] != null && Row["Contents"].ToString() != String.Empty) {
+                                    xmlReader.ReadToDescendant("Title");
+                                    //Цели освоения дисциплины
+                                    xmlReader.ReadToFollowing("GoalsDisciplin");
+
+                                    writer.WriteStartElement("GoalsDiscip");
+                                    WriteFromBaseXmlToNewXmlForOOP(ref xmlReader, ref writer);
+                                    writer.WriteEndElement();
+                                    //место дисцплины в ООП
+                                    xmlReader.ReadToFollowing("AboutPlaceOOP");
+                                    writer.WriteStartElement("PlaceOOP");
+                                    writer.WriteStartElement("AboutPlaceOOP");
+                                    writer.WriteAttributeString("Value", xmlReader.GetAttribute("Value"));
+                                    writer.WriteEndElement();
+
+                                    while (xmlReader.Read() && xmlReader.HasAttributes) {
+                                        writer.WriteStartElement("Abzac");
+                                            writer.WriteAttributeString("Value", xmlReader.GetAttribute("Value"));
+                                        writer.WriteEndElement();
+                                    }
+                                    writer.WriteEndElement();
+                                    //Полчаем список аббревиатур компетенций
+                                    writer.WriteStartElement("Competetion");
+                                    tmp = string.Empty;
+                                    xmlReader.Read();
+                                    while (xmlReader.Read() && xmlReader.IsStartElement() && xmlReader.Name != "Competetion") {
+                                        tmp += xmlReader.GetAttribute("CodCompetencii").Trim() + ", ";
+                                    }
+                                    writer.WriteAttributeString("Value", tmp);
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("StudentMustZnat");
+                                    xmlReader.ReadToFollowing("Student_must_znat");
+                                    WriteFromBaseXmlToNewXmlForOOP(ref xmlReader, ref writer);
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("StudentMustUmet");
+                                    xmlReader.ReadToFollowing("Student_must_umet");
+                                    WriteFromBaseXmlToNewXmlForOOP(ref xmlReader, ref writer);
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("StudentMustVladet");
+                                    xmlReader.ReadToFollowing("Student_must_vladet");
+                                    WriteFromBaseXmlToNewXmlForOOP(ref xmlReader, ref writer);
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("SoderjRazdelDiscip");
+                                    xmlReader.ReadToFollowing("Soderjanie_razd_discip");
+                                    while (xmlReader.Read() && xmlReader.Name != "SpisokOcenSredstv") {
+                                        if (xmlReader.Name == "Razdel" && xmlReader.IsStartElement()) {
+
+                                            writer.WriteStartElement("Razdel");
+                                            writer.WriteAttributeString("NumRazdel", xmlReader.GetAttribute("Id"));
+                                            writer.WriteAttributeString("NameRazdel", xmlReader.GetAttribute("About_razdel"));
+                                            while (xmlReader.Read() && xmlReader.Name != "Razdel") {
+                                                if (xmlReader.Name == "Theme" && xmlReader.IsStartElement()) {
+                                                    writer.WriteStartElement("Theme");
+                                                    writer.WriteAttributeString("NumTheme", xmlReader.GetAttribute("Id"));
+                                                    writer.WriteAttributeString("NameTheme", xmlReader.GetAttribute("About_theme"));
+                                                    writer.WriteEndElement();
+                                                }
+                                            }
+                                            writer.WriteEndElement();
+
+                                        }
+                                    }
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("Type_and_Form_promej_control");
+                                    xmlReader.ReadToFollowing("Type_and_Form_promej_control");
+                                    WriteFromBaseXmlToNewXmlForOOP(ref xmlReader, ref writer);
+                                    writer.WriteEndElement();
+                                    //Используемые образовательные технологии
+                                    writer.WriteStartElement("Obraz_technology");
+                                    xmlReader.ReadToFollowing("Obraz_technology");
+                                    xmlReader.Read();
+
+                                    writer.WriteStartElement("Abzac");
+                                    writer.WriteAttributeString("Value", xmlReader.GetAttribute("Value") != null ? xmlReader.GetAttribute("Value") : String.Empty);
+                                    writer.WriteEndElement();
+
+                                    xmlReader.ReadToFollowing("Part_zanyatii");
+                                    writer.WriteStartElement("Part_zanyatii");
+                                    writer.WriteAttributeString("Value", xmlReader.GetAttribute("Value") != null ? xmlReader.GetAttribute("Value") : string.Empty);
+                                    writer.WriteEndElement();
+                                    writer.WriteEndElement();
+
+                                    writer.WriteStartElement("FormCurControl");
+                                    writer.WriteAttributeString("Value", "");
+                                    writer.WriteEndElement();
+                                }
+                            writer.WriteEndElement();
+                        }
+                        if ((byte)Row["CodGrSubject"] != CodGrSubject) { 
+                            writer.WriteEndElement();
+                        }
                     }
                 writer.WriteEndElement();
             writer.WriteEndDocument();
@@ -1534,6 +1661,20 @@ namespace Umk_and_Rpd_on_Web {
             }
             return (new string[3] {znat, umet, vladet});
         }
+        /// <summary>
+        /// Пересение данных из одного *.xml потока в другой
+        /// </summary>
+        /// <param name="xmlReader"></param>
+        /// <param name="writer"></param>
+        private void WriteFromBaseXmlToNewXmlForOOP(ref XmlTextReader xmlReader, ref XmlTextWriter writer) {
+            if (xmlReader.IsStartElement() && !xmlReader.IsEmptyElement) {
+                while (xmlReader.Read() && xmlReader.HasAttributes) {
+                    writer.WriteStartElement("Abzac");
+                        writer.WriteAttributeString("Value", xmlReader.GetAttribute("Value"));
+                    writer.WriteEndElement();
+                }
+            }
+        }
         #endregion
 
         #region методы для сохранения в формате *.docx на сервере / удаления с сервера файлов *.docx
@@ -1641,17 +1782,17 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                using (WordprocessingDocument output =
-                  WordprocessingDocument.Open(outputDocument, true)) {
-                    //использование элемента тело в новой 
-                    //содержимому xmldocument создать новый открытый объект xml тела.
-                    Body updatedbodycontent =
-                      new Body(newWordContent.DocumentElement.InnerXml);
-                    //заменить существующий теле документа с новым содержанием.
-                    output.MainDocumentPart.Document.Body = updatedbodycontent;
-                    //сохраните обновленный выходной документ.
-                    output.MainDocumentPart.Document.Save();
-                }   
+                //using (WordprocessingDocument output =
+                //  WordprocessingDocument.Open(outputDocument, true)) {
+                //    //использование элемента тело в новой 
+                //    //содержимому xmldocument создать новый открытый объект xml тела.
+                //    Body updatedbodycontent =
+                //      new Body(newWordContent.DocumentElement.InnerXml);
+                //    //заменить существующий теле документа с новым содержанием.
+                //    output.MainDocumentPart.Document.Body = updatedbodycontent;
+                //    //сохраните обновленный выходной документ.
+                //    output.MainDocumentPart.Document.Save();
+                //}   
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -1947,13 +2088,6 @@ namespace Umk_and_Rpd_on_Web {
             this.ClearAllGeneralFields();
             this.othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
             this.othersFieldsForUMK.UpdateFileds("", "", "");
-        }
-
-        private void ZapFieldsForTitle(ref XmlTextReader XmlReader) {
-            HourLab = 0;
-            HourLec = 0;
-            HourSam = 0;
-
         }
 
         private void ZapFieldsFor_zapiska_and_Compet(ref XmlTextReader XmlReader, string end_teg) {

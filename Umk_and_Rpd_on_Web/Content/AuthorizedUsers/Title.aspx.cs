@@ -434,5 +434,11 @@ namespace Umk_and_Rpd_on_Web {
             a.Attributes.Add("type", "application/file");
             this.SformPassportCompetSect.Controls.Add(a);
         }
+
+        protected void SformOOP_btn_Click(object sender, EventArgs e) {
+            Data_for_program data = (Data_for_program)Session["data"];
+            data.CodPlan = (int?)Session["CodPlan"];
+            string path = data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveOOP, Request.PhysicalApplicationPath, Request.ApplicationPath);
+        }
     }   
 }

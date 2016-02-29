@@ -1501,9 +1501,14 @@ WHERE        (CodGrSubject = @CodGrSubject)</CommandText>
               <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        StudyComponents.*, StudyContents.* 
+                    <CommandText>SELECT        StudyComponents.CodComp, StudyComponents.NameComp, StudyComponents.abrcomp, StudyComponents.CodTypeEdu, StudyComponents.[order], StudyContents.CodPlan, StudyContents.CodSub, 
+                         StudyContents.CodGrSubject, StudyContents.NumInGr, StudyContents.CodSubType, StudyContents.CodKaf, StudyContents.CodOrganization, StudyContents.SubLot, StudyContents.codcomp AS Expr1, 
+                         StudyContents.Competention, StudyContents.perezach, StudyContents.Shifr, StudyContents.PerezKurs, SubjectGrs.GRSUBJECT, UMK_and_RPD.Contents, Subs.NameSub, SubjectGrs.NAMEGRSUB
 FROM            StudyComponents INNER JOIN
-                         StudyContents ON StudyComponents.CodComp = StudyContents.codcomp</CommandText>
+                         StudyContents ON StudyComponents.CodComp = StudyContents.codcomp INNER JOIN
+                         SubjectGrs ON StudyContents.CodGrSubject = SubjectGrs.CodGrSubject INNER JOIN
+                         Subs ON StudyContents.CodSub = Subs.CodSub LEFT OUTER JOIN
+                         UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyContents.CodPlan AND UMK_and_RPD.CodSub = StudyContents.CodSub AND UMK_and_RPD.UMK_or_RPD = 0 AND UMK_and_RPD.Name &lt;&gt; ''</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -1523,12 +1528,35 @@ FROM            StudyComponents INNER JOIN
               <Mapping SourceColumn="CodKaf" DataSetColumn="CodKaf" />
               <Mapping SourceColumn="CodOrganization" DataSetColumn="CodOrganization" />
               <Mapping SourceColumn="SubLot" DataSetColumn="SubLot" />
-              <Mapping SourceColumn="codcomp1" DataSetColumn="codcomp1" />
               <Mapping SourceColumn="Competention" DataSetColumn="Competention" />
               <Mapping SourceColumn="perezach" DataSetColumn="perezach" />
               <Mapping SourceColumn="Shifr" DataSetColumn="Shifr" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="PerezKurs" DataSetColumn="PerezKurs" />
+              <Mapping SourceColumn="GRSUBJECT" DataSetColumn="GRSUBJECT" />
+              <Mapping SourceColumn="Contents" DataSetColumn="Contents" />
+              <Mapping SourceColumn="NameSub" DataSetColumn="NameSub" />
+              <Mapping SourceColumn="NAMEGRSUB" DataSetColumn="NAMEGRSUB" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillToOOP" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataToOOP" GeneratorSourceName="FillToOOP" GetMethodModifier="Public" GetMethodName="GetDataToOOP" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataToOOP" UserSourceName="FillToOOP">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        StudyContents.CodPlan, StudyContents.CodSub, Subs.NameSub, StudyContents.CodGrSubject, SubjectGrs.GRSUBJECT, SubjectGrs.NAMEGRSUB, StudyContents.codcomp, StudyComponents.NameComp, 
+                         COALESCE (StudyContents.Shifr, SubjectGrs.GRSUBJECT + '.' + StudyComponents.abrcomp + '.' + CAST(StudyContents.NumInGr AS varchar)) AS Shifr_discip, UMK_and_RPD.Contents
+FROM            StudyComponents INNER JOIN
+                         StudyContents ON StudyComponents.CodComp = StudyContents.codcomp INNER JOIN
+                         SubjectGrs ON StudyContents.CodGrSubject = SubjectGrs.CodGrSubject AND SubjectGrs.CodGrSubject &lt;&gt; 2 INNER JOIN
+                         Subs ON StudyContents.CodSub = Subs.CodSub LEFT OUTER JOIN
+                         UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyContents.CodPlan AND UMK_and_RPD.CodSub = StudyContents.CodSub AND UMK_and_RPD.UMK_or_RPD = 0 AND UMK_and_RPD.Name &lt;&gt; ''
+WHERE        (StudyContents.codcomp &lt;&gt; 5) AND (StudyContents.CodPlan = @CodPlan)
+ORDER BY SubjectGrs.CodGrSubject, StudyComponents.NameComp</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyContents" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.StudyComponents" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="Get_AbbrComp" Modifier="Public" Name="Get_AbbrComp" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="Get_AbbrComp">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1537,7 +1565,37 @@ FROM            StudyComponents INNER JOIN
                          StudyContents ON StudyComponents.CodComp = StudyContents.codcomp
 WHERE        (StudyComponents.CodComp = @CodComp)</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="CodComp" ColumnName="CodComp" DataSourceName="academia.dbo.StudyComponents" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodComp" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodComp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodComp" ColumnName="CodComp" DataSourceName="academia.dbo.StudyComponents" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodComp" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodComp" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.SubjectGrs" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetNameGrSubject" Modifier="Public" Name="GetNameGrSubject" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="GetNameGrSubject">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SubjectGrs.NAMEGRSUB
+FROM            StudyComponents INNER JOIN
+                         StudyContents ON StudyComponents.CodComp = StudyContents.codcomp INNER JOIN
+                         SubjectGrs ON StudyContents.CodGrSubject = SubjectGrs.CodGrSubject
+WHERE        (StudyContents.CodPlan = @CodPlan) AND (StudyContents.CodSub = @CodSub)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyContents" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodSub" ColumnName="CodSub" DataSourceName="academia.dbo.StudyContents" DataTypeServer="smallint" DbType="Int16" Direction="Input" ParameterName="@CodSub" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="CodSub" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetShifrDiscip" Modifier="Public" Name="GetShifrDiscip" QueryType="Scalar" ScalarCallRetval="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="GetShifrDiscip">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COALESCE (StudyContents.Shifr, SubjectGrs.GRSUBJECT + '.' + StudyComponents.abrcomp + '.' + CAST(StudyContents.NumInGr AS varchar)) AS Shifr_discip
+FROM            StudyComponents INNER JOIN
+                         StudyContents ON StudyComponents.CodComp = StudyContents.codcomp INNER JOIN
+                         SubjectGrs ON StudyContents.CodGrSubject = SubjectGrs.CodGrSubject
+WHERE        (StudyContents.CodPlan = @CodPlan) AND (StudyContents.CodSub = @CodSub)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyContents" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodSub" ColumnName="CodSub" DataSourceName="academia.dbo.StudyContents" DataTypeServer="smallint" DbType="Int16" Direction="Input" ParameterName="@CodSub" Precision="0" ProviderType="SmallInt" Scale="0" Size="2" SourceColumn="CodSub" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -2940,7 +2998,7 @@ ORDER BY ArmKaf_SubCompet.IdCompet</CommandText>
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodComp" msprop:Generator_ColumnVarNameInTable="columnCodComp" msprop:Generator_ColumnPropNameInRow="CodComp" msprop:Generator_ColumnPropNameInTable="CodCompColumn" msprop:Generator_UserColumnName="CodComp" type="xs:int" />
-              <xs:element name="NameComp" msprop:Generator_ColumnVarNameInTable="columnNameComp" msprop:Generator_ColumnPropNameInRow="NameComp" msprop:Generator_ColumnPropNameInTable="NameCompColumn" msprop:Generator_UserColumnName="NameComp">
+              <xs:element name="NameComp" msprop:Generator_ColumnVarNameInTable="columnNameComp" msprop:Generator_ColumnPropNameInRow="NameComp" msprop:Generator_ColumnPropNameInTable="NameCompColumn" msprop:Generator_UserColumnName="NameComp" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -2958,13 +3016,12 @@ ORDER BY ArmKaf_SubCompet.IdCompet</CommandText>
               <xs:element name="order" msprop:Generator_ColumnVarNameInTable="columnorder" msprop:Generator_ColumnPropNameInRow="order" msprop:Generator_ColumnPropNameInTable="orderColumn" msprop:Generator_UserColumnName="order" type="xs:int" minOccurs="0" />
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
               <xs:element name="CodSub" msprop:Generator_ColumnVarNameInTable="columnCodSub" msprop:Generator_ColumnPropNameInRow="CodSub" msprop:Generator_ColumnPropNameInTable="CodSubColumn" msprop:Generator_UserColumnName="CodSub" type="xs:short" />
-              <xs:element name="CodGrSubject" msprop:Generator_ColumnVarNameInTable="columnCodGrSubject" msprop:Generator_ColumnPropNameInRow="CodGrSubject" msprop:Generator_ColumnPropNameInTable="CodGrSubjectColumn" msprop:Generator_UserColumnName="CodGrSubject" type="xs:unsignedByte" />
-              <xs:element name="NumInGr" msprop:Generator_ColumnVarNameInTable="columnNumInGr" msprop:Generator_ColumnPropNameInRow="NumInGr" msprop:Generator_ColumnPropNameInTable="NumInGrColumn" msprop:Generator_UserColumnName="NumInGr" type="xs:unsignedByte" />
-              <xs:element name="CodSubType" msprop:Generator_ColumnVarNameInTable="columnCodSubType" msprop:Generator_ColumnPropNameInRow="CodSubType" msprop:Generator_ColumnPropNameInTable="CodSubTypeColumn" msprop:Generator_UserColumnName="CodSubType" type="xs:unsignedByte" />
-              <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" />
-              <xs:element name="CodOrganization" msprop:Generator_ColumnVarNameInTable="columnCodOrganization" msprop:Generator_ColumnPropNameInRow="CodOrganization" msprop:Generator_ColumnPropNameInTable="CodOrganizationColumn" msprop:Generator_UserColumnName="CodOrganization" type="xs:unsignedByte" />
-              <xs:element name="SubLot" msprop:Generator_ColumnVarNameInTable="columnSubLot" msprop:Generator_ColumnPropNameInRow="SubLot" msprop:Generator_ColumnPropNameInTable="SubLotColumn" msprop:Generator_UserColumnName="SubLot" type="xs:unsignedByte" />
-              <xs:element name="codcomp1" msprop:Generator_ColumnVarNameInTable="columncodcomp1" msprop:Generator_ColumnPropNameInRow="codcomp1" msprop:Generator_ColumnPropNameInTable="codcomp1Column" msprop:Generator_UserColumnName="codcomp1" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="CodGrSubject" msprop:Generator_ColumnVarNameInTable="columnCodGrSubject" msprop:Generator_ColumnPropNameInRow="CodGrSubject" msprop:Generator_ColumnPropNameInTable="CodGrSubjectColumn" msprop:Generator_UserColumnName="CodGrSubject" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="NumInGr" msprop:Generator_ColumnVarNameInTable="columnNumInGr" msprop:Generator_ColumnPropNameInRow="NumInGr" msprop:Generator_ColumnPropNameInTable="NumInGrColumn" msprop:Generator_UserColumnName="NumInGr" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="CodSubType" msprop:Generator_ColumnVarNameInTable="columnCodSubType" msprop:Generator_ColumnPropNameInRow="CodSubType" msprop:Generator_ColumnPropNameInTable="CodSubTypeColumn" msprop:Generator_UserColumnName="CodSubType" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="CodOrganization" msprop:Generator_ColumnVarNameInTable="columnCodOrganization" msprop:Generator_ColumnPropNameInRow="CodOrganization" msprop:Generator_ColumnPropNameInTable="CodOrganizationColumn" msprop:Generator_UserColumnName="CodOrganization" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="SubLot" msprop:Generator_ColumnVarNameInTable="columnSubLot" msprop:Generator_ColumnPropNameInRow="SubLot" msprop:Generator_ColumnPropNameInTable="SubLotColumn" msprop:Generator_UserColumnName="SubLot" type="xs:unsignedByte" minOccurs="0" />
               <xs:element name="Competention" msprop:Generator_ColumnVarNameInTable="columnCompetention" msprop:Generator_ColumnPropNameInRow="Competention" msprop:Generator_ColumnPropNameInTable="CompetentionColumn" msprop:Generator_UserColumnName="Competention" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -2972,11 +3029,41 @@ ORDER BY ArmKaf_SubCompet.IdCompet</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="perezach" msprop:Generator_ColumnVarNameInTable="columnperezach" msprop:Generator_ColumnPropNameInRow="perezach" msprop:Generator_ColumnPropNameInTable="perezachColumn" msprop:Generator_UserColumnName="perezach" type="xs:unsignedByte" />
-              <xs:element name="Shifr" msprop:Generator_ColumnVarNameInTable="columnShifr" msprop:Generator_ColumnPropNameInRow="Shifr" msprop:Generator_ColumnPropNameInTable="ShifrColumn" msprop:Generator_UserColumnName="Shifr">
+              <xs:element name="perezach" msprop:Generator_ColumnVarNameInTable="columnperezach" msprop:Generator_ColumnPropNameInRow="perezach" msprop:Generator_ColumnPropNameInTable="perezachColumn" msprop:Generator_UserColumnName="perezach" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="Shifr" msprop:Generator_ColumnVarNameInTable="columnShifr" msprop:Generator_ColumnPropNameInRow="Shifr" msprop:Generator_ColumnPropNameInTable="ShifrColumn" msprop:Generator_UserColumnName="Shifr" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="PerezKurs" msprop:Generator_ColumnVarNameInTable="columnPerezKurs" msprop:Generator_ColumnPropNameInRow="PerezKurs" msprop:Generator_ColumnPropNameInTable="PerezKursColumn" msprop:Generator_UserColumnName="PerezKurs" type="xs:boolean" minOccurs="0" />
+              <xs:element name="GRSUBJECT" msprop:Generator_ColumnVarNameInTable="columnGRSUBJECT" msprop:Generator_ColumnPropNameInRow="GRSUBJECT" msprop:Generator_ColumnPropNameInTable="GRSUBJECTColumn" msprop:Generator_UserColumnName="GRSUBJECT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Contents" msprop:Generator_ColumnVarNameInTable="columnContents" msprop:Generator_ColumnPropNameInRow="Contents" msprop:Generator_ColumnPropNameInTable="ContentsColumn" msprop:Generator_UserColumnName="Contents" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NameSub" msprop:Generator_ColumnVarNameInTable="columnNameSub" msprop:Generator_ColumnPropNameInRow="NameSub" msprop:Generator_ColumnPropNameInTable="NameSubColumn" msprop:Generator_UserColumnName="NameSub" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NAMEGRSUB" msprop:Generator_ColumnVarNameInTable="columnNAMEGRSUB" msprop:Generator_ColumnPropNameInRow="NAMEGRSUB" msprop:Generator_ColumnPropNameInTable="NAMEGRSUBColumn" msprop:Generator_UserColumnName="NAMEGRSUB" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="70" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -3245,7 +3332,7 @@ ORDER BY ArmKaf_SubCompet.IdCompet</CommandText>
               <xs:element name="CodPrepWhoDo" msprop:Generator_ColumnVarNameInTable="columnCodPrepWhoDo" msprop:Generator_ColumnPropNameInRow="CodPrepWhoDo" msprop:Generator_ColumnPropNameInTable="CodPrepWhoDoColumn" msprop:Generator_UserColumnName="CodPrepWhoDo" type="xs:int" minOccurs="0" />
               <xs:element name="CodFormStudy" msprop:Generator_ColumnVarNameInTable="columnCodFormStudy" msprop:Generator_ColumnPropNameInRow="CodFormStudy" msprop:Generator_ColumnPropNameInTable="CodFormStudyColumn" msprop:Generator_UserColumnName="CodFormStudy" type="xs:unsignedByte" minOccurs="0" />
               <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" minOccurs="0" />
-              <xs:element name="Id_RPD_or_UMK" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_RPD_or_UMK" msprop:Generator_ColumnPropNameInRow="Id_RPD_or_UMK" msprop:Generator_ColumnPropNameInTable="Id_RPD_or_UMKColumn" msprop:Generator_UserColumnName="Id_RPD_or_UMK" type="xs:int" minOccurs="0" />
+              <xs:element name="Id_RPD_or_UMK" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId_RPD_or_UMK" msprop:Generator_ColumnPropNameInRow="Id_RPD_or_UMK" msprop:Generator_ColumnPropNameInTable="Id_RPD_or_UMKColumn" msprop:Generator_UserColumnName="Id_RPD_or_UMK" type="xs:int" />
               <xs:element name="NameFaculty" msprop:Generator_ColumnVarNameInTable="columnNameFaculty" msprop:Generator_ColumnPropNameInRow="NameFaculty" msprop:Generator_ColumnPropNameInTable="NameFacultyColumn" msprop:Generator_UserColumnName="NameFaculty" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -3434,12 +3521,6 @@ ORDER BY ArmKaf_SubCompet.IdCompet</CommandText>
     </xs:unique>
     <xs:unique name="StudyContents_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:StudyContents" />
-      <xs:field xpath="mstns:CodPlan" />
-      <xs:field xpath="mstns:CodSub" />
-    </xs:unique>
-    <xs:unique name="Studycomponents_plus_studycontents_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Studycomponents_plus_studycontents" />
-      <xs:field xpath="mstns:CodComp" />
       <xs:field xpath="mstns:CodPlan" />
       <xs:field xpath="mstns:CodSub" />
     </xs:unique>

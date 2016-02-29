@@ -265,6 +265,42 @@ namespace Umk_and_Rpd_on_Web {
         protected global::System.Web.UI.WebControls.Button SformPassportCompet;
         
         /// <summary>
+        /// UpdatePanelSformOOP элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelSformOOP;
+        
+        /// <summary>
+        /// UpdateProgress_SformOOP элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress_SformOOP;
+        
+        /// <summary>
+        /// SformOOPSect элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SformOOPSect;
+        
+        /// <summary>
+        /// SformOOP_btn элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SformOOP_btn;
+        
+        /// <summary>
         /// UpdatePanel1 элемент управления.
         /// </summary>
         /// <remarks>

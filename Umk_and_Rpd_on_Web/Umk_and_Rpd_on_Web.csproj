@@ -86,6 +86,9 @@
     <Content Include="Content\AuthorizedUsers\Literature.aspx" />
     <Content Include="Content\AuthorizedUsers\Question.aspx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.xslt" />
+    <Content Include="Content\AuthorizedUsers\rpd_shablon\OOP.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\AuthorizedUsers\rpd_shablon\PassportCompet.xslt" />
     <Content Include="Default.aspx" />
     <Content Include="background.jpg" />
@@ -119,6 +122,7 @@
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.docx" />
     <Content Include="Content\AuthorizedUsers\for_admin\Web.config" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\PassportCompet.docx" />
+    <Content Include="Content\AuthorizedUsers\rpd_shablon\OOP.docx" />
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\AnnotationToRPD_template.docx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\RPD_template.docx" />

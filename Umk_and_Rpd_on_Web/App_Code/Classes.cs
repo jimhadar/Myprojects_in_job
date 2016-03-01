@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-//using DocumentFormat.OpenXml.Packaging;
-//using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.SqlClient;
 
 namespace Umk_and_Rpd_on_Web {
@@ -1080,19 +1080,28 @@ namespace Umk_and_Rpd_on_Web {
             if(tableForOOP != null && tableForOOP.Rows.Count == 0){
                 return;
             }
+            using (AcademiaDataSet academiaDataSet = new AcademiaDataSet()) {
+                AcademiaDataSetTableAdapters.SpecialityTableAdapter specialtyAdapter = new AcademiaDataSetTableAdapters.SpecialityTableAdapter();
+                this.CodSpeciality = specialtyAdapter.GetCodSpecGroupOKSO((int)this.CodPlan).ToString();
+                this.Name_speciality = specialtyAdapter.GetNameSpecialityOKSO((int)this.CodPlan).ToString();
+                this.specialization = specialtyAdapter.GetNameSpecialization((int)this.CodPlan).ToString();
+            }
             byte CodGrSubject = (byte)tableForOOP.Rows[0]["CodGrSubject"];
             writer.WriteStartDocument();
                 writer.WriteStartElement("OOP");
+                writer.WriteAttributeString("CodSpeciality", this.CodSpeciality.Trim());
+                writer.WriteAttributeString("NameSpecialty", this.Name_speciality.Trim());
+                writer.WriteAttributeString("Specialization", this.specialization.Trim());
                     //внесем первичные данные
-                    writer.WriteStartElement("GrSubject");
-                        writer.WriteAttributeString("GrSubject", (tableForOOP.Rows[0]["GrSubject"] != null) ? tableForOOP.Rows[0]["GrSubject"].ToString().Trim() : String.Empty);
-                        writer.WriteAttributeString("NameGrSubject", (tableForOOP.Rows[0]["NAMEGRSUB"] != null) ? tableForOOP.Rows[0]["NAMEGRSUB"].ToString().Trim() : String.Empty);            
+                    //writer.WriteStartElement("GrSubject");
+                    //    writer.WriteAttributeString("CodGrSubject", (tableForOOP.Rows[0]["GrSubject"] != null) ? tableForOOP.Rows[0]["GrSubject"].ToString().Trim() : String.Empty);
+                    //    writer.WriteAttributeString("NameGrSubject", (tableForOOP.Rows[0]["NAMEGRSUB"] != null) ? tableForOOP.Rows[0]["NAMEGRSUB"].ToString().Trim() : String.Empty);            
                     foreach(DataRow Row in tableForOOP.Rows){
-                        if ((byte)Row["CodGrSubject"] != CodGrSubject) {
-                            writer.WriteStartElement("GrSubject");
-                                writer.WriteAttributeString("GrSubject", (Row["GrSubject"] != null) ? Row["GrSubject"].ToString().Trim() : String.Empty);
-                                writer.WriteAttributeString("NameGrSubject", (Row["NAMEGRSUB"] != null) ? Row["NAMEGRSUB"].ToString().Trim() : String.Empty);
-                        }
+                        //if ((byte)Row["CodGrSubject"] != CodGrSubject) {
+                        //    writer.WriteStartElement("GrSubject");
+                        //        writer.WriteAttributeString("GrSubject", (Row["GrSubject"] != null) ? Row["GrSubject"].ToString().Trim() : String.Empty);
+                        //        writer.WriteAttributeString("NameGrSubject", (Row["NAMEGRSUB"] != null) ? Row["NAMEGRSUB"].ToString().Trim() : String.Empty);
+                        //}
                         using (MemoryStream memStream = new MemoryStream()) {
                             string tmp;
                             //считали Xml данные для создания аннотации
@@ -1105,7 +1114,7 @@ namespace Umk_and_Rpd_on_Web {
                             
                             //формировании аннотации
                             writer.WriteStartElement("Annotation");
-                                writer.WriteAttributeString("Shifr_discip", (Row["Shifr"] != null) ? Row["Shifr"].ToString().Trim() : string.Empty);
+                                writer.WriteAttributeString("Shifr_discip", (Row["Shifr_discip"] != null) ? Row["Shifr_discip"].ToString().Trim() : string.Empty);
                                 writer.WriteAttributeString("NameDiscip", (Row["NameSub"] != null) ? Row["NameSub"].ToString().Trim() : string.Empty);
                                 if (Row["Contents"] != null && Row["Contents"].ToString() != String.Empty) {
                                     xmlReader.ReadToDescendant("Title");
@@ -1200,9 +1209,9 @@ namespace Umk_and_Rpd_on_Web {
                                 }
                             writer.WriteEndElement();
                         }
-                        if ((byte)Row["CodGrSubject"] != CodGrSubject) { 
-                            writer.WriteEndElement();
-                        }
+                        //if ((byte)Row["CodGrSubject"] != CodGrSubject) { 
+                        //    writer.WriteEndElement();
+                        //}
                     }
                 writer.WriteEndElement();
             writer.WriteEndDocument();
@@ -1750,6 +1759,17 @@ namespace Umk_and_Rpd_on_Web {
                                 this.specialization +
                                 ".docx";
                     break;
+                case HowDoc_Save.SaveOOP:
+                    Data_xslt = PhisycalPathToApp + "rpd_shablon\\OOP.xslt";
+                    templateDocument = PhisycalPathToApp + "rpd_shablon\\OOP.docx";
+                    save_path = PhisycalPathToApp +
+                               "saving_docx_files\\" +
+                               "ООП_" +
+                               this.CodSpeciality + "_" +
+                               this.Name_speciality + "_" +
+                               this.specialization +
+                               ".docx";
+                    break;
             }
             //новый выходной создаваемый файл
             string outputDocument = save_path;
@@ -1782,17 +1802,17 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                //using (WordprocessingDocument output =
-                //  WordprocessingDocument.Open(outputDocument, true)) {
-                //    //использование элемента тело в новой 
-                //    //содержимому xmldocument создать новый открытый объект xml тела.
-                //    Body updatedbodycontent =
-                //      new Body(newWordContent.DocumentElement.InnerXml);
-                //    //заменить существующий теле документа с новым содержанием.
-                //    output.MainDocumentPart.Document.Body = updatedbodycontent;
-                //    //сохраните обновленный выходной документ.
-                //    output.MainDocumentPart.Document.Save();
-                //}   
+                using (WordprocessingDocument output =
+                  WordprocessingDocument.Open(outputDocument, true)) {
+                    //использование элемента тело в новой 
+                    //содержимому xmldocument создать новый открытый объект xml тела.
+                    Body updatedbodycontent =
+                      new Body(newWordContent.DocumentElement.InnerXml);
+                    //заменить существующий теле документа с новым содержанием.
+                    output.MainDocumentPart.Document.Body = updatedbodycontent;
+                    //сохраните обновленный выходной документ.
+                    output.MainDocumentPart.Document.Save();
+                }   
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
@@ -1847,6 +1867,14 @@ namespace Umk_and_Rpd_on_Web {
                                 this.CodSpeciality + "_" + 
                                 this.Name_speciality + "_" +
                                 this.specialization + 
+                                ".docx";
+                    break;
+                case HowDoc_Save.SaveOOP:
+                    return "/Content/AuthorizedUsers/saving_docx_files/" +
+                                "ООП_" +
+                                this.CodSpeciality + "_" +
+                                this.Name_speciality + "_" +
+                                this.specialization +
                                 ".docx";
                     break;
             }

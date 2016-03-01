@@ -28,22 +28,22 @@ namespace Umk_and_Rpd_on_Web.App_Code {
         /// <param name="obj"></param>
         private void DeleteEmptyStrFromBase(object obj) {
             lock (synclock) {
-                //DateTime dateNow = DateTime.Now;
-                //if (dateNow.Hour >= 3 && dateNow.Hour <= 7) {
-                //    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                //        //удаляем пустые записи из базы данных
-                //        adapter.DeleteEmptyStr();
-                //        DataTable tmpTable = adapter.GetDataWithNameEmpty();
-                //        foreach (DataRow Row in tmpTable.Rows) {
-                //            //получаем дату последнего сохранения / изменения строки
-                //            DateTime dateSave = Convert.ToDateTime(Row["DateSave"]);
-                //            if (dateNow.Subtract(dateSave).Days >= 4) {
-                //                //если с момента изменения строки прошло более 5 дней, то удаляем строку
-                //                adapter.Delete((int?)Row["Id_RPD_or_UMK"]);
-                //            }
-                //        }
-                //    }
-                //}
+                DateTime dateNow = DateTime.Now;
+                if (dateNow.Hour >= 3 && dateNow.Hour <= 7) {
+                    using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                        //удаляем пустые записи из базы данных
+                        adapter.DeleteEmptyStr();
+                        //DataTable tmpTable = adapter.GetDataWithNameEmpty();
+                        //foreach (DataRow Row in tmpTable.Rows) {
+                        //    //получаем дату последнего сохранения / изменения строки
+                        //    DateTime dateSave = Convert.ToDateTime(Row["DateSave"]);
+                        //    if (dateNow.Subtract(dateSave).Days >= 4) {
+                        //        //если с момента изменения строки прошло более 5 дней, то удаляем строку
+                        //        adapter.Delete((int?)Row["Id_RPD_or_UMK"]);
+                        //    }
+                        //}
+                    }
+                }
             }
         }
 

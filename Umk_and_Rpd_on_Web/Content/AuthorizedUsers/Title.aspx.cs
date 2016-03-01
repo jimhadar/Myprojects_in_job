@@ -73,6 +73,7 @@ namespace Umk_and_Rpd_on_Web {
             Page.Title = "Титул";
             if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
                 this.SformPassportCompet.Visible = false;
+                this.SformOOP_btn.Visible = false;
             }
         }
 
@@ -439,6 +440,13 @@ namespace Umk_and_Rpd_on_Web {
             Data_for_program data = (Data_for_program)Session["data"];
             data.CodPlan = (int?)Session["CodPlan"];
             string path = data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveOOP, Request.PhysicalApplicationPath, Request.ApplicationPath);
+            HtmlGenericControl a = new HtmlGenericControl("a");
+            a.Style.Add(HtmlTextWriterStyle.Display, "block");
+            a.Attributes.Add("href", path);
+            a.InnerText = "Скачать ООП";
+            a.Attributes.Add("class", "btn");
+            a.Attributes.Add("type", "application/file");
+            this.SformOOPSect.Controls.Add(a);
         }
     }   
 }

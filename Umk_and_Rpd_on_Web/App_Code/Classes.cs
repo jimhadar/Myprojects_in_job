@@ -738,23 +738,6 @@ namespace Umk_and_Rpd_on_Web {
             }
             return temp;
         }
-        private string GetShifrDiscip(AcademiaDataSetTableAdapters.SubjectGrsTableAdapter SubjectAdapter,
-                                    AcademiaDataSetTableAdapters.StudyContentsTableAdapter StudyContentsAdapter,
-                                    AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter Studycomponents_plus_studycontentsAdapter) {
-            //шифр дисциплины
-            if (StudyContentsAdapter.Get_CodGrSubject((int)this.CodPlan, (short)CodSub) != null) {
-                byte cod_uch_circle = Convert.ToByte(StudyContentsAdapter.Get_CodGrSubject((int)CodPlan, (short)CodSub).ToString());//CodGrSubject
-                NameGrSubject = SubjectAdapter.GetNameGRSub(cod_uch_circle).Trim().ToLower();
-                string abbr_uch_circle = SubjectAdapter.Get_SubjectGRS(cod_uch_circle).ToString();//аббревиатура учебного цикла SubjectGRS
-                int? CodComp = Convert.ToInt32(StudyContentsAdapter.Get_codComp((int)CodPlan, (short)CodSub).ToString());//номер по порядку в учебном цикле или плане AbrrComp
-                int? Num_discip_in_plan = Convert.ToInt32(StudyContentsAdapter.Get_Num_In_Gr((int)CodPlan, (short)CodSub));
-                object type_subject = Studycomponents_plus_studycontentsAdapter.Get_AbbrComp((int)CodComp);//тип предметам (например базовый) это CodComp
-                return abbr_uch_circle + "." + (type_subject != null ? type_subject.ToString() : string.Empty) + "." + Num_discip_in_plan.ToString();
-            }
-            else {
-                return String.Empty;
-            }
-        }
         /// <summary>
         /// Обновление значений всех основных переменных, необходимых для сохранения данных программы в формате *.XML
         /// </summary>

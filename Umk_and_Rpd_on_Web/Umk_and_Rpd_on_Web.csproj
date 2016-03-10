@@ -165,11 +165,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="AcademiaDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Content\AuthorizedUsers\FindRpdForm.aspx.cs">
       <DependentUpon>FindRpdForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

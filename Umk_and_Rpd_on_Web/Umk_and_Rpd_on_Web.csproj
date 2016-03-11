@@ -85,6 +85,7 @@
     <Content Include="Content\AuthorizedUsers\FOS.aspx" />
     <Content Include="Content\AuthorizedUsers\Literature.aspx" />
     <Content Include="Content\AuthorizedUsers\Question.aspx" />
+    <Content Include="Content\AuthorizedUsers\Report.aspx" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\Fos_shablon.xslt" />
     <Content Include="Content\AuthorizedUsers\rpd_shablon\OOP.xslt">
       <SubType>Designer</SubType>
@@ -160,7 +161,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Content Include="App_Code\ClassTimer.cs" />
-    <Compile Include="AcademiaDataSet.Designer.cs">
+    <Compile Include="AcademiaDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\Question.aspx.designer.cs">
       <DependentUpon>Question.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\AuthorizedUsers\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

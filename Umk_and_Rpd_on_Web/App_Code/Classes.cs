@@ -550,12 +550,12 @@ namespace Umk_and_Rpd_on_Web {
                         using (StringReader reader = new StringReader(Data)) {
                             return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
                         }
-                        break;
+                        //break;
                     default:
                         using (StringReader reader = new StringReader((SaveDoc_or_DB == HowDoc_Save.SaveRPD || SaveDoc_or_DB == HowDoc_Save.SaveAnnotationToRPD || SaveDoc_or_DB == HowDoc_Save.SaveFOS ? this.Data_with_RPD : this.Data_with_UMK))) {
                             return SaveToDocx(reader, SaveDoc_or_DB, PhisycalPathToApp, AppPath);
                         }
-                        break;
+                        //break;
                 }
             }
         }
@@ -641,7 +641,6 @@ namespace Umk_and_Rpd_on_Web {
         private string Get_Course_obuch(AcademiaDataSet.StudyTermDataTable StudyTermTable) {
             string temp = string.Empty;
             List<int> temp_mas = new List<int>();
-            int i = 0;
             foreach (AcademiaDataSet.StudyTermRow Row in StudyTermTable.Rows) {
                 int temp_int = Convert.ToInt32(Row["Course"].ToString());
                 if (temp_mas.IndexOf(temp_int) < 0) {
@@ -743,7 +742,7 @@ namespace Umk_and_Rpd_on_Web {
         /// </summary>
         internal void GetValues() {
             using (AcademiaDataSet academiaDataSet = new AcademiaDataSet()) {
-
+                
                 AcademiaDataSetTableAdapters.StudyPlansTableAdapter StudyPlansAdapter = new AcademiaDataSetTableAdapters.StudyPlansTableAdapter();
                 StudyPlansAdapter.Fill_on_CodPlan(academiaDataSet.StudyPlans, (int)this.CodPlan);
 
@@ -762,7 +761,7 @@ namespace Umk_and_Rpd_on_Web {
 
                 AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter Studycomponents_plus_studycontentsAdapter = new AcademiaDataSetTableAdapters.Studycomponents_plus_studycontentsTableAdapter();
 
-                AcademiaDataSetTableAdapters.PrepodTableAdapter prepodAdapter = new AcademiaDataSetTableAdapters.PrepodTableAdapter();
+                AcademiaDataSetTableAdapters.PEOPLENTableAdapter peoplenAdapter = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter();
 
                 AcademiaDataSetTableAdapters.FormStudyTableAdapter FormStudyAdapter = new AcademiaDataSetTableAdapters.FormStudyTableAdapter();
 
@@ -791,7 +790,7 @@ namespace Umk_and_Rpd_on_Web {
                 Name_speciality = SpecialityAdapter.GetNameSpecialityOKSO((int)this.CodPlan).ToString();
                 //профиль подготовки
                 specialization = SpecialityAdapter.GetNameSpecialization((int)this.CodPlan).ToString();
-                this.FIO_prepod = prepodAdapter.GetFio((CodPrep != null && CodPrep != 0) ? (int)CodPrep : (int)this.CodPrepWhoEdit).ToString().Trim();
+                this.FIO_prepod = PeoplenLenAdapter.GetFIO((CodPrep != null && CodPrep != 0) ? (int)CodPrep : (int)this.CodPrepWhoEdit).ToString().Trim();
                 sostavitel = about_prepod(this.FIO_prepod);
                 //Заведующая кафедрой
                 ZavKaf = KafsAdapter.GetZavKaf((byte)this.CodKafPrep).ToString();
@@ -801,7 +800,8 @@ namespace Umk_and_Rpd_on_Web {
 
                 Dekan = FacultyAdapter.GetDean((byte)CodFac).ToString();
                 NameFormStudy = FormStudyAdapter.GetNameFormStudy((byte)this.CodFormStudy);
-                CodZamDir = Convert.ToInt32(prepodAdapter.GetCodPrepPoFam(ZamDir_po_uchJob.Substring(0, ZamDir_po_uchJob.IndexOf(' '))));
+
+                CodZamDir = Convert.ToInt32(peoplenAdapter.GetCodPrep(ZamDir_po_uchJob.Substring(0, ZamDir_po_uchJob.IndexOf(' '))));
                 CodZavKaf = Convert.ToInt32(zavPodrazdn.GetCodPE(NameKafPrep));
                 CodDekan = Convert.ToInt32(zavPodrazdn.GetCodPE(FacultyAdapter.GetNameFaculty((byte)CodFac)));
                 HourLab = 0; HourLec = 0; HourSam = 0;
@@ -1564,7 +1564,7 @@ namespace Umk_and_Rpd_on_Web {
 
         private void zap_XML_CurrentControl_From_CurControlTable(ref XmlTextWriter writer) {
             foreach (DataRow Row in this.CurControlTable) {
-                if (Row["NumberBallColumn"] != String.Empty) {
+                if (Row["NumberBallColumn"] != null && Row["NumberBallColumn"] .ToString().Trim()!= String.Empty) {
                     writer.WriteStartElement("Row");
                     // ячейка "Контрольные мероприятия по дисциплине"
                     writer.WriteAttributeString("Name_meropriyatie", (Row["FormCurControlColumn"] != null ? Row["FormCurControlColumn"].ToString() : String.Empty));
@@ -1799,7 +1799,7 @@ namespace Umk_and_Rpd_on_Web {
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }
-            catch (Exception message) {
+            catch {
                 //MessageBox.Show(message.Message);
             }
             finally {
@@ -1815,7 +1815,7 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization + "_" +
                                 this.Name_discipline + ".docx";
-                    break;
+                    //break;
                 case HowDoc_Save.SaveUmk:
                     return "/Content/AuthorizedUsers/saving_docx_files/" +
                                 "УМК" + "_" +
@@ -1824,7 +1824,7 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization + "_" +
                                 this.Name_discipline + ".docx";
-                    break;
+                    //break;
                 case HowDoc_Save.SaveAnnotationToRPD:
                     return "/Content/AuthorizedUsers/saving_docx_files/" +
                                 "Аннотация к РПД" + "_" +
@@ -1833,7 +1833,7 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization + "_" +
                                 this.Name_discipline + ".docx";
-                    break;
+                    //break;
                 case HowDoc_Save.SaveFOS:
                     return "/Content/AuthorizedUsers/saving_docx_files/" +
                                 "ФОС" + "_" +
@@ -1842,8 +1842,8 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization + "_" +
                                 this.Name_discipline + ".docx";
-                    this.FilePathToFos = save_path;
-                    break;
+                    
+                    //break;
                 case HowDoc_Save.SavePassportCompet:
                     return "/Content/AuthorizedUsers/saving_docx_files/" +
                                 "Паспорт компетенций_" + 
@@ -1851,7 +1851,7 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization + 
                                 ".docx";
-                    break;
+                    //break;
                 case HowDoc_Save.SaveOOP:
                     return "/Content/AuthorizedUsers/saving_docx_files/" +
                                 "ООП_" +
@@ -1859,7 +1859,7 @@ namespace Umk_and_Rpd_on_Web {
                                 this.Name_speciality + "_" +
                                 this.specialization +
                                 ".docx";
-                    break;
+                    //break;
             }
             return string.Empty;
         }

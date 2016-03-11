@@ -39,9 +39,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                     Table_find_rpd.Rows.RemoveAt(Table_find_rpd.Rows.Count - 1);
                 }
                 byte? CodFac = null,
-                        CodKaf = null,
-                        CodTypeEdu = null,
-                        CodFormStudy = null;
+                        CodKaf = null;
                 short? Year = null;
                 int? CodPlan = null;
                 string CodSpeciality = null,

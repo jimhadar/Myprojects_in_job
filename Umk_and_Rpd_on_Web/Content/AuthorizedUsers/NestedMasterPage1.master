@@ -48,6 +48,9 @@
                         <%--<li class="li_manager">
                             <a href="/Question?TypeQuestion=SfromPassportCompet" class="bttn">Формирование паспорта компетенций</a>                          
                         </li>--%>
+                        <li class="li_manager">
+                            <a href="Report" class="bttn" target="_blank">Просмотр отчетов</a>                          
+                        </li>
                     </ul>
                 </li>
             </ul>

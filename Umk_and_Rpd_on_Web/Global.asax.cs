@@ -30,6 +30,7 @@ namespace Umk_and_Rpd_on_Web
             routes.MapPageRoute("Question", "Question", "~/Content/AuthorizedUsers/Question.aspx");
             routes.MapPageRoute("Error", "Error/", "~/Error.aspx");
             routes.MapPageRoute("Literature", "Literature/", "~/Content/AuthorizedUsers/Literature.aspx");
+            routes.MapPageRoute("Report", "Report/", "~/Content/AuthorizedUsers/Report.aspx");
         }
     }
 }

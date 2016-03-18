@@ -100,8 +100,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             }
             DataTable TempTable = new DataTable();
             using (AcademiaDataSetTableAdapters.Lib_BookTableAdapter LibBookAdapter = new AcademiaDataSetTableAdapters.Lib_BookTableAdapter()) {
-                LibBookAdapter.Fill(new AcademiaDataSet.Lib_BookDataTable(), TextBox_NameBook.Text, TextBox_Author.Text, TextBox_Year.Text, TextBox_KeyWord.Text);
-                TempTable = LibBookAdapter.GetData(TextBox_NameBook.Text, TextBox_Author.Text, TextBox_Year.Text, TextBox_KeyWord.Text);
+                TempTable = LibBookAdapter.GetData(TextBox_NameBook.Text, TextBox_Author.Text, TextBox_Year.Text, TextBox_KeyWord.Text, (DateTime.Now.Year - 15).ToString());
             }
             while (this.Table_for_liter.Rows.Count != 1) {
                 this.Table_for_liter.Rows.RemoveAt(this.Table_for_liter.Rows.Count - 1);

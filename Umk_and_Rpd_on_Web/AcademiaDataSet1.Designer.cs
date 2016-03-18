@@ -26421,22 +26421,22 @@ WHERE        (StudyExams.CodPlan = @CodPlan) AND (StudyExams.CodSub = @CodSub)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        DocID, name, author, mestoIzd, nameIzd, dataIzd, tags\r\nFROM        " +
-                "    Lib_Book\r\nWHERE        (name LIKE \'%\' + @Name + \'%\') AND (author LIKE \'%\' + " +
-                "@Author + \'%\') AND (dataIzd LIKE \'%\' + @Dataizd + \'%\') AND (tags LIKE \'%\' + @Tag" +
-                "s + \'%\')";
+            this._commandCollection[0].CommandText = @"SELECT        DocID, name, author, mestoIzd, nameIzd, dataIzd, tags
+FROM            Lib_Book
+WHERE        (name LIKE '%' + @Name + '%') AND (author LIKE '%' + @Author + '%') AND (dataIzd LIKE '%' + @Dataizd + '%') AND (tags LIKE '%' + @Tags + '%')and (dataIzd >= @StartDataIzd)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Author", global::System.Data.SqlDbType.NVarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "author", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Dataizd", global::System.Data.SqlDbType.NVarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "dataIzd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tags", global::System.Data.SqlDbType.NVarChar, 1000, global::System.Data.ParameterDirection.Input, 0, 0, "tags", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StartDataIzd", global::System.Data.SqlDbType.NVarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, "dataIzd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.Lib_BookDataTable dataTable, string Name, string Author, string Dataizd, string Tags) {
+        public virtual int Fill(AcademiaDataSet.Lib_BookDataTable dataTable, string Name, string Author, string Dataizd, string Tags, string StartDataIzd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -26461,6 +26461,12 @@ WHERE        (StudyExams.CodPlan = @CodPlan) AND (StudyExams.CodSub = @CodSub)";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Tags));
+            }
+            if ((StartDataIzd == null)) {
+                throw new global::System.ArgumentNullException("StartDataIzd");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(StartDataIzd));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -26473,7 +26479,7 @@ WHERE        (StudyExams.CodPlan = @CodPlan) AND (StudyExams.CodSub = @CodSub)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.Lib_BookDataTable GetData(string Name, string Author, string Dataizd, string Tags) {
+        public virtual AcademiaDataSet.Lib_BookDataTable GetData(string Name, string Author, string Dataizd, string Tags, string StartDataIzd) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -26498,6 +26504,12 @@ WHERE        (StudyExams.CodPlan = @CodPlan) AND (StudyExams.CodSub = @CodSub)";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[3].Value = ((string)(Tags));
+            }
+            if ((StartDataIzd == null)) {
+                throw new global::System.ArgumentNullException("StartDataIzd");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(StartDataIzd));
             }
             AcademiaDataSet.Lib_BookDataTable dataTable = new AcademiaDataSet.Lib_BookDataTable();
             this.Adapter.Fill(dataTable);

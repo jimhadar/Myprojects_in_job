@@ -339,11 +339,11 @@ namespace Umk_and_Rpd_on_Web {
         /// <summary>
         /// данные из *.xml для РПД
         /// </summary>
-        string Data_with_RPD;
+        internal string Data_with_RPD;
         /// <summary>
         /// данные из *.xml для УМК
         /// </summary>
-        string Data_with_UMK;
+        internal string Data_with_UMK;
         #endregion
         /// <summary>
         /// место дисциплины в структуре ООП
@@ -1526,7 +1526,9 @@ namespace Umk_and_Rpd_on_Web {
                             number_SamJob = 1;
                             number_theme++;
                         }
-                        j++;
+                        else{
+                            j++;
+                        }
                     }
                     writer.WriteEndElement();
                     number_razdel++;

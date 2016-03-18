@@ -1,95 +1,41 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/Main.Master" AutoEventWireup="true" CodeBehind="AdminForm.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin.AdminForm" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="AdminForm.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin.AdminForm" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <asp:ScriptManager runat="server">
     </asp:ScriptManager>
     <link href="../../App_Themes/StyleSheet_for_FindForm.css" rel="stylesheet" />
+    <label>
+        Поиск по названию РПД:
+        <asp:TextBox runat="server" ID="NameRpdTextBox" Width="350px"></asp:TextBox>
+    </label>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <span style="font-size: 0.75em; font-weight: 600; display: block;">Выберите параметры на основе которых будет осуществляться поиск:</span>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_StudyYear" checked="checked" />
-                Учебный год</label>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" id="CheckBox_FacDiscip" value="" clientidmode="static" />Факультет дисциплины</label>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" clientidmode="static" id="CheckBoc_KafDiscip" />Кафедра дисциплины</label>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_Prepod" />
-                Преподаватель</label>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_Speciality" />Направление подготовки</label>
-            <label class="label_FindForm">
-                <input type="checkbox" runat="server" clientidmode="static" id="Checkbox_StudyPlan" />Учебный план</label>
-            <hr />
-            <div>
-                <div class="group_dropdownlist_as_tablerow">
-                    <span class="dropdownlist_as_tablecell_column1">Факультет (дисциплины)</span>
-                    <asp:DropDownList ID="DropDownList_facPrep" CssClass="dropdownlist_as_tablecell_column2" runat="server" DataSourceID="ObjectDataSource_faculty" DataTextField="NameFaculty" DataValueField="CodFaculty" AutoPostBack="True"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_faculty" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.FacultyTableAdapter"></asp:ObjectDataSource>
-                    <span class="dropdownlist_as_tablecell_column3">Форма обучения</span>
-                    <asp:DropDownList ID="DropDownList_FormaOb" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_FormaStudy" DataTextField="FormStudy" DataValueField="CodFormStudy" AutoPostBack="True"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_FormaStudy" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.FormStudyTableAdapter"></asp:ObjectDataSource>
-                </div>
-                <div class="group_dropdownlist_as_tablerow">
-                    <span class="dropdownlist_as_tablecell_column1">Кафедра (дисциплины)</span>
-                    <asp:DropDownList ID="DropDownList_kafs" runat="server" CssClass="dropdownlist_as_tablecell_column2" DataSourceID="ObjectDataSource_Kafs" DataTextField="NameKaf" DataValueField="CodKaf"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_Kafs" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.KafsTableAdapter">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="DropDownList_facPrep" DefaultValue="80" Name="OriginalCodFaculty" PropertyName="SelectedValue" Type="Byte" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
-                    <span class="dropdownlist_as_tablecell_column3">Тип обучения</span>
-                    <asp:DropDownList ID="DropDownList_TypeEdu" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_TypeEdu" DataTextField="TypeEdu" DataValueField="CodTypeEdu" AutoPostBack="True"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_TypeEdu" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.TypeEduTableAdapter"></asp:ObjectDataSource>
-                </div>
-                <div class="group_dropdownlist_as_tablerow">
-                    <span class="dropdownlist_as_tablecell_column1">Учебный год</span>
-                    <asp:DropDownList ID="DropDownList_StudyYear" runat="server" CssClass="dropdownlist_as_tablecell_column2"></asp:DropDownList>
-                    <span class="dropdownlist_as_tablecell_column3">Направление подготовки</span>
-                    <asp:DropDownList ID="DropDownList_Speciality" CssClass="dropdownlist_as_tablecell_column4" runat="server" DataSourceID="ObjectDataSource_Speciality" DataTextField="CodSpec_with_NameSpec" DataValueField="CodSpeciality" AutoPostBack="True"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_Speciality" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.SpecialityTableAdapter">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="DropDownList_TypeEdu" DefaultValue="10" Name="CodTypeEdu" PropertyName="SelectedValue" Type="Byte" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
-                </div>
-                <div class="group_dropdownlist_as_tablerow">
-                    <span class="dropdownlist_as_tablecell_column1">Преподаватель</span>
-                    <asp:TextBox ID="PrepodTextBox" runat="server" CssClass="dropdownlist_as_tablecell_column2"></asp:TextBox>
-                    <span class="dropdownlist_as_tablecell_column3">Учебный план</span>
-                    <asp:DropDownList ID="DropDownList_StudyPlan" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_StudyPlans" DataTextField="NamePlan1" DataValueField="CodPlan"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ObjectDataSource_StudyPlans" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.StudyPlansTableAdapter">
-                        <SelectParameters>
-                            <asp:ControlParameter ControlID="DropDownList_FormaOb" DefaultValue="" Name="CodFormStudy" PropertyName="SelectedValue" Type="Byte" />
-                            <asp:ControlParameter ControlID="DropDownList_TypeEdu" DefaultValue="" Name="CodTypeEdu" PropertyName="SelectedValue" Type="Byte" />
-                            <asp:ControlParameter ControlID="DropDownList_Speciality" DefaultValue="" Name="CodSpeciality" PropertyName="SelectedValue" Type="String" />
-                        </SelectParameters>
-                    </asp:ObjectDataSource>
-                </div>
-            </div>
-            <br />
-
-        </ContentTemplate>
-    </asp:UpdatePanel>
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
-            <asp:Button ID="Button_poisk" runat="server" Text="Поиск РПД/УМК" CssClass="bttn" Width="300px" Style="margin-bottom: 30px;" OnClick="Button_poisk_Click" />
-            <br />
-            <asp:Table runat="server" ID="Table_find_rpd" ClientIDMode="Static" CssClass="GridViewCss_FindForm" Font-Size="0.9em">
-                <asp:TableHeaderRow HorizontalAlign="Center">
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="УМК/РПД"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Год"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Тип обучения"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Направление подготовки"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Учебный план"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Кафедра"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Дисциплина"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Преподаватель по нагрузке"></asp:TableHeaderCell>
-                    <asp:TableHeaderCell CssClass="GridViewCss_FindForm" Text="Кем выполнено"></asp:TableHeaderCell>
+            <asp:Button ID="Button_ControlDateSaveRPD" runat="server" Text="Найти" CssClass="bttn" OnClick="Button_ControlDateSaveRPD_Click" />
+            <asp:Table runat="server" ID="Table_ControlSaveRpd" CssClass="GridViewCss">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell CssClass="GridViewCss">Id_umk_rpd</asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss">Дата сохранения</asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss">Логин</asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss">Ip адрес</asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss">ФИО</asp:TableHeaderCell>
+                    <asp:TableHeaderCell CssClass="GridViewCss">Название РПД</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
+            
+            <%--<asp:GridView ID="GridView_ControlSaveRPD" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource_controlSaveRPD">
+                <Columns>
+                    <asp:BoundField DataField="Id_umk_rpd" HeaderText="Id_umk_rpd" SortExpression="Id_umk_rpd" ControlStyle-Width="100px"/>
+                    <asp:BoundField DataField="DateSave" HeaderText="Дата сохранения" SortExpression="DateSave" ControlStyle-Width="150px"/>
+                    <asp:BoundField DataField="Login" HeaderText="Логин" SortExpression="Login" ControlStyle-Width="100px" />
+                    <asp:BoundField DataField="Ip" HeaderText="Ip адрес" SortExpression="Ip" ControlStyle-Width="100px" />
+                    <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"   />
+                    <asp:BoundField DataField="NameRpd" HeaderText="Название РПД" SortExpression="NameRpd" />
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource_controlSaveRPD" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetDataByNameRpd" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.TmpUMK_rpd_ControlSignUpTableAdapter">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="NameRpdTextBox" Name="NameRpd" PropertyName="Text" Type="String" DefaultValue="" />
+                </SelectParameters>
+            </asp:ObjectDataSource>--%>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

@@ -53,6 +53,9 @@
                         </li>
                     </ul>
                 </li>
+                <li runat="server" id="AdminForm">
+                    <asp:Button runat="server" ID="Button_adminForm" OnClick="Button_adminForm_Click" CssClass="bttn" Text="Управление" />
+                </li>
             </ul>
         </nav>
         <section class="layout">

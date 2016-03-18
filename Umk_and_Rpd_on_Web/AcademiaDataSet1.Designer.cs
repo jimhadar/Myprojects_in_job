@@ -74,6 +74,10 @@ namespace Umk_and_Rpd_on_Web {
         
         private Umk_rpd_reportDataTable tableUmk_rpd_report;
         
+        private ReportOnSubsDataTable tableReportOnSubs;
+        
+        private TmpUMK_rpd_ControlSignUpDataTable tableTmpUMK_rpd_ControlSignUp;
+        
         private global::System.Data.DataRelation relationFK_ASSIGN_CODPE_PEOPLEN;
         
         private global::System.Data.DataRelation relationFK_PEOPLEN_CODDEGRE_DEGREE;
@@ -200,6 +204,12 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["Umk_rpd_report"] != null)) {
                     base.Tables.Add(new Umk_rpd_reportDataTable(ds.Tables["Umk_rpd_report"]));
+                }
+                if ((ds.Tables["ReportOnSubs"] != null)) {
+                    base.Tables.Add(new ReportOnSubsDataTable(ds.Tables["ReportOnSubs"]));
+                }
+                if ((ds.Tables["TmpUMK_rpd_ControlSignUp"] != null)) {
+                    base.Tables.Add(new TmpUMK_rpd_ControlSignUpDataTable(ds.Tables["TmpUMK_rpd_ControlSignUp"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -471,6 +481,26 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReportOnSubsDataTable ReportOnSubs {
+            get {
+                return this.tableReportOnSubs;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public TmpUMK_rpd_ControlSignUpDataTable TmpUMK_rpd_ControlSignUp {
+            get {
+                return this.tableTmpUMK_rpd_ControlSignUp;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -610,6 +640,12 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 if ((ds.Tables["Umk_rpd_report"] != null)) {
                     base.Tables.Add(new Umk_rpd_reportDataTable(ds.Tables["Umk_rpd_report"]));
+                }
+                if ((ds.Tables["ReportOnSubs"] != null)) {
+                    base.Tables.Add(new ReportOnSubsDataTable(ds.Tables["ReportOnSubs"]));
+                }
+                if ((ds.Tables["TmpUMK_rpd_ControlSignUp"] != null)) {
+                    base.Tables.Add(new TmpUMK_rpd_ControlSignUpDataTable(ds.Tables["TmpUMK_rpd_ControlSignUp"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -794,6 +830,18 @@ namespace Umk_and_Rpd_on_Web {
                     this.tableUmk_rpd_report.InitVars();
                 }
             }
+            this.tableReportOnSubs = ((ReportOnSubsDataTable)(base.Tables["ReportOnSubs"]));
+            if ((initTable == true)) {
+                if ((this.tableReportOnSubs != null)) {
+                    this.tableReportOnSubs.InitVars();
+                }
+            }
+            this.tableTmpUMK_rpd_ControlSignUp = ((TmpUMK_rpd_ControlSignUpDataTable)(base.Tables["TmpUMK_rpd_ControlSignUp"]));
+            if ((initTable == true)) {
+                if ((this.tableTmpUMK_rpd_ControlSignUp != null)) {
+                    this.tableTmpUMK_rpd_ControlSignUp.InitVars();
+                }
+            }
             this.relationFK_ASSIGN_CODPE_PEOPLEN = this.Relations["FK_ASSIGN_CODPE_PEOPLEN"];
             this.relationFK_PEOPLEN_CODDEGRE_DEGREE = this.Relations["FK_PEOPLEN_CODDEGRE_DEGREE"];
             this.relationFK_StudyPlans_FormStudy = this.Relations["FK_StudyPlans_FormStudy"];
@@ -866,6 +914,10 @@ namespace Umk_and_Rpd_on_Web {
             base.Tables.Add(this.tableSubs_not_teach);
             this.tableUmk_rpd_report = new Umk_rpd_reportDataTable();
             base.Tables.Add(this.tableUmk_rpd_report);
+            this.tableReportOnSubs = new ReportOnSubsDataTable();
+            base.Tables.Add(this.tableReportOnSubs);
+            this.tableTmpUMK_rpd_ControlSignUp = new TmpUMK_rpd_ControlSignUpDataTable();
+            base.Tables.Add(this.tableTmpUMK_rpd_ControlSignUp);
             this.relationFK_ASSIGN_CODPE_PEOPLEN = new global::System.Data.DataRelation("FK_ASSIGN_CODPE_PEOPLEN", new global::System.Data.DataColumn[] {
                         this.tablePEOPLEN.CODPEColumn}, new global::System.Data.DataColumn[] {
                         this.tableDoljnost_prepod.CODPEColumn}, false);
@@ -1068,6 +1120,18 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeReportOnSubs() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeTmpUMK_rpd_ControlSignUp() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1195,6 +1259,12 @@ namespace Umk_and_Rpd_on_Web {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Umk_rpd_reportRowChangeEventHandler(object sender, Umk_rpd_reportRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ReportOnSubsRowChangeEventHandler(object sender, ReportOnSubsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void TmpUMK_rpd_ControlSignUpRowChangeEventHandler(object sender, TmpUMK_rpd_ControlSignUpRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -10972,6 +11042,8 @@ namespace Umk_and_Rpd_on_Web {
             
             private global::System.Data.DataColumn columnPercentZap;
             
+            private global::System.Data.DataColumn columnNamePlan;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Umk_rpd_reportDataTable() {
@@ -11047,6 +11119,14 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NamePlanColumn {
+                get {
+                    return this.columnNamePlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -11082,14 +11162,15 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Umk_rpd_reportRow AddUmk_rpd_reportRow(int CodForReport, string ForReport, int AllCountSubs, int CountzapSubs, int PercentZap) {
+            public Umk_rpd_reportRow AddUmk_rpd_reportRow(int CodForReport, string ForReport, int AllCountSubs, int CountzapSubs, int PercentZap, string NamePlan) {
                 Umk_rpd_reportRow rowUmk_rpd_reportRow = ((Umk_rpd_reportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CodForReport,
                         ForReport,
                         AllCountSubs,
                         CountzapSubs,
-                        PercentZap};
+                        PercentZap,
+                        NamePlan};
                 rowUmk_rpd_reportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowUmk_rpd_reportRow);
                 return rowUmk_rpd_reportRow;
@@ -11117,6 +11198,7 @@ namespace Umk_and_Rpd_on_Web {
                 this.columnAllCountSubs = base.Columns["AllCountSubs"];
                 this.columnCountzapSubs = base.Columns["CountzapSubs"];
                 this.columnPercentZap = base.Columns["PercentZap"];
+                this.columnNamePlan = base.Columns["NamePlan"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11132,8 +11214,11 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnCountzapSubs);
                 this.columnPercentZap = new global::System.Data.DataColumn("PercentZap", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPercentZap);
+                this.columnNamePlan = new global::System.Data.DataColumn("NamePlan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNamePlan);
                 this.columnForReport.MaxLength = 50;
                 this.columnPercentZap.ReadOnly = true;
+                this.columnNamePlan.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11220,6 +11305,635 @@ namespace Umk_and_Rpd_on_Web {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "Umk_rpd_reportDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReportOnSubsDataTable : global::System.Data.TypedTableBase<ReportOnSubsRow> {
+            
+            private global::System.Data.DataColumn columnCodKaf;
+            
+            private global::System.Data.DataColumn columnNameKaf;
+            
+            private global::System.Data.DataColumn columnCodPlan;
+            
+            private global::System.Data.DataColumn columnNamePlan;
+            
+            private global::System.Data.DataColumn columnNameSub;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsDataTable() {
+                this.TableName = "ReportOnSubs";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportOnSubsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ReportOnSubsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodKafColumn {
+                get {
+                    return this.columnCodKaf;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameKafColumn {
+                get {
+                    return this.columnNameKaf;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CodPlanColumn {
+                get {
+                    return this.columnCodPlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NamePlanColumn {
+                get {
+                    return this.columnNamePlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameSubColumn {
+                get {
+                    return this.columnNameSub;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsRow this[int index] {
+                get {
+                    return ((ReportOnSubsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportOnSubsRowChangeEventHandler ReportOnSubsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportOnSubsRowChangeEventHandler ReportOnSubsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportOnSubsRowChangeEventHandler ReportOnSubsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ReportOnSubsRowChangeEventHandler ReportOnSubsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddReportOnSubsRow(ReportOnSubsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsRow AddReportOnSubsRow(byte CodKaf, string NameKaf, int CodPlan, string NamePlan, string NameSub) {
+                ReportOnSubsRow rowReportOnSubsRow = ((ReportOnSubsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        CodKaf,
+                        NameKaf,
+                        CodPlan,
+                        NamePlan,
+                        NameSub};
+                rowReportOnSubsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReportOnSubsRow);
+                return rowReportOnSubsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReportOnSubsDataTable cln = ((ReportOnSubsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReportOnSubsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnCodKaf = base.Columns["CodKaf"];
+                this.columnNameKaf = base.Columns["NameKaf"];
+                this.columnCodPlan = base.Columns["CodPlan"];
+                this.columnNamePlan = base.Columns["NamePlan"];
+                this.columnNameSub = base.Columns["NameSub"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnCodKaf = new global::System.Data.DataColumn("CodKaf", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodKaf);
+                this.columnNameKaf = new global::System.Data.DataColumn("NameKaf", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameKaf);
+                this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodPlan);
+                this.columnNamePlan = new global::System.Data.DataColumn("NamePlan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNamePlan);
+                this.columnNameSub = new global::System.Data.DataColumn("NameSub", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameSub);
+                this.columnNameKaf.MaxLength = 100;
+                this.columnNamePlan.MaxLength = 30;
+                this.columnNameSub.MaxLength = 100;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsRow NewReportOnSubsRow() {
+                return ((ReportOnSubsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReportOnSubsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReportOnSubsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReportOnSubsRowChanged != null)) {
+                    this.ReportOnSubsRowChanged(this, new ReportOnSubsRowChangeEvent(((ReportOnSubsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReportOnSubsRowChanging != null)) {
+                    this.ReportOnSubsRowChanging(this, new ReportOnSubsRowChangeEvent(((ReportOnSubsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReportOnSubsRowDeleted != null)) {
+                    this.ReportOnSubsRowDeleted(this, new ReportOnSubsRowChangeEvent(((ReportOnSubsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReportOnSubsRowDeleting != null)) {
+                    this.ReportOnSubsRowDeleting(this, new ReportOnSubsRowChangeEvent(((ReportOnSubsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveReportOnSubsRow(ReportOnSubsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                AcademiaDataSet ds = new AcademiaDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReportOnSubsDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class TmpUMK_rpd_ControlSignUpDataTable : global::System.Data.TypedTableBase<TmpUMK_rpd_ControlSignUpRow> {
+            
+            private global::System.Data.DataColumn columnId_umk_rpd;
+            
+            private global::System.Data.DataColumn columnDateSave;
+            
+            private global::System.Data.DataColumn columnLogin;
+            
+            private global::System.Data.DataColumn columnIp;
+            
+            private global::System.Data.DataColumn columnFIO;
+            
+            private global::System.Data.DataColumn columnNameRpd;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpDataTable() {
+                this.TableName = "TmpUMK_rpd_ControlSignUp";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TmpUMK_rpd_ControlSignUpDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected TmpUMK_rpd_ControlSignUpDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Id_umk_rpdColumn {
+                get {
+                    return this.columnId_umk_rpd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DateSaveColumn {
+                get {
+                    return this.columnDateSave;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LoginColumn {
+                get {
+                    return this.columnLogin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IpColumn {
+                get {
+                    return this.columnIp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FIOColumn {
+                get {
+                    return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameRpdColumn {
+                get {
+                    return this.columnNameRpd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpRow this[int index] {
+                get {
+                    return ((TmpUMK_rpd_ControlSignUpRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TmpUMK_rpd_ControlSignUpRowChangeEventHandler TmpUMK_rpd_ControlSignUpRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TmpUMK_rpd_ControlSignUpRowChangeEventHandler TmpUMK_rpd_ControlSignUpRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TmpUMK_rpd_ControlSignUpRowChangeEventHandler TmpUMK_rpd_ControlSignUpRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event TmpUMK_rpd_ControlSignUpRowChangeEventHandler TmpUMK_rpd_ControlSignUpRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddTmpUMK_rpd_ControlSignUpRow(TmpUMK_rpd_ControlSignUpRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpRow AddTmpUMK_rpd_ControlSignUpRow(int Id_umk_rpd, System.DateTime DateSave, string Login, string Ip, string FIO, string NameRpd) {
+                TmpUMK_rpd_ControlSignUpRow rowTmpUMK_rpd_ControlSignUpRow = ((TmpUMK_rpd_ControlSignUpRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Id_umk_rpd,
+                        DateSave,
+                        Login,
+                        Ip,
+                        FIO,
+                        NameRpd};
+                rowTmpUMK_rpd_ControlSignUpRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTmpUMK_rpd_ControlSignUpRow);
+                return rowTmpUMK_rpd_ControlSignUpRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                TmpUMK_rpd_ControlSignUpDataTable cln = ((TmpUMK_rpd_ControlSignUpDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new TmpUMK_rpd_ControlSignUpDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnId_umk_rpd = base.Columns["Id_umk_rpd"];
+                this.columnDateSave = base.Columns["DateSave"];
+                this.columnLogin = base.Columns["Login"];
+                this.columnIp = base.Columns["Ip"];
+                this.columnFIO = base.Columns["FIO"];
+                this.columnNameRpd = base.Columns["NameRpd"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnId_umk_rpd = new global::System.Data.DataColumn("Id_umk_rpd", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_umk_rpd);
+                this.columnDateSave = new global::System.Data.DataColumn("DateSave", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateSave);
+                this.columnLogin = new global::System.Data.DataColumn("Login", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLogin);
+                this.columnIp = new global::System.Data.DataColumn("Ip", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIp);
+                this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIO);
+                this.columnNameRpd = new global::System.Data.DataColumn("NameRpd", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameRpd);
+                this.columnLogin.MaxLength = 50;
+                this.columnIp.MaxLength = 50;
+                this.columnFIO.AllowDBNull = false;
+                this.columnFIO.MaxLength = 50;
+                this.columnNameRpd.AllowDBNull = false;
+                this.columnNameRpd.MaxLength = 300;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpRow NewTmpUMK_rpd_ControlSignUpRow() {
+                return ((TmpUMK_rpd_ControlSignUpRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new TmpUMK_rpd_ControlSignUpRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(TmpUMK_rpd_ControlSignUpRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.TmpUMK_rpd_ControlSignUpRowChanged != null)) {
+                    this.TmpUMK_rpd_ControlSignUpRowChanged(this, new TmpUMK_rpd_ControlSignUpRowChangeEvent(((TmpUMK_rpd_ControlSignUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.TmpUMK_rpd_ControlSignUpRowChanging != null)) {
+                    this.TmpUMK_rpd_ControlSignUpRowChanging(this, new TmpUMK_rpd_ControlSignUpRowChangeEvent(((TmpUMK_rpd_ControlSignUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.TmpUMK_rpd_ControlSignUpRowDeleted != null)) {
+                    this.TmpUMK_rpd_ControlSignUpRowDeleted(this, new TmpUMK_rpd_ControlSignUpRowChangeEvent(((TmpUMK_rpd_ControlSignUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.TmpUMK_rpd_ControlSignUpRowDeleting != null)) {
+                    this.TmpUMK_rpd_ControlSignUpRowDeleting(this, new TmpUMK_rpd_ControlSignUpRowChangeEvent(((TmpUMK_rpd_ControlSignUpRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveTmpUMK_rpd_ControlSignUpRow(TmpUMK_rpd_ControlSignUpRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                AcademiaDataSet ds = new AcademiaDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "TmpUMK_rpd_ControlSignUpDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -17257,6 +17971,22 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NamePlan {
+                get {
+                    try {
+                        return ((string)(this[this.tableUmk_rpd_report.NamePlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NamePlan\' в таблице \'Umk_rpd_report\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableUmk_rpd_report.NamePlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCodForReportNull() {
                 return this.IsNull(this.tableUmk_rpd_report.CodForReportColumn);
             }
@@ -17313,6 +18043,324 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPercentZapNull() {
                 this[this.tableUmk_rpd_report.PercentZapColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamePlanNull() {
+                return this.IsNull(this.tableUmk_rpd_report.NamePlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamePlanNull() {
+                this[this.tableUmk_rpd_report.NamePlanColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReportOnSubsRow : global::System.Data.DataRow {
+            
+            private ReportOnSubsDataTable tableReportOnSubs;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ReportOnSubsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReportOnSubs = ((ReportOnSubsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte CodKaf {
+                get {
+                    try {
+                        return ((byte)(this[this.tableReportOnSubs.CodKafColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKaf\' в таблице \'ReportOnSubs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportOnSubs.CodKafColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NameKaf {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportOnSubs.NameKafColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameKaf\' в таблице \'ReportOnSubs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportOnSubs.NameKafColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CodPlan {
+                get {
+                    try {
+                        return ((int)(this[this.tableReportOnSubs.CodPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPlan\' в таблице \'ReportOnSubs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportOnSubs.CodPlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NamePlan {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportOnSubs.NamePlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NamePlan\' в таблице \'ReportOnSubs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportOnSubs.NamePlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NameSub {
+                get {
+                    try {
+                        return ((string)(this[this.tableReportOnSubs.NameSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameSub\' в таблице \'ReportOnSubs\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableReportOnSubs.NameSubColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodKafNull() {
+                return this.IsNull(this.tableReportOnSubs.CodKafColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodKafNull() {
+                this[this.tableReportOnSubs.CodKafColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameKafNull() {
+                return this.IsNull(this.tableReportOnSubs.NameKafColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameKafNull() {
+                this[this.tableReportOnSubs.NameKafColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodPlanNull() {
+                return this.IsNull(this.tableReportOnSubs.CodPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodPlanNull() {
+                this[this.tableReportOnSubs.CodPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamePlanNull() {
+                return this.IsNull(this.tableReportOnSubs.NamePlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamePlanNull() {
+                this[this.tableReportOnSubs.NamePlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameSubNull() {
+                return this.IsNull(this.tableReportOnSubs.NameSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameSubNull() {
+                this[this.tableReportOnSubs.NameSubColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class TmpUMK_rpd_ControlSignUpRow : global::System.Data.DataRow {
+            
+            private TmpUMK_rpd_ControlSignUpDataTable tableTmpUMK_rpd_ControlSignUp;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal TmpUMK_rpd_ControlSignUpRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableTmpUMK_rpd_ControlSignUp = ((TmpUMK_rpd_ControlSignUpDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Id_umk_rpd {
+                get {
+                    try {
+                        return ((int)(this[this.tableTmpUMK_rpd_ControlSignUp.Id_umk_rpdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Id_umk_rpd\' в таблице \'TmpUMK_rpd_ControlSignUp\' равно DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.Id_umk_rpdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime DateSave {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableTmpUMK_rpd_ControlSignUp.DateSaveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'DateSave\' в таблице \'TmpUMK_rpd_ControlSignUp\' равно DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.DateSaveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Login {
+                get {
+                    try {
+                        return ((string)(this[this.tableTmpUMK_rpd_ControlSignUp.LoginColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Login\' в таблице \'TmpUMK_rpd_ControlSignUp\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.LoginColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Ip {
+                get {
+                    try {
+                        return ((string)(this[this.tableTmpUMK_rpd_ControlSignUp.IpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Ip\' в таблице \'TmpUMK_rpd_ControlSignUp\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.IpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string FIO {
+                get {
+                    return ((string)(this[this.tableTmpUMK_rpd_ControlSignUp.FIOColumn]));
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.FIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NameRpd {
+                get {
+                    return ((string)(this[this.tableTmpUMK_rpd_ControlSignUp.NameRpdColumn]));
+                }
+                set {
+                    this[this.tableTmpUMK_rpd_ControlSignUp.NameRpdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsId_umk_rpdNull() {
+                return this.IsNull(this.tableTmpUMK_rpd_ControlSignUp.Id_umk_rpdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetId_umk_rpdNull() {
+                this[this.tableTmpUMK_rpd_ControlSignUp.Id_umk_rpdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDateSaveNull() {
+                return this.IsNull(this.tableTmpUMK_rpd_ControlSignUp.DateSaveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDateSaveNull() {
+                this[this.tableTmpUMK_rpd_ControlSignUp.DateSaveColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLoginNull() {
+                return this.IsNull(this.tableTmpUMK_rpd_ControlSignUp.LoginColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLoginNull() {
+                this[this.tableTmpUMK_rpd_ControlSignUp.LoginColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIpNull() {
+                return this.IsNull(this.tableTmpUMK_rpd_ControlSignUp.IpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIpNull() {
+                this[this.tableTmpUMK_rpd_ControlSignUp.IpColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -18152,6 +19200,74 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Umk_rpd_reportRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ReportOnSubsRowChangeEvent : global::System.EventArgs {
+            
+            private ReportOnSubsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsRowChangeEvent(ReportOnSubsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReportOnSubsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class TmpUMK_rpd_ControlSignUpRowChangeEvent : global::System.EventArgs {
+            
+            private TmpUMK_rpd_ControlSignUpRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpRowChangeEvent(TmpUMK_rpd_ControlSignUpRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TmpUMK_rpd_ControlSignUpRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -20877,13 +21993,15 @@ WHERE        (STAFF.CODPOST = 40)";
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        CodKaf, CodOrganization, AbbrKaf, NameKaf, CodFaculty, CanEditPlan, CanEditFact, ZavKaf, Labor
 FROM            Kafs
-WHERE        (CodFaculty = @OriginalCodFaculty) and (CodKaf <> 33) and (CodKaf <> 77) and(CodKaf <> 78) and (CodKaf <> 79) and (CodKaf <> 71) and (CodKaf <> 72) and (CodKaf <> 73) and (CodKaf <> 75)";
+WHERE        (CodFaculty = @OriginalCodFaculty) AND (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) AND (CodKaf <> 71) AND (CodKaf <> 72) AND (CodKaf <> 73) AND (CodKaf <> 75) AND 
+                         (CodKaf <> 0) OR
+                         (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) AND (CodKaf <> 71) AND (CodKaf <> 72) AND (CodKaf <> 73) AND (CodKaf <> 75) AND (CodKaf <> 0) AND (@OriginalCodFaculty IS NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OriginalCodFaculty", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFaculty", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT AbbrKaf, CanEditFact, CanEditPlan, CodFaculty, CodKaf, CodOrganization, La" +
-                "bor, NameKaf, ZavKaf FROM Kafs";
+            this._commandCollection[1].CommandText = @"SELECT AbbrKaf, CanEditFact, CanEditPlan, CodFaculty, CodKaf, CodOrganization, Labor, NameKaf, ZavKaf FROM Kafs
+where  (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) AND (CodKaf <> 71) AND (CodKaf <> 72) AND (CodKaf <> 73) AND (CodKaf <> 75) AND (CodKaf <> 0) ";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
@@ -27242,6 +28360,7 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
             tableMapping.ColumnMappings.Add("AllCountSubs", "AllCountSubs");
             tableMapping.ColumnMappings.Add("CountzapSubs", "CountzapSubs");
             tableMapping.ColumnMappings.Add("PercentZap", "PercentZap");
+            tableMapping.ColumnMappings.Add("NamePlan", "NamePlan");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -27258,20 +28377,20 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        CodForReport, ForReport, AllCountSubs, CountzapSubs, CONVERT(int, C" +
-                "ONVERT(FLOAT, CountzapSubs) / CONVERT(float, AllCountSubs) * 100) AS PercentZap\r" +
-                "\nFROM            dbo.Umk_rpd_report(@TypeReport) AS Rpd_report";
+            this._commandCollection[0].CommandText = "SELECT        CodForReport, ForReport, NamePlan, AllCountSubs, CountzapSubs, CONV" +
+                "ERT(int, CONVERT(FLOAT, CountzapSubs) / CONVERT(float, AllCountSubs) * 100) AS P" +
+                "ercentZap\r\nFROM            dbo.Umk_rpd_report(@TypeReport) AS Rpd_report";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypeReport", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypeReport", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.Umk_rpd_reportDataTable dataTable, bool TypeReport) {
+        public virtual int Fill(AcademiaDataSet.Umk_rpd_reportDataTable dataTable, int TypeReport) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((bool)(TypeReport));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TypeReport));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -27283,12 +28402,629 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.Umk_rpd_reportDataTable GetData(bool TypeReport) {
+        public virtual AcademiaDataSet.Umk_rpd_reportDataTable GetData(int TypeReport) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((bool)(TypeReport));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TypeReport));
             AcademiaDataSet.Umk_rpd_reportDataTable dataTable = new AcademiaDataSet.Umk_rpd_reportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ReportOnSubsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ReportOnSubsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ReportOnSubs";
+            tableMapping.ColumnMappings.Add("CodKaf", "CodKaf");
+            tableMapping.ColumnMappings.Add("NameKaf", "NameKaf");
+            tableMapping.ColumnMappings.Add("CodPlan", "CodPlan");
+            tableMapping.ColumnMappings.Add("NamePlan", "NamePlan");
+            tableMapping.ColumnMappings.Add("NameSub", "NameSub");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AcademiaConnectingString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        CodKaf, NameKaf, CodPlan, NamePlan, NameSub\r\nFROM            (SELEC" +
+                "T DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, S" +
+                "ubs.CodSub, Subs.NameSub\r\n                          FROM            PlanWork AS " +
+                "pw INNER JOIN\r\n                                                    Subs ON Subs." +
+                "CodSub = pw.CodSub AND CHARINDEX(\'корр.\', Subs.NameSub) <= 0 INNER JOIN\r\n       " +
+                "                                             Grup ON Grup.CodGrup = pw.CodGrup I" +
+                "NNER JOIN\r\n                                                    StudyPlans ON Stu" +
+                "dyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                                     " +
+                "               Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf <> 72 AND Kafs.Co" +
+                "dKaf <> 75 INNER JOIN\r\n                                                    Speci" +
+                "ality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN\r\n  " +
+                "                                                  UMK_and_RPD ON UMK_and_RPD.Cod" +
+                "Plan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.C" +
+                "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
+                "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
+                " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
+                "odKaf) OR\r\n                                                    (Grup.BeginYear =" +
+                " @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (@CodKaf IS NULL)" +
+                ") AS z\r\nGROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY N" +
+                "ameSub, CodPlan";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        CodKaf, NameKaf, CodPlan, NamePlan, NameSub\r\nFROM            (SELEC" +
+                "T DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, S" +
+                "ubs.CodSub, Subs.NameSub\r\n                          FROM            PlanWork AS " +
+                "pw INNER JOIN\r\n                                                    Subs ON Subs." +
+                "CodSub = pw.CodSub AND CHARINDEX(\'корр.\', Subs.NameSub) <= 0 INNER JOIN\r\n       " +
+                "                                             Grup ON Grup.CodGrup = pw.CodGrup I" +
+                "NNER JOIN\r\n                                                    StudyPlans ON Stu" +
+                "dyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                                     " +
+                "               Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf <> 72 AND Kafs.Co" +
+                "dKaf <> 75 INNER JOIN\r\n                                                    Speci" +
+                "ality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN\r\n  " +
+                "                                                  UMK_and_RPD ON UMK_and_RPD.Cod" +
+                "Plan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.C" +
+                "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
+                "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
+                " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
+                "odKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR\r\n                                   " +
+                "                 (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @C" +
+                "odFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z\r\nGROU" +
+                "P BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameSub, CodP" +
+                "lan";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT        CodKaf, NameKaf, CodPlan, NamePlan, NameSub\r\nFROM            (SELEC" +
+                "T DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, S" +
+                "ubs.CodSub, Subs.NameSub\r\n                          FROM            PlanWork AS " +
+                "pw INNER JOIN\r\n                                                    Subs ON Subs." +
+                "CodSub = pw.CodSub AND CHARINDEX(\'корр.\', Subs.NameSub) <= 0 INNER JOIN\r\n       " +
+                "                                             Grup ON Grup.CodGrup = pw.CodGrup I" +
+                "NNER JOIN\r\n                                                    StudyPlans ON Stu" +
+                "dyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                                     " +
+                "               Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf <> 72 AND Kafs.Co" +
+                "dKaf <> 75 INNER JOIN\r\n                                                    Speci" +
+                "ality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN\r\n  " +
+                "                                                  UMK_and_RPD ON UMK_and_RPD.Cod" +
+                "Plan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.C" +
+                "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
+                "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
+                " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
+                "odKaf) and (UMK_and_RPD.CodPlan is not null) OR\r\n                               " +
+                "                     (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy " +
+                "= @CodFormStudy) AND (@CodKaf IS NULL) and (UMK_and_RPD.CodPlan is not null)) AS" +
+                " z\r\nGROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameS" +
+                "ub, CodPlan";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(AcademiaDataSet.ReportOnSubsDataTable dataTable, int BeginYear, int CodFormStudy, global::System.Nullable<int> CodKaf) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BeginYear));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodFormStudy));
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual AcademiaDataSet.ReportOnSubsDataTable GetData(int BeginYear, int CodFormStudy, global::System.Nullable<int> CodKaf) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BeginYear));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodFormStudy));
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.ReportOnSubsDataTable dataTable = new AcademiaDataSet.ReportOnSubsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.ReportOnSubsDataTable GetDataEmptySubs(int BeginYear, int CodFormStudy, global::System.Nullable<int> CodKaf) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BeginYear));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodFormStudy));
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.ReportOnSubsDataTable dataTable = new AcademiaDataSet.ReportOnSubsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.ReportOnSubsDataTable GetDataNotEmpty(int BeginYear, int CodFormStudy, global::System.Nullable<int> CodKaf) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BeginYear));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodFormStudy));
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.ReportOnSubsDataTable dataTable = new AcademiaDataSet.ReportOnSubsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class TmpUMK_rpd_ControlSignUpTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public TmpUMK_rpd_ControlSignUpTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "TmpUMK_rpd_ControlSignUp";
+            tableMapping.ColumnMappings.Add("Id_umk_rpd", "Id_umk_rpd");
+            tableMapping.ColumnMappings.Add("DateSave", "DateSave");
+            tableMapping.ColumnMappings.Add("Login", "Login");
+            tableMapping.ColumnMappings.Add("Ip", "Ip");
+            tableMapping.ColumnMappings.Add("FIO", "FIO");
+            tableMapping.ColumnMappings.Add("NameRpd", "NameRpd");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AcademiaConnectingString"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        TmpUMK_rpd_ControlSignUp.Id_umk_rpd, TmpUMK_rpd_ControlSignUp.DateSave, TmpUMK_rpd_ControlSignUp.Login, personal.dbo.PeoplenPass.FIO, TmpUMK_rpd_ControlSignUp.Ip, 
+                         UMK_and_RPD.Name AS NameRpd
+FROM            TmpUMK_rpd_ControlSignUp INNER JOIN
+                         UMK_and_RPD ON TmpUMK_rpd_ControlSignUp.Id_umk_rpd = UMK_and_RPD.Id_RPD_or_UMK INNER JOIN
+                         personal.dbo.PeoplenPass ON personal.dbo.PeoplenPass.nik = TmpUMK_rpd_ControlSignUp.Login";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM TmpUMK_rpd_ControlSignUp\r\nWHERE        (Id_umk_rpd = @id_rpd) AND (Da" +
+                "teSave = @DateSave)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_rpd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_umk_rpd", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateSave", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateSave", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"SELECT        TmpUMK_rpd_ControlSignUp.Id_umk_rpd, TmpUMK_rpd_ControlSignUp.DateSave, TmpUMK_rpd_ControlSignUp.Login, personal.dbo.PeoplenPass.FIO, TmpUMK_rpd_ControlSignUp.Ip, 
+                         UMK_and_RPD.Name AS NameRpd
+FROM            TmpUMK_rpd_ControlSignUp INNER JOIN
+                         UMK_and_RPD ON TmpUMK_rpd_ControlSignUp.Id_umk_rpd = UMK_and_RPD.Id_RPD_or_UMK INNER JOIN
+                         personal.dbo.PeoplenPass ON personal.dbo.PeoplenPass.nik = TmpUMK_rpd_ControlSignUp.Login
+WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameRpd", global::System.Data.SqlDbType.NVarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "NameRpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "INSERT INTO TmpUMK_rpd_ControlSignUp\r\n                         (Id_umk_rpd, DateS" +
+                "ave, OldContents, NewContents, Login, Ip)\r\nVALUES        (@Id_umk_rpd,@DateSave," +
+                "@OldContents,@NewContents,@Login,@Ip)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id_umk_rpd", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id_umk_rpd", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateSave", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "DateSave", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OldContents", global::System.Data.SqlDbType.Xml, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "OldContents", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NewContents", global::System.Data.SqlDbType.Xml, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "NewContents", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ip", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Ip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable dataTable = new AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable GetDataByNameRpd(string NameRpd) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((NameRpd == null)) {
+                throw new global::System.ArgumentNullException("NameRpd");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NameRpd));
+            }
+            AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable dataTable = new AcademiaDataSet.TmpUMK_rpd_ControlSignUpDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int Delete1(global::System.Nullable<int> id_rpd, global::System.Nullable<global::System.DateTime> DateSave) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((id_rpd.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(id_rpd.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((DateSave.HasValue == true)) {
+                command.Parameters[1].Value = ((System.DateTime)(DateSave.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int Insert1(global::System.Nullable<int> Id_umk_rpd, global::System.Nullable<global::System.DateTime> DateSave, object OldContents, object NewContents, string Login, string Ip) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((Id_umk_rpd.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(Id_umk_rpd.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((DateSave.HasValue == true)) {
+                command.Parameters[1].Value = ((System.DateTime)(DateSave.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((OldContents == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((object)(OldContents));
+            }
+            if ((NewContents == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((object)(NewContents));
+            }
+            if ((Login == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Login));
+            }
+            if ((Ip == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[5].Value = ((string)(Ip));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -27638,15 +29374,6 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._formStudyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._formStudyTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._typeEduTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -27656,21 +29383,21 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._formStudyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._formStudyTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._dEGREETableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27692,30 +29419,12 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._facultyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._facultyTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(updatedRows));
+                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27728,6 +29437,15 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._studyTermTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._studyTermTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._uMK_and_RPDTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -27737,12 +29455,30 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._studyTermTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._studyTermTableAdapter.Update(updatedRows));
+                    result = (result + this._kafsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._facultyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._facultyTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -27756,14 +29492,6 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._formStudyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._formStudyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._typeEduTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -27772,19 +29500,19 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._formStudyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._formStudyTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._dEGREETableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27804,27 +29532,11 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._facultyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._facultyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(addedRows));
+                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27836,6 +29548,14 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._studyTermTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._studyTermTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._uMK_and_RPDTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -27844,11 +29564,27 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._studyTermTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._studyTermTableAdapter.Update(addedRows));
+                    result = (result + this._kafsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._facultyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._facultyTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -27862,35 +29598,11 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._studyTermTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._uMK_and_RPDTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._uMK_and_RPDTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._lib_BookTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._lib_BookTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(deletedRows));
+                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27902,11 +29614,43 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
+                    result = (result + this._kafsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._uMK_and_RPDTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._uMK_and_RPDTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._studyTermTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._lib_BookTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._lib_BookTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -27926,14 +29670,6 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -27942,19 +29678,19 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._typeEduTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._typeEduTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._formStudyTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._formStudyTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._typeEduTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._typeEduTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

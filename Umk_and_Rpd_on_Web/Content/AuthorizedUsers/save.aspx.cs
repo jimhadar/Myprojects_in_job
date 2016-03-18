@@ -27,7 +27,18 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 }
                 data.GetValues();
                 Session["data"] = data;
-                data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveToDataBase, "", "");
+                using (AcademiaDataSetTableAdapters.TmpUMK_rpd_ControlSignUpTableAdapter tmpContentControl = new AcademiaDataSetTableAdapters.TmpUMK_rpd_ControlSignUpTableAdapter()) {
+                    using(AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()){
+                        string oldData = rpd_adapter.GetContents(data.Id_rpd);
+                        data.SaveDataToDataBase_and_toDocx(true, HowDoc_Save.SaveToDataBase, "", "");
+                        tmpContentControl.Insert1(data.Id_rpd, 
+                                                    DateTime.Now, 
+                                                    oldData,
+                                                    "<RPD />", 
+                                                    Page.User.Identity.Name, 
+                                                    HttpContext.Current.Request.UserHostAddress);
+                    }
+                }
                 sw.Stop();
             }
             else {

@@ -372,6 +372,19 @@ h3{
     text-align: justify;
 }
 
+/*для страницы с отчетами*/
+.KafReportSubs{
+    font-weight:700;  
+}
+
+.ColumnPlan{
+    max-width:200px;
+}
+
+.ColumnSub{
+    width:auto;
+    max-width:1000px;
+}
 
 @media(max-width:1280px){
     #wrap_for_pop-up-window{

@@ -337,6 +337,42 @@ namespace Umk_and_Rpd_on_Web {
         protected global::System.Web.UI.WebControls.GridView NagruzkaOnPrepGridView;
         
         /// <summary>
+        /// Subs_not_teach элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Subs_not_teach;
+        
+        /// <summary>
+        /// UpdatePanel3 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
+        
+        /// <summary>
+        /// SubsNotTeach_GridView элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SubsNotTeach_GridView;
+        
+        /// <summary>
+        /// ObjectDataSource_SubsNotTeach элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_SubsNotTeach;
+        
+        /// <summary>
         /// Button_next_page элемент управления.
         /// </summary>
         /// <remarks>

@@ -28211,20 +28211,22 @@ FROM            StudyPlans INNER JOIN
                          StudyContents ON StudyContents.CodPlan = StudyPlans.CodPlan AND StudyContents.CodSub = StudyTerm.CodSub AND StudyContents.codcomp = 5 INNER JOIN
                          Subs ON Subs.CodSub = StudyTerm.CodSub INNER JOIN
                          KafSubs ON KafSubs.CodSub = StudyTerm.CodSub
-WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip)";
+WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip) AND (StudyTerm.Course = @Course)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKaf", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Course", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "Course", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.Subs_not_teachDataTable dataTable, int CodPlan, byte CodKafDiscip) {
+        public virtual int Fill(AcademiaDataSet.Subs_not_teachDataTable dataTable, int CodPlan, byte CodKafDiscip, byte Course) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
             this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((byte)(Course));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -28236,10 +28238,11 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.Subs_not_teachDataTable GetData(int CodPlan, byte CodKafDiscip) {
+        public virtual AcademiaDataSet.Subs_not_teachDataTable GetData(int CodPlan, byte CodKafDiscip, byte Course) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
             this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
+            this.Adapter.SelectCommand.Parameters[2].Value = ((byte)(Course));
             AcademiaDataSet.Subs_not_teachDataTable dataTable = new AcademiaDataSet.Subs_not_teachDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -28605,13 +28608,13 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                 "                                                  UMK_and_RPD ON UMK_and_RPD.Cod" +
                 "Plan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.C" +
                 "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
-                "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
-                " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
-                "odKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR\r\n                                   " +
-                "                 (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @C" +
-                "odFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z\r\nGROU" +
-                "P BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameSub, CodP" +
-                "lan";
+                "K_and_RPD.UMK_or_RPD = 0 and (UMK_and_RPD.CodPlan IS NULL or UMK_and_RPD.Name = " +
+                "\'\')\r\n                          WHERE        (Grup.BeginYear = @BeginYear) AND (S" +
+                "tudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_R" +
+                "PD.CodPlan IS NULL) OR\r\n                                                    (Gru" +
+                "p.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK" +
+                "_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z\r\nGROUP BY CodKaf, NameKaf," +
+                " CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameSub, CodPlan";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -28634,11 +28637,12 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                 "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
                 "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
                 " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
-                "odKaf) and (UMK_and_RPD.CodPlan is not null) OR\r\n                               " +
-                "                     (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy " +
-                "= @CodFormStudy) AND (@CodKaf IS NULL) and (UMK_and_RPD.CodPlan is not null)) AS" +
-                " z\r\nGROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameS" +
-                "ub, CodPlan";
+                "odKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name <> \'\') OR\r\n  " +
+                "                                                  (Grup.BeginYear = @BeginYear) " +
+                "AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NOT NU" +
+                "LL) AND (UMK_and_RPD.Name <> \'\') AND (@CodKaf IS NULL)) \r\n                      " +
+                "   AS z\r\nGROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY " +
+                "NameSub, CodPlan";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

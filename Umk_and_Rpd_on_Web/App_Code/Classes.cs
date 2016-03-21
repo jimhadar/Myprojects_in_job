@@ -10,8 +10,8 @@ using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
 //using System.IO.Packaging;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Wordprocessing;
+//using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.SqlClient;
 
 namespace Umk_and_Rpd_on_Web {
@@ -1787,17 +1787,17 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                using (WordprocessingDocument output =
-                  WordprocessingDocument.Open(outputDocument, true)) {
-                    //использование элемента тело в новой 
-                    //содержимому xmldocument создать новый открытый объект xml тела.
-                    Body updatedbodycontent =
-                      new Body(newWordContent.DocumentElement.InnerXml);
-                    //заменить существующий теле документа с новым содержанием.
-                    output.MainDocumentPart.Document.Body = updatedbodycontent;
-                    //сохраните обновленный выходной документ.
-                    output.MainDocumentPart.Document.Save();
-                }   
+                //using (WordprocessingDocument output =
+                //  WordprocessingDocument.Open(outputDocument, true)) {
+                //    //использование элемента тело в новой 
+                //    //содержимому xmldocument создать новый открытый объект xml тела.
+                //    Body updatedbodycontent =
+                //      new Body(newWordContent.DocumentElement.InnerXml);
+                //    //заменить существующий теле документа с новым содержанием.
+                //    output.MainDocumentPart.Document.Body = updatedbodycontent;
+                //    //сохраните обновленный выходной документ.
+                //    output.MainDocumentPart.Document.Save();
+                //}   
                 //Запуск документа MS Word
                 //System.Diagnostics.Process.Start(outputDocument);
             }

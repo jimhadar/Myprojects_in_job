@@ -1590,23 +1590,23 @@ where (CodTypeEdu &gt;= 8 or CodTypeEdu = 3) and (CodTypeEdu &lt;&gt; 9)</Comman
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StudyPlansTableAdapter" GeneratorDataComponentClassName="StudyPlansTableAdapter" Name="StudyPlans" UserDataComponentName="StudyPlansTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.StudyPlans" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT 
                          StudyPlans.CodPlan, StudyPlans.NamePlan, StudyPlans.CodSpecialization, StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf, StudyPlans.CodFaculty, StudyPlans.CodFormStudy, 
                          CASE WHEN CHARINDEX('-', studyplans.NamePlan, LEN(studyplans.NamePlan) - 1) &gt; 0 THEN SUBSTRING(studyplans.NamePlan, 0, LEN(studyplans.NamePlan) - 1) WHEN CHARINDEX('-', studyplans.NamePlan, 
-                         LEN(studyplans.NamePlan) - 1) &lt;= 0 THEN studyplans.NamePlan END AS NamePlan1
+                         LEN(studyplans.NamePlan) - 1) &lt;= 0 THEN studyplans.NamePlan END AS NamePlan1, Grup.BeginYear
 FROM            StudyPlans LEFT OUTER JOIN
                          Grup ON Grup.CodPlan = StudyPlans.CodPlan
 WHERE        (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (@CodTypeEdu IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (@CodFormStudy IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodSpeciality = @CodSpeciality) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (@CodSpeciality IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
-                         (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0)</CommandText>
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="CodFormStudy" ColumnName="CodFormStudy" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodFormStudy" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodFormStudy" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="CodTypeEdu" ColumnName="CodTypeEdu" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodTypeEdu" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodTypeEdu" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -1626,6 +1626,7 @@ WHERE        (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEd
               <Mapping SourceColumn="CodFaculty" DataSetColumn="CodFaculty" />
               <Mapping SourceColumn="CodFormStudy" DataSetColumn="CodFormStudy" />
               <Mapping SourceColumn="NamePlan1" DataSetColumn="NamePlan1" />
+              <Mapping SourceColumn="BeginYear" DataSetColumn="BeginYear" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.StudyPlans" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_on_CodPlan" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData_on_CodPlan" GeneratorSourceName="Fill_on_CodPlan" GetMethodModifier="Public" GetMethodName="GetData_on_CodPlan" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData_on_CodPlan" UserSourceName="Fill_on_CodPlan">
@@ -1635,6 +1636,19 @@ WHERE        (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEd
                          StudyPlans.CodPlan, StudyPlans.NamePlan, StudyPlans.CodSpecialization, StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf, StudyPlans.CodFaculty, StudyPlans.CodFormStudy, ''
 FROM            StudyPlans 
 WHERE        StudyPlans.CodPlan = @CodPlan</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.Grup" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetBeginYear" Modifier="Public" Name="GetBeginYear" QueryType="Scalar" ScalarCallRetval="System.Int16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetBeginYear">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Grup.BeginYear
+FROM            StudyPlans LEFT OUTER JOIN
+                         Grup ON Grup.CodPlan = StudyPlans.CodPlan
+WHERE        (StudyPlans.CodPlan = @CodPlan)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -1866,10 +1880,11 @@ FROM            StudyPlans INNER JOIN
                          StudyContents ON StudyContents.CodPlan = StudyPlans.CodPlan AND StudyContents.CodSub = StudyTerm.CodSub AND StudyContents.codcomp = 5 INNER JOIN
                          Subs ON Subs.CodSub = StudyTerm.CodSub INNER JOIN
                          KafSubs ON KafSubs.CodSub = StudyTerm.CodSub
-WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip)</CommandText>
+WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip) AND (StudyTerm.Course = @Course)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="CodKafDiscip" ColumnName="CodKaf" DataSourceName="academia.dbo.KafSubs" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodKafDiscip" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodKaf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Course" ColumnName="Course" DataSourceName="academia.dbo.StudyTerm" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@Course" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="Course" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -1943,7 +1958,7 @@ ORDER BY NameSub, CodPlan</CommandText>
               <Mapping SourceColumn="NameSub" DataSetColumn="NameSub" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataEmptySubs" GetMethodModifier="Public" GetMethodName="GetDataEmptySubs" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataEmptySubs" UserSourceName="GetDataEmptySubs">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 AND (UMK_and_RPD.CodPlan IS NULL OR UMK_and_RPD.Name = '') WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataEmptySubs" GetMethodModifier="Public" GetMethodName="GetDataEmptySubs" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataEmptySubs" UserSourceName="GetDataEmptySubs">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CodKaf, NameKaf, CodPlan, NamePlan, NameSub
@@ -1955,7 +1970,7 @@ FROM            (SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, 
                                                     Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN
                                                     Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN
                                                     UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND 
-                                                    UMK_and_RPD.UMK_or_RPD = 0
+                                                    UMK_and_RPD.UMK_or_RPD = 0 and (UMK_and_RPD.CodPlan IS NULL or UMK_and_RPD.Name = '')
                           WHERE        (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR
                                                     (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z
 GROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub
@@ -1963,12 +1978,12 @@ ORDER BY NameSub, CodPlan</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="BeginYear" ColumnName="" DataSourceName="" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@BeginYear" Precision="0" Scale="0" Size="2" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="CodFormStudy" ColumnName="" DataSourceName="" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodFormStudy" Precision="0" Scale="0" Size="1" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="CodKaf" ColumnName="CodKaf" DataSourceName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodKaf" Precision="0" Scale="0" Size="1" SourceColumn="CodKaf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodKaf" ColumnName="CodKaf" DataSourceName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 AND (UMK_and_RPD.CodPlan IS NULL OR UMK_and_RPD.Name = '') WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodKaf" Precision="0" Scale="0" Size="1" SourceColumn="CodKaf" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (@CodKaf IS NULL) AND (UMK_and_RPD.CodPlan IS NOT NULL)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataNotEmpty" GetMethodModifier="Public" GetMethodName="GetDataNotEmpty" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataNotEmpty" UserSourceName="GetDataNotEmpty">
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') AND (@CodKaf IS NULL)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetDataNotEmpty" GetMethodModifier="Public" GetMethodName="GetDataNotEmpty" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataNotEmpty" UserSourceName="GetDataNotEmpty">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        CodKaf, NameKaf, CodPlan, NamePlan, NameSub
@@ -1981,14 +1996,15 @@ FROM            (SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, 
                                                     Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN
                                                     UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND 
                                                     UMK_and_RPD.UMK_or_RPD = 0
-                          WHERE        (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) and (UMK_and_RPD.CodPlan is not null) OR
-                                                    (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (@CodKaf IS NULL) and (UMK_and_RPD.CodPlan is not null)) AS z
+                          WHERE        (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') OR
+                                                    (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') AND (@CodKaf IS NULL)) 
+                         AS z
 GROUP BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub
 ORDER BY NameSub, CodPlan</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="BeginYear" ColumnName="" DataSourceName="" DataTypeServer="smallint" DbType="Int32" Direction="Input" ParameterName="@BeginYear" Precision="0" Scale="0" Size="2" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="CodFormStudy" ColumnName="" DataSourceName="" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodFormStudy" Precision="0" Scale="0" Size="1" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="CodKaf" ColumnName="CodKaf" DataSourceName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (@CodKaf IS NULL) AND (UMK_and_RPD.CodPlan IS NOT NULL)" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodKaf" Precision="0" Scale="0" Size="1" SourceColumn="CodKaf" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="CodKaf" ColumnName="CodKaf" DataSourceName="SELECT DISTINCT Kafs.CodKaf, Kafs.NameKaf, StudyPlans.CodPlan, StudyPlans.NamePlan, Subs.CodSub, Subs.NameSub FROM PlanWork AS pw INNER JOIN Subs ON Subs.CodSub = pw.CodSub AND CHARINDEX('корр.', Subs.NameSub) &lt;= 0 INNER JOIN Grup ON Grup.CodGrup = pw.CodGrup INNER JOIN StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN Kafs ON Kafs.CodKaf = pw.CodKaf AND Kafs.CodKaf &lt;&gt; 72 AND Kafs.CodKaf &lt;&gt; 75 INNER JOIN Speciality ON Speciality.CodSpeciality = StudyPlans.CodSpeciality LEFT OUTER JOIN UMK_and_RPD ON UMK_and_RPD.CodPlan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.CodKaf = Kafs.CodKaf AND UMK_and_RPD.UMK_or_RPD = 0 WHERE (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') OR (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK_and_RPD.CodPlan IS NOT NULL) AND (UMK_and_RPD.Name &lt;&gt; '') AND (@CodKaf IS NULL)" DataTypeServer="tinyint" DbType="Int32" Direction="Input" ParameterName="@CodKaf" Precision="0" Scale="0" Size="1" SourceColumn="CodKaf" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -2062,6 +2078,75 @@ VALUES        (@Id_umk_rpd,@DateSave,@OldContents,@NewContents,@Login,@Ip)</Comm
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StudyPlans1TableAdapter" GeneratorDataComponentClassName="StudyPlans1TableAdapter" Name="StudyPlans1TableAdapter" UserDataComponentName="StudyPlans1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT 
+                         StudyPlans.CodPlan, StudyPlans.NamePlan, StudyPlans.CodSpecialization, StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf, StudyPlans.CodFaculty, StudyPlans.CodFormStudy, 
+                         CASE WHEN CHARINDEX('-', studyplans.NamePlan, LEN(studyplans.NamePlan) - 1) &gt; 0 THEN SUBSTRING(studyplans.NamePlan, 0, LEN(studyplans.NamePlan) - 1) WHEN CHARINDEX('-', studyplans.NamePlan, 
+                         LEN(studyplans.NamePlan) - 1) &lt;= 0 THEN studyplans.NamePlan END AS NamePlan1, Grup.BeginYear
+FROM            StudyPlans LEFT OUTER JOIN
+                         Grup ON Grup.CodPlan = StudyPlans.CodPlan
+WHERE        (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodFormStudy" ColumnName="CodFormStudy" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodFormStudy" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodFormStudy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodTypeEdu" ColumnName="CodTypeEdu" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodTypeEdu" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodTypeEdu" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodSpeciality" ColumnName="CodSpeciality" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="char(4)" DbType="AnsiString" Direction="Input" ParameterName="@CodSpeciality" Precision="0" ProviderType="Char" Scale="0" Size="4" SourceColumn="CodSpeciality" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CodPlan" DataSetColumn="CodPlan" />
+              <Mapping SourceColumn="NamePlan" DataSetColumn="NamePlan" />
+              <Mapping SourceColumn="CodSpecialization" DataSetColumn="CodSpecialization" />
+              <Mapping SourceColumn="CodSpeciality" DataSetColumn="CodSpeciality" />
+              <Mapping SourceColumn="CodTypeEdu" DataSetColumn="CodTypeEdu" />
+              <Mapping SourceColumn="CodKaf" DataSetColumn="CodKaf" />
+              <Mapping SourceColumn="CodFaculty" DataSetColumn="CodFaculty" />
+              <Mapping SourceColumn="CodFormStudy" DataSetColumn="CodFormStudy" />
+              <Mapping SourceColumn="NamePlan1" DataSetColumn="NamePlan1" />
+              <Mapping SourceColumn="BeginYear" DataSetColumn="BeginYear" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.StudyPlans" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_on_CodPlan" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData_on_CodPlan" GeneratorSourceName="Fill_on_CodPlan" GetMethodModifier="Public" GetMethodName="GetData_on_CodPlan" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData_on_CodPlan" UserSourceName="Fill_on_CodPlan">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT 
+                         StudyPlans.CodPlan, StudyPlans.NamePlan, StudyPlans.CodSpecialization, StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf, StudyPlans.CodFaculty, StudyPlans.CodFormStudy, ''
+FROM            StudyPlans 
+WHERE        StudyPlans.CodPlan = @CodPlan</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="AcademiaConnectingString (Web.config)" DbObjectName="academia.dbo.Grup" DbObjectType="Table" GenerateShortCommands="true" GeneratorSourceName="GetBeginYear" Modifier="Public" Name="GetBeginYear" QueryType="Scalar" ScalarCallRetval="System.Int16, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetBeginYear">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT Grup.BeginYear
+FROM            StudyPlans LEFT OUTER JOIN
+                         Grup ON Grup.CodPlan = StudyPlans.CodPlan
+WHERE        (StudyPlans.CodPlan = @CodPlan)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="CodPlan" ColumnName="CodPlan" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@CodPlan" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="CodPlan" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -2947,45 +3032,6 @@ VALUES        (@Id_umk_rpd,@DateSave,@OldContents,@NewContents,@Login,@Ip)</Comm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StudyPlans" msprop:Generator_TableClassName="StudyPlansDataTable" msprop:Generator_TableVarName="tableStudyPlans" msprop:Generator_TablePropName="StudyPlans" msprop:Generator_RowDeletingName="StudyPlansRowDeleting" msprop:Generator_RowChangingName="StudyPlansRowChanging" msprop:Generator_RowEvHandlerName="StudyPlansRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyPlansRowDeleted" msprop:Generator_UserTableName="StudyPlans" msprop:Generator_RowChangedName="StudyPlansRowChanged" msprop:Generator_RowEvArgName="StudyPlansRowChangeEvent" msprop:Generator_RowClassName="StudyPlansRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
-              <xs:element name="NamePlan" msprop:Generator_ColumnVarNameInTable="columnNamePlan" msprop:Generator_ColumnPropNameInRow="NamePlan" msprop:Generator_ColumnPropNameInTable="NamePlanColumn" msprop:Generator_UserColumnName="NamePlan">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CodSpecialization" msprop:Generator_ColumnVarNameInTable="columnCodSpecialization" msprop:Generator_ColumnPropNameInRow="CodSpecialization" msprop:Generator_ColumnPropNameInTable="CodSpecializationColumn" msprop:Generator_UserColumnName="CodSpecialization">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CodSpeciality" msprop:Generator_ColumnVarNameInTable="columnCodSpeciality" msprop:Generator_ColumnPropNameInRow="CodSpeciality" msprop:Generator_ColumnPropNameInTable="CodSpecialityColumn" msprop:Generator_UserColumnName="CodSpeciality">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="4" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CodTypeEdu" msprop:Generator_ColumnVarNameInTable="columnCodTypeEdu" msprop:Generator_ColumnPropNameInRow="CodTypeEdu" msprop:Generator_ColumnPropNameInTable="CodTypeEduColumn" msprop:Generator_UserColumnName="CodTypeEdu" type="xs:unsignedByte" />
-              <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" />
-              <xs:element name="CodFaculty" msprop:Generator_ColumnVarNameInTable="columnCodFaculty" msprop:Generator_ColumnPropNameInRow="CodFaculty" msprop:Generator_ColumnPropNameInTable="CodFacultyColumn" msprop:Generator_UserColumnName="CodFaculty" type="xs:unsignedByte" />
-              <xs:element name="CodFormStudy" msprop:Generator_ColumnVarNameInTable="columnCodFormStudy" msprop:Generator_ColumnPropNameInRow="CodFormStudy" msprop:Generator_ColumnPropNameInTable="CodFormStudyColumn" msprop:Generator_UserColumnName="CodFormStudy" type="xs:unsignedByte" />
-              <xs:element name="NamePlan1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNamePlan1" msprop:Generator_ColumnPropNameInRow="NamePlan1" msprop:Generator_ColumnPropNameInTable="NamePlan1Column" msprop:Generator_UserColumnName="NamePlan1" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
         <xs:element name="UMK_and_RPD_with_opisanie" msprop:Generator_TableClassName="UMK_and_RPD_with_opisanieDataTable" msprop:Generator_TableVarName="tableUMK_and_RPD_with_opisanie" msprop:Generator_RowChangedName="UMK_and_RPD_with_opisanieRowChanged" msprop:Generator_TablePropName="UMK_and_RPD_with_opisanie" msprop:Generator_RowDeletingName="UMK_and_RPD_with_opisanieRowDeleting" msprop:Generator_RowChangingName="UMK_and_RPD_with_opisanieRowChanging" msprop:Generator_RowEvHandlerName="UMK_and_RPD_with_opisanieRowChangeEventHandler" msprop:Generator_RowDeletedName="UMK_and_RPD_with_opisanieRowDeleted" msprop:Generator_RowClassName="UMK_and_RPD_with_opisanieRow" msprop:Generator_UserTableName="UMK_and_RPD_with_opisanie" msprop:Generator_RowEvArgName="UMK_and_RPD_with_opisanieRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
@@ -3260,6 +3306,86 @@ VALUES        (@Id_umk_rpd,@DateSave,@OldContents,@NewContents,@Login,@Ip)</Comm
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="StudyPlans1TableAdapter" msprop:Generator_TableClassName="StudyPlans1TableAdapterDataTable" msprop:Generator_TableVarName="tableStudyPlans1TableAdapter" msprop:Generator_TablePropName="StudyPlans1TableAdapter" msprop:Generator_RowDeletingName="StudyPlans1TableAdapterRowDeleting" msprop:Generator_RowChangingName="StudyPlans1TableAdapterRowChanging" msprop:Generator_RowEvHandlerName="StudyPlans1TableAdapterRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyPlans1TableAdapterRowDeleted" msprop:Generator_UserTableName="StudyPlans1TableAdapter" msprop:Generator_RowChangedName="StudyPlans1TableAdapterRowChanged" msprop:Generator_RowEvArgName="StudyPlans1TableAdapterRowChangeEvent" msprop:Generator_RowClassName="StudyPlans1TableAdapterRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
+              <xs:element name="NamePlan" msprop:Generator_ColumnVarNameInTable="columnNamePlan" msprop:Generator_ColumnPropNameInRow="NamePlan" msprop:Generator_ColumnPropNameInTable="NamePlanColumn" msprop:Generator_UserColumnName="NamePlan">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodSpecialization" msprop:Generator_ColumnVarNameInTable="columnCodSpecialization" msprop:Generator_ColumnPropNameInRow="CodSpecialization" msprop:Generator_ColumnPropNameInTable="CodSpecializationColumn" msprop:Generator_UserColumnName="CodSpecialization">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodSpeciality" msprop:Generator_ColumnVarNameInTable="columnCodSpeciality" msprop:Generator_ColumnPropNameInRow="CodSpeciality" msprop:Generator_ColumnPropNameInTable="CodSpecialityColumn" msprop:Generator_UserColumnName="CodSpeciality">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodTypeEdu" msprop:Generator_ColumnVarNameInTable="columnCodTypeEdu" msprop:Generator_ColumnPropNameInRow="CodTypeEdu" msprop:Generator_ColumnPropNameInTable="CodTypeEduColumn" msprop:Generator_UserColumnName="CodTypeEdu" type="xs:unsignedByte" />
+              <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" />
+              <xs:element name="CodFaculty" msprop:Generator_ColumnVarNameInTable="columnCodFaculty" msprop:Generator_ColumnPropNameInRow="CodFaculty" msprop:Generator_ColumnPropNameInTable="CodFacultyColumn" msprop:Generator_UserColumnName="CodFaculty" type="xs:unsignedByte" />
+              <xs:element name="CodFormStudy" msprop:Generator_ColumnVarNameInTable="columnCodFormStudy" msprop:Generator_ColumnPropNameInRow="CodFormStudy" msprop:Generator_ColumnPropNameInTable="CodFormStudyColumn" msprop:Generator_UserColumnName="CodFormStudy" type="xs:unsignedByte" />
+              <xs:element name="NamePlan1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNamePlan1" msprop:Generator_ColumnPropNameInRow="NamePlan1" msprop:Generator_ColumnPropNameInTable="NamePlan1Column" msprop:Generator_UserColumnName="NamePlan1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeginYear" msprop:Generator_ColumnVarNameInTable="columnBeginYear" msprop:Generator_ColumnPropNameInRow="BeginYear" msprop:Generator_ColumnPropNameInTable="BeginYearColumn" msprop:Generator_UserColumnName="BeginYear" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="StudyPlans" msprop:Generator_TableClassName="StudyPlansDataTable" msprop:Generator_TableVarName="tableStudyPlans" msprop:Generator_TablePropName="StudyPlans" msprop:Generator_RowDeletingName="StudyPlansRowDeleting" msprop:Generator_RowChangingName="StudyPlansRowChanging" msprop:Generator_RowEvHandlerName="StudyPlansRowChangeEventHandler" msprop:Generator_RowDeletedName="StudyPlansRowDeleted" msprop:Generator_UserTableName="StudyPlans" msprop:Generator_RowChangedName="StudyPlansRowChanged" msprop:Generator_RowEvArgName="StudyPlansRowChangeEvent" msprop:Generator_RowClassName="StudyPlansRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodPlan" msprop:Generator_ColumnVarNameInTable="columnCodPlan" msprop:Generator_ColumnPropNameInRow="CodPlan" msprop:Generator_ColumnPropNameInTable="CodPlanColumn" msprop:Generator_UserColumnName="CodPlan" type="xs:int" />
+              <xs:element name="NamePlan" msprop:Generator_ColumnVarNameInTable="columnNamePlan" msprop:Generator_ColumnPropNameInRow="NamePlan" msprop:Generator_ColumnPropNameInTable="NamePlanColumn" msprop:Generator_UserColumnName="NamePlan">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodSpecialization" msprop:Generator_ColumnVarNameInTable="columnCodSpecialization" msprop:Generator_ColumnPropNameInRow="CodSpecialization" msprop:Generator_ColumnPropNameInTable="CodSpecializationColumn" msprop:Generator_UserColumnName="CodSpecialization">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodSpeciality" msprop:Generator_ColumnVarNameInTable="columnCodSpeciality" msprop:Generator_ColumnPropNameInRow="CodSpeciality" msprop:Generator_ColumnPropNameInTable="CodSpecialityColumn" msprop:Generator_UserColumnName="CodSpeciality">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CodTypeEdu" msprop:Generator_ColumnVarNameInTable="columnCodTypeEdu" msprop:Generator_ColumnPropNameInRow="CodTypeEdu" msprop:Generator_ColumnPropNameInTable="CodTypeEduColumn" msprop:Generator_UserColumnName="CodTypeEdu" type="xs:unsignedByte" />
+              <xs:element name="CodKaf" msprop:Generator_ColumnVarNameInTable="columnCodKaf" msprop:Generator_ColumnPropNameInRow="CodKaf" msprop:Generator_ColumnPropNameInTable="CodKafColumn" msprop:Generator_UserColumnName="CodKaf" type="xs:unsignedByte" />
+              <xs:element name="CodFaculty" msprop:Generator_ColumnVarNameInTable="columnCodFaculty" msprop:Generator_ColumnPropNameInRow="CodFaculty" msprop:Generator_ColumnPropNameInTable="CodFacultyColumn" msprop:Generator_UserColumnName="CodFaculty" type="xs:unsignedByte" />
+              <xs:element name="CodFormStudy" msprop:Generator_ColumnVarNameInTable="columnCodFormStudy" msprop:Generator_ColumnPropNameInRow="CodFormStudy" msprop:Generator_ColumnPropNameInTable="CodFormStudyColumn" msprop:Generator_UserColumnName="CodFormStudy" type="xs:unsignedByte" />
+              <xs:element name="NamePlan1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNamePlan1" msprop:Generator_ColumnPropNameInRow="NamePlan1" msprop:Generator_ColumnPropNameInTable="NamePlan1Column" msprop:Generator_UserColumnName="NamePlan1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BeginYear" msprop:Generator_ColumnVarNameInTable="columnBeginYear" msprop:Generator_ColumnPropNameInRow="BeginYear" msprop:Generator_ColumnPropNameInTable="BeginYearColumn" msprop:Generator_UserColumnName="BeginYear" type="xs:short" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -3336,10 +3462,6 @@ VALUES        (@Id_umk_rpd,@DateSave,@OldContents,@NewContents,@Login,@Ip)</Comm
       <xs:selector xpath=".//mstns:TypeEdu" />
       <xs:field xpath="mstns:CodTypeEdu" />
     </xs:unique>
-    <xs:unique name="StudyPlans_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:StudyPlans" />
-      <xs:field xpath="mstns:CodPlan" />
-    </xs:unique>
     <xs:unique name="UMK_and_RPD_with_opisanie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:UMK_and_RPD_with_opisanie" />
       <xs:field xpath="mstns:Id_RPD_or_UMK" />
@@ -3358,21 +3480,30 @@ VALUES        (@Id_umk_rpd,@DateSave,@OldContents,@NewContents,@Login,@Ip)</Comm
       <xs:selector xpath=".//mstns:Subs_not_teach" />
       <xs:field xpath="mstns:CodSub" />
     </xs:unique>
+    <xs:unique name="StudyPlans1TableAdapter_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:StudyPlans1TableAdapter" />
+      <xs:field xpath="mstns:CodPlan" />
+    </xs:unique>
+    <xs:unique name="StudyPlans_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:StudyPlans" />
+      <xs:field xpath="mstns:CodPlan" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
       <msdata:Relationship name="FK_ASSIGN_CODPE_PEOPLEN" msdata:parent="PEOPLEN" msdata:child="Doljnost_prepod" msdata:parentkey="CODPE" msdata:childkey="CODPE" msprop:Generator_UserChildTable="Doljnost_prepod" msprop:Generator_ChildPropName="GetDoljnost_prepodRows" msprop:Generator_UserRelationName="FK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_ParentPropName="PEOPLENRow" msprop:Generator_RelationVarName="relationFK_ASSIGN_CODPE_PEOPLEN" msprop:Generator_UserParentTable="PEOPLEN" />
       <msdata:Relationship name="FK_PEOPLEN_CODDEGRE_DEGREE" msdata:parent="DEGREE" msdata:child="PEOPLEN" msdata:parentkey="CODDEGRE" msdata:childkey="CODDEGRE" msprop:Generator_UserChildTable="PEOPLEN" msprop:Generator_ChildPropName="GetPEOPLENRows" msprop:Generator_UserRelationName="FK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_RelationVarName="relationFK_PEOPLEN_CODDEGRE_DEGREE" msprop:Generator_UserParentTable="DEGREE" msprop:Generator_ParentPropName="DEGREERow" />
-      <msdata:Relationship name="FK_StudyPlans_FormStudy" msdata:parent="FormStudy" msdata:child="StudyPlans" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_FormStudy" msprop:Generator_ParentPropName="FormStudyRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_FormStudy" msprop:Generator_UserParentTable="FormStudy" />
-      <msdata:Relationship name="FK_StudyPlans_TypeEdu" msdata:parent="TypeEdu" msdata:child="StudyPlans" msdata:parentkey="CodTypeEdu" msdata:childkey="CodTypeEdu" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_TypeEdu" msprop:Generator_ParentPropName="TypeEduRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_TypeEdu" msprop:Generator_UserParentTable="TypeEdu" />
       <msdata:Relationship name="FK_UnitSubs_Subs" msdata:parent="Subs" msdata:child="NagruzkaOnPrep" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="NagruzkaOnPrep" msprop:Generator_ChildPropName="GetNagruzkaOnPrepRows" msprop:Generator_UserRelationName="FK_UnitSubs_Subs" msprop:Generator_ParentPropName="SubsRow" msprop:Generator_RelationVarName="relationFK_UnitSubs_Subs" msprop:Generator_UserParentTable="Subs" />
       <msdata:Relationship name="FK_PeoplenPass_PEOPLEN" msdata:parent="ZavPodrazdn" msdata:child="PeoplenPass" msdata:parentkey="CODPE" msdata:childkey="CodPE" msprop:Generator_UserChildTable="PeoplenPass" msprop:Generator_ChildPropName="GetPeoplenPassRows" msprop:Generator_UserRelationName="FK_PeoplenPass_PEOPLEN" msprop:Generator_RelationVarName="relationFK_PeoplenPass_PEOPLEN" msprop:Generator_UserParentTable="ZavPodrazdn" msprop:Generator_ParentPropName="ZavPodrazdnRow" />
       <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msdata:parent="OcenSredstv" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="IdSredstv" msdata:childkey="CodOcenSredstv" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msprop:Generator_ParentPropName="OcenSredstvRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv" msprop:Generator_UserParentTable="OcenSredstv" />
-      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msdata:parent="StudyPlans" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodPlan" msdata:childkey="CodPlan" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_ParentPropName="StudyPlansRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_UserParentTable="StudyPlans" />
       <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_Subs" msdata:parent="Subs" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_Subs" msprop:Generator_ParentPropName="SubsRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_Subs" msprop:Generator_UserParentTable="Subs" />
-      <msdata:Relationship name="FK_ArmKaf_SubCompet_StudyPlans" msdata:parent="StudyPlans" msdata:child="ForPassportCompet" msdata:parentkey="CodPlan" msdata:childkey="CodPlan" msprop:Generator_UserChildTable="ForPassportCompet" msprop:Generator_ChildPropName="GetForPassportCompetRows" msprop:Generator_UserRelationName="FK_ArmKaf_SubCompet_StudyPlans" msprop:Generator_RelationVarName="relationFK_ArmKaf_SubCompet_StudyPlans" msprop:Generator_UserParentTable="StudyPlans" msprop:Generator_ParentPropName="StudyPlansRow" />
       <msdata:Relationship name="FK_ArmKaf_SubCompet_Subs" msdata:parent="Subs" msdata:child="ForPassportCompet" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="ForPassportCompet" msprop:Generator_ChildPropName="GetForPassportCompetRows" msprop:Generator_UserRelationName="FK_ArmKaf_SubCompet_Subs" msprop:Generator_RelationVarName="relationFK_ArmKaf_SubCompet_Subs" msprop:Generator_UserParentTable="Subs" msprop:Generator_ParentPropName="SubsRow" />
       <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_Subs1" msdata:parent="Subs_not_teach" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodSub" msdata:childkey="CodSub" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_Subs1" msprop:Generator_ParentPropName="Subs_not_teachRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_Subs1" msprop:Generator_UserParentTable="Subs_not_teach" />
+      <msdata:Relationship name="FK_Grup_FormStudy" msdata:parent="FormStudy" msdata:child="StudyPlans1TableAdapter" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="StudyPlans1TableAdapter" msprop:Generator_ChildPropName="GetStudyPlans1TableAdapterRows" msprop:Generator_UserRelationName="FK_Grup_FormStudy" msprop:Generator_ParentPropName="FormStudyRow" msprop:Generator_RelationVarName="relationFK_Grup_FormStudy" msprop:Generator_UserParentTable="FormStudy" />
+      <msdata:Relationship name="FK_ArmKaf_SubCompet_StudyPlans" msdata:parent="StudyPlans" msdata:child="ForPassportCompet" msdata:parentkey="CodPlan" msdata:childkey="CodPlan" msprop:Generator_UserChildTable="ForPassportCompet" msprop:Generator_ChildPropName="GetForPassportCompetRows" msprop:Generator_UserRelationName="FK_ArmKaf_SubCompet_StudyPlans" msprop:Generator_RelationVarName="relationFK_ArmKaf_SubCompet_StudyPlans" msprop:Generator_UserParentTable="StudyPlans" msprop:Generator_ParentPropName="StudyPlansRow" />
+      <msdata:Relationship name="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msdata:parent="StudyPlans" msdata:child="ArmKaf_OcenSredstvVPlane" msdata:parentkey="CodPlan" msdata:childkey="CodPlan" msprop:Generator_UserChildTable="ArmKaf_OcenSredstvVPlane" msprop:Generator_ChildPropName="GetArmKaf_OcenSredstvVPlaneRows" msprop:Generator_UserRelationName="FK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_ParentPropName="StudyPlansRow" msprop:Generator_RelationVarName="relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans" msprop:Generator_UserParentTable="StudyPlans" />
+      <msdata:Relationship name="FK_StudyPlans_TypeEdu" msdata:parent="TypeEdu" msdata:child="StudyPlans" msdata:parentkey="CodTypeEdu" msdata:childkey="CodTypeEdu" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_TypeEdu" msprop:Generator_ParentPropName="TypeEduRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_TypeEdu" msprop:Generator_UserParentTable="TypeEdu" />
+      <msdata:Relationship name="FK_StudyPlans_FormStudy" msdata:parent="FormStudy" msdata:child="StudyPlans" msdata:parentkey="CodFormStudy" msdata:childkey="CodFormStudy" msprop:Generator_UserChildTable="StudyPlans" msprop:Generator_ChildPropName="GetStudyPlansRows" msprop:Generator_UserRelationName="FK_StudyPlans_FormStudy" msprop:Generator_ParentPropName="FormStudyRow" msprop:Generator_RelationVarName="relationFK_StudyPlans_FormStudy" msprop:Generator_UserParentTable="FormStudy" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

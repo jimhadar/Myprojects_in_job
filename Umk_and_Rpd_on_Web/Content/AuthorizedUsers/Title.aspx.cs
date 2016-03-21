@@ -50,6 +50,7 @@ namespace Umk_and_Rpd_on_Web {
                                                         (byte)Session["CodKafPrep"],
                                                         (int)Session["UchYear"]);
             }
+            this.CurrentSelectSub.InnerText = string.Empty;
             if (!Page.IsPostBack) {
                 Load_DropDownList_for_uch_year();
                 Load_All_selectLists_SelectedValue(); 
@@ -66,14 +67,18 @@ namespace Umk_and_Rpd_on_Web {
                 }                
             }
             using (AcademiaDataSetTableAdapters.PEOPLENTableAdapter peolpelen = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter()) {
-                AcademiaDataSet.PEOPLENDataTable PeopleLenTable = new AcademiaDataSet.PEOPLENDataTable();
-                peolpelen.Fill(PeopleLenTable);
                 Label_for_hello_user.Text += peolpelen.GetFIO(Convert.ToInt32(Session["CodPrepWhoEdit"]));
             }
             Page.Title = "Титул";
             if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
                 this.SformPassportCompet.Visible = false;
                 this.SformOOP_btn.Visible = false;
+                this.SubsNotTeach_GridView.Visible = false;
+                this.Subs_not_teach.Visible = false;
+            }
+            //для правильного вывода дисциплин по выбору (не ведутся)
+            using (AcademiaDataSetTableAdapters.StudyPlansTableAdapter adapter = new AcademiaDataSetTableAdapters.StudyPlansTableAdapter()) {
+                   
             }
         }
 
@@ -214,7 +219,7 @@ namespace Umk_and_Rpd_on_Web {
         }
 
         protected void NagruzkaOnPrepGridView_SelectedIndexChanged(object sender, EventArgs e) {
-            if(NagruzkaOnPrepGridView.SelectedRow != null){
+            if(NagruzkaOnPrepGridView.SelectedRow != null && NagruzkaOnPrepGridView.SelectedIndex != -1){
                 //сохранение временно кода предмета, для которого ранее заполнялась РПД
                 int oldCodSub = Convert.ToInt16(Session["CodSub"]);
                 Session["CodSub"] = Convert.ToInt16(this.NagruzkaOnPrepGridView.SelectedRow.Cells[2].Text);
@@ -228,7 +233,7 @@ namespace Umk_and_Rpd_on_Web {
                 int? CodPrepPlan = (int?)Session["CodPrep_Plan"];
                 
                 backcolor_Items_for_GridView();
-                CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины\"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
+                CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины \"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
                 int? id_rpd, id_umk;
                 GetId_umk_and_rpd_in_DB(CodSub,
                                         CodPlan,
@@ -316,6 +321,9 @@ namespace Umk_and_Rpd_on_Web {
                     }
                 }
             }
+            else {
+                this.CurrentSelectSub.InnerText = string.Empty;
+            }
         }
 
         protected void FacultyDropDownList_SelectedIndexChanged(object sender, EventArgs e) {
@@ -327,6 +335,9 @@ namespace Umk_and_Rpd_on_Web {
         protected void KafsDropDownList_SelectedIndexChanged(object sender, EventArgs e) {
             Session["CodKafPrep"] = Convert.ToByte(this.DropDownList_KafDiscip.SelectedValue);
             ((Data_for_program)Session["data"]).CodKafPrep = (byte?)Session["CodKafPrep"];
+            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
+                this.NagruzkaOnPrepGridView.SelectRow(-1);
+            }
         }
 
         protected void Button_next_page_Click(object sender, EventArgs e) {
@@ -342,7 +353,10 @@ namespace Umk_and_Rpd_on_Web {
             }
             else {
                 ((Data_for_program)Session["data"]).CodFormStudy = null;
-            }            
+            }
+            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
+                this.NagruzkaOnPrepGridView.SelectRow(-1);
+            }
         }
 
         protected void DropDownList_TypeEdu_SelectedIndexChanged(object sender, EventArgs e) {
@@ -356,6 +370,9 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodTypeEdu"] = 10;
                 ((Data_for_program)Session["data"]).CodTypeEdu = 10;
             }
+            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
+                this.NagruzkaOnPrepGridView.SelectRow(-1);
+            }
         }
 
         protected void DropDownList_Speciality_SelectedIndexChanged(object sender, EventArgs e) {
@@ -368,18 +385,22 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodSpeciality"] = null;
                 ((Data_for_program)Session["data"]).CodSpeciality = null;
             }
+            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
+                this.NagruzkaOnPrepGridView.SelectRow(-1);
+            }
         }
 
         protected void DropDownList_StudyPlans_SelectedIndexChanged(object sender, EventArgs se) {
             if (this.DropDownList_StudyPlans.SelectedValue != null) {
                 Session["CodPlan"] = Convert.ToInt32(this.DropDownList_StudyPlans.SelectedValue);
                 ((Data_for_program)Session["data"]).CodPlan = Convert.ToInt32(this.DropDownList_StudyPlans.SelectedValue);
-                NagruzkaOnPrepGridView.SelectRow(-1);
+                //NagruzkaOnPrepGridView.SelectRow(-1);
             }
             else {
                 Session["CodPlan"] = null;
                 ((Data_for_program)Session["data"]).CodPlan = null;
             }
+            NagruzkaOnPrepGridView.SelectRow(-1);
         }
 
         protected void Button1_Click(object sender, EventArgs e) {

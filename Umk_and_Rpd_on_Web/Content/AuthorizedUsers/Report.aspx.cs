@@ -74,9 +74,8 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                 CodKaf = null;
             }
             using (AcademiaDataSetTableAdapters.ReportOnSubsTableAdapter report = new AcademiaDataSetTableAdapters.ReportOnSubsTableAdapter()) {
-                Subs_With_CodPlan_Table = (int)Session["TypeQueryForReportSub"] == 0 ? report.GetData(2015, 0, CodKaf) :
-                                            ((int)Session["TypeQueryForReportSub"] == 1 ? report.GetDataEmptySubs(2015, 0, CodKaf) :
-                                            report.GetDataNotEmpty(2015, 0, CodKaf));
+                Subs_With_CodPlan_Table = (this.RadioButtonList1.SelectedIndex == -1 || this.RadioButtonList1.SelectedIndex == 0) ? report.GetData(2015, 0, CodKaf) : 
+                                          (this.RadioButtonList1.SelectedIndex == 1 ? report.GetDataEmptySubs(2015, 0, CodKaf) : report.GetDataNotEmpty(2015, 0, CodKaf));
                 foreach(ListItem item in this.DropDownList1.Items){
                     DataRow[] tmpRowKafSubs = Subs_With_CodPlan_Table.Select("CodKaf = " + item.Value);
                     if (tmpRowKafSubs.Length != 0) {
@@ -102,7 +101,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                     }
                 }
             }
-            this.RadioButtonList1.SelectedIndex = (int)Session["TypeQueryForReportSub"];
         }
 
         protected void Button_report_subs_Click(object sender, EventArgs e) {

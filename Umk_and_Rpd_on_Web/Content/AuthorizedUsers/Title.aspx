@@ -117,11 +117,34 @@
                         <HeaderStyle CssClass="HeaderGridView"></HeaderStyle>
                         <SelectedRowStyle BackColor="#99CCFF" />
                     </asp:GridView>
+
                 </ContentTemplate>
             </asp:UpdatePanel> 
+            <hr />
+            <h2 runat="server" id="Subs_not_teach">Дисциплины по выбору (не ведутся)</h2>
+            <asp:UpdatePanel runat="server" ID="UpdatePanel3">
+                <ContentTemplate>
+                    <asp:GridView runat="server" ID="SubsNotTeach_GridView" AutoGenerateColumns="False" DataKeyNames="CodSub" DataSourceID="ObjectDataSource_SubsNotTeach" CssClass="GridViewCss" HeaderStyle-CssClass="HeaderGridView">
+                        <Columns>
+                            <asp:CommandField ShowSelectButton="true" ButtonType="Image" SelectText="Выбрать дисциплину" SelectImageUrl="~/App_Themes/selectSubBtn.jpg" HeaderText="Выбрать дисциплину" HeaderStyle-Width="133px" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle">
+                                <HeaderStyle Width="133px" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:CommandField>
+                            <asp:BoundField DataField="CodSub" HeaderText="Код предмета" ReadOnly="True" SortExpression="CodSub" />
+                            <asp:BoundField DataField="NameSub" HeaderText="Дисциплина" SortExpression="NameSub" />
+                            <asp:BoundField DataField="CodPrep" HeaderText="Код преподавателя" ReadOnly="True" SortExpression="CodPrep" Visible="false"/>
+                            <asp:BoundField DataField="PrepOnPlan" HeaderText="Преподаватель по нагрузке" ReadOnly="True" SortExpression="PrepOnPlan" Visible="false"/>
+                        </Columns>
+                    </asp:GridView>                    
+                    <asp:ObjectDataSource ID="ObjectDataSource_SubsNotTeach" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.Subs_not_teachTableAdapter">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="0" Name="CodPlan" SessionField="CodPlan" Type="Int32" />
+                            <asp:SessionParameter DefaultValue="0" Name="CodKafDiscip" SessionField="CodKafPrep" Type="Byte" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </ContentTemplate>
+            </asp:UpdatePanel>
     <div>
         <asp:Button ID="Button_next_page" CssClass="bttn btn-pred-and-next" runat="server" Text="Следующая страница >>" OnClick="Button_next_page_Click" />
     </div>
 </asp:Content>
-
- 

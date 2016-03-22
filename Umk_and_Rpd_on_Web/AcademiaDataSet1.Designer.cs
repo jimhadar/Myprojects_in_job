@@ -84,8 +84,6 @@ namespace Umk_and_Rpd_on_Web {
         
         private global::System.Data.DataRelation relationFK_UnitSubs_Subs;
         
-        private global::System.Data.DataRelation relationFK_PeoplenPass_PEOPLEN;
-        
         private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv;
         
         private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_Subs;
@@ -845,7 +843,6 @@ namespace Umk_and_Rpd_on_Web {
             this.relationFK_ASSIGN_CODPE_PEOPLEN = this.Relations["FK_ASSIGN_CODPE_PEOPLEN"];
             this.relationFK_PEOPLEN_CODDEGRE_DEGREE = this.Relations["FK_PEOPLEN_CODDEGRE_DEGREE"];
             this.relationFK_UnitSubs_Subs = this.Relations["FK_UnitSubs_Subs"];
-            this.relationFK_PeoplenPass_PEOPLEN = this.Relations["FK_PeoplenPass_PEOPLEN"];
             this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv = this.Relations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"];
             this.relationFK_ArmKaf_OcenSredstvVPlane_Subs = this.Relations["FK_ArmKaf_OcenSredstvVPlane_Subs"];
             this.relationFK_ArmKaf_SubCompet_Subs = this.Relations["FK_ArmKaf_SubCompet_Subs"];
@@ -930,10 +927,6 @@ namespace Umk_and_Rpd_on_Web {
                         this.tableSubs.CodSubColumn}, new global::System.Data.DataColumn[] {
                         this.tableNagruzkaOnPrep.CodSubColumn}, false);
             this.Relations.Add(this.relationFK_UnitSubs_Subs);
-            this.relationFK_PeoplenPass_PEOPLEN = new global::System.Data.DataRelation("FK_PeoplenPass_PEOPLEN", new global::System.Data.DataColumn[] {
-                        this.tableZavPodrazdn.CODPEColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePeoplenPass.CodPEColumn}, false);
-            this.Relations.Add(this.relationFK_PeoplenPass_PEOPLEN);
             this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_OcenSredstv", new global::System.Data.DataColumn[] {
                         this.tableOcenSredstv.IdSredstvColumn}, new global::System.Data.DataColumn[] {
                         this.tableArmKaf_OcenSredstvVPlane.CodOcenSredstvColumn}, false);
@@ -2805,17 +2798,14 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeoplenPassRow AddPeoplenPassRow(ZavPodrazdnRow parentZavPodrazdnRowByFK_PeoplenPass_PEOPLEN, string FIO, string nik, string Hash, string Salt) {
+            public PeoplenPassRow AddPeoplenPassRow(int CodPE, string FIO, string nik, string Hash, string Salt) {
                 PeoplenPassRow rowPeoplenPassRow = ((PeoplenPassRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        CodPE,
                         FIO,
                         nik,
                         Hash,
                         Salt};
-                if ((parentZavPodrazdnRowByFK_PeoplenPass_PEOPLEN != null)) {
-                    columnValuesArray[0] = parentZavPodrazdnRowByFK_PeoplenPass_PEOPLEN[1];
-                }
                 rowPeoplenPassRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPeoplenPassRow);
                 return rowPeoplenPassRow;
@@ -9901,13 +9891,6 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZavPodrazdnRow FindByCODPE(int CODPE) {
-                return ((ZavPodrazdnRow)(this.Rows.Find(new object[] {
-                            CODPE})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 ZavPodrazdnDataTable cln = ((ZavPodrazdnDataTable)(base.Clone()));
                 cln.InitVars();
@@ -9937,13 +9920,7 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnCODPE);
                 this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIO);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCODPE}, true));
-                this.columnUNITNAM.AllowDBNull = false;
                 this.columnUNITNAM.MaxLength = 50;
-                this.columnCODPE.AllowDBNull = false;
-                this.columnCODPE.Unique = true;
-                this.columnFIO.AllowDBNull = false;
                 this.columnFIO.MaxLength = 50;
             }
             
@@ -13916,17 +13893,6 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ZavPodrazdnRow ZavPodrazdnRow {
-                get {
-                    return ((ZavPodrazdnRow)(this.GetParentRow(this.Table.ParentRelations["FK_PeoplenPass_PEOPLEN"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_PeoplenPass_PEOPLEN"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFIONull() {
                 return this.IsNull(this.tablePeoplenPass.FIOColumn);
             }
@@ -17419,7 +17385,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string UNITNAM {
                 get {
-                    return ((string)(this[this.tableZavPodrazdn.UNITNAMColumn]));
+                    try {
+                        return ((string)(this[this.tableZavPodrazdn.UNITNAMColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'UNITNAM\' в таблице \'ZavPodrazdn\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableZavPodrazdn.UNITNAMColumn] = value;
@@ -17430,7 +17401,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CODPE {
                 get {
-                    return ((int)(this[this.tableZavPodrazdn.CODPEColumn]));
+                    try {
+                        return ((int)(this[this.tableZavPodrazdn.CODPEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CODPE\' в таблице \'ZavPodrazdn\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableZavPodrazdn.CODPEColumn] = value;
@@ -17441,7 +17417,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string FIO {
                 get {
-                    return ((string)(this[this.tableZavPodrazdn.FIOColumn]));
+                    try {
+                        return ((string)(this[this.tableZavPodrazdn.FIOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FIO\' в таблице \'ZavPodrazdn\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableZavPodrazdn.FIOColumn] = value;
@@ -17450,13 +17431,38 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PeoplenPassRow[] GetPeoplenPassRows() {
-                if ((this.Table.ChildRelations["FK_PeoplenPass_PEOPLEN"] == null)) {
-                    return new PeoplenPassRow[0];
-                }
-                else {
-                    return ((PeoplenPassRow[])(base.GetChildRows(this.Table.ChildRelations["FK_PeoplenPass_PEOPLEN"])));
-                }
+            public bool IsUNITNAMNull() {
+                return this.IsNull(this.tableZavPodrazdn.UNITNAMColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUNITNAMNull() {
+                this[this.tableZavPodrazdn.UNITNAMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCODPENull() {
+                return this.IsNull(this.tableZavPodrazdn.CODPEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCODPENull() {
+                this[this.tableZavPodrazdn.CODPEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFIONull() {
+                return this.IsNull(this.tableZavPodrazdn.FIOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFIONull() {
+                this[this.tableZavPodrazdn.FIOColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -27590,9 +27596,9 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamePodrazdn", global::System.Data.SqlDbType.Char, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UNITNAM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        PEOPLEN.FIO, PEOPLEN.CODPE, PODRAZDN.UNITNAM\r\nFROM            PODRA" +
-                "ZDN INNER JOIN\r\n                         PEOPLEN ON PODRAZDN.BOSS = PEOPLEN.CODP" +
-                "E\r\nWHERE        (PODRAZDN.CODTUNIT = 1)";
+            this._commandCollection[2].CommandText = "SELECT        PEOPLEN.FIO, PEOPLEN.CODPE\r\nFROM            PODRAZDN INNER JOIN\r\n  " +
+                "                       PEOPLEN ON PODRAZDN.BOSS = PEOPLEN.CODPE\r\nWHERE        (P" +
+                "ODRAZDN.CODTUNIT = 1)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -27603,7 +27609,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         public virtual int Fill(AcademiaDataSet.ZavPodrazdnDataTable dataTable, string NamePodrazdn) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((NamePodrazdn == null)) {
-                throw new global::System.ArgumentNullException("NamePodrazdn");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NamePodrazdn));
@@ -27622,7 +27628,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         public virtual AcademiaDataSet.ZavPodrazdnDataTable GetData(string NamePodrazdn) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((NamePodrazdn == null)) {
-                throw new global::System.ArgumentNullException("NamePodrazdn");
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(NamePodrazdn));
@@ -27649,7 +27655,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         public virtual global::System.Nullable<int> GetCodPE(string NamePodrazdn) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((NamePodrazdn == null)) {
-                throw new global::System.ArgumentNullException("NamePodrazdn");
+                command.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 command.Parameters[0].Value = ((string)(NamePodrazdn));
@@ -29558,15 +29564,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._lib_BookTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -29576,12 +29573,12 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._uMK_and_RPDTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._uMK_and_RPDTableAdapter.Update(updatedRows));
+                    result = (result + this._kafsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29591,6 +29588,15 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._studyTermTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._uMK_and_RPDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._uMK_and_RPDTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29668,14 +29674,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._lib_BookTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -29684,11 +29682,11 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._uMK_and_RPDTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._uMK_and_RPDTableAdapter.Update(addedRows));
+                    result = (result + this._kafsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29697,6 +29695,14 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._studyTermTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._uMK_and_RPDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._uMK_and_RPDTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -29710,14 +29716,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._studyTermTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._uMK_and_RPDTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -29726,11 +29724,11 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._lib_BookTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._studyTermTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.StudyTerm.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._lib_BookTableAdapter.Update(deletedRows));
+                    result = (result + this._studyTermTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -29739,6 +29737,14 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._kafsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._lib_BookTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._lib_BookTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

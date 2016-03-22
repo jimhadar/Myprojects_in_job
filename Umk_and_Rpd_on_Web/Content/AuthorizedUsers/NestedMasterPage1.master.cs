@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Data;
 
 namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
     public partial class NestedMasterPage1 : System.Web.UI.MasterPage {
@@ -23,9 +24,17 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             if (Request.Path == "/Find") {
                 this.Button_for_EndEditUMK_RPD.Style.Add("display", "none");
             }
-            if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
-                this.li_for_href_findForm.Visible = false;
+            using (AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter zavPodrazdnAdapter = new AcademiaDataSetTableAdapters.ZavPodrazdnTableAdapter()) {
+                DataTable zavKafsTable = zavPodrazdnAdapter.GetZavKafs();
+                if (zavKafsTable.Select("CODPE = " + Session["CodPrepWhoEdit"].ToString()).Length == 0 &&
+                    Page.User.Identity.Name != "(ok)" && 
+                    Page.User.Identity.Name != "test") {
+                    this.li_for_href_findForm.Visible = false;
+                }
             }
+            //if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
+            //    this.li_for_href_findForm.Visible = false;
+            //}
             if (Page.User.Identity.Name != "test") {
                 this.AdminForm.Style.Add(HtmlTextWriterStyle.Display, "none");
             }

@@ -111,7 +111,7 @@
     <None Include="AcademiaDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AcademiaDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>AcademiaDataSet1.Designer.cs</LastGenOutput>
     </None>
     <Content Include="AcademiaDataSet.xss">
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>
@@ -161,7 +161,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Content Include="App_Code\ClassTimer.cs" />
-    <Compile Include="AcademiaDataSet1.Designer.cs">
+    <Compile Include="AcademiaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AcademiaDataSet.xsd</DependentUpon>

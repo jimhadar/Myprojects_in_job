@@ -36,7 +36,7 @@ namespace Umk_and_Rpd_on_Web {
             FormsAuthentication.RedirectFromLoginPage(Login2.UserName, false);
             //try {
                 using (AcademiaDataSetTableAdapters.PeoplenPassTableAdapter adapter = new AcademiaDataSetTableAdapters.PeoplenPassTableAdapter()) {
-                    adapter.Fill(new AcademiaDataSet.PeoplenPassDataTable());
+                    //adapter.Fill(new AcademiaDataSet.PeoplenPassDataTable());
                     Session["CodPrepWhoEdit"] = Convert.ToInt32(adapter.GetCodPrep(Login2.UserName));
                     //Session["CodPrepWhoEdit"] = 1293;
                 }

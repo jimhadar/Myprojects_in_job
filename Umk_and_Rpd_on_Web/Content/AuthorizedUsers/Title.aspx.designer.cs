@@ -85,6 +85,15 @@ namespace Umk_and_Rpd_on_Web {
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_StudyPlan;
         
         /// <summary>
+        /// ObjectDataSource_SubsNotTeach элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_SubsNotTeach;
+        
+        /// <summary>
         /// UpdatePanel2 элемент управления.
         /// </summary>
         /// <remarks>
@@ -362,15 +371,6 @@ namespace Umk_and_Rpd_on_Web {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView SubsNotTeach_GridView;
-        
-        /// <summary>
-        /// ObjectDataSource_SubsNotTeach элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_SubsNotTeach;
         
         /// <summary>
         /// Button_next_page элемент управления.

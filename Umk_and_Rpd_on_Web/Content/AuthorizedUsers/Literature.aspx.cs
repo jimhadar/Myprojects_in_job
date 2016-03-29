@@ -32,7 +32,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
 
         private void AddStrToHtmlTableLiterature() {
             HtmlTableRow Row = new HtmlTableRow();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 4; i++) {
                 Row.Cells.Add(new HtmlTableCell());
                 Row.Cells[i].Attributes.Add("class", "GridViewCss");
             }
@@ -57,6 +57,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             btn.Value = "Найти";
             btn.Attributes.Add("onclick", "Literature.AddRowInEnd_for_literature();Literature.ShowPopUp_for_find_liter('block');");
             Row.Cells[2].Controls.Add(btn);
+
+            btn = new HtmlInputButton();
+            btn.Attributes.Add("class", "bttn");
+            btn.Value = "Удалить";
+            btn.Attributes.Add("onclick", "Literature.ClickOnCell_intbl_liter(event);Literature.del_str_from_TableLiterature(event);");
+            Row.Cells[3].Controls.Add(btn);
 
             this.Table_for_Literature.Rows.Add(Row);
         }

@@ -52,28 +52,13 @@
             return;
         }
     }
-    //удаление строки из таблицы "Table_for_literature"
-    function del_str_from_TableLiterature(event) {
-        event.stopPropagation();
-        Table_for_literature.rows[CurrentRow_InTableForLiterature].remove();
-        //изменение текущей выбранной ячейки
-        if (Table_for_literature.rows.length == 1) {
-            CurrentRow_InTableForLiterature = 0;
-        }
-        else if (CurrentRow_InTableForLiterature == Table_for_literature.rows.length) {
-            CurrentRow_InTableForLiterature--;
-        }
-        else {
-            CurrentRow_InTableForLiterature++;
-        }
-        allocationCurrentRow(Table_for_literature, CurrentRow_InTableForLiterature);
-    }
+    
     //добавление строки в конец таблицы "Table_for_literature"    
     function AddRowInEnd_for_literature() {
         if (CurrentRow_InTableForLiterature == Table_for_literature.rows.length - 1) {
             var tr = document.createElement("TR");
 
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 4; i++) {
                 var td = document.createElement("TD");
                 td.className = "GridViewCss";
                 tr.appendChild(td);
@@ -114,6 +99,8 @@
             }
             tr.cells[2].appendChild(inputBtn);
 
+            tr.cells[3].innerHTML = "<input type=\"button\" class=\"bttn\" onclick=\"Literature.ClickOnCell_intbl_liter(event);Literature.del_str_from_TableLiterature(event);\" value=\"Удалить\"/>";
+
             Table_for_literature.appendChild(tr);
 
             Update_NameAttr_in_InputElem_in_Table_for_Literature();
@@ -121,13 +108,34 @@
             window.location.href = '#end';
         }
     }
-
+    
     function Update_NameAttr_in_InputElem_in_Table_for_Literature() {
         for (var i = 0; i < Table_for_literature.rows.length; i++) {
             Table_for_literature.rows[i].cells[0].childNodes[0].name = "TypeLiter" + i.toString();
             Table_for_literature.rows[i].cells[1].childNodes[0].name = "AboutLiter" + i.toString();
         }
         document.getElementById('RowCountLiterTable').value = Table_for_literature.rows.length - 1;
+    }
+
+    //удаление строки из таблицы "Table_for_literature"
+    function del_str_from_TableLiterature(event) {
+        event.stopPropagation();
+        Table_for_literature.rows[CurrentRow_InTableForLiterature].remove();
+        //изменение текущей выбранной ячейки
+        if (Table_for_literature.rows.length == 1) {
+            CurrentRow_InTableForLiterature = 0;
+        }
+        else if (CurrentRow_InTableForLiterature == Table_for_literature.rows.length) {
+            CurrentRow_InTableForLiterature--;
+        }
+        else if (CurrentRow_InTableForLiterature != Table_for_literature.rows.length - 1) {
+            CurrentRow_InTableForLiterature++;
+        }
+        if (CurrentRow_InTableForLiterature > 0) {
+            allocationCurrentRow(Table_for_literature, CurrentRow_InTableForLiterature);
+        }
+        ClickOnCell_intbl_liter()
+        Update_NameAttr_in_InputElem_in_Table_for_Literature();
     }
     /*
         Показать/скрыть вспылвающее псевдоокно для выбора литературного источника

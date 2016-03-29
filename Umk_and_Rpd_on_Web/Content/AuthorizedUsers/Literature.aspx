@@ -59,7 +59,8 @@
                 <tr class="HeaderGridView">
                     <th class="HeaderGridView TypeLiterColumn">Литература</th>
                     <th class="HeaderGridView">Описание источника</th>
-                    <th class=" HeaderGridView FindLiterBtnColumn"></th>
+                    <th class="HeaderGridView FindLiterBtnColumn"></th>
+                    <th class="HeaderGridView FindLiterBtnColumn"></th>
                 </tr>
             </table>
             <a name="end"></a>

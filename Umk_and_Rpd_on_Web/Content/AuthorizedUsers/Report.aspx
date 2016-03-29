@@ -23,6 +23,7 @@
     </div>
     <table style="border-collapse: collapse; width: auto;" runat="server" id="ReportOnSubsEmpty_or_notEmpty" class="GridViewCss" clientidmode="Static">
         <tr>
+            <th class="GridViewCss HeaderGridView" style="width:70px; text-align:center;">№ п/п</th>
             <th class="GridViewCss HeaderGridView ColumnSub">Дисциплина</th>
             <th class="GridViewCss HeaderGridView ColumnPlan">Учебный план</th>
         </tr>
@@ -45,7 +46,7 @@
             <asp:BoundField DataField="ForReport" HeaderText="Кафедра" SortExpression="ForReport" HeaderStyle-CssClass="HeaderGridView" ItemStyle-CssClass="GridViewCss"/>
             <asp:BoundField DataField="AllCountSubs" HeaderText="Дисциплин всего" SortExpression="AllCountSubs" HeaderStyle-CssClass="HeaderGridView" ItemStyle-CssClass="GridViewCss"/>
             <asp:BoundField DataField="CountzapSubs" HeaderText="Кол-во дисциплин, для которых выполнены РПД" SortExpression="CountzapSubs" HeaderStyle-CssClass="HeaderGridView" ItemStyle-CssClass="GridViewCss" />
-            <asp:BoundField DataField="PercentZap" HeaderText="% выполненных РПД" ReadOnly="True" SortExpression="PercentZap"/>
+            <asp:BoundField DataField="PercentZap" HeaderText="% выполненных РПД" ReadOnly="True" SortExpression="PercentZap" HeaderStyle-CssClass="HeaderGridView" ItemStyle-CssClass="GridViewCss" />
         </Columns>
     </asp:GridView>
     <hr />

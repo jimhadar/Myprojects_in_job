@@ -61,6 +61,7 @@ namespace Umk_and_Rpd_on_Web {
                                                 (this.NagruzkaOnPrepGridView.SelectedIndex != -1 ? this.NagruzkaOnPrepGridView.SelectedRow.Cells[3].Text.Trim() : this.SubsNotTeach_GridView.SelectedRow.Cells[2].Text.Trim()) +
                                                 "\"" : 
                                                 "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
+                    this.CurrentSelectSub.Style.Add(HtmlTextWriterStyle.BackgroundColor, (Session["AllowEditRpd"] == null || (Session["AllowEditRpd"] != null && (bool)Session["AllowEditRpd"] == true) ? "#aff0c8" : "#eb2121"));
                 }                
             }
             using (AcademiaDataSetTableAdapters.PEOPLENTableAdapter peolpelen = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter()) {
@@ -665,10 +666,12 @@ namespace Umk_and_Rpd_on_Web {
                             CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины \"" + 
                                 (grid == this.NagruzkaOnPrepGridView ? NagruzkaOnPrepGridView.SelectedRow.Cells[3].Text : this.SubsNotTeach_GridView.SelectedRow.Cells[2].Text) + 
                                 "\"";
+                            this.CurrentSelectSub.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#aff0c8");
                         }
                         else {
                             Session["AllowEditRpd"] = false;
                             this.CurrentSelectSub.InnerText = "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
+                            this.CurrentSelectSub.Style.Add(HtmlTextWriterStyle.BackgroundColor, "#eb2121");
                         }
                     }
                 }

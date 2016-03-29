@@ -28710,13 +28710,13 @@ WHERE        (StudyPlans.CodPlan = @CodPlan) AND (KafSubs.CodKaf = @CodKafDiscip
                 "                                                  UMK_and_RPD ON UMK_and_RPD.Cod" +
                 "Plan = StudyPlans.CodPlan AND UMK_and_RPD.CodSub = Subs.CodSub AND UMK_and_RPD.C" +
                 "odKaf = Kafs.CodKaf AND \r\n                                                    UM" +
-                "K_and_RPD.UMK_or_RPD = 0 and (UMK_and_RPD.CodPlan IS NULL or UMK_and_RPD.Name = " +
-                "\'\')\r\n                          WHERE        (Grup.BeginYear = @BeginYear) AND (S" +
-                "tudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @CodKaf) AND (UMK_and_R" +
-                "PD.CodPlan IS NULL) OR\r\n                                                    (Gru" +
-                "p.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (UMK" +
-                "_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z\r\nGROUP BY CodKaf, NameKaf," +
-                " CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameSub, CodPlan";
+                "K_and_RPD.UMK_or_RPD = 0\r\n                          WHERE        (Grup.BeginYear" +
+                " = @BeginYear) AND (StudyPlans.CodFormStudy = @CodFormStudy) AND (pw.CodKaf = @C" +
+                "odKaf) AND (UMK_and_RPD.CodPlan IS NULL) OR\r\n                                   " +
+                "                 (Grup.BeginYear = @BeginYear) AND (StudyPlans.CodFormStudy = @C" +
+                "odFormStudy) AND (UMK_and_RPD.CodPlan IS NULL) AND (@CodKaf IS NULL)) AS z\r\nGROU" +
+                "P BY CodKaf, NameKaf, CodPlan, NamePlan, CodSub, NameSub\r\nORDER BY NameSub, CodP" +
+                "lan";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

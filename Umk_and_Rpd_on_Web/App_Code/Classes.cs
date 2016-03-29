@@ -9,7 +9,6 @@ using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 using Umk_and_Rpd_on_Web;
-//using System.IO.Packaging;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Data.SqlClient;
@@ -607,13 +606,13 @@ namespace Umk_and_Rpd_on_Web {
         /// <returns>строка формата: степень + должность + И.О. Фамилия </returns>
         private string full_inf_about_prepod(int CODPE, string I_O_Fam) {
             AcademiaDataSetTableAdapters.Doljnost_prepodTableAdapter DoljnostAdapter = new AcademiaDataSetTableAdapters.Doljnost_prepodTableAdapter();
-            DoljnostAdapter.Fill(new AcademiaDataSet.Doljnost_prepodDataTable(), (int)this.CodPrep);
+            //DoljnostAdapter.Fill(new AcademiaDataSet.Doljnost_prepodDataTable(), (int)this.CodPrep);
 
             AcademiaDataSetTableAdapters.PEOPLENTableAdapter PeolpeLenAdapter = new AcademiaDataSetTableAdapters.PEOPLENTableAdapter();
-            PeolpeLenAdapter.Fill(new AcademiaDataSet.PEOPLENDataTable());
+            //PeolpeLenAdapter.Fill(new AcademiaDataSet.PEOPLENDataTable());
 
             AcademiaDataSetTableAdapters.DEGREETableAdapter DegreeAdapter = new AcademiaDataSetTableAdapters.DEGREETableAdapter();
-            DegreeAdapter.Fill(new AcademiaDataSet.DEGREEDataTable());
+            //DegreeAdapter.Fill(new AcademiaDataSet.DEGREEDataTable());
 
             string Doljnost = DoljnostAdapter.GetDoljnost(CODPE);
             int? Cod_Degree = PeolpeLenAdapter.GetCodDegree(CODPE);

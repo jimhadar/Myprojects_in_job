@@ -84,18 +84,19 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                         htmlRow.Cells[0].Attributes.Add("class", "GridViewCss HeaderGridView KafReportSubs");
                         htmlRow.Cells[0].Style.Add(HtmlTextWriterStyle.Width, "100%");
                         htmlRow.Cells[0].Style.Add(HtmlTextWriterStyle.FontWeight, "700");
-                        htmlRow.Cells[0].Attributes.Add("colspan", "2");
+                        htmlRow.Cells[0].Attributes.Add("colspan", "3");
                         htmlRow.Cells[0].InnerText = "Кафедра " + item.Text.Trim().ToLower();
                         this.ReportOnSubsEmpty_or_notEmpty.Rows.Add(htmlRow);
-
+                        int numSub = 1;
                         foreach (DataRow row in tmpRowKafSubs) {
                             htmlRow = new HtmlTableRow();
-                            for (int i = 0; i < 2; i++ ) {
+                            for (int i = 0; i < 3; i++ ) {
                                 htmlRow.Cells.Add(new HtmlTableCell());
                                 htmlRow.Cells[i].Attributes.Add("class", "GridViewCss");
-                            }                            
-                            htmlRow.Cells[0].InnerText = row["NameSub"].ToString().Trim();
-                            htmlRow.Cells[1].InnerText = row["NamePlan"].ToString().Trim();
+                            }
+                            htmlRow.Cells[0].InnerText = (numSub++).ToString();
+                            htmlRow.Cells[1].InnerText = row["NameSub"].ToString().Trim();
+                            htmlRow.Cells[2].InnerText = row["NamePlan"].ToString().Trim();
                             this.ReportOnSubsEmpty_or_notEmpty.Rows.Add(htmlRow);
                         }
                     }

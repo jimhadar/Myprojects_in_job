@@ -403,6 +403,21 @@ namespace Umk_and_Rpd_on_Web {
             this.Student_Doljen_Znat = string.Empty;
             this.fosTable = new FosTable();
         }
+        internal Data_for_program() {
+            string s = String.Empty;
+            this.othersFieldsForUMK = new OthersFieldsForUMK(s, s, s);
+            this.othersFieldsForRPD = new OthersFieldsForRPD(s, s, s, s, s, s, s, s, s, s, s);
+            this.LiteratureTable = new LiteratureDataTable();
+            this.PlaceOOP = string.Empty;
+            this.GoalsDiscip = string.Empty;
+            this.Student_Doljen_Umet = string.Empty;
+            this.Student_doljen_Vladet = string.Empty;
+            this.Student_Doljen_Znat = string.Empty;
+            this.fosTable = new FosTable();
+            SoderjRazd_DataTable = new SoderjRazdDiscip_DataTable();
+            this.table_for_key_compet = new List<KeyCompetTable>();
+            this.CurControlTable = new CurrentControlTable();
+        }
         /// <summary>
         /// Сохранение РПД / УМК в базу данных, в зависимости от параметра Save_RPD_or_UMK
         /// </summary>
@@ -1966,7 +1981,7 @@ namespace Umk_and_Rpd_on_Web {
             XmlReader.Close();
         }
 
-        private void Load_RPD_To_Program_from_XML(ref XmlTextReader XmlReader) {
+        internal void Load_RPD_To_Program_from_XML(ref XmlTextReader XmlReader) {
             ClearAllGeneralFields();
             othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
             XmlReader.Read();

@@ -26752,8 +26752,7 @@ WHERE        (name LIKE '%' + @Name + '%') AND (author LIKE '%' + @Author + '%')
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "select * from TypeEdu\r\nwhere (CodTypeEdu >= 8 or CodTypeEdu = 3) and (CodTypeEdu " +
-                "<> 9)";
+            this._commandCollection[0].CommandText = "select * from TypeEdu\r\nwhere (CodTypeEdu >= 10) ";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -27259,7 +27258,7 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         UMK_and_RPD.UMK_or_RPD, UMK_and_RPD.Na" +
@@ -27307,6 +27306,57 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFormStudy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PrepodWhoEdit", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "PrepodWhoEdit", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Umk_or_Rpd", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "UMK_or_RPD", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        z.Id_RPD_or_UMK, z.UMK_or_RPD, z.Name, z.CodFac, z.CodKaf, z.CodPre" +
+                "p, z.CodSub, z.Year, z.CodSpec, z.CodTypeEdu, z.CodPrepWhoDo, z.CodFormStudy, z." +
+                "CodPlan, z.NameKaf, z.NameSub, z.TypeEdu, \r\n                         z.UMKRPD, z" +
+                ".NamePlan1, z.BeginYear, z.DateSave, z.Tmp_contents, umk.Contents AS Contents\r\nF" +
+                "ROM            (SELECT DISTINCT \r\n                                              " +
+                "      UMK_and_RPD.UMK_or_RPD, UMK_and_RPD.Name, UMK_and_RPD.CodFac, UMK_and_RPD." +
+                "CodKaf, UMK_and_RPD.CodPrep, UMK_and_RPD.CodSub, UMK_and_RPD.Year, \r\n           " +
+                "                                         UMK_and_RPD.CodSpec, UMK_and_RPD.CodTyp" +
+                "eEdu, UMK_and_RPD.CodPrepWhoDo, UMK_and_RPD.CodFormStudy, UMK_and_RPD.CodPlan, U" +
+                "MK_and_RPD.Id_RPD_or_UMK, Kafs.NameKaf, \r\n                                      " +
+                "              Subs.NameSub, TypeEdu.TypeEdu, CASE WHEN UMK_and_RPD.UMK_or_RPD = " +
+                "1 THEN \'УМК\' ELSE \'РПД\' END AS UMKRPD, CASE WHEN CHARINDEX(\'-\', studyplans.NameP" +
+                "lan, \r\n                                                    LEN(studyplans.NamePl" +
+                "an) - 1) > 0 THEN SUBSTRING(studyplans.NamePlan, 0, LEN(studyplans.NamePlan) - 1" +
+                ") WHEN CHARINDEX(\'-\', studyplans.NamePlan, LEN(studyplans.NamePlan) - 1) \r\n     " +
+                "                                               <= 0 THEN studyplans.NamePlan END" +
+                " AS NamePlan1, Grup.BeginYear, UMK_and_RPD.DateSave, UMK_and_RPD.Tmp_contents\r\n " +
+                "                         FROM            UMK_and_RPD INNER JOIN\r\n               " +
+                "                                     Kafs ON UMK_and_RPD.CodKaf = Kafs.CodKaf IN" +
+                "NER JOIN\r\n                                                    Subs ON UMK_and_RP" +
+                "D.CodSub = Subs.CodSub INNER JOIN\r\n                                             " +
+                "       TypeEdu ON UMK_and_RPD.CodTypeEdu = TypeEdu.CodTypeEdu INNER JOIN\r\n      " +
+                "                                              StudyPlans ON StudyPlans.CodPlan =" +
+                " UMK_and_RPD.CodPlan INNER JOIN\r\n                                               " +
+                "     Grup ON Grup.CodPlan = StudyPlans.CodPlan\r\n                          WHERE " +
+                "       (UMK_and_RPD.CodFac = @CodFac OR\r\n                                       " +
+                "             @CodFac IS NULL) AND (UMK_and_RPD.CodKaf = @CodKaf OR\r\n            " +
+                "                                        @CodKaf IS NULL) AND (UMK_and_RPD.Year =" +
+                " @Year OR\r\n                                                    @Year IS NULL) AN" +
+                "D (UMK_and_RPD.CodPlan = @CodPlan OR\r\n                                          " +
+                "          @CodPlan IS NULL) AND (UMK_and_RPD.CodSpec = @CodSpeciality OR\r\n      " +
+                "                                              @CodSpeciality IS NULL) AND (UMK_a" +
+                "nd_RPD.CodTypeEdu = @CodTypeEdu OR\r\n                                            " +
+                "        @CodTypeEdu IS NULL) AND (UMK_and_RPD.CodFormStudy = @CodFormStudy OR\r\n " +
+                "                                                   @CodFormStudy IS NULL) AND (G" +
+                "rup.BeginYear = @BeginYear) AND (UMK_and_RPD.Name LIKE \'%\' + @NameRpd + \'%\' OR\r\n" +
+                "                                                    @NameRpd IS NULL)) AS z INNE" +
+                "R JOIN\r\n                         UMK_and_RPD AS umk ON umk.Id_RPD_or_UMK = z.Id_" +
+                "RPD_or_UMK\r\nORDER BY z.CodKaf, z.Year";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFac", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKaf", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Year", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodSpeciality", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTypeEdu", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.Int, 1, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BeginYear", global::System.Data.SqlDbType.Int, 2, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NameRpd", global::System.Data.SqlDbType.NVarChar, 300, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27435,6 +27485,128 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Fill_admin(AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable, global::System.Nullable<int> CodFac, global::System.Nullable<int> CodKaf, global::System.Nullable<int> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<int> CodTypeEdu, global::System.Nullable<int> CodFormStudy, int BeginYear, string NameRpd) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodFac.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodFac.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Year.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Year.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((CodSpeciality == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(CodSpeciality));
+            }
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((int)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((CodFormStudy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((int)(CodFormStudy.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.SelectCommand.Parameters[7].Value = ((int)(BeginYear));
+            if ((NameRpd == null)) {
+                throw new global::System.ArgumentNullException("NameRpd");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(NameRpd));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable GetData_admin(global::System.Nullable<int> CodFac, global::System.Nullable<int> CodKaf, global::System.Nullable<int> Year, global::System.Nullable<int> CodPlan, string CodSpeciality, global::System.Nullable<int> CodTypeEdu, global::System.Nullable<int> CodFormStudy, int BeginYear, string NameRpd) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CodFac.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodFac.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodKaf.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(CodKaf.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Year.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(Year.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((CodSpeciality == null)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((string)(CodSpeciality));
+            }
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((int)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((CodFormStudy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((int)(CodFormStudy.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.SelectCommand.Parameters[7].Value = ((int)(BeginYear));
+            if ((NameRpd == null)) {
+                throw new global::System.ArgumentNullException("NameRpd");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[8].Value = ((string)(NameRpd));
             }
             AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable dataTable = new AcademiaDataSet.UMK_and_RPD_with_opisanieDataTable();
             this.Adapter.Fill(dataTable);

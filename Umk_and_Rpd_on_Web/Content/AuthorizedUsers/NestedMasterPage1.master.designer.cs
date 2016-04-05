@@ -121,15 +121,6 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminForm;
         
         /// <summary>
-        /// Button_adminForm элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button_adminForm;
-        
-        /// <summary>
         /// Section_for_MainContent элемент управления.
         /// </summary>
         /// <remarks>

@@ -14,6 +14,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
     public partial class AdminForm : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
             Page.Title = "Админ";
+            if (Request["id_rpd"] != null && Request["id_umk"] != null) {
+                using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter rpdAdapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
+                    rpdAdapter.Delete(Convert.ToInt32(Request["id_rpd"]));
+                    rpdAdapter.Delete(Convert.ToInt32(Request["id_umk"]));
+                }
+            }
+            if (Page.User.Identity.Name == "test") {
+                this.RadioBtnParams1.Visible = true;
+            }
         }
 
         private DataTable GetData() {
@@ -31,11 +40,21 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                 CodKaf = Convert.ToByte(this.DropDownList_kafs.SelectedValue);
             if (this.CheckBoxListParams.Items[1].Selected == true)
                 CodSpec = this.DropDownList_Speciality.SelectedItem.Text.Trim();
-            if (this.CheckBoxListParams.Items[2].Selected == true)
-                if (this.DropDownList_StudyPlan.SelectedValue != null)
-                    CodPlan = Convert.ToInt32(this.DropDownList_StudyPlan.SelectedValue);
+            if (this.CheckBoxListParams.Items[2].Selected == true && 
+                this.DropDownList_StudyPlan.SelectedValue != null)
+                CodPlan = Convert.ToInt32(this.DropDownList_StudyPlan.SelectedValue);
+            if (this.CheckBoxListParams.Items[3].Selected == true)
+                NameRpd = this.TextBox_NameSub.Text.ToString().Trim();
             using(AcademiaDataSetTableAdapters.UMK_and_RPD_with_opisanieTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPD_with_opisanieTableAdapter()){
-                return adapter.GetData_admin(CodFac, CodKaf, StudyYear, CodPlan, CodSpec, CodTypeEdu, CodFormStudy, BeginYear, NameRpd);
+                switch (RadioBtnParams1.SelectedIndex) {
+                    case 0:
+                        return adapter.GetData_TmpContentsIsNull(CodFac, CodKaf, StudyYear, CodPlan, CodSpec, CodTypeEdu, CodFormStudy, BeginYear, NameRpd);
+                    case 1:
+                        return adapter.GetData_TmpContentsIsNotNull(CodFac, CodKaf, StudyYear, CodPlan, CodSpec, CodTypeEdu, CodFormStudy, BeginYear, NameRpd);
+                    case 2:
+                    default:
+                        return adapter.GetData_admin(CodFac, CodKaf, StudyYear, CodPlan, CodSpec, CodTypeEdu, CodFormStudy, BeginYear, NameRpd);
+                }
             }
         }
 
@@ -49,12 +68,12 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                 case 1 :
                     tmp = tableWithRpd.Select("Name<>''");
                     break;
-            }                                   
+            }        
             foreach(DataRow row in tmp){
                 if ((bool?)row["UMK_or_RPD"] == false) {
                     using (MemoryStream memStream = new MemoryStream()) {
                         Data_for_program data = new Data_for_program();
-                        if (row["Tmp_contents"] != null || (row["Tmp_contents"].ToString() == string.Empty && ((byte[])row["Tmp_contents"]).Length == 0)) {
+                        if (row["Tmp_contents"] == null || (row["Tmp_contents"] != System.DBNull.Value && row["Tmp_contents"].ToString() == string.Empty && ((byte[])row["Tmp_contents"]).Length == 0) || (row["Tmp_contents"] == System.DBNull.Value)) {
                             string Data = row["Contents"].ToString();
                             StreamWriter writer = new StreamWriter(memStream, System.Text.Encoding.UTF8);
                             writer.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data);
@@ -70,24 +89,35 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                                 BinaryFormatter BinFormat = new BinaryFormatter();
                                 memStream.Write(tmp_content, 0, tmp_content.Length);
                                 memStream.Seek(0, SeekOrigin.Begin);
-                                Session["data"] = (Data_for_program)BinFormat.Deserialize(memStream);
+                                data = (Data_for_program)BinFormat.Deserialize(memStream);
                             }
                         }
                         string EmptyField = this.GetEmptyField(data);
                         HtmlTableRow tableRow = new HtmlTableRow();
-                        for (int i = 0; i < 8; i++) {
+                        for (int i = 0; i < 12; i++) {
                             tableRow.Cells.Add(new HtmlTableCell());
                             tableRow.Cells[i].Attributes.Add("class", "GridViewCss");
                         }
-                        tableRow.Cells[0].InnerHtml = (row["Name"] != null && row["Name"].ToString() != string.Empty) ? "+" : "-";
-                        tableRow.Cells[1].InnerHtml = Convert.ToDateTime(row["DateSave"]).ToString();
-                        tableRow.Cells[2].InnerHtml = row["Name"].ToString();
-                        tableRow.Cells[3].InnerHtml = row["Id_RPD_or_UMK"].ToString();
-                        tableRow.Cells[4].InnerHtml = tableWithRpd.Select("CodPlan=" + row["CodPlan"].ToString() + " and CodSub=" + row["CodSub"].ToString() + " and Year=" + row["Year"].ToString() + " and UMK_or_RPD=1")[0]["Id_RPD_or_UMK"].ToString();
-                        tableRow.Cells[5].InnerHtml = row["Year"].ToString();
-                        tableRow.Cells[6].InnerHtml = row["NamePlan1"].ToString();
-                        tableRow.Cells[7].InnerHtml = string.Empty;
-                        tableRow.Cells[7].InnerHtml = EmptyField;
+                        tableRow.Cells[0].InnerHtml = Convert.ToDateTime(row["DateSave"]).ToString();
+                        //tableRow.Cells[1].InnerHtml = (row["Name"] != null && row["Name"].ToString() != string.Empty) ? "+" : "-";                        
+                        tableRow.Cells[1].InnerHtml = row["Name"].ToString();
+                        tableRow.Cells[2].InnerHtml = row["Id_RPD_or_UMK"].ToString();
+                        string id_umk = tableWithRpd.Select("CodPlan=" + row["CodPlan"].ToString() + " and CodSub=" + row["CodSub"].ToString() + " and Year=" + row["Year"].ToString() + " and UMK_or_RPD=1 and CodPrep=" + row["CodPrep"].ToString() + " and CodPrepWhoDo=" + row["CodPrepWhoDo"].ToString())[0]["Id_RPD_or_UMK"].ToString();
+                        tableRow.Cells[3].InnerHtml = id_umk;
+                        tableRow.Cells[4].InnerHtml = row["Year"].ToString();
+                        tableRow.Cells[5].InnerHtml = row["NamePlan1"].ToString();
+                        tableRow.Cells[6].InnerText = row["NameSub"].ToString();
+                        tableRow.Cells[6].Attributes.Add("class", "GridViewCss NameSubColumnInform");
+                        tableRow.Cells[7].InnerText = row["NameKaf"].ToString();
+                        tableRow.Cells[7].Attributes.Add("class", "GridViewCss KafColumnInform");
+                        tableRow.Cells[8].InnerHtml = row["CodPrep"].ToString();
+                        tableRow.Cells[9].InnerHtml = row["CodPrepWhoDo"].ToString();
+                        tableRow.Cells[10].InnerHtml = string.Empty;
+                        tableRow.Cells[10].InnerHtml = EmptyField;
+                        tableRow.Cells[11].InnerHtml = "<input type='button' class='bttn' value='Удалить' onclick='delRPDFromBase(" + row["Id_RPD_or_UMK"].ToString() + ", " + id_umk + ")'/>";
+                        if (Page.User.Identity.Name != "test") {
+                            tableRow.Cells[11].Style.Add(HtmlTextWriterStyle.Display, "none");
+                        }
                         this.informTable.Rows.Add(tableRow);
                     }
                 }
@@ -123,19 +153,19 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
 
         private string GetEmptyField(Data_for_program data) {
             List<string> emptyField = new List<string>();
-            if (data.GoalsDiscip.Trim() == string.Empty) {
+            if (data.GoalsDiscip.Trim() == string.Empty) 
                 emptyField.Add("Цели освоения дисциплины");
-            }
             if(data.PlaceOOP.Trim() == string.Empty)
                 emptyField.Add("Место дисциплины в структуре ООП");
+            if (data.table_for_key_compet == null || data.table_for_key_compet.Count == 0)
+                emptyField.Add("Ключевые компетенции");
             if(data.Student_Doljen_Znat.Trim() == string.Empty)
                 emptyField.Add("Студент должен знать");
             if (data.Student_Doljen_Umet.Trim() == string.Empty)
                 emptyField.Add("Студент должен уметь");
             if (data.Student_doljen_Vladet.Trim() == string.Empty)
                 emptyField.Add("Студент должен владеть");
-            if (data.table_for_key_compet == null || data.table_for_key_compet.Count == 0)
-                emptyField.Add("Ключевые компетенции");
+            
             if (data.SoderjRazd_DataTable.RowCount == 0)
                 emptyField.Add("Содержание дисциплины");
             if (data.LiteratureTable.RowCount == 0 || (data.LiteratureTable.RowCount != 0 && data.LiteratureTable[0, 1] == string.Empty))

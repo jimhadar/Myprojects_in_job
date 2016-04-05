@@ -3,6 +3,16 @@
     <asp:ScriptManager runat="server">
     </asp:ScriptManager>
     <link href="../../App_Themes/StyleSheet_for_FindForm.css" rel="stylesheet" />
+    <script>
+        function delRPDFromBase(id_rpd, id_umk) {
+            var formdata = new FormData();
+            formdata.append("id_rpd", id_rpd);
+            formdata.append("id_umk", id_umk);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "", true);
+            xhr.send(formdata);
+        }
+    </script>
     <%--<label>
         Поиск по названию РПД:
         <asp:TextBox runat="server" ID="NameRpdTextBox" Width="350px"></asp:TextBox>
@@ -13,15 +23,20 @@
             <asp:RadioButtonList runat="server" ID="RadioBtnParams" style="display:table-cell; width:50%;">
                 <asp:ListItem Selected="true" Text="Вывести пустые РПД/УМК (в БД добавлены, но все поля пусты/или не сохранены окончательно в БД)" Value="0" />
                 <asp:ListItem Text="Вывести заполненные РПД/УМК (в БД сохранены и некоторые/все поля заполнены)" Value="1" />
-            </asp:RadioButtonList>
-        
+            </asp:RadioButtonList>        
             <asp:CheckBoxList runat="server" ID="CheckBoxListParams" Style="display: table-cell; width:50%;" >
                 <asp:ListItem Selected="True" Text="Кафедра" />
                 <asp:ListItem Text="Направление подготовки" />
                 <asp:ListItem Text="Учебный план" />
+                <asp:ListItem Text="Дисциплина" />
             </asp:CheckBoxList>
         </div>
     </div>
+    <asp:RadioButtonList runat="server" ID="RadioBtnParams1" CssClass="group_dropdownlist_as_tablerow" Visible="false">
+        <asp:ListItem Text="Вывести РПД/УМК, у которых поле Tmp_contents = null" Value="0" />
+        <asp:ListItem Text="Вывести РПД/УМК, у которых поле Tmp_contents != null" Value="1" />
+        <asp:ListItem Selected="true" Text="Вывести РПД/УМК со всеми Tmp_Contents" Value="2" />
+    </asp:RadioButtonList>
     <hr />
     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
         <ContentTemplate>
@@ -46,9 +61,9 @@
                     <asp:DropDownList ID="DropDownList_TypeEdu" runat="server" CssClass="dropdownlist_as_tablecell_column4" DataSourceID="ObjectDataSource_TypeEdu" DataTextField="TypeEdu" DataValueField="CodTypeEdu" AutoPostBack="True"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource_TypeEdu" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.TypeEduTableAdapter"></asp:ObjectDataSource>
                 </div>
-                <div class="group_dropdownlist_as_tablerow">
-                    <span class="dropdownlist_as_tablecell_column1"></span>
-                    <span class="dropdownlist_as_tablecell_column2"></span>
+                <div class="group_dropdownlist_as_tablerow">                    
+                    <span class="dropdownlist_as_tablecell_column1">Дисциплина</span>
+                    <asp:TextBox runat="server" ID="TextBox_NameSub" CssClass="dropdownlist_as_tablecell_column2" />
                     <span class="dropdownlist_as_tablecell_column3">Направление подготовки</span>
                     <asp:DropDownList ID="DropDownList_Speciality" CssClass="dropdownlist_as_tablecell_column4" runat="server" DataSourceID="ObjectDataSource_Speciality" DataTextField="CodSpec_with_NameSpec" DataValueField="CodSpeciality" AutoPostBack="True"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ObjectDataSource_Speciality" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="Umk_and_Rpd_on_Web.AcademiaDataSetTableAdapters.SpecialityTableAdapter">
@@ -78,16 +93,20 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Button ID="Button_ControlDateSaveRPD" runat="server" Text="Найти" CssClass="bttn" OnClick="Button_ControlDateSaveRPD_Click" />
-            <table runat="server"  id="informTable" Class="GridViewCss">
-                <tr>
-                    <th class="HeaderGridView" style="width:80px;">Сохранена окончательно в БД</th>
-                    <th class="HeaderGridView" style="width:100px;">Дата сохранения</th>
-                    <th class="HeaderGridView" style="width:200px;">Имя в БД</th>
+            <table runat="server"  id="informTable" Class="GridViewCss" style="width:100%;">
+                <tr>                    
+                    <th class="HeaderGridView " style="width:100px;">Дата сохранения</th>                    
+                    <th class="HeaderGridView" style="width:100px;">Имя в БД</th>
                     <th class="HeaderGridView">ID РПД</th>
                     <th class="HeaderGridView">ID УМК</th>
                     <th class="HeaderGridView">Год</th>
                     <th class="HeaderGridView">План</th>
+                    <th class="HeaderGridView" style="width: 80px;">Дисциплина</th>
+                    <th class="HeaderGridView KafColumnInform">Кафедра</th>  
+                    <th class="HeaderGridView NameSubColumnInform">По нагрузке</th>
+                    <th class="HeaderGridView">Кто сделал</th>
                     <th class="HeaderGridView">Пустые поля</th>
+                    <th class="HeaderGridView"></th>
                 </tr>
             </table>
             <%--<Table runat="server" ID="informTable" Class="GridViewCss">

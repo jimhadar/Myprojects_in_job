@@ -35,9 +35,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             //if (Page.User.Identity.Name != "(ok)" && Page.User.Identity.Name != "test") {
             //    this.li_for_href_findForm.Visible = false;
             //}
-            if (Page.User.Identity.Name != "test") {
-                this.AdminForm.Style.Add(HtmlTextWriterStyle.Display, "none");
-            }
+            //if (Page.User.Identity.Name != "test") {
+            //    this.AdminForm.Style.Add(HtmlTextWriterStyle.Display, "none");
+            //}
         }
 
         protected void Button_for_EndEditUMK_RPD_Click(object sender, EventArgs e) {

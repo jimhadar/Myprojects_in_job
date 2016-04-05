@@ -1801,8 +1801,8 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                using (WordprocessingDocument output =
-                  WordprocessingDocument.Open(outputDocument, true)) {
+                //using (WordprocessingDocument output =
+                using(WordprocessingDocument output = WordprocessingDocument.Open(outputDocument, true)) {
                     //использование элемента тело в новой 
                     //содержимому xmldocument создать новый открытый объект xml тела.
                     Body updatedbodycontent =

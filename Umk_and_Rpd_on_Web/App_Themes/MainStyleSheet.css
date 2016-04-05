@@ -386,6 +386,21 @@ h3{
     max-width:1000px;
 }
 
+/*Для страницы админа*/
+.KafColumnInform{
+    width:120px !important;
+    max-width:120px !important;
+    word-wrap:break-word;
+}
+
+.NameSubColumnInform{
+    width:100px !important;
+    max-width:100px !important;
+    word-wrap:break-word;
+}
+
+/**/
+
 @media(max-width:1280px){
     #wrap_for_pop-up-window{
         width:auto;

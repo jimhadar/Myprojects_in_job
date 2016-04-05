@@ -31,6 +31,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
         protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxListParams;
         
         /// <summary>
+        /// RadioBtnParams1 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioBtnParams1;
+        
+        /// <summary>
         /// UpdatePanel2 элемент управления.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource_TypeEdu;
+        
+        /// <summary>
+        /// TextBox_NameSub элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox_NameSub;
         
         /// <summary>
         /// DropDownList_Speciality элемент управления.

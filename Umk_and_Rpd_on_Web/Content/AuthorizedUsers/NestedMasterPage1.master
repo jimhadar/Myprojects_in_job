@@ -42,20 +42,23 @@
                 <li runat="server" id="li_for_href_findForm" clientidmode="static">
                     <span class="bttn">Управление</span>
                     <ul class="ul_manager">                    
-                        <li class="li_manager">
+                        <%--<li class="li_manager">
                             <a href="Find" class="bttn">Просмотр списка созданных РПД/УМК</a>
-                        </li>
+                        </li>--%>
                         <%--<li class="li_manager">
                             <a href="/Question?TypeQuestion=SfromPassportCompet" class="bttn">Формирование паспорта компетенций</a>                          
                         </li>--%>
-                        <li class="li_manager">
+                        <li class="li_manager" runat="server" id="AdminForm">
+                            <a href="AdminForm" class="bttn" target="_blank">Просмотр списка созданных РПД/УМК</a>
+                        </li>
+                        <li class="li_manager" >
                             <a href="Report" class="bttn" target="_blank">Просмотр отчетов</a>                          
                         </li>
                     </ul>
                 </li>
-                <li runat="server" id="AdminForm">
+                <%--<li runat="server" id="AdminForm">
                     <asp:Button runat="server" ID="Button_adminForm" OnClick="Button_adminForm_Click" CssClass="bttn" Text="Управление" />
-                </li>
+                </li>--%>
             </ul>
         </nav>
         <section class="layout">

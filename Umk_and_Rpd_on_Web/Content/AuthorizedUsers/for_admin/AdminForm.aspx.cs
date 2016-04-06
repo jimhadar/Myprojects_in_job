@@ -75,13 +75,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                         Data_for_program data = new Data_for_program();
                         if (row["Tmp_contents"] == null || (row["Tmp_contents"] != System.DBNull.Value && row["Tmp_contents"].ToString() == string.Empty && ((byte[])row["Tmp_contents"]).Length == 0) || (row["Tmp_contents"] == System.DBNull.Value)) {
                             string Data = row["Contents"].ToString();
-                            StreamWriter writer = new StreamWriter(memStream, System.Text.Encoding.UTF8);
-                            writer.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data);
-                            writer.Flush();
-                            StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
-                            reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                            System.Xml.XmlTextReader xmlReader = new System.Xml.XmlTextReader(reader);
-                            data.Load_RPD_To_Program_from_XML(ref xmlReader);
+                            data.Load_RPD_To_Program_from_XML(Data);
                         }
                         else {
                             byte[] tmp_content = (byte[])row["Tmp_contents"];

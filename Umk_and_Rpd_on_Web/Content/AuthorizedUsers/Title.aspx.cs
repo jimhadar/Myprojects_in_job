@@ -597,7 +597,7 @@ namespace Umk_and_Rpd_on_Web {
                         data.Id_rpd = id_rpd;
                         data.Id_umk = id_umk;
                         data.LoadDataToProgramFromDataBase();
-                    }
+                    }                      
                     //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
                     using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                         if (id_rpd == null || id_umk == null) {
@@ -644,7 +644,16 @@ namespace Umk_and_Rpd_on_Web {
                             }
                             else {
                                 data.ClearAllFields();
-                            }
+                                if (grid == this.SubsNotTeach_GridView) {
+                                    using(AcademiaDataSetTableAdapters.Subs_not_teachTableAdapter subsNotTeachAdapter = new AcademiaDataSetTableAdapters.Subs_not_teachTableAdapter()){
+                                        DataTable table = subsNotTeachAdapter.GetData_WithSvzazkaWithSubsTeach(CodPlan, CodSub);
+                                        //Session["tmpTableForNotTeachSub"] = (Data_for_program)table.Rows[0][""];
+                                        if(table != null && table.Rows.Count != 0){
+                                            Response.Redirect("~/Question?TypeQuestion=CopyDataFromTeachDiscip&Id_rpd=" + table.Rows[0]["Id_RPD_or_UMK"].ToString() + "&NameSubTeach=" + table.Rows[0]["NameSubTeach"].ToString());
+                                        }
+                                    }
+                                }                                                     
+                            }                            
                         }
                         else {
                             //содержимое поля tmpContents

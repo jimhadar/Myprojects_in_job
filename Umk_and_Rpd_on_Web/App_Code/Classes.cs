@@ -1801,7 +1801,6 @@ namespace Umk_and_Rpd_on_Web {
 
                 //Используйте Open XML SDK версии 2.0, чтобы открыть 
                 //выходной документ в режиме редактирования.
-                //using (WordprocessingDocument output =
                 using(WordprocessingDocument output = WordprocessingDocument.Open(outputDocument, true)) {
                     //использование элемента тело в новой 
                     //содержимому xmldocument создать новый открытый объект xml тела.
@@ -1905,185 +1904,187 @@ namespace Umk_and_Rpd_on_Web {
         #region Загрузка данных из базы данных / из файла *.xml
         internal void LoadDataToProgramFromDataBase() {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter umk_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
+                //umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                 if (Id_umk != null) {
                     string Data_umk = umk_rpd_adapter.GetContents((int)Id_umk);
-                    using (MemoryStream MemStream_umk = new MemoryStream()) {
-                        StreamWriter writer_umk = new StreamWriter(MemStream_umk, System.Text.Encoding.UTF8);
-                        writer_umk.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data_umk);
-                        writer_umk.Flush();
-                        StreamReader reader = new StreamReader(MemStream_umk, System.Text.Encoding.UTF8);
-                        reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                        XmlTextReader XmlReader = new XmlTextReader(reader);
-                        Load_UMK_To_Program_from_XML(ref XmlReader);
-                    }
+                    Load_UMK_To_Program_from_XML(Data_umk);
                 }
                 if (this.Id_rpd != null) {
                     string Data_rpd = umk_rpd_adapter.GetContents((int)Id_rpd);
-                    using (MemoryStream MemStream_rpd = new MemoryStream()) {
-                        StreamWriter writer_rpd = new StreamWriter(MemStream_rpd, System.Text.Encoding.UTF8);
-                        writer_rpd.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data_rpd);
-                        writer_rpd.Flush();
-                        StreamReader reader = new StreamReader(MemStream_rpd, System.Text.Encoding.UTF8);
-                        reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                        XmlTextReader XmlReader = new XmlTextReader(reader);
-                        Load_RPD_To_Program_from_XML(ref XmlReader);
-                    }
+                    Load_RPD_To_Program_from_XML(Data_rpd);
                 }
             }
         }
 
-        private void Load_UMK_To_Program_from_XML(ref XmlTextReader XmlReader) {
-            ClearAllGeneralFields();
-            this.othersFieldsForUMK.UpdateFileds("", "", "");
-            XmlReader.Read();
-            while (!XmlReader.EOF) {
-                if (XmlReader.NodeType == XmlNodeType.Element) {
-                    switch (XmlReader.Name) {
-                        case "Title_inf_for_program":
+        private void Load_UMK_To_Program_from_XML(string Data) {
+            using (MemoryStream memStream = new MemoryStream()) {
+                StreamWriter writer_umk = new StreamWriter(memStream, System.Text.Encoding.UTF8);
+                writer_umk.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data);
+                writer_umk.Flush();
+                StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                XmlTextReader xmlReader = new XmlTextReader(reader);
 
-                            break;
-                        case "UMK_razdel_1":
-                            ZapFieldsFor_zapiska_and_Compet(ref XmlReader, XmlReader.Name);
-                            break;
-                        case "Soderjanie_razd_discip":
-                            this.zap_SoderjRazd_DataTable_from_Xml(ref XmlReader, "Razdel_2");
-                            this.podshet_hours_in_RazdelLesson();
-                            break;
-                        case "Recommand_literature":
-                            this.zap_RecomandLiterature_from_Xml(ref XmlReader);
-                            break;
-                        case "CurrentControl":
-                            while (XmlReader.Read()) {
-                                switch (XmlReader.Name) {
-                                    case "CurControl":
-                                        this.zap_CurControlTable_from_Xml(ref XmlReader);
+                ClearAllGeneralFields();
+                this.othersFieldsForUMK.UpdateFileds("", "", "");
+                xmlReader.Read();
+                while (!xmlReader.EOF) {
+                    if (xmlReader.NodeType == XmlNodeType.Element) {
+                        switch (xmlReader.Name) {
+                            case "Title_inf_for_program":
+
+                                break;
+                            case "UMK_razdel_1":
+                                ZapFieldsFor_zapiska_and_Compet(ref xmlReader, xmlReader.Name);
+                                break;
+                            case "Soderjanie_razd_discip":
+                                this.zap_SoderjRazd_DataTable_from_Xml(ref xmlReader, "Razdel_2");
+                                this.podshet_hours_in_RazdelLesson();
+                                break;
+                            case "Recommand_literature":
+                                this.zap_RecomandLiterature_from_Xml(ref xmlReader);
+                                break;
+                            case "CurrentControl":
+                                while (xmlReader.Read()) {
+                                    switch (xmlReader.Name) {
+                                        case "CurControl":
+                                            this.zap_CurControlTable_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Form_and_rules_attestat":
+                                            this.othersFieldsForUMK.FormAndRulesCertification = this.zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Voprosy_k_ekz":
+                                            this.othersFieldsForUMK.QuestionForExam = zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Example_ekz_Unit":
+                                            this.othersFieldsForUMK.ExampleExamTests = zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                    }
+                                    if (xmlReader.Name == "CurrentControl") {
                                         break;
-                                    case "Form_and_rules_attestat":
-                                        this.othersFieldsForUMK.FormAndRulesCertification = this.zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Voprosy_k_ekz":
-                                        this.othersFieldsForUMK.QuestionForExam = zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Example_ekz_Unit":
-                                        this.othersFieldsForUMK.ExampleExamTests = zap_strFields_from_Xml(ref XmlReader);
-                                        break;
+                                    }
                                 }
-                                if (XmlReader.Name == "CurrentControl") {
-                                    break;
-                                }
-                            }
-                            break;
+                                break;
+                        }
                     }
+                    xmlReader.Read();
                 }
-                XmlReader.Read();
+                xmlReader.Close();
             }
-            XmlReader.Close();
         }
 
-        internal void Load_RPD_To_Program_from_XML(ref XmlTextReader XmlReader) {
-            ClearAllGeneralFields();
-            othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
-            XmlReader.Read();
-            while (!XmlReader.EOF) {
-                if (XmlReader.NodeType == XmlNodeType.Element) {
-                    switch (XmlReader.Name) {
-                        case "Title_inf_for_program":
+        internal void Load_RPD_To_Program_from_XML(string Data) {
+            using (MemoryStream memStream = new MemoryStream()) {
+                StreamWriter writer_rpd = new StreamWriter(memStream, System.Text.Encoding.UTF8);
+                writer_rpd.Write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Data);
+                writer_rpd.Flush();
+                StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                XmlTextReader xmlReader = new XmlTextReader(reader);
 
-                            break;
-                        case "RPD_1_2_3":
-                            ZapFieldsFor_zapiska_and_Compet(ref XmlReader, "RPD_1_2_3");
-                            break;
-                        case "RPD_4_5":
-                            while (XmlReader.Read() && XmlReader.Name != "RPD_4_5") {
-                                switch (XmlReader.Name) {
-                                    case "Soderjanie_razd_discip":
-                                        this.zap_SoderjRazd_DataTable_from_Xml(ref XmlReader, "Type_and_Form_promej_control");
-                                        podshet_hours_in_RazdelLesson();
-                                        if (XmlReader.Name == "Type_and_Form_promej_control") {
-                                            this.othersFieldsForRPD.TypeAndFormCertification = zap_strFields_from_Xml(ref XmlReader);
-                                        }
-                                        break;
-                                    case "Obraz_technology":
-                                        //Считывание полей для заполнения "Используемые образовательные технологии"
-                                        List<string> EducateTechnology = this.othersFieldsForRPD.Used_Ecucate_Technology;
-                                        EducateTechnology.Clear();
-                                        while (XmlReader.Read() && XmlReader.Name != "Part_zanyatii") {
-                                            EducateTechnology.Add(XmlReader.GetAttribute("Value"));
-                                        }
-                                        if (EducateTechnology.Count == 0) {
-                                            EducateTechnology.Add(string.Empty);
-                                        }
-                                        //Считывание поля для заполнения "доля занятий с использованием активных и интерактивных методов"
-                                        this.othersFieldsForRPD.PartInteractiveMethods = XmlReader.GetAttribute("Value");
-                                        break;
-                                }
-                                XmlReader.Read();
-                            }
-                            break;
-                        case "RPD_6":
-                            XmlReader.Read();
-                            while (XmlReader.Name != "RPD_6") {
-                                switch (XmlReader.Name) {
-                                    case "CurrentControl":
-                                        //для таблицы с текущим контролем успеваемости
-                                        zap_CurControlTable_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Example_Zad_CurControl":
-                                        this.othersFieldsForRPD.ExampleTestCurControl = zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Theme_Referats":
-                                        this.othersFieldsForRPD.ThemesOfEsseReferats = zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Theme_KursJob":
-                                        this.othersFieldsForRPD.ThemesOfCourseJob = this.zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "MethodUkaz_SamJob":
-                                        this.othersFieldsForRPD.OrganizationOfIndependentWork = this.zap_strFields_from_Xml(ref XmlReader);
-                                        break;
-                                    case "Promej_Control":
-                                        XmlReader.Read();
-                                        while (XmlReader.Name != "Promej_Control") {
-                                            switch (XmlReader.Name) {
-                                                case "About_promej_Control":
-                                                    this.othersFieldsForRPD.InterMediateControl = zap_strFields_from_Xml(ref XmlReader);
-                                                    break;
-                                                case "Example_Zad":
-                                                    this.othersFieldsForRPD.ExampleTest = zap_strFields_from_Xml(ref XmlReader);
-                                                    break;
-                                                case "Vopros_k_Ekz":
-                                                    this.othersFieldsForRPD.QuestionForExam = this.zap_strFields_from_Xml(ref XmlReader);
-                                                    break;
+                ClearAllGeneralFields();
+                othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
+                xmlReader.Read();
+                while (!xmlReader.EOF) {
+                    if (xmlReader.NodeType == XmlNodeType.Element) {
+                        switch (xmlReader.Name) {
+                            case "Title_inf_for_program":
+
+                                break;
+                            case "RPD_1_2_3":
+                                ZapFieldsFor_zapiska_and_Compet(ref xmlReader, "RPD_1_2_3");
+                                break;
+                            case "RPD_4_5":
+                                while (xmlReader.Read() && xmlReader.Name != "RPD_4_5") {
+                                    switch (xmlReader.Name) {
+                                        case "Soderjanie_razd_discip":
+                                            this.zap_SoderjRazd_DataTable_from_Xml(ref xmlReader, "Type_and_Form_promej_control");
+                                            podshet_hours_in_RazdelLesson();
+                                            if (xmlReader.Name == "Type_and_Form_promej_control") {
+                                                this.othersFieldsForRPD.TypeAndFormCertification = zap_strFields_from_Xml(ref xmlReader);
                                             }
-                                            XmlReader.Read();
-                                        }
-                                        break;
+                                            break;
+                                        case "Obraz_technology":
+                                            //Считывание полей для заполнения "Используемые образовательные технологии"
+                                            List<string> EducateTechnology = this.othersFieldsForRPD.Used_Ecucate_Technology;
+                                            EducateTechnology.Clear();
+                                            while (xmlReader.Read() && xmlReader.Name != "Part_zanyatii") {
+                                                EducateTechnology.Add(xmlReader.GetAttribute("Value"));
+                                            }
+                                            if (EducateTechnology.Count == 0) {
+                                                EducateTechnology.Add(string.Empty);
+                                            }
+                                            //Считывание поля для заполнения "доля занятий с использованием активных и интерактивных методов"
+                                            this.othersFieldsForRPD.PartInteractiveMethods = xmlReader.GetAttribute("Value");
+                                            break;
+                                    }
+                                    xmlReader.Read();
                                 }
-                                XmlReader.Read();
-                            }
-                            break;
-                        case "Recommand_literature":
-                            //рекомендуемая литература
-                            zap_RecomandLiterature_from_Xml(ref XmlReader);
-                            break;
-                        case "Technical_Obespech":
-                            this.othersFieldsForRPD.LogisticsDiscipline = zap_strFields_from_Xml(ref XmlReader);
-                            break;
-                        case "Fos":
-                            fosTable = new FosTable();
-                            while(XmlReader.Read() && XmlReader.IsStartElement() && XmlReader.HasAttributes){
-                                fosTable.AddRow(XmlReader.GetAttribute("NameTheme"),
-                                                XmlReader.GetAttribute("Competetion"),
-                                                XmlReader.GetAttribute("ZUNS"),
-                                                XmlReader.GetAttribute("TypeandNumberInFos"),
-                                                XmlReader.GetAttribute("Criteria"));
-                            }
-                            break;
+                                break;
+                            case "RPD_6":
+                                xmlReader.Read();
+                                while (xmlReader.Name != "RPD_6") {
+                                    switch (xmlReader.Name) {
+                                        case "CurrentControl":
+                                            //для таблицы с текущим контролем успеваемости
+                                            zap_CurControlTable_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Example_Zad_CurControl":
+                                            this.othersFieldsForRPD.ExampleTestCurControl = zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Theme_Referats":
+                                            this.othersFieldsForRPD.ThemesOfEsseReferats = zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Theme_KursJob":
+                                            this.othersFieldsForRPD.ThemesOfCourseJob = this.zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "MethodUkaz_SamJob":
+                                            this.othersFieldsForRPD.OrganizationOfIndependentWork = this.zap_strFields_from_Xml(ref xmlReader);
+                                            break;
+                                        case "Promej_Control":
+                                            xmlReader.Read();
+                                            while (xmlReader.Name != "Promej_Control") {
+                                                switch (xmlReader.Name) {
+                                                    case "About_promej_Control":
+                                                        this.othersFieldsForRPD.InterMediateControl = zap_strFields_from_Xml(ref xmlReader);
+                                                        break;
+                                                    case "Example_Zad":
+                                                        this.othersFieldsForRPD.ExampleTest = zap_strFields_from_Xml(ref xmlReader);
+                                                        break;
+                                                    case "Vopros_k_Ekz":
+                                                        this.othersFieldsForRPD.QuestionForExam = this.zap_strFields_from_Xml(ref xmlReader);
+                                                        break;
+                                                }
+                                                xmlReader.Read();
+                                            }
+                                            break;
+                                    }
+                                    xmlReader.Read();
+                                }
+                                break;
+                            case "Recommand_literature":
+                                //рекомендуемая литература
+                                zap_RecomandLiterature_from_Xml(ref xmlReader);
+                                break;
+                            case "Technical_Obespech":
+                                this.othersFieldsForRPD.LogisticsDiscipline = zap_strFields_from_Xml(ref xmlReader);
+                                break;
+                            case "Fos":
+                                fosTable = new FosTable();
+                                while (xmlReader.Read() && xmlReader.IsStartElement() && xmlReader.HasAttributes) {
+                                    fosTable.AddRow(xmlReader.GetAttribute("NameTheme"),
+                                                    xmlReader.GetAttribute("Competetion"),
+                                                    xmlReader.GetAttribute("ZUNS"),
+                                                    xmlReader.GetAttribute("TypeandNumberInFos"),
+                                                    xmlReader.GetAttribute("Criteria"));
+                                }
+                                break;
+                        }
                     }
+                    xmlReader.Read();
                 }
-                XmlReader.Read();
+                xmlReader.Close();
             }
-            XmlReader.Close();
         }
 
         #endregion

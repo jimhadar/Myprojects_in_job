@@ -17,6 +17,11 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                         this.No_btn.Visible = false;
                         this.Clear_btn.Text = "Сформировать паспорт компетенций";
                     break;
+                case "CopyDataFromTeachDiscip":
+                        this.Label_question.Text = "Перенести информацию, введенную для РПД дисциплины \"" + Request.QueryString["NameSubTeach"].Trim() + "\" в РПД для выбранной дисциплины?";
+                        this.Clear_btn.Text = "Нет, не переносить. Заполнение будет производиться с \"чистого листа\"";
+                        this.No_btn.Text = "Перенести информацию и использовать ее для заполнения всех полей РПД выбранной дисциплины";
+                    break;
                 default:
                         this.Label_question.Text = "Удалить информацию, введенную для РПД предыдущей дисципины?";
                         this.Clear_btn.Text = "Удалить информацию";
@@ -29,6 +34,14 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
             switch (this.Request.QueryString["TypeQuestion"]) {
                 case "SfromPassportCompet":
                     
+                    break;
+                case "CopyDataFromTeachDiscip":
+                    using(AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter rpdAdapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()){
+                        string contents = rpdAdapter.GetContents(Convert.ToInt32(Request.QueryString["Id_rpd"]));
+                        Data_for_program data = (Data_for_program)Session["data"];
+                        data.Load_RPD_To_Program_from_XML(contents); 
+                    }
+                    Response.Redirect("/Title");
                     break;
                 default:
                     Response.Redirect("~/Title");

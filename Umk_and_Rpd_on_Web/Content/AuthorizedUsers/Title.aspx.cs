@@ -125,19 +125,12 @@ namespace Umk_and_Rpd_on_Web {
             out int? id_umk, 
             out int? id_rpd) {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                //adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
                 object row_id_umk;
                 object row_id_rpd;
                 row_id_rpd = adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
                 row_id_umk = adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
                 id_umk = (int?)row_id_umk;
                 id_rpd = (int?)row_id_rpd;
-                /*if(id_umk != null || id_rpd != null){
-                    Data_for_program data = (Data_for_program)Session["data"];
-                    data.Id_umk = id_umk;
-                    data.Id_rpd = id_rpd;
-                    data.LoadDataToProgramFromDataBase();
-                }     */
             }
         }
 
@@ -188,7 +181,6 @@ namespace Umk_and_Rpd_on_Web {
             ((Data_for_program)Session["data"]).UchYear = (int)Session["UchYear"];
             NagruzkaOnPrepGridView.SelectRow(-1);
             this.SubsNotTeach_GridView.SelectRow(-1);
-            //Load_All_selectLists_SelectedValue();
         }            
 
         protected void FacultyDropDownList_SelectedIndexChanged(object sender, EventArgs e) {
@@ -200,9 +192,7 @@ namespace Umk_and_Rpd_on_Web {
         protected void KafsDropDownList_SelectedIndexChanged(object sender, EventArgs e) {
             Session["CodKafPrep"] = Convert.ToByte(this.DropDownList_KafDiscip.SelectedValue);
             ((Data_for_program)Session["data"]).CodKafPrep = (byte?)Session["CodKafPrep"];
-            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
-                this.NagruzkaOnPrepGridView.SelectRow(-1);
-            }
+            this.NagruzkaOnPrepGridView.SelectRow(-1);
             this.SubsNotTeach_GridView.SelectRow(-1);
         }
 
@@ -220,9 +210,7 @@ namespace Umk_and_Rpd_on_Web {
             else {
                 ((Data_for_program)Session["data"]).CodFormStudy = null;
             }
-            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
-                this.NagruzkaOnPrepGridView.SelectRow(-1);
-            }
+            this.NagruzkaOnPrepGridView.SelectRow(-1);
             this.SubsNotTeach_GridView.SelectRow(-1);
         }
 
@@ -237,9 +225,7 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodTypeEdu"] = 10;
                 ((Data_for_program)Session["data"]).CodTypeEdu = 10;
             }
-            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
-                this.NagruzkaOnPrepGridView.SelectRow(-1);
-            }
+            this.NagruzkaOnPrepGridView.SelectRow(-1);
             this.SubsNotTeach_GridView.SelectRow(-1);
         }
 
@@ -253,9 +239,7 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodSpeciality"] = null;
                 ((Data_for_program)Session["data"]).CodSpeciality = null;
             }
-            if (this.NagruzkaOnPrepGridView.Rows.Count > 0) {
-                this.NagruzkaOnPrepGridView.SelectRow(-1);
-            }
+            this.NagruzkaOnPrepGridView.SelectRow(-1);
             this.SubsNotTeach_GridView.SelectRow(-1);
         }
 
@@ -340,221 +324,6 @@ namespace Umk_and_Rpd_on_Web {
             this.SformOOPSect.Controls.Add(a);
         }
 
-        protected void NagruzkaOnPrepGridView_SelectedIndexChanged(object sender, EventArgs e) {
-            if (NagruzkaOnPrepGridView.SelectedRow != null && NagruzkaOnPrepGridView.SelectedIndex != -1) {
-                if (this.SubsNotTeach_GridView.Rows.Count != 0) {
-                    this.SubsNotTeach_GridView.SelectRow(-1);
-                }
-                //сохранение временно кода предмета, для которого ранее заполнялась РПД
-                int oldCodSub = Convert.ToInt16(Session["CodSub"]);
-                Session["CodSub"] = Convert.ToInt16(this.NagruzkaOnPrepGridView.SelectedRow.Cells[2].Text);
-
-                Session["CodPrep_Plan"] = Convert.ToInt32(this.NagruzkaOnPrepGridView.SelectedRow.Cells[4].Text);
-
-                short CodSub = Convert.ToInt16(Session["CodSub"]);
-                short CodPlan = Convert.ToInt16(Session["CodPlan"]);
-                short StudyYear = Convert.ToInt16(Session["UchYear"]);
-                byte CodKafDiscip = (byte)Session["CodKafPrep"];
-                int? CodPrepPlan = (int?)Session["CodPrep_Plan"];
-                CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины \"" + NagruzkaOnPrepGridView.Rows[NagruzkaOnPrepGridView.SelectedIndex].Cells[3].Text + "\"";
-                int? id_rpd, id_umk;
-                GetId_umk_and_rpd_in_DB(CodSub,
-                                        CodPlan,
-                                        StudyYear,
-                                        CodKafDiscip,
-                                        CodPrepPlan,
-                                        out id_umk,
-                                        out id_rpd);
-                Data_for_program data = (Data_for_program)Session["data"];
-                //если такие РПД/УМК уже есть в базе данных
-                if (id_umk != data.Id_umk || id_rpd != data.Id_rpd) {
-                    data.Id_rpd = id_rpd;
-                    data.Id_umk = id_umk;
-                    data.LoadDataToProgramFromDataBase();
-                }
-                //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
-                using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                    if (id_rpd == null || id_umk == null) {
-                        if (id_rpd == null) {
-                            UMK_rpd_adapter.Insert(false,
-                                                    String.Empty,
-                                                    Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
-                                                    CodKafDiscip,
-                                                    CodPrepPlan,
-                                                    CodSub,
-                                                    StudyYear,
-                                                    "<RPD></RPD>",
-                                                    DateTime.Now,
-                                                    (int?)Session["CodPrepWhoEdit"],
-                                                    CodPlan,
-                                                    Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
-                                                    Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue,
-                                                    null);
-                            data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                            if (id_umk == null) {
-                                UMK_rpd_adapter.Insert(true,
-                                                        String.Empty,
-                                                        Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
-                                                        CodKafDiscip,
-                                                        CodPrepPlan,
-                                                        CodSub,
-                                                        StudyYear,
-                                                        "<umk></umk>",
-                                                        DateTime.Now,
-                                                        (int?)Session["CodPrepWhoEdit"],
-                                                        CodPlan,
-                                                        Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
-                                                        Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                        this.DropDownList_Speciality.SelectedValue,
-                                                        null);
-                                data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                            }
-                            //если новая РПД, выбранная для заполнения дисциплины с кодом CodSub == oldCodSub, то перенаправляем на страницу Question для того,
-                            //чтобы узнать, необходимо ли оставить старые данные и использовать их для заполнения новой РПД
-                            if (oldCodSub == CodSub) {
-                                Response.Redirect("~/Question?TypeQuestion=ClearDataPredDicsip");
-                            }
-                            else {
-                                data.ClearAllFields();
-                            }
-                        }
-                    }
-                    else {
-                        //содержимое поля tmpContents
-                        //если оно не пустое, то загружаем данные класса в него
-                        //а не из поля, содержащего *.xml данные
-                        byte[] tmp = UMK_rpd_adapter.Get_TmpContents((int)data.Id_rpd);
-                        if (tmp != null && tmp.Length > 0) {
-                            BinaryFormatter BinFormat = new BinaryFormatter();
-                            using (MemoryStream MemStream = new MemoryStream(tmp)) {
-                                MemStream.Seek(0, SeekOrigin.Begin);
-                                Session["data"] = (Data_for_program)BinFormat.Deserialize(MemStream);
-                            }
-                        }
-                    }
-                    //Получаем код преподавателя, который создал РПД и имеет право ее редактировать и если
-                    //он совпадает с кодом вошедшего преподавателя, то разрешаем редактирование
-                    if (UMK_rpd_adapter.GetCodPEWhoEdit(data.Id_rpd) == (int?)Session["CodPrepWhoEdit"]) {
-                        Session["AllowEditRpd"] = true;
-                    }
-                    else {
-                        Session["AllowEditRpd"] = false;
-                        this.CurrentSelectSub.InnerText = "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
-                    }
-                }
-            }
-            else {
-                this.CurrentSelectSub.InnerText = string.Empty;
-            }
-        }
-
-        protected void SubsNotTeach_GridView_SelectedIndexChanged(object sender, EventArgs e) {
-            if(this.SubsNotTeach_GridView.SelectedRow != null && this.SubsNotTeach_GridView.SelectedIndex != -1){
-                this.NagruzkaOnPrepGridView.SelectRow(-1);
-                //сохранение временно кода предмета, для которого ранее заполнялась РПД
-                int oldCodSub = Convert.ToInt16(Session["CodSub"]);
-                Session["CodSub"] = Convert.ToInt16(this.SubsNotTeach_GridView.SelectedRow.Cells[1].Text);
-
-                Session["CodPrep_Plan"] = 0;
-
-                short CodSub = Convert.ToInt16(Session["CodSub"]);
-                short CodPlan = Convert.ToInt16(Session["CodPlan"]);
-                short StudyYear = Convert.ToInt16(Session["UchYear"]);
-                byte CodKafDiscip = (byte)Session["CodKafPrep"];
-                int? CodPrepPlan = (int?)Session["CodPrep_Plan"];
-                CurrentSelectSub.InnerText = "РПД / УМК будет составляться для дисциплины \"" + SubsNotTeach_GridView.Rows[SubsNotTeach_GridView.SelectedIndex].Cells[1].Text + "\"";
-                int? id_rpd, id_umk;
-                GetId_umk_and_rpd_in_DB(CodSub,
-                                        CodPlan,
-                                        StudyYear,
-                                        CodKafDiscip,
-                                        CodPrepPlan,
-                                        out id_umk,
-                                        out id_rpd);
-                Data_for_program data = (Data_for_program)Session["data"];
-                //если такие РПД/УМК уже есть в базе данных
-                if (id_umk != data.Id_umk || id_rpd != data.Id_rpd) {
-                    data.Id_rpd = id_rpd;
-                    data.Id_umk = id_umk;
-                    data.LoadDataToProgramFromDataBase();
-                }
-                //если таких РПД/УМК нет в базе данных, то вставляем новую РПД и УМК и получаем сразу же их id
-                using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter UMK_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
-                    if (id_rpd == null || id_umk == null) {
-                        if (id_rpd == null) {
-                            UMK_rpd_adapter.Insert(false,
-                                                    String.Empty,
-                                                    Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
-                                                    CodKafDiscip,
-                                                    CodPrepPlan,
-                                                    CodSub,
-                                                    StudyYear,
-                                                    "<RPD></RPD>",
-                                                    DateTime.Now,
-                                                    (int?)Session["CodPrepWhoEdit"],
-                                                    CodPlan,
-                                                    Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
-                                                    Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                    this.DropDownList_Speciality.SelectedValue,
-                                                    null);
-                            data.Id_rpd = (int?)UMK_rpd_adapter.GetId(CodSub, false, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                            if (id_umk == null) {
-                                UMK_rpd_adapter.Insert(true,
-                                                        String.Empty,
-                                                        Convert.ToByte(this.DropDownList_FacDiscip.SelectedValue),
-                                                        CodKafDiscip,
-                                                        CodPrepPlan,
-                                                        CodSub,
-                                                        StudyYear,
-                                                        "<umk></umk>",
-                                                        DateTime.Now,
-                                                        (int?)Session["CodPrepWhoEdit"],
-                                                        CodPlan,
-                                                        Convert.ToByte(this.DropDownList_FormStudy.SelectedValue),
-                                                        Convert.ToByte(this.DropDownList_TypeEdu.SelectedValue),
-                                                        this.DropDownList_Speciality.SelectedValue,
-                                                        null);
-                                data.Id_umk = (int?)UMK_rpd_adapter.GetId(CodSub, true, StudyYear, CodPlan, CodKafDiscip, CodPrepPlan);
-                            }
-                            //если новая РПД, выбранная для заполнения дисциплины с кодом CodSub == oldCodSub, то перенаправляем на страницу Question для того,
-                            //чтобы узнать, необходимо ли оставить старые данные и использовать их для заполнения новой РПД
-                            if (oldCodSub == CodSub) {
-                                Response.Redirect("~/Question?TypeQuestion=ClearDataPredDicsip");
-                            }
-                            else {
-                                data.ClearAllFields();
-                            }
-                        }
-                    }
-                    else {
-                        //содержимое поля tmpContents
-                        //если оно не пустое, то загружаем данные класса в него
-                        //а не из поля, содержащего *.xml данные
-                        byte[] tmp = UMK_rpd_adapter.Get_TmpContents((int)data.Id_rpd);
-                        if (tmp != null && tmp.Length > 0) {
-                            BinaryFormatter BinFormat = new BinaryFormatter();
-                            using (MemoryStream MemStream = new MemoryStream(tmp)) {
-                                MemStream.Seek(0, SeekOrigin.Begin);
-                                Session["data"] = (Data_for_program)BinFormat.Deserialize(MemStream);
-                            }
-                        }
-                    }
-                    //Получаем код преподавателя, который создал РПД и имеет право ее редактировать и если
-                    //он совпадает с кодом вошедшего преподавателя, то разрешаем редактирование
-                    if (UMK_rpd_adapter.GetCodPEWhoEdit(data.Id_rpd) == (int?)Session["CodPrepWhoEdit"]) {
-                        Session["AllowEditRpd"] = true;
-                    }
-                    else {
-                        Session["AllowEditRpd"] = false;
-                        this.CurrentSelectSub.InnerText = "РПД по выбранной дисциплине составлена другим преподавателем! Вносимые изменения не сохранятся.";
-                    }
-                }
-            }
-            else {
-                this.CurrentSelectSub.InnerText = string.Empty;
-            }
-        }
         /// <summary>
         /// Для событий, происходящих при выборе строки в одном из двух GridView
         /// </summary>

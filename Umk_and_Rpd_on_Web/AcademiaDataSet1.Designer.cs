@@ -90,13 +90,11 @@ namespace Umk_and_Rpd_on_Web {
         
         private global::System.Data.DataRelation relationFK_ArmKaf_SubCompet_Subs;
         
-        private global::System.Data.DataRelation relationFK_ArmKaf_SubCompet_StudyPlans;
-        
-        private global::System.Data.DataRelation relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans;
-        
         private global::System.Data.DataRelation relationFK_StudyPlans_TypeEdu;
         
         private global::System.Data.DataRelation relationFK_StudyPlans_FormStudy;
+        
+        private global::System.Data.DataRelation relationFK_UnitSubs_Subs1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -844,10 +842,9 @@ namespace Umk_and_Rpd_on_Web {
             this.relationFK_ArmKaf_OcenSredstvVPlane_OcenSredstv = this.Relations["FK_ArmKaf_OcenSredstvVPlane_OcenSredstv"];
             this.relationFK_ArmKaf_OcenSredstvVPlane_Subs = this.Relations["FK_ArmKaf_OcenSredstvVPlane_Subs"];
             this.relationFK_ArmKaf_SubCompet_Subs = this.Relations["FK_ArmKaf_SubCompet_Subs"];
-            this.relationFK_ArmKaf_SubCompet_StudyPlans = this.Relations["FK_ArmKaf_SubCompet_StudyPlans"];
-            this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans = this.Relations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"];
             this.relationFK_StudyPlans_TypeEdu = this.Relations["FK_StudyPlans_TypeEdu"];
             this.relationFK_StudyPlans_FormStudy = this.Relations["FK_StudyPlans_FormStudy"];
+            this.relationFK_UnitSubs_Subs1 = this.Relations["FK_UnitSubs_Subs1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -936,14 +933,6 @@ namespace Umk_and_Rpd_on_Web {
                         this.tableSubs.CodSubColumn}, new global::System.Data.DataColumn[] {
                         this.tableForPassportCompet.CodSubColumn}, false);
             this.Relations.Add(this.relationFK_ArmKaf_SubCompet_Subs);
-            this.relationFK_ArmKaf_SubCompet_StudyPlans = new global::System.Data.DataRelation("FK_ArmKaf_SubCompet_StudyPlans", new global::System.Data.DataColumn[] {
-                        this.tableStudyPlans.CodPlanColumn}, new global::System.Data.DataColumn[] {
-                        this.tableForPassportCompet.CodPlanColumn}, false);
-            this.Relations.Add(this.relationFK_ArmKaf_SubCompet_StudyPlans);
-            this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans = new global::System.Data.DataRelation("FK_ArmKaf_OcenSredstvVPlane_StudyPlans", new global::System.Data.DataColumn[] {
-                        this.tableStudyPlans.CodPlanColumn}, new global::System.Data.DataColumn[] {
-                        this.tableArmKaf_OcenSredstvVPlane.CodPlanColumn}, false);
-            this.Relations.Add(this.relationFK_ArmKaf_OcenSredstvVPlane_StudyPlans);
             this.relationFK_StudyPlans_TypeEdu = new global::System.Data.DataRelation("FK_StudyPlans_TypeEdu", new global::System.Data.DataColumn[] {
                         this.tableTypeEdu.CodTypeEduColumn}, new global::System.Data.DataColumn[] {
                         this.tableStudyPlans.CodTypeEduColumn}, false);
@@ -952,6 +941,10 @@ namespace Umk_and_Rpd_on_Web {
                         this.tableFormStudy.CodFormStudyColumn}, new global::System.Data.DataColumn[] {
                         this.tableStudyPlans.CodFormStudyColumn}, false);
             this.Relations.Add(this.relationFK_StudyPlans_FormStudy);
+            this.relationFK_UnitSubs_Subs1 = new global::System.Data.DataRelation("FK_UnitSubs_Subs1", new global::System.Data.DataColumn[] {
+                        this.tableSubs_not_teach.CodSubColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNagruzkaOnPrep.CodSubColumn}, false);
+            this.Relations.Add(this.relationFK_UnitSubs_Subs1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3974,22 +3967,10 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnCodFormStudy);
                 this.columnCodPlan = new global::System.Data.DataColumn("CodPlan", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodPlan);
-                this.columnYear.AllowDBNull = false;
-                this.columnNameSub.AllowDBNull = false;
                 this.columnNameSub.MaxLength = 100;
-                this.columnCodSpecialization.AllowDBNull = false;
                 this.columnCodSpecialization.MaxLength = 2;
-                this.columnCodSpeciality.AllowDBNull = false;
                 this.columnCodSpeciality.MaxLength = 4;
-                this.columnCodKafDiscip.AllowDBNull = false;
-                this.columnCodPrep_On_Plan.AllowDBNull = false;
-                this.columnPrep_on_plan.AllowDBNull = false;
                 this.columnPrep_on_plan.MaxLength = 50;
-                this.columnCodTypeEdu.AllowDBNull = false;
-                this.columnCodKafPlan.AllowDBNull = false;
-                this.columnCodFacultyPlan.AllowDBNull = false;
-                this.columnCodFormStudy.AllowDBNull = false;
-                this.columnCodPlan.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5373,14 +5354,6 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SpecialityRow FindByCodSpecialityCodTypeEdu(string CodSpeciality, byte CodTypeEdu) {
-                return ((SpecialityRow)(this.Rows.Find(new object[] {
-                            CodSpeciality,
-                            CodTypeEdu})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 SpecialityDataTable cln = ((SpecialityDataTable)(base.Clone()));
                 cln.InitVars();
@@ -5419,18 +5392,12 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnCodSpeciality);
                 this.columnCodTypeEdu = new global::System.Data.DataColumn("CodTypeEdu", typeof(byte), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodTypeEdu);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodSpeciality,
-                                this.columnCodTypeEdu}, true));
                 this.columnCodSpecialityOKSO.MaxLength = 9;
-                this.columnSpeciality.AllowDBNull = false;
                 this.columnSpeciality.MaxLength = 90;
                 this.columnSpecialityOKSO.MaxLength = 90;
                 this.columnCodSpec_with_NameSpec.ReadOnly = true;
                 this.columnCodSpec_with_NameSpec.MaxLength = 102;
-                this.columnCodSpeciality.AllowDBNull = false;
                 this.columnCodSpeciality.MaxLength = 4;
-                this.columnCodTypeEdu.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8960,13 +8927,6 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StudyPlansRow FindByCodPlan(int CodPlan) {
-                return ((StudyPlansRow)(this.Rows.Find(new object[] {
-                            CodPlan})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 StudyPlansDataTable cln = ((StudyPlansDataTable)(base.Clone()));
                 cln.InitVars();
@@ -9017,20 +8977,9 @@ namespace Umk_and_Rpd_on_Web {
                 base.Columns.Add(this.columnNamePlan1);
                 this.columnBeginYear = new global::System.Data.DataColumn("BeginYear", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBeginYear);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCodPlan}, true));
-                this.columnCodPlan.AllowDBNull = false;
-                this.columnCodPlan.Unique = true;
-                this.columnNamePlan.AllowDBNull = false;
                 this.columnNamePlan.MaxLength = 30;
-                this.columnCodSpecialization.AllowDBNull = false;
                 this.columnCodSpecialization.MaxLength = 2;
-                this.columnCodSpeciality.AllowDBNull = false;
                 this.columnCodSpeciality.MaxLength = 4;
-                this.columnCodTypeEdu.AllowDBNull = false;
-                this.columnCodKaf.AllowDBNull = false;
-                this.columnCodFaculty.AllowDBNull = false;
-                this.columnCodFormStudy.AllowDBNull = false;
                 this.columnNamePlan1.ReadOnly = true;
                 this.columnNamePlan1.MaxLength = 30;
             }
@@ -10148,20 +10097,17 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ArmKaf_OcenSredstvVPlaneRow AddArmKaf_OcenSredstvVPlaneRow(OcenSredstvRow parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv, SubsRow parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs, StudyPlansRow parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans) {
+            public ArmKaf_OcenSredstvVPlaneRow AddArmKaf_OcenSredstvVPlaneRow(OcenSredstvRow parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv, SubsRow parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs, int CodPlan) {
                 ArmKaf_OcenSredstvVPlaneRow rowArmKaf_OcenSredstvVPlaneRow = ((ArmKaf_OcenSredstvVPlaneRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        null};
+                        CodPlan};
                 if ((parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv != null)) {
                     columnValuesArray[0] = parentOcenSredstvRowByFK_ArmKaf_OcenSredstvVPlane_OcenSredstv[0];
                 }
                 if ((parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs != null)) {
                     columnValuesArray[1] = parentSubsRowByFK_ArmKaf_OcenSredstvVPlane_Subs[0];
-                }
-                if ((parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans != null)) {
-                    columnValuesArray[2] = parentStudyPlansRowByFK_ArmKaf_OcenSredstvVPlane_StudyPlans[0];
                 }
                 rowArmKaf_OcenSredstvVPlaneRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowArmKaf_OcenSredstvVPlaneRow);
@@ -10498,20 +10444,17 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ForPassportCompetRow AddForPassportCompetRow(string AbbrComp, string AboutComp, StudyPlansRow parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans, SubsRow parentSubsRowByFK_ArmKaf_SubCompet_Subs, string Contents, string NameSub) {
+            public ForPassportCompetRow AddForPassportCompetRow(string AbbrComp, string AboutComp, int CodPlan, SubsRow parentSubsRowByFK_ArmKaf_SubCompet_Subs, string Contents, string NameSub) {
                 ForPassportCompetRow rowForPassportCompetRow = ((ForPassportCompetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         AbbrComp,
                         AboutComp,
-                        null,
+                        CodPlan,
                         null,
                         null,
                         Contents,
                         NameSub};
-                if ((parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans != null)) {
-                    columnValuesArray[3] = parentStudyPlansRowByFK_ArmKaf_SubCompet_StudyPlans[0];
-                }
                 if ((parentSubsRowByFK_ArmKaf_SubCompet_Subs != null)) {
                     columnValuesArray[4] = parentSubsRowByFK_ArmKaf_SubCompet_Subs[0];
                 }
@@ -14224,7 +14167,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public short Year {
                 get {
-                    return ((short)(this[this.tableNagruzkaOnPrep.YearColumn]));
+                    try {
+                        return ((short)(this[this.tableNagruzkaOnPrep.YearColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Year\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.YearColumn] = value;
@@ -14235,7 +14183,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NameSub {
                 get {
-                    return ((string)(this[this.tableNagruzkaOnPrep.NameSubColumn]));
+                    try {
+                        return ((string)(this[this.tableNagruzkaOnPrep.NameSubColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NameSub\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.NameSubColumn] = value;
@@ -14246,7 +14199,13 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpecialization {
                 get {
-                    return ((string)(this[this.tableNagruzkaOnPrep.CodSpecializationColumn]));
+                    try {
+                        return ((string)(this[this.tableNagruzkaOnPrep.CodSpecializationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpecialization\' в таблице \'NagruzkaOnPrep\' равно DBNull." +
+                                "", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodSpecializationColumn] = value;
@@ -14257,7 +14216,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpeciality {
                 get {
-                    return ((string)(this[this.tableNagruzkaOnPrep.CodSpecialityColumn]));
+                    try {
+                        return ((string)(this[this.tableNagruzkaOnPrep.CodSpecialityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpeciality\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodSpecialityColumn] = value;
@@ -14268,7 +14232,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodKafDiscip {
                 get {
-                    return ((byte)(this[this.tableNagruzkaOnPrep.CodKafDiscipColumn]));
+                    try {
+                        return ((byte)(this[this.tableNagruzkaOnPrep.CodKafDiscipColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKafDiscip\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodKafDiscipColumn] = value;
@@ -14279,7 +14248,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CodPrep_On_Plan {
                 get {
-                    return ((int)(this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn]));
+                    try {
+                        return ((int)(this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPrep_On_Plan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn] = value;
@@ -14290,7 +14264,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Prep_on_plan {
                 get {
-                    return ((string)(this[this.tableNagruzkaOnPrep.Prep_on_planColumn]));
+                    try {
+                        return ((string)(this[this.tableNagruzkaOnPrep.Prep_on_planColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Prep_on_plan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.Prep_on_planColumn] = value;
@@ -14301,7 +14280,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodTypeEdu {
                 get {
-                    return ((byte)(this[this.tableNagruzkaOnPrep.CodTypeEduColumn]));
+                    try {
+                        return ((byte)(this[this.tableNagruzkaOnPrep.CodTypeEduColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodTypeEdu\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodTypeEduColumn] = value;
@@ -14312,7 +14296,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodKafPlan {
                 get {
-                    return ((byte)(this[this.tableNagruzkaOnPrep.CodKafPlanColumn]));
+                    try {
+                        return ((byte)(this[this.tableNagruzkaOnPrep.CodKafPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKafPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodKafPlanColumn] = value;
@@ -14323,7 +14312,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFacultyPlan {
                 get {
-                    return ((byte)(this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn]));
+                    try {
+                        return ((byte)(this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFacultyPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn] = value;
@@ -14334,7 +14328,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFormStudy {
                 get {
-                    return ((byte)(this[this.tableNagruzkaOnPrep.CodFormStudyColumn]));
+                    try {
+                        return ((byte)(this[this.tableNagruzkaOnPrep.CodFormStudyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFormStudy\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodFormStudyColumn] = value;
@@ -14345,7 +14344,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CodPlan {
                 get {
-                    return ((int)(this[this.tableNagruzkaOnPrep.CodPlanColumn]));
+                    try {
+                        return ((int)(this[this.tableNagruzkaOnPrep.CodPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPlan\' в таблице \'NagruzkaOnPrep\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableNagruzkaOnPrep.CodPlanColumn] = value;
@@ -14365,6 +14369,17 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Subs_not_teachRow Subs_not_teachRow {
+                get {
+                    return ((Subs_not_teachRow)(this.GetParentRow(this.Table.ParentRelations["FK_UnitSubs_Subs1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_UnitSubs_Subs1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCodSubNull() {
                 return this.IsNull(this.tableNagruzkaOnPrep.CodSubColumn);
             }
@@ -14373,6 +14388,150 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodSubNull() {
                 this[this.tableNagruzkaOnPrep.CodSubColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsYearNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.YearColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetYearNull() {
+                this[this.tableNagruzkaOnPrep.YearColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameSubNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.NameSubColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameSubNull() {
+                this[this.tableNagruzkaOnPrep.NameSubColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSpecializationNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodSpecializationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSpecializationNull() {
+                this[this.tableNagruzkaOnPrep.CodSpecializationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSpecialityNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodSpecialityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSpecialityNull() {
+                this[this.tableNagruzkaOnPrep.CodSpecialityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodKafDiscipNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodKafDiscipColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodKafDiscipNull() {
+                this[this.tableNagruzkaOnPrep.CodKafDiscipColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodPrep_On_PlanNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodPrep_On_PlanNull() {
+                this[this.tableNagruzkaOnPrep.CodPrep_On_PlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPrep_on_planNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.Prep_on_planColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPrep_on_planNull() {
+                this[this.tableNagruzkaOnPrep.Prep_on_planColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodTypeEduNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodTypeEduColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodTypeEduNull() {
+                this[this.tableNagruzkaOnPrep.CodTypeEduColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodKafPlanNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodKafPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodKafPlanNull() {
+                this[this.tableNagruzkaOnPrep.CodKafPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodFacultyPlanNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodFacultyPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodFacultyPlanNull() {
+                this[this.tableNagruzkaOnPrep.CodFacultyPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodFormStudyNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodFormStudyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodFormStudyNull() {
+                this[this.tableNagruzkaOnPrep.CodFormStudyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodPlanNull() {
+                return this.IsNull(this.tableNagruzkaOnPrep.CodPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodPlanNull() {
+                this[this.tableNagruzkaOnPrep.CodPlanColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -15052,7 +15211,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Speciality {
                 get {
-                    return ((string)(this[this.tableSpeciality.SpecialityColumn]));
+                    try {
+                        return ((string)(this[this.tableSpeciality.SpecialityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Speciality\' в таблице \'Speciality\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSpeciality.SpecialityColumn] = value;
@@ -15096,7 +15260,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpeciality {
                 get {
-                    return ((string)(this[this.tableSpeciality.CodSpecialityColumn]));
+                    try {
+                        return ((string)(this[this.tableSpeciality.CodSpecialityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpeciality\' в таблице \'Speciality\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSpeciality.CodSpecialityColumn] = value;
@@ -15107,7 +15276,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodTypeEdu {
                 get {
-                    return ((byte)(this[this.tableSpeciality.CodTypeEduColumn]));
+                    try {
+                        return ((byte)(this[this.tableSpeciality.CodTypeEduColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodTypeEdu\' в таблице \'Speciality\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSpeciality.CodTypeEduColumn] = value;
@@ -15124,6 +15298,18 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodSpecialityOKSONull() {
                 this[this.tableSpeciality.CodSpecialityOKSOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSpecialityNull() {
+                return this.IsNull(this.tableSpeciality.SpecialityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSpecialityNull() {
+                this[this.tableSpeciality.SpecialityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15148,6 +15334,30 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCodSpec_with_NameSpecNull() {
                 this[this.tableSpeciality.CodSpec_with_NameSpecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSpecialityNull() {
+                return this.IsNull(this.tableSpeciality.CodSpecialityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSpecialityNull() {
+                this[this.tableSpeciality.CodSpecialityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodTypeEduNull() {
+                return this.IsNull(this.tableSpeciality.CodTypeEduColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodTypeEduNull() {
+                this[this.tableSpeciality.CodTypeEduColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -16502,7 +16712,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int CodPlan {
                 get {
-                    return ((int)(this[this.tableStudyPlans.CodPlanColumn]));
+                    try {
+                        return ((int)(this[this.tableStudyPlans.CodPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodPlan\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodPlanColumn] = value;
@@ -16513,7 +16728,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string NamePlan {
                 get {
-                    return ((string)(this[this.tableStudyPlans.NamePlanColumn]));
+                    try {
+                        return ((string)(this[this.tableStudyPlans.NamePlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'NamePlan\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.NamePlanColumn] = value;
@@ -16524,7 +16744,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpecialization {
                 get {
-                    return ((string)(this[this.tableStudyPlans.CodSpecializationColumn]));
+                    try {
+                        return ((string)(this[this.tableStudyPlans.CodSpecializationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpecialization\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodSpecializationColumn] = value;
@@ -16535,7 +16760,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string CodSpeciality {
                 get {
-                    return ((string)(this[this.tableStudyPlans.CodSpecialityColumn]));
+                    try {
+                        return ((string)(this[this.tableStudyPlans.CodSpecialityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodSpeciality\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodSpecialityColumn] = value;
@@ -16546,7 +16776,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodTypeEdu {
                 get {
-                    return ((byte)(this[this.tableStudyPlans.CodTypeEduColumn]));
+                    try {
+                        return ((byte)(this[this.tableStudyPlans.CodTypeEduColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodTypeEdu\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodTypeEduColumn] = value;
@@ -16557,7 +16792,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodKaf {
                 get {
-                    return ((byte)(this[this.tableStudyPlans.CodKafColumn]));
+                    try {
+                        return ((byte)(this[this.tableStudyPlans.CodKafColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodKaf\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodKafColumn] = value;
@@ -16568,7 +16808,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFaculty {
                 get {
-                    return ((byte)(this[this.tableStudyPlans.CodFacultyColumn]));
+                    try {
+                        return ((byte)(this[this.tableStudyPlans.CodFacultyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFaculty\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodFacultyColumn] = value;
@@ -16579,7 +16824,12 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte CodFormStudy {
                 get {
-                    return ((byte)(this[this.tableStudyPlans.CodFormStudyColumn]));
+                    try {
+                        return ((byte)(this[this.tableStudyPlans.CodFormStudyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'CodFormStudy\' в таблице \'StudyPlans\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableStudyPlans.CodFormStudyColumn] = value;
@@ -16642,6 +16892,102 @@ namespace Umk_and_Rpd_on_Web {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodPlanNull() {
+                return this.IsNull(this.tableStudyPlans.CodPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodPlanNull() {
+                this[this.tableStudyPlans.CodPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNamePlanNull() {
+                return this.IsNull(this.tableStudyPlans.NamePlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNamePlanNull() {
+                this[this.tableStudyPlans.NamePlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSpecializationNull() {
+                return this.IsNull(this.tableStudyPlans.CodSpecializationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSpecializationNull() {
+                this[this.tableStudyPlans.CodSpecializationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodSpecialityNull() {
+                return this.IsNull(this.tableStudyPlans.CodSpecialityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodSpecialityNull() {
+                this[this.tableStudyPlans.CodSpecialityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodTypeEduNull() {
+                return this.IsNull(this.tableStudyPlans.CodTypeEduColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodTypeEduNull() {
+                this[this.tableStudyPlans.CodTypeEduColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodKafNull() {
+                return this.IsNull(this.tableStudyPlans.CodKafColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodKafNull() {
+                this[this.tableStudyPlans.CodKafColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodFacultyNull() {
+                return this.IsNull(this.tableStudyPlans.CodFacultyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodFacultyNull() {
+                this[this.tableStudyPlans.CodFacultyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCodFormStudyNull() {
+                return this.IsNull(this.tableStudyPlans.CodFormStudyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCodFormStudyNull() {
+                this[this.tableStudyPlans.CodFormStudyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNamePlan1Null() {
                 return this.IsNull(this.tableStudyPlans.NamePlan1Column);
             }
@@ -16662,28 +17008,6 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBeginYearNull() {
                 this[this.tableStudyPlans.BeginYearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ForPassportCompetRow[] GetForPassportCompetRows() {
-                if ((this.Table.ChildRelations["FK_ArmKaf_SubCompet_StudyPlans"] == null)) {
-                    return new ForPassportCompetRow[0];
-                }
-                else {
-                    return ((ForPassportCompetRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_SubCompet_StudyPlans"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ArmKaf_OcenSredstvVPlaneRow[] GetArmKaf_OcenSredstvVPlaneRows() {
-                if ((this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"] == null)) {
-                    return new ArmKaf_OcenSredstvVPlaneRow[0];
-                }
-                else {
-                    return ((ArmKaf_OcenSredstvVPlaneRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"])));
-                }
             }
         }
         
@@ -17515,17 +17839,6 @@ namespace Umk_and_Rpd_on_Web {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_Subs"]);
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StudyPlansRow StudyPlansRow {
-                get {
-                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_OcenSredstvVPlane_StudyPlans"]);
-                }
-            }
         }
         
         /// <summary>
@@ -17678,17 +17991,6 @@ namespace Umk_and_Rpd_on_Web {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_SubCompet_Subs"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StudyPlansRow StudyPlansRow {
-                get {
-                    return ((StudyPlansRow)(this.GetParentRow(this.Table.ParentRelations["FK_ArmKaf_SubCompet_StudyPlans"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_ArmKaf_SubCompet_StudyPlans"]);
                 }
             }
             
@@ -17913,6 +18215,17 @@ namespace Umk_and_Rpd_on_Web {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPrepOnPlanNull() {
                 this[this.tableSubs_not_teach.PrepOnPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NagruzkaOnPrepRow[] GetNagruzkaOnPrepRows() {
+                if ((this.Table.ChildRelations["FK_UnitSubs_Subs1"] == null)) {
+                    return new NagruzkaOnPrepRow[0];
+                }
+                else {
+                    return ((NagruzkaOnPrepRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UnitSubs_Subs1"])));
+                }
             }
         }
         
@@ -22358,12 +22671,13 @@ where  (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) A
                 "udyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN\r\n                      " +
                 "   personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNE" +
                 "R JOIN\r\n                         WorkTypes ON PlanWorkDet.CodWorkType = WorkType" +
-                "s.CodWorkType and (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 5" +
-                "  or PlanWorkDet.CodWorkType >= 73)\r\nWHERE        (StudyPlans.CodPlan = @CodPlan" +
-                " OR\r\n                         @CodPlan IS NULL) AND (KafSubs.CodKaf = @CodKafDis" +
-                "cip OR\r\n                         @CodKafDiscip IS NULL) AND (PlanWork.CodSubType" +
-                " IS NOT NULL) AND (PlanWork.Year = @Year OR\r\n                         @Year IS N" +
-                "ULL)";
+                "s.CodWorkType AND (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 5" +
+                " OR\r\n                         PlanWorkDet.CodWorkType = 73 OR\r\n                 " +
+                "        PlanWorkDet.CodWorkType = 74 OR\r\n                         PlanWorkDet.Co" +
+                "dWorkType = 60 OR\r\n                         PlanWorkDet.CodWorkType = 66 OR\r\n   " +
+                "                      PlanWorkDet.CodWorkType = 67)\r\nwhere (StudyPlans.CodPlan =" +
+                " @CodPlan or @CodPlan is null) and (KafSubs.CodKaf = @CodKafDiscip or @CodKafDis" +
+                "cip is null) and (PlanWork.Year = @Year or @Year is null)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKafDiscip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -22374,11 +22688,26 @@ where  (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.NagruzkaOnPrepDataTable dataTable, int CodPlan, byte CodKafDiscip, short Year) {
+        public virtual int Fill(AcademiaDataSet.NagruzkaOnPrepDataTable dataTable, global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<short> Year) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
-            this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year));
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodKafDiscip.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Year.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -22390,11 +22719,26 @@ where  (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) A
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.NagruzkaOnPrepDataTable GetData(int CodPlan, byte CodKafDiscip, short Year) {
+        public virtual AcademiaDataSet.NagruzkaOnPrepDataTable GetData(global::System.Nullable<int> CodPlan, global::System.Nullable<byte> CodKafDiscip, global::System.Nullable<short> Year) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip));
-            this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year));
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodKafDiscip.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodKafDiscip.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((Year.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((short)(Year.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             AcademiaDataSet.NagruzkaOnPrepDataTable dataTable = new AcademiaDataSet.NagruzkaOnPrepDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -24111,8 +24455,8 @@ WHERE        (ArmKaf_Competetion.CodSpeciality = @CodSpeciality) AND (ArmKaf_Sub
                          Speciality.CodTypeEdu
 FROM            Speciality INNER JOIN
                          Grup ON Speciality.CodSpeciality = Grup.CodSpeciality INNER JOIN
-                         Specialization ON Grup.CodSpecialization = Specialization.CodSpecialization AND Grup.CodSpeciality = Specialization.CodSpeciality AND Grup.CodTypeEdu = Specialization.CodTypeEdu
-WHERE        (Speciality.Speciality <> 'Неизвестно') AND (Speciality.CodSpecialityOKSO is not null) AND (Speciality.CodTypeEdu = @CodTypeEdu)";
+                         Specialization ON Grup.CodSpecialization = Specialization.CodSpecialization AND Grup.CodSpeciality = Specialization.CodSpeciality AND Grup.CodTypeEdu = Speciality.CodTypeEdu
+WHERE        (Speciality.Speciality <> 'Неизвестно') AND (Speciality.CodSpecialityOKSO IS NOT NULL) AND (Speciality.CodTypeEdu = @CodTypeEdu)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTypeEdu", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodTypeEdu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -24148,9 +24492,14 @@ WHERE        (Grup.CodPlan = @CodPlan)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.SpecialityDataTable dataTable, byte CodTypeEdu) {
+        public virtual int Fill(AcademiaDataSet.SpecialityDataTable dataTable, global::System.Nullable<byte> CodTypeEdu) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodTypeEdu));
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -24162,9 +24511,14 @@ WHERE        (Grup.CodPlan = @CodPlan)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.SpecialityDataTable GetData(byte CodTypeEdu) {
+        public virtual AcademiaDataSet.SpecialityDataTable GetData(global::System.Nullable<byte> CodTypeEdu) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodTypeEdu));
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             AcademiaDataSet.SpecialityDataTable dataTable = new AcademiaDataSet.SpecialityDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -26960,23 +27314,28 @@ WHERE        (name LIKE '%' + @Name + '%') AND (author LIKE '%' + @Author + '%')
                 "nYear\r\nFROM            StudyPlans LEFT OUTER JOIN\r\n                         Grup" +
                 " ON Grup.CodPlan = StudyPlans.CodPlan\r\nWHERE        (StudyPlans.CodFormStudy = @" +
                 "CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeci" +
-                "ality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) OR\r\n" +
-                "                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPla" +
-                "ns.CodSpeciality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0)" +
-                " <= 0) AND (@CodTypeEdu IS NULL) OR\r\n                         (StudyPlans.CodTyp" +
-                "eEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARIND" +
-                "EX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodFormStudy IS NULL) OR\r\n        " +
-                "                 (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX(\'ИП " +
-                "\', StudyPlans.NamePlan, 0) <= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS" +
-                " NULL) OR\r\n                         (StudyPlans.CodFormStudy = @CodFormStudy) AN" +
-                "D (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.NamePla" +
-                "n, 0) <= 0) AND (@CodSpeciality IS NULL) OR\r\n                         (StudyPlan" +
-                "s.CodFormStudy = @CodFormStudy) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <=" +
-                " 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) OR\r\n                 " +
-                "        (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.N" +
-                "amePlan, 0) <= 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) OR\r\n " +
-                "                        (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@Co" +
-                "dTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL)";
+                "ality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND " +
+                "\r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n                    " +
+                "     (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @" +
+                "CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodType" +
+                "Edu IS NULL) AND \r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n   " +
+                "                      (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodS" +
+                "peciality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) " +
+                "AND (@CodFormStudy IS NULL) AND \r\n                         (Grup.BeginYear IS NO" +
+                "T NULL) OR\r\n                         (StudyPlans.CodSpeciality = @CodSpeciality)" +
+                " AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodTypeEdu IS NULL) A" +
+                "ND (@CodFormStudy IS NULL) AND (Grup.BeginYear IS NOT NULL) OR\r\n                " +
+                "         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = " +
+                "@CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodSpecia" +
+                "lity IS NULL) AND \r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n  " +
+                "                       (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX(" +
+                "\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciali" +
+                "ty IS NULL) AND (Grup.BeginYear IS NOT NULL) OR\r\n                         (Study" +
+                "Plans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <=" +
+                " 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (Grup.BeginYear" +
+                " IS NOT NULL) OR\r\n                         (CHARINDEX(\'ИП \', StudyPlans.NamePlan" +
+                ", 0) <= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpecia" +
+                "lity IS NULL) AND (Grup.BeginYear IS NOT NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFormStudy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTypeEdu", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodTypeEdu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -27002,12 +27361,22 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(AcademiaDataSet.StudyPlansDataTable dataTable, byte CodFormStudy, byte CodTypeEdu, string CodSpeciality) {
+        public virtual int Fill(AcademiaDataSet.StudyPlansDataTable dataTable, global::System.Nullable<byte> CodFormStudy, global::System.Nullable<byte> CodTypeEdu, string CodSpeciality) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFormStudy));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodTypeEdu));
+            if ((CodFormStudy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFormStudy.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((CodSpeciality == null)) {
-                throw new global::System.ArgumentNullException("CodSpeciality");
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = ((string)(CodSpeciality));
@@ -27023,12 +27392,22 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual AcademiaDataSet.StudyPlansDataTable GetData(byte CodFormStudy, byte CodTypeEdu, string CodSpeciality) {
+        public virtual AcademiaDataSet.StudyPlansDataTable GetData(global::System.Nullable<byte> CodFormStudy, global::System.Nullable<byte> CodTypeEdu, string CodSpeciality) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFormStudy));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodTypeEdu));
+            if ((CodFormStudy.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((byte)(CodFormStudy.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((CodTypeEdu.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((byte)(CodTypeEdu.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             if ((CodSpeciality == null)) {
-                throw new global::System.ArgumentNullException("CodSpeciality");
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.SelectCommand.Parameters[2].Value = ((string)(CodSpeciality));
@@ -27042,9 +27421,14 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int Fill_on_CodPlan(AcademiaDataSet.StudyPlansDataTable dataTable, int CodPlan) {
+        public virtual int Fill_on_CodPlan(AcademiaDataSet.StudyPlansDataTable dataTable, global::System.Nullable<int> CodPlan) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -27056,9 +27440,14 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual AcademiaDataSet.StudyPlansDataTable GetData_on_CodPlan(int CodPlan) {
+        public virtual AcademiaDataSet.StudyPlansDataTable GetData_on_CodPlan(global::System.Nullable<int> CodPlan) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan));
+            if ((CodPlan.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             AcademiaDataSet.StudyPlansDataTable dataTable = new AcademiaDataSet.StudyPlansDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -27067,9 +27456,14 @@ WHERE        StudyPlans.CodPlan = @CodPlan";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<short> GetBeginYear(int CodPlan) {
+        public virtual global::System.Nullable<short> GetBeginYear(global::System.Nullable<int> CodPlan) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
-            command.Parameters[0].Value = ((int)(CodPlan));
+            if ((CodPlan.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(CodPlan.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -29906,30 +30300,12 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._typeEduTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._typeEduTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._dEGREETableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._formStudyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._formStudyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29942,15 +30318,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._subsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -29960,12 +30327,30 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
+                    result = (result + this._ocenSredstvTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._typeEduTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._typeEduTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._formStudyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._formStudyTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -29975,24 +30360,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._lib_BookTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._facultyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._facultyTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -30014,6 +30381,33 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._kafsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._facultyTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._facultyTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -30024,27 +30418,11 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._typeEduTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._typeEduTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._dEGREETableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._dEGREETableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._formStudyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._formStudyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -30056,14 +30434,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._subsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -30072,11 +30442,27 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
+                    result = (result + this._ocenSredstvTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._typeEduTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._typeEduTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._formStudyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FormStudy.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._formStudyTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -30085,22 +30471,6 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._lib_BookTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._facultyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._facultyTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -30120,6 +30490,30 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._kafsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._facultyTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._facultyTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -30130,6 +30524,30 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(AcademiaDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._peoplenPassTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._facultyTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._facultyTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._kafsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._kafsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._uMK_and_RPDTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.UMK_and_RPD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -30146,59 +30564,11 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._kafsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Kafs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._kafsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._facultyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Faculty.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._facultyTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._lib_BookTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Lib_Book.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._lib_BookTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._peoplenPassTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PeoplenPass.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._peoplenPassTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._subsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._subsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._ocenSredstvTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._pEOPLENTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pEOPLENTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -30210,19 +30580,43 @@ WHERE        (UMK_and_RPD.Name LIKE '%' + @NameRpd + '%' or @NameRpd is null)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._dEGREETableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._dEGREETableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._typeEduTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TypeEdu.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._typeEduTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._ocenSredstvTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.OcenSredstv.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._ocenSredstvTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._subsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Subs.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._subsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._pEOPLENTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.PEOPLEN.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._pEOPLENTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._dEGREETableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DEGREE.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._dEGREETableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

@@ -217,12 +217,25 @@
             td.appendChild(textbox);
 
             var td = Row.cells[1];
+            var select = document.getElementById('NumberSemestr');
+            var Semestrs = document.createElement("SELECT");
+            var CurSemestr;
             if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].tagName != undefined) {
-                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options[Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options.selectedIndex].text;
+                CurSemestr = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options[Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options.selectedIndex].text;
             }
-            else{
-                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
+            else {
+                CurSemestr = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
             }
+            for (var i = 0; i < select.length; i++) {
+                var option = document.createElement("OPTION");
+                option.value = select.options[i].value;
+                option.text = select.options[i].text;
+                if (option.text == CurSemestr) {
+                    option.selected = true;
+                }                
+                Semestrs.appendChild(option);
+            }
+            td.appendChild(Semestrs);           
 
             var td = Row.cells[2];
             var textarea = document.createElement("textarea");
@@ -363,15 +376,39 @@
         td.appendChild(inputButton);
     }
 
-    function Update_Semestr_in_thme_or_lec() {
+    function Update_Semestr_in_thme_or_lec(razdel_or_theme) {
         //Текущая строка
         var CurRow = CurrentRow_InRazdelLesson;
         //текущий семестр
         var CurSemestr = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].childNodes[0].options[Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].childNodes[0].options.selectedIndex].text;
-        //изменение семестра во всех темах/лекциях/практиках/практ. занятиях текущего раздела
-        while ((CurrentRow_InRazdelLesson < Table_for_soderjDiscip.rows.length - 1) && (Table_for_soderjDiscip.rows[++CurrentRow_InRazdelLesson].cells[0].childNodes[0].value != "Раздел")) {
-            Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].innerText = CurSemestr;
+        if(razdel_or_theme == "Раздел"){
+            //изменение семестра во всех темах/лекциях/практиках/практ. занятиях текущего раздела
+            while ((CurrentRow_InRazdelLesson < Table_for_soderjDiscip.rows.length - 1) && (Table_for_soderjDiscip.rows[++CurrentRow_InRazdelLesson].cells[0].childNodes[0].value != "Раздел")) {
+                if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[0].childNodes[0].value == "Тема") {
+                    var select = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].childNodes[0];
+                    for (var i = 0; i < select.options.length; i++) {
+                        if (select.options[i].text == CurSemestr) {
+                            select.options[i].selected = true;
+                            break;
+                        }
+                    }                    
+                }
+                else{
+                    Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].innerText = CurSemestr;
+                }
+            }
         }
+        else if (razdel_or_theme == "Тема") {
+            //изменение семестра во всех темах/лекциях/практиках/практ. занятиях текущей темы
+            CurrentRow_InRazdelLesson++;
+            while ((CurrentRow_InRazdelLesson < Table_for_soderjDiscip.rows.length - 1) &&
+                (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[0].childNodes[0].value != "Тема") &&
+                (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[0].childNodes[0].value != "Раздел")) {
+                Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson].cells[1].innerText = CurSemestr;
+                CurrentRow_InRazdelLesson++;
+            }
+        }
+        
         CurrentRow_InRazdelLesson = CurRow;
     }
     
@@ -430,7 +467,7 @@
         for (var i = 1; i < Table_for_soderjDiscip.rows.length; i++){
             var Row = Table_for_soderjDiscip.rows[i];
             Row.cells[0].childNodes[0].name = "Vid" + (i - 1).toString();
-            if (Row.cells[0].childNodes[0].value == "Раздел") {
+            if (Row.cells[0].childNodes[0].value == "Раздел" || Row.cells[0].childNodes[0].value == "Тема") {
                 Row.cells[1].childNodes[0].name = "Semestr" + (i - 1).toString();
             }
             Row.cells[2].childNodes[0].name = "AboutTheme" + (i - 1).toString();

@@ -220,7 +220,8 @@
             var select = document.getElementById('NumberSemestr');
             var Semestrs = document.createElement("SELECT");
             var CurSemestr;
-            if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].tagName != undefined) {
+            if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0] != undefined &&
+                Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].tagName != undefined) {
                 CurSemestr = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options[Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].options.selectedIndex].text;
             }
             else {
@@ -301,7 +302,13 @@
             td.appendChild(textbox);
 
             var td = Row.cells[1];
-            td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
+            if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0] == undefined || Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].value == undefined) {
+                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
+            }
+            else{
+                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].value.toString();
+            }
+            
 
             var td = Row.cells[2];
             var textarea = document.createElement("textarea");

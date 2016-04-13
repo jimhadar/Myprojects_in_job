@@ -116,9 +116,9 @@
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>
                     <asp:BoundField DataField="Year" HeaderText="Год" SortExpression="Year" />
-                    <asp:BoundField DataField="CodSub" HeaderText="CodSub" SortExpression="CodSub" />
+                    <asp:BoundField DataField="CodSub" HeaderText="CodSub" SortExpression="CodSub" HeaderStyle-CssClass="notVisibleColumn" ItemStyle-CssClass="notVisibleColumn" />
                     <asp:BoundField DataField="NameSub" HeaderText="Дисциплина" SortExpression="NameSub" />
-                    <asp:BoundField DataField="CodPrep_On_Plan" HeaderText="Код преподавателя" SortExpression="CodPrep_On_Plan" />
+                    <asp:BoundField DataField="CodPrep_On_Plan" HeaderText="Код преподавателя" SortExpression="CodPrep_On_Plan" HeaderStyle-CssClass="notVisibleColumn" ItemStyle-CssClass="notVisibleColumn"/>
                     <asp:BoundField DataField="Prep_on_plan" HeaderText="Преподаватель по нагрузке" SortExpression="Prep_on_plan" />
                 </Columns>
                 <HeaderStyle CssClass="HeaderGridView"></HeaderStyle>

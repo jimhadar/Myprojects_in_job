@@ -34,7 +34,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                         tmpContentControl.Insert1(data.Id_rpd, 
                                                     DateTime.Now, 
                                                     oldData,
-                                                    "<RPD />", 
+                                                    data.Data_with_RPD.Substring(0, 19) + data.Data_with_RPD.Substring(36, data.Data_with_RPD.Length - 36), 
                                                     Page.User.Identity.Name, 
                                                     HttpContext.Current.Request.UserHostAddress);
                     }

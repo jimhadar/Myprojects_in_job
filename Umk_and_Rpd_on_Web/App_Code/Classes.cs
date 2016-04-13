@@ -1907,14 +1907,14 @@ namespace Umk_and_Rpd_on_Web {
         internal void LoadDataToProgramFromDataBase() {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter umk_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                 //umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
-                if (Id_umk != null) {
-                    string Data_umk = umk_rpd_adapter.GetContents((int)Id_umk);
-                    Load_UMK_To_Program_from_XML(Data_umk);
-                }
                 if (this.Id_rpd != null) {
                     string Data_rpd = umk_rpd_adapter.GetContents((int)Id_rpd);
                     Load_RPD_To_Program_from_XML(Data_rpd);
                 }
+                if (Id_umk != null) {
+                    string Data_umk = umk_rpd_adapter.GetContents((int)Id_umk);
+                    Load_UMK_To_Program_from_XML(Data_umk);
+                }                 
             }
         }
 

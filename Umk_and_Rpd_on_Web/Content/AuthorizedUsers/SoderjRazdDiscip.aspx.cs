@@ -117,7 +117,9 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                             //добавление списков семестров в строку
                             if (SoderjRazdelRow["VidColumn"].ToString().Trim() == "Раздел" || SoderjRazdelRow["VidColumn"].ToString().Trim() == "Тема") {
                                 //установка стиля для ячейки
-                                CurrentSemestr = (SoderjRazdelRow["SemestrColumn"].ToString().Trim() != string.Empty ? SoderjRazdelRow["SemestrColumn"].ToString().Trim() : CurrentSemestr);
+                                if (SoderjRazdelRow["SemestrColumn"].ToString().Trim() != string.Empty) {
+                                    CurrentSemestr = SoderjRazdelRow["SemestrColumn"].ToString().Trim();
+                                }
                                 //создание списка семестров
                                 foreach (string Semestr in Number_semestr) {
                                     ListItem item = new ListItem(Semestr);
@@ -128,7 +130,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers {
                                 }
                                 HtmlRow.Cells[1].Controls.Add(select);
                                 //добавление обработчика событий
-                                select.Attributes.Add("onchange", "SoderjRazdDiscip.Update_Semestr_in_thme_or_lec('" + SoderjRazdelRow["VidColumn"].ToString().Trim() + "');");
+                                select.Attributes.Add("onchange", "SoderjRazdDiscip.Update_Semestr_in_thme_or_lec();");
                             }
                             else {
                                 HtmlRow.Cells[1].InnerHtml = CurrentSemestr;

@@ -301,7 +301,14 @@
             td.appendChild(textbox);
 
             var td = Row.cells[1];
-            td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
+            if (Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0] != undefined &&
+                Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].value != undefined) {
+                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].childNodes[0].value;
+            }
+            else {
+                td.innerText = Table_for_soderjDiscip.rows[CurrentRow_InRazdelLesson - 1].cells[1].innerText;
+            }
+            
 
             var td = Row.cells[2];
             var textarea = document.createElement("textarea");

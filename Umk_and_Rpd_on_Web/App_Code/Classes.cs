@@ -373,7 +373,9 @@ namespace Umk_and_Rpd_on_Web {
         /// содержит прочие поля для заполнения РПД
         /// </summary>
         internal OthersFieldsForRPD othersFieldsForRPD = null;
-
+        /// <summary>
+        /// Для фонда оценочных средств
+        /// </summary>
         internal FosTable fosTable = null;
         /// <summary>
         /// 
@@ -1905,14 +1907,14 @@ namespace Umk_and_Rpd_on_Web {
         internal void LoadDataToProgramFromDataBase() {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter umk_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                 //umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
-                if (Id_umk != null) {
-                    string Data_umk = umk_rpd_adapter.GetContents((int)Id_umk);
-                    Load_UMK_To_Program_from_XML(Data_umk);
-                }
                 if (this.Id_rpd != null) {
                     string Data_rpd = umk_rpd_adapter.GetContents((int)Id_rpd);
                     Load_RPD_To_Program_from_XML(Data_rpd);
                 }
+                if (Id_umk != null) {
+                    string Data_umk = umk_rpd_adapter.GetContents((int)Id_umk);
+                    Load_UMK_To_Program_from_XML(Data_umk);
+                }                 
             }
         }
 
@@ -3238,28 +3240,6 @@ namespace Umk_and_Rpd_on_Web {
             else {
                 throw new Exception("Задан неверный индекс строки для редактирования");
             }
-        }
-    }
-
-    [Serializable()]
-    struct ForPassportCompet {
-        /// <summary>
-        /// аббревиатура компетенции
-        /// </summary>
-        public string abbrComp;
-        /// <summary>
-        /// описание компетенции
-        /// </summary>
-        public string aboutComp;
-        /// <summary>
-        /// таблица с дисциплинами, на которых осваивается дисциплина
-        /// </summary>
-        public DataTable subsCompet;
-
-        public ForPassportCompet(string _abbrComp, string _aboutComp, DataTable _subsCompet) {
-            abbrComp = _abbrComp;
-            aboutComp = _aboutComp;
-            this.subsCompet = _subsCompet;
         }
     }
 }

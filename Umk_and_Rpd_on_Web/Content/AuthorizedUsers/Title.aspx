@@ -103,8 +103,7 @@
     </asp:UpdatePanel>
     <hr />
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-                    
+        <ContentTemplate>                    
             <asp:Button ID="Button_UpdateListDiscip" CssClass="bttn" runat="server" Text="Обновить список дисциплин"  OnClick="Button1_Click"/>
             <p runat="server" id="CurrentSelectSub" style="font-size:0.9em;">
                 

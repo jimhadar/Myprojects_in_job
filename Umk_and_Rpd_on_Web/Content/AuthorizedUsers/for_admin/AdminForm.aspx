@@ -95,10 +95,10 @@
             <asp:Button ID="Button_ControlDateSaveRPD" runat="server" Text="Найти" CssClass="bttn" OnClick="Button_ControlDateSaveRPD_Click" />
             <table runat="server"  id="informTable" Class="GridViewCss" style="width:100%;">
                 <tr>                    
-                    <th class="HeaderGridView " style="width:100px;">Дата сохранения</th>                    
+                    <th class="HeaderGridView" style="width:100px;">Дата сохранения</th>                    
                     <th class="HeaderGridView" style="width:100px;">Имя в БД</th>
-                    <th class="HeaderGridView">ID РПД</th>
-                    <th class="HeaderGridView">ID УМК</th>
+                    <th class="HeaderGridView notVisibleColumn">ID РПД</th>
+                    <th class="HeaderGridView notVisibleColumn">ID УМК</th>
                     <th class="HeaderGridView">Год</th>
                     <th class="HeaderGridView">План</th>
                     <th class="HeaderGridView" style="width: 80px;">Дисциплина</th>
@@ -106,7 +106,6 @@
                     <th class="HeaderGridView NameSubColumnInform">По нагрузке</th>
                     <th class="HeaderGridView">Кто сделал</th>
                     <th class="HeaderGridView">Пустые поля</th>
-                    <th class="HeaderGridView"></th>
                 </tr>
             </table>
             <%--<Table runat="server" ID="informTable" Class="GridViewCss">

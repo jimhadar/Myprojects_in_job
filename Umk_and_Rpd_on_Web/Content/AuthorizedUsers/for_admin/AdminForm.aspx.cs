@@ -88,7 +88,7 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                         }
                         string EmptyField = this.GetEmptyField(data);
                         HtmlTableRow tableRow = new HtmlTableRow();
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < 11; i++) {
                             tableRow.Cells.Add(new HtmlTableCell());
                             tableRow.Cells[i].Attributes.Add("class", "GridViewCss");
                         }
@@ -96,8 +96,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                         //tableRow.Cells[1].InnerHtml = (row["Name"] != null && row["Name"].ToString() != string.Empty) ? "+" : "-";                        
                         tableRow.Cells[1].InnerHtml = row["Name"].ToString();
                         tableRow.Cells[2].InnerHtml = row["Id_RPD_or_UMK"].ToString();
+                        tableRow.Cells[2].Attributes.Add("class", "GridViewCss notVisibleColumn");
                         string id_umk = tableWithRpd.Select("CodPlan=" + row["CodPlan"].ToString() + " and CodSub=" + row["CodSub"].ToString() + " and Year=" + row["Year"].ToString() + " and UMK_or_RPD=1 and CodPrep=" + row["CodPrep"].ToString() + " and CodPrepWhoDo=" + row["CodPrepWhoDo"].ToString())[0]["Id_RPD_or_UMK"].ToString();
                         tableRow.Cells[3].InnerHtml = id_umk;
+                        tableRow.Cells[3].Attributes.Add("class", "GridViewCss notVisibleColumn");
                         tableRow.Cells[4].InnerHtml = row["Year"].ToString();
                         tableRow.Cells[5].InnerHtml = row["NamePlan1"].ToString();
                         tableRow.Cells[6].InnerText = row["NameSub"].ToString();
@@ -108,10 +110,10 @@ namespace Umk_and_Rpd_on_Web.Content.AuthorizedUsers.for_admin {
                         tableRow.Cells[9].InnerHtml = row["CodPrepWhoDo"].ToString();
                         tableRow.Cells[10].InnerHtml = string.Empty;
                         tableRow.Cells[10].InnerHtml = EmptyField;
-                        tableRow.Cells[11].InnerHtml = "<input type='button' class='bttn' value='Удалить' onclick='delRPDFromBase(" + row["Id_RPD_or_UMK"].ToString() + ", " + id_umk + ")'/>";
-                        if (Page.User.Identity.Name != "test") {
-                            tableRow.Cells[11].Style.Add(HtmlTextWriterStyle.Display, "none");
-                        }
+                        //tableRow.Cells[11].InnerHtml = "<input type='button' class='bttn' value='Удалить' onclick='delRPDFromBase(" + row["Id_RPD_or_UMK"].ToString() + ", " + id_umk + ")'/>";
+                        //if (Page.User.Identity.Name != "test") {
+                        //    tableRow.Cells[11].Style.Add(HtmlTextWriterStyle.Display, "none");
+                        //}
                         this.informTable.Rows.Add(tableRow);
                     }
                 }

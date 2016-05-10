@@ -134,8 +134,9 @@
         if (CurrentRow_InTableForLiterature > 0) {
             allocationCurrentRow(Table_for_literature, CurrentRow_InTableForLiterature);
         }
-        ClickOnCell_intbl_liter()
+        ClickOnCell_intbl_liter();
         Update_NameAttr_in_InputElem_in_Table_for_Literature();
+        document.getElementById('RowCountLiterTable').value = Table_for_literature.rows.length - 1;
     }
     /*
         Показать/скрыть вспылвающее псевдоокно для выбора литературного источника

@@ -43,6 +43,7 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodPrep"] = null;
                 if (Session["CodFacPrep"] == null) {
                     Session["CodFacPrep"] = 80;
+                    Session["CodKafPrep"] = null;
                 }
                 //Session["CodKafPrep"] = 24;
                 if (Session["UchYear"] == null) {

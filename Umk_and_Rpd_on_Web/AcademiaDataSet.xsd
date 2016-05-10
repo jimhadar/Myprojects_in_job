@@ -626,6 +626,7 @@ FROM            PlanWork INNER JOIN
                          StudyPlans ON StudyPlans.CodPlan = Grup.CodPlan INNER JOIN
                          personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNER JOIN
                          WorkTypes ON PlanWorkDet.CodWorkType = WorkTypes.CodWorkType AND (PlanWorkDet.CodWorkType &gt;= 1 AND PlanWorkDet.CodWorkType &lt;= 5 OR
+                         PlanWorkDet.CodWorkType = 7 OR
                          PlanWorkDet.CodWorkType = 73 OR
                          PlanWorkDet.CodWorkType = 74 OR
                          PlanWorkDet.CodWorkType = 60 OR
@@ -1599,20 +1600,20 @@ where (CodTypeEdu &gt;= 10) </CommandText>
                          StudyPlans.CodPlan, StudyPlans.NamePlan, StudyPlans.CodSpecialization, StudyPlans.CodSpeciality, StudyPlans.CodTypeEdu, StudyPlans.CodKaf, StudyPlans.CodFaculty, StudyPlans.CodFormStudy, 
                          CASE WHEN CHARINDEX('-', studyplans.NamePlan, LEN(studyplans.NamePlan) - 1) &gt; 0 THEN SUBSTRING(studyplans.NamePlan, 0, LEN(studyplans.NamePlan) - 1) WHEN CHARINDEX('-', studyplans.NamePlan, 
                          LEN(studyplans.NamePlan) - 1) &lt;= 0 THEN studyplans.NamePlan END AS NamePlan1, Grup.BeginYear
-FROM            StudyPlans LEFT OUTER JOIN
+FROM            StudyPlans INNER JOIN
                          Grup ON Grup.CodPlan = StudyPlans.CodPlan
 WHERE        (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND 
-                         (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND 
-                         (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) AND 
-                         (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodSpeciality IS NULL) AND 
-                         (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) AND (Grup.BeginYear IS NOT NULL) OR
-                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (Grup.BeginYear IS NOT NULL) OR
-                         (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (Grup.BeginYear IS NOT NULL)</CommandText>
+                         (Grup.BeginYear &gt;= 2015) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND 
+                         (@CodTypeEdu IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND 
+                         (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND 
+                         (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND (@CodTypeEdu IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) OR
+                         (CHARINDEX('ИП ', StudyPlans.NamePlan, 0) &lt;= 0) AND (Grup.BeginYear &gt;= 2015) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="CodFormStudy" ColumnName="CodFormStudy" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodFormStudy" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodFormStudy" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="CodTypeEdu" ColumnName="CodTypeEdu" DataSourceName="academia.dbo.StudyPlans" DataTypeServer="tinyint" DbType="Byte" Direction="Input" ParameterName="@CodTypeEdu" Precision="0" ProviderType="TinyInt" Scale="0" Size="1" SourceColumn="CodTypeEdu" SourceColumnNullMapping="false" SourceVersion="Current" />

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Title.aspx.cs" Inherits="Umk_and_Rpd_on_Web.TitlePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/AuthorizedUsers/NestedMasterPage1.master" AutoEventWireup="true" CodeBehind="Title.aspx.cs" Inherits="Umk_and_Rpd_on_Web.TitlePage" ErrorPage="~/KnownErrors.aspx" %>
 <asp:Content ID="MainContent" ContentPlaceHolderID="Content" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" OnAsyncPostBackError="ScriptManager1_AsyncPostBackError">
     </asp:ScriptManager>

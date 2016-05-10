@@ -103,6 +103,7 @@
     <Content Include="Error.aspx" />
     <Content Include="fon.png" />
     <Content Include="Content\AuthorizedUsers\Main.Master" />
+    <Content Include="KnownErrors.aspx" />
     <Content Include="Logins.aspx" />
     <Content Include="packages.config" />
     <Content Include="AcademiaDataSet.xsc">
@@ -287,6 +288,13 @@
     </Compile>
     <Compile Include="Content\AuthorizedUsers\Title.aspx.designer.cs">
       <DependentUpon>Title.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KnownErrors.aspx.cs">
+      <DependentUpon>KnownErrors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KnownErrors.aspx.designer.cs">
+      <DependentUpon>KnownErrors.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logins.aspx.cs">
       <DependentUpon>Logins.aspx</DependentUpon>

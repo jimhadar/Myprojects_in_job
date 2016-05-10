@@ -22672,12 +22672,13 @@ where  (CodKaf <> 33) AND (CodKaf <> 77) AND (CodKaf <> 78) AND (CodKaf <> 79) A
                 "   personal.dbo.PEOPLEN ON personal.dbo.PEOPLEN.CODPE = PlanWorkDet.CodPrep INNE" +
                 "R JOIN\r\n                         WorkTypes ON PlanWorkDet.CodWorkType = WorkType" +
                 "s.CodWorkType AND (PlanWorkDet.CodWorkType >= 1 AND PlanWorkDet.CodWorkType <= 5" +
-                " OR\r\n                         PlanWorkDet.CodWorkType = 73 OR\r\n                 " +
-                "        PlanWorkDet.CodWorkType = 74 OR\r\n                         PlanWorkDet.Co" +
-                "dWorkType = 60 OR\r\n                         PlanWorkDet.CodWorkType = 66 OR\r\n   " +
-                "                      PlanWorkDet.CodWorkType = 67)\r\nwhere (StudyPlans.CodPlan =" +
-                " @CodPlan or @CodPlan is null) and (KafSubs.CodKaf = @CodKafDiscip or @CodKafDis" +
-                "cip is null) and (PlanWork.Year = @Year or @Year is null)";
+                " OR\r\n                         PlanWorkDet.CodWorkType = 7 OR\r\n                  " +
+                "       PlanWorkDet.CodWorkType = 73 OR\r\n                         PlanWorkDet.Cod" +
+                "WorkType = 74 OR\r\n                         PlanWorkDet.CodWorkType = 60 OR\r\n    " +
+                "                     PlanWorkDet.CodWorkType = 66 OR\r\n                         P" +
+                "lanWorkDet.CodWorkType = 67)\r\nwhere (StudyPlans.CodPlan = @CodPlan or @CodPlan i" +
+                "s null) and (KafSubs.CodKaf = @CodKafDiscip or @CodKafDiscip is null) and (PlanW" +
+                "ork.Year = @Year or @Year is null)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodPlan", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CodPlan", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodKafDiscip", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodKafDiscip", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -27311,31 +27312,31 @@ WHERE        (name LIKE '%' + @Name + '%') AND (author LIKE '%' + @Author + '%')
                 "ePlan) - 1) > 0 THEN SUBSTRING(studyplans.NamePlan, 0, LEN(studyplans.NamePlan) " +
                 "- 1) WHEN CHARINDEX(\'-\', studyplans.NamePlan, \r\n                         LEN(stu" +
                 "dyplans.NamePlan) - 1) <= 0 THEN studyplans.NamePlan END AS NamePlan1, Grup.Begi" +
-                "nYear\r\nFROM            StudyPlans LEFT OUTER JOIN\r\n                         Grup" +
-                " ON Grup.CodPlan = StudyPlans.CodPlan\r\nWHERE        (StudyPlans.CodFormStudy = @" +
-                "CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeci" +
-                "ality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND " +
-                "\r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n                    " +
-                "     (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @" +
-                "CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodType" +
-                "Edu IS NULL) AND \r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n   " +
-                "                      (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodS" +
-                "peciality = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) " +
-                "AND (@CodFormStudy IS NULL) AND \r\n                         (Grup.BeginYear IS NO" +
-                "T NULL) OR\r\n                         (StudyPlans.CodSpeciality = @CodSpeciality)" +
-                " AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodTypeEdu IS NULL) A" +
-                "ND (@CodFormStudy IS NULL) AND (Grup.BeginYear IS NOT NULL) OR\r\n                " +
-                "         (StudyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = " +
-                "@CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodSpecia" +
-                "lity IS NULL) AND \r\n                         (Grup.BeginYear IS NOT NULL) OR\r\n  " +
-                "                       (StudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX(" +
-                "\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (@CodTypeEdu IS NULL) AND (@CodSpeciali" +
-                "ty IS NULL) AND (Grup.BeginYear IS NOT NULL) OR\r\n                         (Study" +
-                "Plans.CodTypeEdu = @CodTypeEdu) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <=" +
-                " 0) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) AND (Grup.BeginYear" +
-                " IS NOT NULL) OR\r\n                         (CHARINDEX(\'ИП \', StudyPlans.NamePlan" +
-                ", 0) <= 0) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpecia" +
-                "lity IS NULL) AND (Grup.BeginYear IS NOT NULL)";
+                "nYear\r\nFROM            StudyPlans INNER JOIN\r\n                         Grup ON G" +
+                "rup.CodPlan = StudyPlans.CodPlan\r\nWHERE        (StudyPlans.CodFormStudy = @CodFo" +
+                "rmStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality" +
+                " = @CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND \r\n   " +
+                "                      (Grup.BeginYear >= 2015) OR\r\n                         (Stu" +
+                "dyPlans.CodFormStudy = @CodFormStudy) AND (StudyPlans.CodSpeciality = @CodSpecia" +
+                "lity) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.BeginYear >=" +
+                " 2015) AND \r\n                         (@CodTypeEdu IS NULL) OR\r\n                " +
+                "         (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (StudyPlans.CodSpeciality = @" +
+                "CodSpeciality) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.Beg" +
+                "inYear >= 2015) AND \r\n                         (@CodFormStudy IS NULL) OR\r\n     " +
+                "                    (StudyPlans.CodSpeciality = @CodSpeciality) AND (CHARINDEX(\'" +
+                "ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.BeginYear >= 2015) AND (@CodTypeEd" +
+                "u IS NULL) AND (@CodFormStudy IS NULL) OR\r\n                         (StudyPlans." +
+                "CodFormStudy = @CodFormStudy) AND (StudyPlans.CodTypeEdu = @CodTypeEdu) AND (CHA" +
+                "RINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.BeginYear >= 2015) AND \r\n " +
+                "                        (@CodSpeciality IS NULL) OR\r\n                         (S" +
+                "tudyPlans.CodFormStudy = @CodFormStudy) AND (CHARINDEX(\'ИП \', StudyPlans.NamePla" +
+                "n, 0) <= 0) AND (Grup.BeginYear >= 2015) AND (@CodTypeEdu IS NULL) AND (@CodSpec" +
+                "iality IS NULL) OR\r\n                         (StudyPlans.CodTypeEdu = @CodTypeEd" +
+                "u) AND (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.BeginYear >= 20" +
+                "15) AND (@CodFormStudy IS NULL) AND (@CodSpeciality IS NULL) OR\r\n               " +
+                "          (CHARINDEX(\'ИП \', StudyPlans.NamePlan, 0) <= 0) AND (Grup.BeginYear >=" +
+                " 2015) AND (@CodTypeEdu IS NULL) AND (@CodFormStudy IS NULL) AND (@CodSpeciality" +
+                " IS NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodFormStudy", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodFormStudy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTypeEdu", global::System.Data.SqlDbType.TinyInt, 1, global::System.Data.ParameterDirection.Input, 0, 0, "CodTypeEdu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

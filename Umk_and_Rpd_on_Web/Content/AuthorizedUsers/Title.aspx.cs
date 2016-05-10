@@ -268,7 +268,13 @@ namespace Umk_and_Rpd_on_Web {
                 ((Data_for_program)Session["data"]).CodKafPrep = (byte?)Session["CodKafPrep"];
             }
             else {
-                this.DropDownList_KafDiscip.SelectedValue = Session["CodKafPrep"].ToString();
+                try {
+                    this.DropDownList_KafDiscip.SelectedValue = Session["CodKafPrep"].ToString();
+                }
+                catch {
+                    this.DropDownList_KafDiscip.Items[0].Selected = true;
+                    Session["CodKafPrep"] = Convert.ToByte(this.DropDownList_KafDiscip.Items[0].Value);
+                }
             }
         }
 
@@ -280,7 +286,13 @@ namespace Umk_and_Rpd_on_Web {
                 Session["CodPlan"] = 0;
             }
             else {
-                this.DropDownList_StudyPlans.SelectedValue = Session["CodPlan"].ToString();
+                try {
+                    this.DropDownList_StudyPlans.SelectedValue = Session["CodPlan"].ToString();
+                }
+                catch {
+                    this.DropDownList_StudyPlans.Items[0].Selected = true;
+                    Session["CodPlan"] = Convert.ToInt32(this.DropDownList_StudyPlans.SelectedValue);
+                }
             }
         }
 
@@ -290,7 +302,13 @@ namespace Umk_and_Rpd_on_Web {
                 ((Data_for_program)Session["data"]).CodSpeciality = this.DropDownList_Speciality.SelectedValue;
             }
             else {
-                this.DropDownList_Speciality.SelectedValue = Session["CodSpeciality"].ToString();
+                try {
+                    this.DropDownList_Speciality.SelectedValue = Session["CodSpeciality"].ToString();
+                }
+                catch {
+                    this.DropDownList_Speciality.Items[0].Selected = true;
+                    Session["CodSpeciality"] = this.DropDownList_Speciality.SelectedValue;
+                }
             }
         }
 

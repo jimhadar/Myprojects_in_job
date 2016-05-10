@@ -1907,7 +1907,9 @@ namespace Umk_and_Rpd_on_Web {
         internal void LoadDataToProgramFromDataBase() {
             using (AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter umk_rpd_adapter = new AcademiaDataSetTableAdapters.UMK_and_RPDTableAdapter()) {
                 //umk_rpd_adapter.Fill(new AcademiaDataSet.UMK_and_RPDDataTable());
+                
                 if (this.Id_rpd != null) {
+                    ClearAllGeneralFields();
                     string Data_rpd = umk_rpd_adapter.GetContents((int)Id_rpd);
                     Load_RPD_To_Program_from_XML(Data_rpd);
                 }
@@ -1983,8 +1985,7 @@ namespace Umk_and_Rpd_on_Web {
                 StreamReader reader = new StreamReader(memStream, System.Text.Encoding.UTF8);
                 reader.BaseStream.Seek(0, SeekOrigin.Begin);
                 XmlTextReader xmlReader = new XmlTextReader(reader);
-
-                ClearAllGeneralFields();
+                
                 othersFieldsForRPD.UpdateFields("", "", "", "", "", "", "", "", "", "", "");
                 xmlReader.Read();
                 while (!xmlReader.EOF) {
@@ -2109,7 +2110,6 @@ namespace Umk_and_Rpd_on_Web {
             LiteratureTable.Clear();
             this.table_for_key_compet.Clear();
             this.CurControlTable.Clear();
-            this.fosTable.Clear();
         }
         /// <summary>
         /// очистка всех значений полей текущего экземпляра класса

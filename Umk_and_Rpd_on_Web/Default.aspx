@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Authorization" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Umk_and_Rpd_on_Web.Authorization" ErrorPage="~/KnownErrors.aspx"%>
 
 <!DOCTYPE html>
 

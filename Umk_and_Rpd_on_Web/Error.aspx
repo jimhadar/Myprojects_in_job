@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <span style="display:block; font-size: larger; text-align:center;">Приложение временно недоступно. ПРиносим извинения за неудобства.</span>
+        <span style="display:block; font-size: larger; text-align:center;">Приложение временно недоступно. Приносим извинения за неудобства.</span>
     </div>
     </form>
 </body>
